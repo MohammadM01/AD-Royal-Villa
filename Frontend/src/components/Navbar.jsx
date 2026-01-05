@@ -25,7 +25,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
-        { name: 'Stay & Rooms', path: '/stay' },
+        { name: 'Stay & Amenities', path: '/stay' },
         { name: 'Pool & Activities', path: '/amenities' },
         { name: 'Pricing', path: '/pricing' },
         { name: 'Contact', path: '/contact' },
@@ -33,22 +33,22 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-[#F9F9F4]/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-heading font-bold text-primary tracking-wide">
-                    AD Royal <span className="text-text font-normal">Private Villa</span>
+                <Link to="/" className="text-2xl font-heading font-bold text-primary tracking-wider">
+                    AD Royal <span className="text-primary-light font-normal text-lg">Private Villa</span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-10">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-text'
+                            className={`text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:text-accent ${location.pathname === link.path ? 'text-primary' : 'text-text/80'
                                 }`}
                         >
                             {link.name}
@@ -58,7 +58,7 @@ const Navbar = () => {
                         href="https://wa.me/91XXXXXXXXXX" // TODO: Update with real number
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all uppercase text-xs tracking-widest"
+                        className="bg-primary text-[#F9F9F4] px-8 py-3 rounded-full font-medium hover:bg-primary-light transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em]"
                     >
                         Book Now
                     </a>

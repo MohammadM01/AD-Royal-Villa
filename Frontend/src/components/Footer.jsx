@@ -10,8 +10,7 @@ const Footer = () => {
                 <div className="space-y-6">
                     <h3 className="text-3xl font-heading font-bold text-primary">AD Royal Private Villa</h3>
                     <p className="text-gray-400 font-light leading-relaxed">
-                        Experience the essence of Indian hospitality in our luxury 4BHK farmhouse.
-                        A perfect getaway for families, friends, and corporate retreats.
+                        Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK farmhouse.
                     </p>
                     <div className="flex space-x-4">
                         <a href="#" className="text-white hover:text-primary transition-colors">
@@ -29,8 +28,8 @@ const Footer = () => {
                     <ul className="space-y-4 text-gray-400 font-light">
                         <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                         <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                        <li><Link to="/stay" className="hover:text-white transition-colors">Stay & Rooms</Link></li>
-                        <li><Link to="/amenities" className="hover:text-white transition-colors">Pool & Amenities</Link></li>
+                        <li><Link to="/stay" className="hover:text-white transition-colors">Stay & Amenities</Link></li>
+                        <li><Link to="/amenities" className="hover:text-white transition-colors">Pool & Activities</Link></li>
                         <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                     </ul>
                 </div>

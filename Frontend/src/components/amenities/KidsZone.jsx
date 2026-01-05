@@ -11,12 +11,15 @@ const KidsZone = () => {
     return (
         <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-text">
-                        Kids & Family <span className="text-primary italic">Activities</span>
-                    </h2>
-                    <p className="md:w-1/3 text-gray-600 mt-4 md:mt-0 font-light">
-                        Keep the little ones entertained for hours with our dedicated outdoor play equipment.
+                <div className="flex flex-col md:flex-row items-center justify-between mb-16">
+                    <div>
+                        <span className="text-primary tracking-[0.2em] text-xs font-bold uppercase block mb-2">Safe & Secure</span>
+                        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text">
+                            Children’s Play & <span className="text-primary italic">Garden Area</span>
+                        </h2>
+                    </div>
+                    <p className="md:w-1/3 text-gray-600 mt-6 md:mt-0 font-light leading-relaxed">
+                        A fully enclosed, safe garden area visible from the patio, so you can relax while the kids play.
                     </p>
                 </div>
 

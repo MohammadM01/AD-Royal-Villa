@@ -1,16 +1,14 @@
 import React from 'react'
-import PoolHero from '../components/home/PoolHero'
-import PoolShowcase from '../components/home/PoolShowcase'
-import PoolVideoGallery from '../components/home/PoolVideoGallery'
-import PoolVibe from '../components/home/PoolVibe'
+import Hero from '../components/home/Hero'
+import Intro from '../components/home/Intro'
+import AmenitiesPreview from '../components/home/AmenitiesPreview'
 
 const Home = () => {
   return (
-    <div className="bg-text">
-      <PoolHero />
-      <PoolVideoGallery />
-      <PoolShowcase />
-      <PoolVibe />
+    <div className="bg-[#F9F9F4]">
+      <Hero />
+      <Intro />
+      <AmenitiesPreview />
     </div>
   )
 }
