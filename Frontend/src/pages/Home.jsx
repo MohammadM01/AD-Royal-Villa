@@ -56,49 +56,54 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* INTRO TEXT */}
-            <section className="py-24 px-6 text-center">
+            {/* INTRO TITLE - DARK THEME */}
+            <section className="pt-24 px-6 text-center bg-black">
                 <div className="container mx-auto max-w-4xl">
-                    <h2 className="text-4xl md:text-5xl font-heading text-primary mb-8">A Sanctuary of Serenity</h2>
-                    <div className="w-24 h-1 bg-accent mx-auto mb-10"></div>
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                        Nestled away from the city's chaos, AD Royal Villa offers an exclusive escape for those who seek luxury, privacy, and comfort.
-                        Whether it's a family gathering or a weekend retreat, every corner of our property is designed to provide you with an unforgettable experience.
-                    </p>
+                    <h2 className="text-4xl md:text-5xl font-heading text-accent mb-8">A Sanctuary of Serenity</h2>
+                    <div className="w-24 h-1 bg-accent/50 mx-auto"></div>
                 </div>
             </section>
 
-            {/* FEATURES GRID */}
-            <section className="py-24 bg-white">
+            {/* CURVED CARDS SECTION (FANNED LAYOUT) */}
+            <section className="pt-12 pb-12 bg-black overflow-hidden">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Card 1 */}
-                        <div className="group cursor-pointer">
-                            <div className="h-[400px] overflow-hidden relative mb-6">
-                                <img src="/Assets/pool_highlight_4.mp4" alt="Private Pool" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                                {/* Video Fallback/Image Hack: using video src in img tag works in some browsers as poster, but ideally use video tag. Reverting to video tag for safety */}
-                                <video src="/Assets/pool_highlight_4.mp4" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" muted loop onMouseOver={e => e.target.play()} onMouseOut={e => e.target.pause()} />
-                            </div>
-                            <h3 className="text-2xl font-heading text-primary group-hover:text-accent transition-colors mb-2">Private Pool</h3>
-                            <p className="text-gray-500">Dive into crystal clear waters with our signature mushroom rain fountain.</p>
+                    <div className="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 h-auto md:h-[600px]">
+
+                        {/* Left Card */}
+                        <div className="w-full md:w-[385px] h-[330px] md:h-[500px] relative md:transform md:-rotate-12 md:translate-y-12 md:translate-x-12 z-0 rounded-[30px] border-4 border-gray-800 overflow-hidden shadow-2xl transition-all duration-500 hover:z-20 hover:scale-105 hover:rotate-0 hover:border-accent">
+                            <video src="/Assets/pool_highlight_4.mp4" className="w-full h-full object-cover" autoPlay muted loop playsInline />
+                            <div className="absolute inset-0 bg-black/20"></div>
+                            <div className="absolute bottom-6 left-6 text-white font-heading text-xl">Private Pool</div>
                         </div>
-                        {/* Card 2 */}
-                        <div className="group cursor-pointer">
-                            <div className="h-[400px] overflow-hidden relative mb-6">
-                                <img src="/Assets/villa_entrance_facade.jpg" alt="Luxury Villa" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+
+                        {/* Center Card */}
+                        <div className="w-full md:w-[440px] h-[385px] md:h-[550px] relative z-10 rounded-[30px] border-4 border-accent overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.3)] transition-transform duration-500 hover:scale-105">
+                            <video src="/Assets/ameneties/villa_walkthrough_hero_backup.mp4" className="w-full h-full object-cover" autoPlay muted loop playsInline />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div className="absolute bottom-8 left-8">
+                                <h3 className="text-white font-heading text-3xl mb-2">Luxury Living</h3>
+                                <p className="text-gray-300 text-sm">Experience the finest comforts.</p>
                             </div>
-                            <h3 className="text-2xl font-heading text-primary group-hover:text-accent transition-colors mb-2">Luxury Living</h3>
-                            <p className="text-gray-500">Spacious bedrooms, modern amenities, and elegant interiors.</p>
                         </div>
-                        {/* Card 3 */}
-                        <div className="group cursor-pointer">
-                            <div className="h-[400px] overflow-hidden relative mb-6">
-                                <img src="/Assets/outdoor_lounge_canopy.jpg" alt="Outdoor Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                            </div>
-                            <h3 className="text-2xl font-heading text-primary group-hover:text-accent transition-colors mb-2">Outdoor Lounge</h3>
-                            <p className="text-gray-500">Relax under the open sky in our premium patio and garden areas.</p>
+
+                        {/* Right Card */}
+                        <div className="w-full md:w-[385px] h-[330px] md:h-[500px] relative md:transform md:rotate-12 md:translate-y-12 md:-translate-x-12 z-0 rounded-[30px] border-4 border-gray-800 overflow-hidden shadow-2xl transition-all duration-500 hover:z-20 hover:scale-105 hover:rotate-0 hover:border-accent">
+                            <img src="/Assets/outdoor_lounge_canopy.jpg" alt="Outdoor Lounge" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/20"></div>
+                            <div className="absolute bottom-6 left-6 text-white font-heading text-xl">Outdoor Lounge</div>
                         </div>
+
                     </div>
+                </div>
+            </section>
+
+            {/* INTRO TEXT BODY - DARK THEME */}
+            <section className="pb-24 px-6 text-center bg-black">
+                <div className="container mx-auto max-w-4xl">
+                    <p className="text-gray-400 text-lg leading-relaxed font-light">
+                        Nestled away from the city's chaos, AD Royal Villa offers an exclusive escape for those who seek luxury, privacy, and comfort.
+                        Whether it's a family gathering or a weekend retreat, every corner of our property is designed to provide you with an unforgettable experience.
+                    </p>
                 </div>
             </section>
 
