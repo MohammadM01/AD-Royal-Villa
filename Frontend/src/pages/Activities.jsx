@@ -207,6 +207,12 @@ const Activities = () => {
                     reverse={true}
                 />
 
+                <VideoSection
+                    title="Magic Mushroom Fountain"
+                    description="Step under the magical mushroom fountain for a gentle and refreshing cascade. A perfect playful spot for children to enjoying the cooling waters."
+                    video="/Assets/mushroom water fountain.mp4"
+                />
+
                 {/* Final CTA */}
                 <div className="mt-20 text-center">
                     <a href="/contact" className="inline-block border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black px-12 py-4 rounded-full transition-all duration-300 uppercase tracking-widest font-medium">
