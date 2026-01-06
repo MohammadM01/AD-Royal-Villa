@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Amenities from './pages/Amenities'
 import Activities from './pages/Activities'
+import Pricing from './pages/Pricing'
 import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 
@@ -29,6 +30,7 @@ const App = () => {
                     <Route path="about" element={<About />} />
                     <Route path="amenities" element={<Amenities />} />
                     <Route path="activities" element={<Activities />} />
+                    <Route path="pricing" element={<Pricing />} />
                     <Route path="gallery" element={<Gallery />} />
                     <Route path="contact" element={<Contact />} />
                 </Route>
