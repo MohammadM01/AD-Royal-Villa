@@ -1,21 +1,37 @@
-import React from 'react'
-import Story from '../components/about/Story'
-import Mission from '../components/about/Mission'
+import React from 'react';
+import ImageGalleryLayout from '../components/ImageGalleryLayout';
+
+const aboutItems = [
+    {
+        src: '/Assets/villa_entrance_facade.jpg',
+        title: 'Welcome Home',
+        description: 'A sanctuary designed for peace and privacy.'
+    },
+    {
+        src: '/Assets/outdoor_lounge_canopy.jpg',
+        title: 'Philosophy',
+        description: 'Atithi Devo Bhava - Guest is God. Experience true Indian hospitality.'
+    },
+    {
+        src: '/Assets/Activites and pool/pool_villa_exterior_day.jpg',
+        title: 'The Estate',
+        description: 'Sprawling lawns and pristine waters in a private gated realm.'
+    },
+    {
+        src: '/Assets/kids_play_zone_overview.jpg',
+        title: 'Family First',
+        description: 'Created to reconnect loved ones away from digital distractions.'
+    },
+];
 
 const About = () => {
     return (
-        <div className="pt-20">
-            {/* Page Header */}
-            <div className="bg-primary/5 py-32 text-center text-text relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5 bg-[url('/Assets/villa_entrance_facade.jpg')] bg-cover bg-center"></div>
-                <h1 className="text-5xl md:text-7xl font-heading font-bold text-primary relative z-10">About Our Realm</h1>
-                <p className="text-primary-light mt-6 tracking-[0.2em] uppercase text-sm font-medium relative z-10">Where Privacy Meets Peace</p>
-                <div className="w-24 h-1 bg-accent mx-auto mt-8 rounded-full relative z-10"></div>
-            </div>
-            <Story />
-            <Mission />
-        </div>
-    )
-}
+        <ImageGalleryLayout
+            title="Our Story"
+            subtitle="Where luxury meets legacy. Discover the heart of our hospitality."
+            items={aboutItems}
+        />
+    );
+};
 
-export default About
+export default About;
