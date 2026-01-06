@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 
@@ -56,143 +56,178 @@ const amenitiesData = [
     }
 ]
 
+const AmenitySection = ({ item, index }) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
+
+    return (
+        <div ref={ref} className="w-full relative min-h-[90vh] flex items-center justify-center py-24 overflow-hidden">
+            {/* Background Glow */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none z-0`}></div>
+
+            <div className={`container mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center gap-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+
+                {/* Media Side with Parallax */}
+                <motion.div
+                    style={{ y, opacity }}
+                    className="w-full md:w-1/2"
+                >
+                    <div className="relative group">
+                        {/* Golden Border Frame */}
+                        <div className="absolute -inset-4 border border-[#D4AF37]/20 rounded-2xl z-0 transform group-hover:scale-105 transition-transform duration-700"></div>
+
+                        <div className="rounded-xl overflow-hidden shadow-2xl relative z-10 aspect-[4/3] border border-white/10">
+                            {item.type === 'video' ? (
+                                <video
+                                    src={item.image}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="w-full h-full object-cover transform scale-110"
+                                />
+                            ) : (
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transform scale-110 transition-transform duration-1000 group-hover:scale-100"
+                                />
+                            )}
+                            {/* Cinematic Overlay */}
+                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Text Side with Glassmorphism */}
+                <motion.div
+                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="w-full md:w-1/2 relative"
+                >
+                    <div className="absolute -inset-8 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 -z-10 opacity-0 md:opacity-100 shadow-2xl"></div>
+
+                    <div className="space-y-8 p-0 md:p-8">
+                        <div className="inline-flex items-center gap-4">
+                            <span className="h-[1px] w-12 bg-[#D4AF37]"></span>
+                            <span className="text-xs font-bold tracking-[0.4em] text-[#D4AF37] uppercase">
+                                0{index + 1} /// Collection
+                            </span>
+                        </div>
+
+                        <h2 className="text-4xl md:text-6xl font-heading font-medium text-white leading-tight">
+                            {item.title.split(' ').map((word, i) => (
+                                <span key={i} className="inline-block mr-3 opacity-90 hover:opacity-100 hover:text-[#D4AF37] transition-colors cursor-default">
+                                    {word}
+                                </span>
+                            ))}
+                        </h2>
+
+                        <p className="text-lg text-gray-300 leading-relaxed font-light tracking-wide">
+                            {item.description}
+                        </p>
+
+                        {item.features && (
+                            <ul className="grid grid-cols-1 gap-3 mt-6">
+                                {item.features.map((feature, idx) => (
+                                    <li key={idx} className="text-gray-400 flex items-center text-base font-light border-b border-white/5 pb-2 last:border-0">
+                                        <span className="text-[#D4AF37] mr-4 text-xs">◆</span>
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+    );
+}
+
 const Amenities = () => {
     return (
-        <div className="bg-[#F9F9F4] min-h-screen">
+        <div className="bg-[#1a1a1a] min-h-screen overflow-x-hidden selection:bg-[#D4AF37] selection:text-black">
+            {/* Ambient Background Bloom */}
+            <div className="fixed top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/10 rounded-full blur-[150px]"></div>
+                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#D4AF37]/5 rounded-full blur-[150px]"></div>
+            </div>
+
             {/* Header Section */}
-            <div className="pt-32 pb-16 text-center px-6">
+            <div className="relative pt-40 pb-20 text-center px-6 z-10">
                 <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl font-heading font-bold text-primary mb-6"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="text-6xl md:text-8xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F9F9F4] to-[#D4AF37] mb-8 drop-shadow-lg"
                 >
-                    Amenities & Experiences
+                    Amenities &<br />Experiences
                 </motion.h1>
+                <div className="h-1 w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-8"></div>
                 <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    className="text-lg text-primary/80 max-w-2xl mx-auto tracking-wide leading-relaxed font-light"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="text-xl text-gray-400 max-w-2xl mx-auto tracking-wide leading-relaxed font-light italic"
                 >
-                    Discover a world of privacy, luxury, and comfort crafted exclusively for you.
+                    "Where every detail is crafted for your absolute comfort and pleasure."
                 </motion.p>
             </div>
 
             {/* Alternating Sections */}
-            <div className="flex flex-col">
+            <div className="relative z-10 flex flex-col gap-0">
                 {amenitiesData.map((item, index) => (
-                    <div key={index} className="w-full relative min-h-[80vh] flex items-center justify-center overflow-hidden py-12">
-                        {/* Alternate Background for visual break */}
-                        <div className={`absolute inset-0 z-0 ${index % 2 === 0 ? 'bg-transparent' : 'bg-primary/5'}`}></div>
-
-                        <div className={`container mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center gap-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                            }`}>
-
-                            {/* Media Side */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="w-full md:w-1/2"
-                            >
-                                <div className="rounded-2xl overflow-hidden shadow-2xl relative group aspect-[4/3]">
-                                    {item.type === 'video' ? (
-                                        <video
-                                            src={item.image}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                    ) : (
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                    )}
-
-                                    {/* Overlay Gradient */}
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                                </div>
-                            </motion.div>
-
-                            {/* Text Side */}
-                            <motion.div
-                                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                                className="w-full md:w-1/2 text-center md:text-left space-y-6"
-                            >
-                                <div className="inline-block border-b border-accent pb-1">
-                                    <span className="text-xs font-bold tracking-[0.3em] text-accent uppercase">
-                                        0{index + 1} /// Experience
-                                    </span>
-                                </div>
-                                <h2 className="text-4xl md:text-5xl font-heading font-medium text-primary leading-tight">
-                                    {item.title}
-                                </h2>
-                                <p className="text-lg text-gray-600 leading-relaxed font-light">
-                                    {item.description}
-                                </p>
-
-                                {item.features && (
-                                    <ul className="space-y-2 mt-4 text-left inline-block">
-                                        {item.features.map((feature, idx) => (
-                                            <li key={idx} className="text-gray-600 flex items-start text-lg">
-                                                <span className="text-accent mr-3 mt-1 text-sm">◆</span>
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </motion.div>
-                        </div>
-                    </div>
+                    <AmenitySection key={index} item={item} index={index} />
                 ))}
             </div>
 
-            {/* Detailed Amenities Grid - Dark Theme */}
-            <div className="py-24 bg-[#1a1a1a]">
+            {/* Detailed Amenities Grid - Premium Dark */}
+            <div className="relative py-32 bg-black/40 backdrop-blur-sm z-10 border-t border-white/5">
                 <div className="container mx-auto px-6">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
+                        className="text-center mb-20"
                     >
-                        <h2 className="text-4xl md:text-5xl font-heading font-medium text-[#D4AF37] mb-2">
-                            All Property Amenities
+                        <h2 className="text-4xl md:text-5xl font-heading font-medium text-[#D4AF37] mb-4 tracking-wide">
+                            Complete Royal Inventory
                         </h2>
+                        <p className="text-gray-500 font-light uppercase tracking-widest text-sm">Everything you need for a perfect stay</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                         {[
-                            "Private Pool (80x20 ft)", "Rain Dance System", "Music System", "Barbeque Station",
-                            "Fully Furnished 4BHK", "6 Washrooms", "9 Extra Mattresses (Free)", "Mineral Water (20L Jar)",
-                            "Hot & Cold Water", "Power Backup (Inverter/Gen)", "Secure Parking (6-8 Cars)", "Caretaker on Site",
-                            "Pet Friendly (Conditions Apply)", "Kitchen for Re-heating", "Kids Pool (3ft depth)", "Adult Pool (4.5-5ft depth)",
-                            "Family Slide (14x7ft)", "Single Slide (14ft)", "Mushroom Umbrella", "Smart TVs in All Rooms",
-                            "Large Living Room (700 sq.ft)", "Royal Dining Table", "Outdoor Games & Swings", "Cricket & Carrom"
+                            "Private Pool (80x20 ft)", "Rain Dance System", "Hi-Fi Music System", "Pro Barbeque Station",
+                            "Luxury 4BHK Villa", "6 Premium Washrooms", "9 Extra Comfort Mattresses", "Comp. Mineral Water",
+                            "24/7 Hot & Cold Water", "100% Power Backup", "Secure Parking (8 Cars)", "Dedicated Caretaker",
+                            "Pet Friendly Stays", "Re-heating Kitchenette", "Safe Kids Pool (3ft)", "Deep Adult Pool (5ft)",
+                            "Family Mega Slide", "Adrenaline Single Slide", "Mushroom Waterfall", "55\" Smart TVs",
+                            "Grand Living Hall", "Royal 12-Seater Dining", "Lush Outdoor Lawns", "Indoor Games Arena"
                         ].map((item, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.02, duration: 0.4 }}
-                                className="bg-[#2a2a2a] rounded-lg px-6 py-4 flex items-center space-x-3 border border-white/5 hover:border-[#D4AF37]/50 transition-colors group"
+                                transition={{ delay: index * 0.03, duration: 0.4 }}
+                                whileHover={{ scale: 1.05, backgroundColor: "rgba(212, 175, 55, 0.1)" }}
+                                className="bg-[#1e1e1e] rounded-xl px-6 py-5 flex items-center space-x-4 border border-white/5 shadow-lg group cursor-default"
                             >
-                                <span className="text-[#D4AF37] text-xl flex-shrink-0">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                                <span className="text-[#D4AF37] group-hover:text-white transition-colors duration-300">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                         <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd" />
                                     </svg>
                                 </span>
-                                <span className="text-gray-200 text-sm font-medium group-hover:text-white transition-colors">
+                                <span className="text-gray-300 text-sm font-medium tracking-wide group-hover:text-white transition-colors">
                                     {item}
                                 </span>
                             </motion.div>
@@ -201,21 +236,26 @@ const Amenities = () => {
                 </div>
             </div>
 
-            {/* Call to Action at Bottom */}
-            <div className="py-24 bg-primary text-[#F9F9F4] text-center">
+            {/* Premium CTA */}
+            <div className="relative py-32 bg-gradient-to-b from-[#1a1a1a] to-black text-center overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#D4AF37]/10 blur-[100px] rounded-full pointer-events-none"></div>
+
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="container mx-auto px-6"
+                    className="container mx-auto px-6 relative z-10"
                 >
-                    <h2 className="text-4xl md:text-6xl font-heading mb-8">Ready to Experience Paradise?</h2>
+                    <h2 className="text-5xl md:text-7xl font-heading text-white mb-10 leading-tight">
+                        Your Throne <span className="text-[#D4AF37] italic">Awaits</span>
+                    </h2>
                     <a
                         href="/contact"
-                        className="inline-block bg-[#F9F9F4] text-primary px-10 py-4 rounded-full font-medium text-lg uppercase tracking-widest hover:bg-accent hover:text-white transition-all transform hover:scale-105"
+                        className="group relative inline-flex items-center justify-center px-12 py-5 overflow-hidden font-bold text-white transition-all duration-300 bg-transparent border-2 border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:border-[#D4AF37]"
                     >
-                        Book Your Stay
+                        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-80 group-hover:h-80 opacity-10"></span>
+                        <span className="relative text-lg tracking-[0.2em] uppercase group-hover:text-black transition-colors">Book Your Stay</span>
                     </a>
                 </motion.div>
             </div>
