@@ -5,14 +5,38 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 6 Images as found in New/Home/Pool
+// 6 Images with longer descriptions (5-6 lines approx)
 const poolImages = [
-    { src: "/New/Home/Pool/pool-1.png", title: "Main Pool", text: "Dive into the crystal clear waters." },
-    { src: "/New/Home/Pool/pool-2.png", title: "Sunset View", text: "Relax as the sun goes down." },
-    { src: "/New/Home/Pool/pool-3.png", title: "Kids Zone", text: "Safe and fun for little ones." },
-    { src: "/New/Home/Pool/pool-4.png", title: "Lounge Area", text: "Comfortable seating by the water." },
-    { src: "/New/Home/Pool/raindance.png", title: "Rain Dance", text: "Groove under the rain showers." },
-    { src: "/New/Home/Pool/raindance-2.png", title: "Evening Vibes", text: "Party all night long." },
+    {
+        src: "/New/Home/Pool/pool-1.png",
+        title: "Main Pool",
+        text: "Experience the ultimate relaxation in our crystal-clear main pool, designed to be the heart of your vacation. Surrounded by lush greenery and comfortable loungers, it offers the perfect escape from the daily grind. Whether you want to swim laps to start your day or simply float around and soak up the sun, this pool caters to all your needs. The water is temperature-controlled, ensuring a pleasant dip regardless of the weather outside. At night, the pool lights up with vibrant colors, creating a magical atmosphere for unmatched evening vibes."
+    },
+    {
+        src: "/New/Home/Pool/pool-2.png",
+        title: "Sunset View",
+        text: "There is nothing quite like watching the sun dip below the horizon while submerged in the cool waters of our infinity pool. Positioned perfectly to capture the golden hour, this spot offers panoramic views of the surrounding landscape. As the sky turns into a canvas of oranges, pinks, and purples, you can enjoy a refreshing cocktail from the poolside bar. It is the ideal setting for romantic moments or reflective solitude. Let the beauty of nature wash over you as you witness the day transitioning into a starry night."
+    },
+    {
+        src: "/New/Home/Pool/pool-3.png",
+        title: "Kids Zone",
+        text: "Our dedicated Kids Zone is a safe haven for your little ones to splash and play to their hearts' content. Featuring shallow waters, fun water slides, and interactive sprayers, it promises hours of entertainment. Parents can relax nearby with full visibility, knowing their children are in a secure environment. We also organize supervised pool games and activities during the weekends, ensuring that the kids make new friends and unforgettable memories. It is family fun redefined, where safety meets excitement."
+    },
+    {
+        src: "/New/Home/Pool/pool-4.png",
+        title: "Lounge Area",
+        text: "Adjacent to the water is our sophisticated Lounge Area, offering a blend of comfort and style. Sink into our plush daybeds or private cabanas, equipped with soft towels and charging stations for your devices. It is the perfect place to catch up on reading, enjoy a nap, or chat with friends. Waiters are on standby to serve delicious snacks and beverages right to your seat. Whether you are drying off after a swim or just enjoying the poolside ambiance, our lounge area provides the luxury you deserve."
+    },
+    {
+        src: "/New/Home/Pool/raindance.png",
+        title: "Rain Dance",
+        text: "Get ready to groove under the open sky with our exhilarating Rain Dance setup. Featuring high-quality sound systems and rhythmic water showers, it brings the party to life. It is a favorite among groups and families looking to add a high-energy twist to their pool day. Dance to the latest beats while the cool water sprays keep you refreshed and energized. Perfect for celebrations or just letting loose, the Rain Dance area guarantees laughter, movement, and a unique aquatic experience."
+    },
+    {
+        src: "/New/Home/Pool/raindance-2.png",
+        title: "Evening Vibes",
+        text: "As night falls, the pool area transforms into a vibrant social hub with our 'Evening Vibes' experience. Ambient lighting, upbeat music, and a lively crowd set the tone for an unforgettable night. The reflective waters enhance the mood, making it a picturesque setting for evening gatherings. Enjoy themed pool parties, barbecue nights, or simply lounging under the stars. It is where luxury meets nightlife, offering a sophisticated yet fun way to end your day at the villa."
+    },
 ];
 
 const PoolZigZag = () => {
@@ -44,36 +68,17 @@ const PoolZigZag = () => {
             <h2 className="absolute top-8 left-8 text-5xl font-heading text-primary z-10">Aquatic Paradise</h2>
 
             <div ref={trackRef} className="flex relative h-[80vh] items-center px-10 md:px-20 min-w-max pt-20">
-                {/* Added pt-20 to allow space for the 'drop' of the 2nd items if needed */}
                 {poolImages.map((item, index) => (
                     <div
                         key={index}
-                        // "1image ln left side... 2nd img placed below 70%below the 1st"
-                        // If we use Flex, we can use translateY.
-                        // We need ensure text doesn't hide.
-                        className="relative group shrink-0 w-[60vh] h-[45vh] transition-all duration-500" // Standard size
-                        onMouseEnter={() => setExpandedIdx(index)} // "One hovering image, a popup... must appear" --> Changed to Hover as requested? 
-                        // Wait, user said "same clicked image" inside the popup desc.
-                        // But explicitly describing the trigger: "One hovering image, a popup card must appear".
-                        // And "While the card has appear the whole website must he blurred".
-                        // This effectively means Hover -> Backdrop Blur + Modal. 
-                        // This is aggressive but requested.
-                        // I will add a safe "MouseLeave" on the MODAL or the ITEM? 
-                        // If it's a modal covering screen, you can't hover the item anymore?
-                        // So hovering the item triggers modal. Modal covers everything.
-                        // Then how to close? "MouseLeave" from modal? Or Click out?
-                        // I'll stick to a robust "hover triggers preview, click triggers full modal"?
-                        // "While the card has appear the whole website must he blurred" -> Full Modal.
-                        // "hovering image... popup card must appear".
-                        // Let's TRY simple Hover based state.
+                        className="relative group shrink-0 w-[60vh] h-[45vh] transition-all duration-500"
+                        onMouseEnter={() => setExpandedIdx(index)}
                         style={{
                             zIndex: index % 2 === 0 ? 10 : 5,
-                            // "placed below 70% below the 1st". 
-                            // If 1st is 0%, 2nd is 70% (of height).
-                            // translateY(70%) moves it down significantly.
-                            transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(40%)', // 70% might clear the screen if h=45vh. 45vh * 1.7 = 76vh. Screen is 100vh. It fits.
-                            // Let's use 50% for safety first, user said 70%.
-                            marginLeft: index === 0 ? 0 : '-5%' // "slightly overlapping"
+                            // Zig-Zag logic preserved
+                            transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(40%)',
+                            // Increased Gap: Changed from negative margin to positive spacing
+                            marginLeft: index === 0 ? 0 : '8vw' // "increase the gap... horizontally"
                         }}
                     >
                         {/* Image Card */}
@@ -82,18 +87,13 @@ const PoolZigZag = () => {
                         </div>
                     </div>
                 ))}
+                {/* Buffer for scrolling */}
                 <div className="w-[10vw] shrink-0"></div>
             </div>
 
             {/* Modal Overlay */}
-            {/* "While the card has appear the whole website must he blurred" */}
             <div
                 className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md transition-opacity duration-500 ${expandedIdx !== null ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                // If it's hover triggered, we might need to clear it when mouse leaves the TRIGGER?
-                // But the modal covers the trigger.
-                // So we need to clear it when mouse leaves the MODAL? or Click to close?
-                // User didn't specify closing.
-                // I will assume Click to close for usability if Hover triggered it.
                 onClick={() => setExpandedIdx(null)}
             >
                 {expandedIdx !== null && (
@@ -110,10 +110,13 @@ const PoolZigZag = () => {
                             />
                         </div>
                         {/* Text Right */}
-                        <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 flex flex-col justify-center bg-white text-left relative">
-                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl">&times;</button>
-                            <h3 className="text-4xl font-heading text-primary mb-4">{poolImages[expandedIdx].title}</h3>
-                            <p className="text-lg text-gray-600 font-body">{poolImages[expandedIdx].text}</p>
+                        <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 flex flex-col justify-center bg-white text-left relative overflow-y-auto">
+                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl hover:text-red-500">&times;</button>
+                            <h3 className="text-4xl font-heading text-primary mb-6">{poolImages[expandedIdx].title}</h3>
+                            <div className="w-16 h-1 bg-accent mb-6"></div>
+                            <p className="text-base text-gray-700 font-body leading-relaxed whitespace-pre-wrap">
+                                {poolImages[expandedIdx].text}
+                            </p>
                         </div>
                     </div>
                 )}

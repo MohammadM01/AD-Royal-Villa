@@ -38,7 +38,7 @@ const HeroCircular = () => {
                 pin: true,
                 scrub: 0, // "Shrinking must the speed of scrolling" -> direct coupling (0 latency)
                 animation: gsap.to(containerRef.current, {
-                    clipPath: "circle(45% at 50% 50%)", // "Medium size circle pr It should stop"
+                    clipPath: "circle(30% at 50% 50%)", // "Medium size... image puri gayab nhi chahiye"
                     ease: "none",
                     immediateRender: false
                 })
