@@ -107,15 +107,43 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* VIDEO HIGHLIGHT */}
-            <section className="h-[60vh] md:h-[80vh] relative overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-black/30 z-10" />
-                <video src="/Assets/homepage2video.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
-                <div className="relative z-20 text-center text-white">
-                    <h2 className="text-4xl md:text-6xl font-heading mb-6">Unlock The Magic</h2>
-                    <button className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white hover:bg-accent hover:border-accent transition-all">
-                        <span className="text-2xl">▶</span>
-                    </button>
+            {/* AQUATIC PARADISE SECTION - REDESIGNED FOR VISIBILITY */}
+            <section className="py-24 pb-40 bg-black relative">
+                <div className="container mx-auto px-6">
+                    {/* Section Title */}
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-6xl font-heading text-[#D4AF37] mb-4">Aquatic Paradise</h2>
+                        <div className="w-24 h-1 bg-[#D4AF37]/50 mx-auto"></div>
+                    </div>
+
+                    {/* New Layout: Grand Showcase (1 Top, 2 Bottom) */}
+                    <div className="flex flex-col gap-8">
+
+                        {/* Main Hero Video (Full Width) */}
+                        <div className="w-full h-[50vh] md:h-[70vh] rounded-3xl overflow-hidden border border-[#D4AF37]/20 shadow-2xl relative group">
+                            <video src="/Assets/pool_highlight_4.mp4" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" autoPlay muted loop playsInline />
+                            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+
+                        {/* Secondary Videos (Side by Side) */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-[400px] md:h-[500px]">
+
+                            {/* Video 2 */}
+                            <div className="w-full h-full rounded-3xl overflow-hidden border border-[#D4AF37]/20 relative group">
+                                <video src="/Assets/pool_highlight_5.mp4" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" autoPlay muted loop playsInline />
+                            </div>
+
+                            {/* Video 3 */}
+                            <div className="w-full h-full rounded-3xl overflow-hidden border border-[#D4AF37]/20 relative group">
+                                <video src="/Assets/pool_highlight_6.mp4" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" autoPlay muted loop playsInline />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {/* Spacer for Footer */}
+                    <div className="h-20"></div>
                 </div>
             </section>
         </div>
