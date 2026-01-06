@@ -37,7 +37,7 @@ const Navbar = () => {
             <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="z-50">
-                    <h1 className="text-3xl font-heading font-medium italic text-green-500">
+                    <h1 className="text-3xl font-heading font-medium italic text-transparent bg-clip-text bg-gradient-to-r from-[#F5E6D3] via-[#D4AF37] to-[#F5E6D3]">
                         AD Royal Villa
                     </h1>
                 </Link>
@@ -49,8 +49,8 @@ const Navbar = () => {
                             key={item}
                             to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                             className={`text-base font-medium transition-colors ${location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`)
-                                ? 'text-green-400'
-                                : 'text-green-600 hover:text-green-400'
+                                ? 'text-[#F5E6D3]'
+                                : 'text-[#D4AF37] hover:text-[#F5E6D3]'
                                 }`}
                         >
                             {item}
@@ -59,11 +59,11 @@ const Navbar = () => {
                 </div>
 
                 {/* Icons */}
-                <div className="hidden md:flex items-center space-x-6 text-green-500">
-                    <a href="mailto:info@adroyalvilla.com" className="hover:text-green-300 transition-colors">
+                <div className="hidden md:flex items-center space-x-6 text-[#D4AF37]">
+                    <a href="mailto:info@adroyalvilla.com" className="hover:text-[#F5E6D3] transition-colors">
                         <FaEnvelope size={20} />
                     </a>
-                    <a href="tel:+1234567890" className="hover:text-green-300 transition-colors">
+                    <a href="tel:+1234567890" className="hover:text-[#F5E6D3] transition-colors">
                         <FaPhoneAlt size={20} />
                     </a>
                 </div>
