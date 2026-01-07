@@ -65,20 +65,20 @@ const PoolZigZag = () => {
 
     return (
         <div ref={sectionRef} className="h-screen w-full bg-[#fcfcf5] overflow-hidden relative flex flex-col justify-center">
-            <h2 className="absolute top-8 left-8 text-5xl font-heading text-primary z-10">Aquatic Paradise</h2>
+            <h2 className="absolute top-32 left-8 text-5xl font-heading text-primary z-10">Aquatic Paradise</h2>
 
             <div ref={trackRef} className="flex relative h-[80vh] items-center px-10 md:px-20 min-w-max pt-20">
                 {poolImages.map((item, index) => (
                     <div
                         key={index}
-                        className="relative group shrink-0 w-[60vh] h-[45vh] transition-all duration-500"
+                        className="relative group shrink-0 w-[75vh] h-[45vh] transition-all duration-500"
                         onMouseEnter={() => setExpandedIdx(index)}
                         style={{
                             zIndex: index % 2 === 0 ? 10 : 5,
                             // Zig-Zag logic preserved
                             transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(40%)',
                             // Increased Gap: Changed from negative margin to positive spacing
-                            marginLeft: index === 0 ? 0 : '8vw' // "increase the gap... horizontally"
+                            marginLeft: index === 0 ? 0 : '4vw' // "distance thoda kam kro"
                         }}
                     >
                         {/* Image Card */}
