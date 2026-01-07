@@ -3,16 +3,19 @@ import LiquidRevealImage from './LiquidRevealImage';
 
 const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
     return (
-        <div className="container mx-auto px-4 py-8 md:py-12 min-h-screen transition-colors duration-300">
+        <div className="container mx-auto px-4 py-8 md:py-12 min-h-screen transition-colors duration-300 relative">
+            {/* Burgundy Blur for Light Theme - Positioning it behind content */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#800000]/20 rounded-full blur-[100px] pointer-events-none -z-10 dark:hidden" />
+
             {/* Header Section */}
             <div className="text-center mb-16 space-y-4 max-w-4xl mx-auto">
                 <h1 className="text-5xl md:text-7xl font-heading text-primary tracking-tight">
                     {title}
                 </h1>
                 {subtitle && (
-                    <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
+                    <div className="text-lg md:text-xl text-black dark:text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
                         {subtitle}
-                    </p>
+                    </div>
                 )}
             </div>
 
@@ -28,14 +31,14 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
          The prompt specifically says "Image reveals...". I'll assume images.
       */}
             {/* Gallery Grid - Collapsing/Overlapping Layout */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 p-4 space-y-4">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-2 p-4 space-y-4">
                 {items.map((item, index) => (
                     <div
                         key={index}
                         className="break-inside-avoid relative"
                         style={{
                             // Create collapsing/overlapping effect
-                            marginTop: index === 0 ? '0' : '-3rem',
+                            marginTop: index === 0 ? '0' : '-1.5rem',
                             // Slight horizontal offset for random look
                             marginLeft: index % 2 === 0 ? '0' : '1rem',
                             zIndex: index
@@ -47,7 +50,7 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
                             title={item.title}
                             description={item.description}
                             index={index}
-                            className="w-full object-cover shadow-2xl rounded-2xl"
+                            className="w-full object-cover shadow-2xl rounded-2xl border-2 border-primary/20 dark:border-white/10"
                         />
                     </div>
                 ))}

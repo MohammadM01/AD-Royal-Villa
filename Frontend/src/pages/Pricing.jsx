@@ -191,7 +191,7 @@ const Pricing = () => {
             </section>
 
             {/* --- PRICING CARDS --- */}
-            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-black dark:bg-stone-50 text-white dark:text-stone-900">
+            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-black text-white">
                 {/* Background Glows */}
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[128px]" />
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[128px]" />
@@ -203,8 +203,8 @@ const Pricing = () => {
                         viewport={{ once: true }}
                         className="text-center mb-24"
                     >
-                        <h2 className="text-5xl md:text-6xl font-heading mb-6 text-white dark:text-stone-900">Transparent Rates</h2>
-                        <p className="text-stone-400 dark:text-stone-600 text-xl font-light">Choose the package that suits your gathering.</p>
+                        <h2 className="text-5xl md:text-6xl font-heading mb-6 text-white">Transparent Rates</h2>
+                        <p className="text-stone-400 text-xl font-light">Choose the package that suits your gathering.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -219,7 +219,7 @@ const Pricing = () => {
                                 className={`relative group backdrop-blur-xl rounded-[2rem] border overflow-hidden flex flex-col h-full transition-all duration-500
                                     ${plan.highlight
                                         ? 'bg-gradient-to-b from-stone-800 to-stone-900 border-accent/50 shadow-2xl shadow-accent/20 z-10 md:scale-110'
-                                        : 'bg-stone-800/50 dark:bg-white/50 border-white/10 dark:border-stone-200 hover:border-white/20 dark:hover:border-stone-300'
+                                        : 'bg-stone-800/50 border-white/10 hover:border-white/20'
                                     }
                                 `}
                             >
@@ -236,28 +236,28 @@ const Pricing = () => {
                                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
                                     />
                                     <div className="absolute bottom-0 left-0 z-20 p-6 w-full bg-gradient-to-t from-stone-950 to-transparent">
-                                        <h3 className={`text-2xl font-bold font-heading ${plan.highlight ? 'text-accent' : 'text-white dark:text-stone-900'}`}>
+                                        <h3 className={`text-2xl font-bold font-heading ${plan.highlight ? 'text-accent' : 'text-white'}`}>
                                             {plan.title}
                                         </h3>
-                                        <p className="text-stone-300 dark:text-stone-600 text-sm uppercase tracking-wider">{plan.subtitle}</p>
+                                        <p className="text-stone-300 text-sm uppercase tracking-wider">{plan.subtitle}</p>
                                     </div>
                                 </div>
 
                                 {/* Body */}
                                 <div className="p-8 flex-1 flex flex-col">
                                     <div className="mb-8 flex items-baseline">
-                                        <span className="text-4xl md:text-5xl font-bold font-heading tracking-tight text-white dark:text-stone-900">{plan.price}</span>
+                                        <span className="text-4xl md:text-5xl font-bold font-heading tracking-tight text-white">{plan.price}</span>
                                         <span className="text-stone-500 ml-2 font-medium">{plan.period}</span>
                                     </div>
 
-                                    <p className="text-stone-400 dark:text-stone-600 mb-8 leading-relaxed text-sm h-12">
+                                    <p className="text-stone-400 mb-8 leading-relaxed text-sm h-12">
                                         {plan.description}
                                     </p>
 
                                     <ul className="space-y-4 mb-8 flex-1">
                                         {plan.features.map((feature, i) => (
-                                            <li key={i} className="flex items-center gap-3 text-stone-300 dark:text-stone-600 text-sm">
-                                                <div className={`p-1 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 dark:bg-stone-200 text-stone-200 dark:text-stone-600'}`}>
+                                            <li key={i} className="flex items-center gap-3 text-stone-300 text-sm">
+                                                <div className={`p-1 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 text-stone-200'}`}>
                                                     <Check size={12} />
                                                 </div>
                                                 {feature}
@@ -268,7 +268,7 @@ const Pricing = () => {
                                     <button className={`w-full py-4 rounded-xl font-bold tracking-wide transition-all duration-300 uppercase text-xs
                                         ${plan.highlight
                                             ? 'bg-accent text-primary hover:bg-white hover:text-primary shadow-lg shadow-accent/20'
-                                            : 'bg-stone-700 dark:bg-stone-200 text-white dark:text-stone-900 hover:bg-stone-600 dark:hover:bg-stone-300'
+                                            : 'bg-stone-700 text-white hover:bg-stone-600'
                                         }
                                     `}>
                                         Book This Plan

@@ -42,20 +42,17 @@ const poolImages = [
 const PoolZigZag = () => {
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
+    const modalRef = useRef(null);
     const [expandedIdx, setExpandedIdx] = useState(null);
 
     useGSAP(() => {
         const totalWidth = trackRef.current.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        // scrollAmount: Distance to move left. 
-        // "Last card ke baad itni space nahi chahiye jab vo middle me aa jaega..."
-        // Reducing the extra push so it stops right when the card is in a good position.
-        // totalWidth - viewportWidth = Last card touches right edge.
-        // We want it roughly centered. Card width is 75vh (~40-50vw). 
-        // So we need to pull it in by ~25vw. Let's use 0.2 * viewportWidth.
-        const scrollAmount = totalWidth - viewportWidth + (viewportWidth * 0.2);
+        // Use wrapper width as viewport
+        const viewportWidth = trackRef.current.parentElement ? trackRef.current.parentElement.offsetWidth : window.innerWidth;
+        // scrollAmount: Distance to move left.
+        const scrollAmount = totalWidth - viewportWidth;
 
-        gsap.to(trackRef.current, {
+        const scrollTween = gsap.to(trackRef.current, {
             x: -scrollAmount,
             ease: "none",
             scrollTrigger: {
@@ -67,44 +64,106 @@ const PoolZigZag = () => {
                 anticipatePin: 1
             }
         });
+
+        // Fold/Unfold Animation
+        // Clean previous animations if any (React strict mode safety)
+        const poolItems = gsap.utils.toArray('.pool-card-wrapper');
+        poolItems.forEach((el, i) => {
+            // Unfold entering from right
+            gsap.fromTo(el,
+                {
+                    scaleY: 0.85,
+                    scaleX: 0.9,
+                    rotationY: 25,
+                    transformPerspective: 1000
+                },
+                {
+                    scaleY: 1,
+                    scaleX: 1,
+                    rotationY: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        containerAnimation: scrollTween,
+                        start: "left center+=25%",
+                        end: "center center",
+                        scrub: true,
+                        toggleActions: "play reverse play reverse"
+                    }
+                }
+            );
+
+            // Refold leaving to left
+            gsap.to(el, {
+                scaleY: 0.85,
+                scaleX: 0.9,
+                rotationY: -25,
+                ease: "power2.in",
+                scrollTrigger: {
+                    trigger: el,
+                    containerAnimation: scrollTween,
+                    start: "center center",
+                    end: "right center-=25%",
+                    scrub: true
+                }
+            });
+        });
+
     }, { scope: sectionRef });
+
+    useGSAP(() => {
+        if (expandedIdx !== null && modalRef.current) {
+            gsap.fromTo(modalRef.current,
+                { scaleX: 0, opacity: 0, transformOrigin: "center" },
+                { scaleX: 1, opacity: 1, duration: 0.8, ease: "power2.out" } // Expanding horizontally
+            );
+        }
+    }, [expandedIdx]);
 
     return (
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
-            <h2 className="absolute top-32 left-8 text-5xl font-heading text-primary z-10">Aquatic Paradise</h2>
+            <h2 className="absolute top-32 left-8 md:px-12 text-5xl font-heading text-primary z-10 w-full max-w-[90vw]">
+                Aquatic Paradise <span className="text-secondary mx-2">:</span>
+                <span className="text-lg font-body text-gray-600 font-light align-middle ml-2 inline-block max-w-2xl leading-tight">
+                    Discover a sanctuary of water and light. From infinite horizons to playful splashes, find your perfect liquid escape.
+                </span>
+            </h2>
 
-            <div ref={trackRef} className="flex relative h-[80vh] items-center px-10 md:px-20 min-w-max pt-20">
-                {poolImages.map((item, index) => (
-                    <div
-                        key={index}
-                        className="relative group shrink-0 w-[75vh] h-[45vh] transition-all duration-500"
-                        onClick={() => setExpandedIdx(index)} // "on click krdo" for big popup
-                        style={{
-                            zIndex: index % 2 === 0 ? 10 : 5,
-                            // Zig-Zag logic preserved
-                            transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(40%)',
-                            // Increased Gap: Changed from negative margin to positive spacing
-                            marginLeft: index === 0 ? 0 : '4vw' // "distance thoda kam kro"
-                        }}
-                    >
-                        {/* Image Card */}
-                        <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-4 border-white transition-transform hover:scale-105 active:scale-95">
-                            <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+            {/* Scroll Container with Vertical Lines (Two standing lines) */}
+            <div className="relative w-full max-w-[85vw] mx-auto h-[80vh] flex items-center justify-start perspective-[2000px] border-x-2 border-white/60 overflow-hidden">
 
-                            {/* Hover Overlay: Slide up from bottom half way */}
-                            {/* "div niche se uppr aaega half of the card tak aur usme thoda text likha hoga" */}
-                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end p-6">
-                                <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>
-                                <p className="text-white/90 text-sm line-clamp-3">
-                                    {/* Show a preview snippet of the longer text */}
-                                    {item.text.substring(0, 80)}... <span className="text-accent text-xs uppercase font-bold tracking-wider block mt-2">Click to read more</span>
-                                </p>
+                {/* Track */}
+                <div ref={trackRef} className="flex relative items-center px-10 min-w-max">
+                    {poolImages.map((item, index) => (
+                        <div
+                            key={index}
+                            className="pool-card-wrapper relative group shrink-0 w-[65vh] h-[45vh] transition-all duration-500 will-change-transform" // Reduced width slightly
+                            onClick={() => setExpandedIdx(index)}
+                            style={{
+                                zIndex: index % 2 === 0 ? 10 : 5,
+                                transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(30%)', // Reduce zigzag slightly
+                                marginLeft: index === 0 ? 0 : '-5vw', // More overlap
+                                transformStyle: "preserve-3d",
+                            }}
+                        >
+                            {/* Image Card */}
+                            <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-2 border-white/50">
+                                <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+
+                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end p-6">
+                                    <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>
+                                    <p className="text-white/90 text-sm line-clamp-3">
+                                        {item.text.substring(0, 80)}... <span className="text-accent text-xs uppercase font-bold tracking-wider block mt-2">Click to read more</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-                {/* Buffer for scrolling */}
-                <div className="w-[10vw] shrink-0"></div>
+                    ))}
+                    {/* Buffer */}
+                    <div className="w-[10vw] shrink-0"></div>
+                </div>
+
             </div>
 
             {/* Modal Overlay (Click Triggered) */}
@@ -114,7 +173,8 @@ const PoolZigZag = () => {
             >
                 {expandedIdx !== null && (
                     <div
-                        className="bg-white rounded-3xl w-[80vw] h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative transform scale-100 transition-transform"
+                        ref={modalRef}
+                        className="bg-white rounded-3xl w-[80vw] h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Image Left */}

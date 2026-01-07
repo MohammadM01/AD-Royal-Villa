@@ -33,7 +33,15 @@ const Amenities = () => {
     return (
         <ImageGalleryLayout
             title="Amenities"
-            subtitle="Experience the joy of abundance. Everything you need, right here."
+            subtitle={
+                <span>
+                    <strong className="block text-2xl mb-4 text-primary font-heading">Aquatic Paradise</strong>
+                    Experience the joy of abundance with our world-class facilities.
+                    From the crystal-clear waters of our lap pool to the laughter-filled kids' zone,
+                    every corner is designed for your ultimate relaxation and pleasure.
+                    Immerse yourself in luxury that knows no bounds.
+                </span>
+            }
             items={amenityItems}
         />
     );

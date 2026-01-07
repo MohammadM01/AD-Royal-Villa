@@ -17,7 +17,7 @@ const LiquidRevealImage = ({ src, alt, title, description, className, index = 0 
 
         // Initial state setup
         gsap.set(containerRef.current, { visibility: 'visible' });
-        gsap.set(cardRef.current, { autoAlpha: 0, y: 20, scale: 0.95 });
+        gsap.set(cardRef.current, { autoAlpha: 0, scaleX: 0 }); // Start collapsed horizontally
 
         // Liquid Reveal Animation
         // Mask starts at 0 (covering the image) and moves to the right (clearing it)
@@ -45,10 +45,9 @@ const LiquidRevealImage = ({ src, alt, title, description, className, index = 0 
         });
         gsap.to(cardRef.current, {
             autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.out"
+            scaleX: 1, // Expand horizontally
+            duration: 0.8,
+            ease: "elastic.out(1, 0.6)" // Liquid/Elastic feel
         });
     };
 
@@ -60,36 +59,21 @@ const LiquidRevealImage = ({ src, alt, title, description, className, index = 0 
         });
         gsap.to(cardRef.current, {
             autoAlpha: 0,
-            y: 20,
-            scale: 0.95,
-            duration: 0.3,
-            ease: "power2.out"
+            scaleX: 0,
+            duration: 0.4,
+            ease: "power2.in"
         });
     };
 
     return (
         <div
             ref={containerRef}
-            className={`relative rounded-[24px] overflow-hidden shadow-lg cursor-pointer invisible ${className}`}
+            className={`relative rounded-[24px] overflow-hidden shadow-lg cursor-pointer invisible ${className} group`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ perspective: '1000px' }} // For 3D feel
         >
             {/* Liquid Mask Layer - The wave that reveals */}
-            {/* We use mix-blend-mode or clip-path logic here. 
-          Actually, a simple approach is: 
-          The mask div is white, effectively blocking? No.
-          
-          Let's try a different reveal strategy:
-          The 'liquidMaskRef' acts as a sliding window.
-          
-          Alternative: The container starts with clip-path/mask. 
-          But clip-path animation with liquid edge needs SVG interpolation.
-          
-          Let's use the 'Cover' strategy.
-          A div covers the image. It slides away to the right.
-          To make it liquid, we apply the turbulence filter to THIS covering div.
-      */}
             <div
                 ref={liquidMaskRef}
                 className="absolute inset-0 bg-background z-20 pointer-events-none"
@@ -112,23 +96,28 @@ const LiquidRevealImage = ({ src, alt, title, description, className, index = 0 
                 />
             </div>
 
-            {/* Pop-up Overlay Card */}
-            <div
-                ref={cardRef}
-                className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl opacity-0 z-30 flex flex-col justify-end text-white"
-            >
-                <h3 className="font-heading text-2xl mb-1 text-white drop-shadow-md">{title}</h3>
-                {description && (
-                    <>
-                        <div className="h-px w-12 bg-accent/80 mb-2"></div>
-                        <p className="font-body text-sm text-gray-100/90 leading-relaxed drop-shadow-sm">{description}</p>
-                    </>
-                )}
+            {/* Pop-up Overlay Card - Horizontal Expansion */}
+            <div className="absolute bottom-6 left-6 right-6 z-30 overflow-hidden rounded-2xl"> {/* Wrapper for clipping if needed, or just apply to card */}
+                <div
+                    ref={cardRef}
+                    className="p-6 bg-white/10 backdrop-blur-md border border-white/20 shadow-xl flex flex-col justify-end text-white origin-left"
+                    style={{
+                        transformOrigin: 'left center', // Expand from left
+                        width: '100%'
+                    }}
+                >
+                    <h3 className="font-heading text-2xl mb-1 text-white drop-shadow-md whitespace-nowrap">{title}</h3>
+                    {description && (
+                        <>
+                            <div className="h-px w-12 bg-accent/80 mb-2"></div>
+                            <p className="font-body text-sm text-gray-100/90 leading-relaxed drop-shadow-sm">{description}</p>
+                        </>
+                    )}
+                </div>
             </div>
 
-            {/* Dark gradient overlay for text readability on hover default? No, card has background. 
-          Maybe a subtle vignette? */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         </div>
     );

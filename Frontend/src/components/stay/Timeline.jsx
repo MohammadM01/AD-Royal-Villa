@@ -253,12 +253,12 @@ const Timeline = () => {
 
             {/* Main Center Line & Box */}
             <motion.div
-                className="fixed top-0 left-1/2 w-0.5 h-full bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 pointer-events-none"
+                className="fixed top-0 left-1/2 w-[2px] h-full bg-black dark:bg-[#D4AF37]/50 z-50 -translate-x-1/2 pointer-events-none"
                 style={{ opacity: isFooterInView ? 0 : lineOpacity }}
                 transition={{ duration: 0.5 }}
             >
                 <motion.div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-[#F9F4E8] dark:border-black"
+                    className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#800000] dark:bg-[#D4AF37] text-white dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-white dark:border-black"
                     style={{
                         top: useTransform(springProgress, [0, 1], ["20vh", "80vh"]),
                         zIndex: 60
