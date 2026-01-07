@@ -1,201 +1,185 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { MapPin, Phone, Mail, ArrowUpRight, Instagram, Facebook } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
-// 3D Tilt Card Component
-const TiltCard = ({ children, className }) => {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
-    const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
-
-    function handleMouseMove({ currentTarget, clientX, clientY }) {
-        const { left, top, width, height } = currentTarget.getBoundingClientRect();
-        const xPct = (clientX - left) / width - 0.5;
-        const yPct = (clientY - top) / height - 0.5;
-        x.set(xPct * 20);
-        y.set(yPct * 20);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
-    return (
-        <motion.div
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ rotateX: mouseY, rotateY: mouseX, transformStyle: "preserve-3d" }}
-            className={`relative transition-all duration-200 ease-out ${className}`}
-        >
-            <div style={{ transform: "translateZ(50px)" }}>
-                {children}
-            </div>
-        </motion.div>
-    );
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const headerRef = useRef(null);
+    const infoRef = useRef(null);
+    const formRef = useRef(null);
+    const mapRef = useRef(null);
+
+    useEffect(() => {
+        const tl = gsap.timeline();
+
+        // Header Animation
+        tl.fromTo(headerRef.current.children,
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power3.out" }
+        );
+
+        // Split Section Animation
+        gsap.fromTo(infoRef.current,
+            { x: -50, opacity: 0 },
+            {
+                x: 0, opacity: 1, duration: 1, ease: "power3.out",
+                scrollTrigger: { trigger: infoRef.current, start: "top 80%" }
+            }
+        );
+
+        gsap.fromTo(formRef.current,
+            { x: 50, opacity: 0 },
+            {
+                x: 0, opacity: 1, duration: 1, ease: "power3.out",
+                scrollTrigger: { trigger: formRef.current, start: "top 80%" }
+            }
+        );
+
+        // Map Animation
+        gsap.fromTo(mapRef.current,
+            { scale: 0.9, opacity: 0, y: 50 },
+            {
+                scale: 1, opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+                scrollTrigger: { trigger: mapRef.current, start: "top 85%" }
+            }
+        );
+
+    }, []);
 
     return (
-        <div ref={containerRef} className="min-h-screen bg-stone-50 font-body overflow-x-hidden selection:bg-accent selection:text-white">
+        <div className="min-h-screen bg-background text-text pt-24 pb-12 overflow-hidden">
 
-            {/* --- VIDEO HERO SECTION --- */}
-            <section className="relative h-screen flex items-end pb-24 md:pb-32 justify-center overflow-hidden">
-                <motion.div style={{ y }} className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-full h-full object-cover scale-105 filter brightness-[0.6]"
-                    >
-                        {/* Using REAL ASSET for maximum realism */}
-                        <source src="/Assets/villa_walkthrough_hero.mp4" type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/20 to-transparent" />
-                </motion.div>
+            {/* Header Section */}
+            <div ref={headerRef} className="text-center mb-10 px-4">
+                <span className="inline-block px-4 py-1 mb-3 border border-primary text-primary font-body tracking-[0.2em] rounded-full text-xs uppercase">
+                    Connect With Us
+                </span>
+                <h1 className="font-heading text-4xl md:text-5xl text-primary mb-4">
+                    Get In Touch
+                </h1>
+                <p className="font-body text-gray-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+                    We are here to assist you with your booking. Experience the royal treatment.
+                </p>
+                <div className="h-[2px] w-16 bg-accent mx-auto mt-6"></div>
+            </div>
 
-                <div className="relative z-10 w-full px-6 md:px-12 max-w-[1400px] flex flex-col md:flex-row items-end justify-between gap-8">
-                    <div className="space-y-4">
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: "100px" }}
-                            transition={{ duration: 1, delay: 0.5 }}
-                            className="h-[2px] bg-accent mb-6"
-                        />
-                        <motion.h1
-                            initial={{ y: 100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                            className="text-7xl md:text-9xl font-heading text-white leading-[0.85] tracking-tighter"
-                        >
-                            Contact<br />
-                            <span className="text-accent/90 italic ml-4">Us</span>
-                        </motion.h1>
-                    </div>
+            {/* Split Content Section */}
+            <div className="container mx-auto px-4 lg:px-24 mb-16">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        className="text-stone-300 max-w-sm text-lg font-light leading-relaxed backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10"
-                    >
-                        Ready to elevate your experience? Connect with us to reserve your private sanctuary in the lap of luxury.
-                    </motion.div>
-                </div>
-            </section>
+                    {/* LEFT: Contact Info (More Compact) */}
+                    <div ref={infoRef} className="lg:w-1/2 space-y-6">
 
-            {/* --- INTERACTIVE INFO SECTION --- */}
-            <section className="relative z-20 py-32 px-4 md:px-12 rounded-t-[3rem] -mt-10 bg-white shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-                <div className="max-w-7xl mx-auto">
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-                        {/* Left: Introduction & Socials */}
-                        <div className="space-y-12">
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                                <FaMapMarkerAlt />
+                            </div>
                             <div>
-                                <h2 className="text-4xl font-heading text-primary mb-6">Let's start the<br />conversation.</h2>
-                                <p className="text-stone-500 text-lg leading-relaxed">
-                                    Whether you're planning a grand wedding, a corporate retreat, or a quiet family weekend, our concierge team is at your service 24/7.
+                                <h3 className="font-heading text-xl text-primary mb-1">Our Location</h3>
+                                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                                    Near Coral School, Padgha - 421101.<br />
+                                    <span className="text-xs text-accent font-bold mt-1 block tracking-wider uppercase">32 Kms from Thane</span>
                                 </p>
                             </div>
-
-                            <div className="space-y-1">
-                                <p className="text-xs uppercase tracking-widest text-stone-400 mb-4">Follow our journey</p>
-                                <div className="flex gap-4">
-                                    <a href="#" className="w-14 h-14 rounded-full border border-stone-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 group">
-                                        <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                    </a>
-                                    <a href="#" className="w-14 h-14 rounded-full border border-stone-200 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 group">
-                                        <Facebook className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            {/* Real Image Accent */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                className="relative h-64 w-full rounded-2xl overflow-hidden shadow-lg mt-12"
-                            >
-                                <img src="/Assets/villa_entrance_facade.jpg" className="w-full h-full object-cover" alt="Villa Entrance" />
-                                <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-                            </motion.div>
                         </div>
 
-                        {/* Right: 3D Magnetic Cards */}
-                        <div className="space-y-6 lg:mt-20">
-                            {[
-                                {
-                                    icon: <MapPin className="text-accent" size={32} />,
-                                    title: "Visit Us",
-                                    content: "Near Coral School, Padgha – 421101, 32 km from Thane",
-                                    action: "Get Directions",
-                                    link: "https://maps.google.com" // Placeholder
-                                },
-                                {
-                                    icon: <Phone className="text-accent" size={32} />,
-                                    title: "Call Us",
-                                    content: "+91 98000 98000",
-                                    sub: "Available 24/7",
-                                    action: "Call Now"
-                                },
-                                {
-                                    icon: <Mail className="text-accent" size={32} />,
-                                    title: "Email Us",
-                                    content: "bookings@adroyalvilla.com",
-                                    action: "Send Email"
-                                }
-                            ].map((item, i) => (
-                                <TiltCard key={i} className="group cursor-pointer">
-                                    <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl hover:bg-white transition-all duration-500 relative overflow-hidden">
-                                        <div className="absolute right-0 top-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
-                                            <ArrowUpRight size={24} className="text-stone-300" />
-                                        </div>
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                                <FaPhoneAlt />
+                            </div>
+                            <div>
+                                <h3 className="font-heading text-xl text-primary mb-1">Call Us</h3>
+                                <p className="font-body text-gray-500 text-sm">
+                                    +91 98000 98000 <br />
+                                    <span className="text-xs text-gray-400">Available 24/7</span>
+                                </p>
+                            </div>
+                        </div>
 
-                                        <div className="flex items-start gap-6">
-                                            <div className="p-4 bg-white shadow-sm rounded-2xl border border-stone-100 group-hover:scale-110 transition-transform duration-500">
-                                                {item.icon}
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-heading text-stone-800 mb-2">{item.title}</h3>
-                                                <p className="text-stone-600 font-medium text-lg">{item.content}</p>
-                                                {item.sub && <p className="text-stone-400 text-sm mt-1">{item.sub}</p>}
-                                            </div>
-                                        </div>
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                                <FaEnvelope />
+                            </div>
+                            <div>
+                                <h3 className="font-heading text-xl text-primary mb-1">Email Us</h3>
+                                <p className="font-body text-gray-500 text-sm">
+                                    bookings@adroyalvilla.com
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Social Icons */}
+                        <div className="pl-5 pt-2">
+                            <h4 className="font-heading text-lg text-primary mb-3">Follow Us</h4>
+                            <div className="flex gap-3">
+                                {[FaFacebookF, FaInstagram, FaXTwitter].map((Icon, i) => (
+                                    <a key={i} href="#" className="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-primary hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm text-sm">
+                                        <Icon />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* RIGHT: Contact Form (Professional & Compact) */}
+                    <div ref={formRef} className="lg:w-1/2 w-full">
+                        <div className="bg-[#0f172a] text-white p-6 md:p-8 rounded-3xl shadow-xl relative overflow-hidden group">
+                            {/* Decorative Blur */}
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-accent/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-accent/30 transition-all duration-700"></div>
+
+                            <h3 className="font-heading text-2xl mb-6 relative z-10 text-white">Send a Message</h3>
+
+                            <form className="space-y-4 relative z-10">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="space-y-1">
+                                        <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
+                                        <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
                                     </div>
-                                </TiltCard>
-                            ))}
+                                    <div className="space-y-1">
+                                        <label className="text-xs tracking-widest uppercase text-gray-400">Email</label>
+                                        <input type="email" placeholder="email@example.com" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-1">
+                                    <label className="text-xs tracking-widest uppercase text-gray-400">Mobile No</label>
+                                    <input type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
+                                </div>
+
+                                <div className="space-y-1">
+                                    <label className="text-xs tracking-widest uppercase text-gray-400">Message</label>
+                                    <textarea rows="3" placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600 resize-none"></textarea>
+                                </div>
+
+                                <button className="w-full bg-gradient-to-r from-primary via-primary-light to-primary text-white font-heading font-medium text-base py-3 rounded-lg shadow-md hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-2 uppercase tracking-wide">
+                                    Submit
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            {/* --- FULL WIDTH MAP --- */}
-            <section className="h-[50vh] w-full bg-stone-200 relative">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15064.096644131584!2d73.089856!3d19.281864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bd7ed3dfc32d%3A0x6b4c375107e3e9d8!2sPadgha%2C%20Maharashtra%20421101!5e0!3m2!1sen!2sin!4v1714838400000!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0, filter: 'grayscale(100%) contrast(1.2) opacity(0.8)' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    title="Map"
-                    className="hover:filter-none transition-all duration-700"
-                />
-                <div className="absolute bottom-10 left-10 py-3 px-6 bg-white shadow-2xl rounded-full z-10 pointer-events-none">
-                    <span className="flex items-center gap-2 font-bold text-primary">
-                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        Open for Visits
-                    </span>
+            {/* Map Section - Original Colors */}
+            <div ref={mapRef} className="container mx-auto px-4 mb-8">
+                <div className="w-full h-[350px] rounded-3xl overflow-hidden shadow-lg border-2 border-white">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.5078516086776!2d73.0673473752174!3d19.39055598188151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bd7204fef501%3A0x6b723528828aa39b!2sAD%20Farms%20%26%20Resorts!5e0!3m2!1sen!2sin!4v1709825441315!5m2!1sen!2sin"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="w-full h-full"
+                    ></iframe>
                 </div>
-            </section>
+            </div>
+
         </div>
     );
 };
