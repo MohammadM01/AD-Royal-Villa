@@ -17,42 +17,51 @@ const VillaVerticalTour = () => {
     const containerRef = useRef(null);
     const triggerRef = useRef(null);
     const headerRef = useRef(null);
+    const cardsRef = useRef([]);
 
     useGSAP(() => {
-        // "Animation lagao matlab ek baar scoll krne pr direclty new img on the screen"
-        // Sticky Header Concept: Pin the entire section.
-        // Horizontal or Vertical Scroll inside?
-        // User asked for "Vertical Tour" in previous context, but snap scoll is often cleaner horizontally or stacked vertically with Pin.
-        // Let's keep it Vertical Stack but PINNED container, moving content up.
+        // Stacking Card Animation
+        // "1 scroll pr img change ho rhi hai... directly new img on screen"
+        // "dursi img aa kr rukna chaiye properly"
 
-        const sections = gsap.utils.toArray(".tour-card");
-        const totalScroll = sections.length * 100; // 100vh per section move
-
-        // Main Card Scroll Animation
-        gsap.to(sections, {
-            yPercent: -100 * (sections.length - 1),
-            ease: "none",
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: triggerRef.current,
                 pin: true,
                 start: "top top",
-                end: `+=${sections.length * 100}vh`, // duration based on number of cards
+                end: "+=4000", // "3 scroll pr krdo" -> Huge distance for slow, deliberate feel
                 scrub: 1,
-                // "ease in animation... directly new img" -> SNAP logic
+                // Snap to specific labels to ensure "ruksn chaiye" (stops) at each image
                 snap: {
-                    snapTo: 1 / (sections.length - 1),
-                    duration: { min: 0.2, max: 0.5 },
+                    snapTo: "labels",
+                    duration: { min: 0.2, max: 0.8 },
                     delay: 0.1,
-                    ease: "power2.inOut" // Smooth Ease
+                    ease: "power1.inOut"
                 }
             }
         });
 
-        // Header Transformation Animation
-        // "jab ye wale scren pr hu tab usko page me hi batao... aage scroll kro fir usko dound div me"
+        cardsRef.current.forEach((card, index) => {
+            if (index === cardsRef.current.length - 1) return; // Don't animate the last card away
+
+            tl.to(card, {
+                yPercent: -120, // Move up and out
+                opacity: 0,
+                scale: 0.9,
+                rotationX: 5,
+                // "Outdoor Lounge wale ke baad me bhi thodsa" -> Also reduce for index 1.
+                // Reducing duration for the first two cards (0 and 1) to make start quicker.
+                duration: index <= 1 ? 0.5 : 1,
+                ease: "power2.inOut" // "scroll pr easy in hoga"
+            })
+                // Add a Label after the transition to snap to this state (where the next card is visible)
+                .addLabel(`card-${index}`);
+        });
+
+        // Header Transformation Animation (Keep as requested)
         gsap.fromTo(headerRef.current,
             {
-                backgroundColor: "rgba(255, 252, 245, 0)", // Transparent initial
+                backgroundColor: "rgba(255, 252, 245, 0)",
                 backdropFilter: "blur(0px)",
                 padding: "0px 0px",
                 borderRadius: "0px",
@@ -61,23 +70,24 @@ const VillaVerticalTour = () => {
                 y: 0
             },
             {
-                backgroundColor: "rgba(255, 252, 245, 0.8)", // Target: Pill style
+                backgroundColor: "rgba(255, 252, 245, 0.8)",
                 backdropFilter: "blur(12px)",
                 padding: "8px 24px",
                 borderRadius: "9999px",
                 boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                scale: 0.8, // Make it slightly smaller/compact
-                y: -20, // Move it up a bit slightly
+                scale: 0.8,
+                y: -20,
                 duration: 1,
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: triggerRef.current,
                     start: "top top",
-                    end: "+=50vh",
+                    end: "+=500", // Transform quickly at start
                     scrub: 1
                 }
             }
         );
+
     }, { scope: triggerRef });
 
     return (
@@ -95,30 +105,24 @@ const VillaVerticalTour = () => {
                 </h2>
             </div>
 
-            {/* Container moving up */}
-            <div className="h-full w-full relative">
+            {/* Stacking Container */}
+            <div className="h-full w-full relative flex items-center justify-center perspective-1000">
                 {villaFeatures.map((item, index) => (
                     <div
                         key={index}
-                        className={`tour-card absolute top-0 left-0 w-full h-full flex items-center justify-center p-8 pt-32`}
+                        ref={el => cardsRef.current[index] = el}
+                        className="absolute w-full h-full flex items-center justify-center p-8 pt-32 will-change-transform"
                         style={{
-                            transform: `translateY(${index * 100}%)`, // Initial stack positions (0, 100%, 200%...)
-                            // We are animating ALL of them. 
-                            // Wait, typical stack scroll moves the WRAPPER?
-                            // No, let's stack them visually 100vh apart and translate the whole group?
-                            // My GSAP logic above moves each '.tour-card' by yPercent. 
-                            // If they start stacked (top: 0, translateY: index*100%), 
-                            // moving yPercent: -100 * (length-1) will move the last one to 0. 
-                            // Correct.
+                            zIndex: villaFeatures.length - index, // Stack: First item on Top (Highest Z)
                         }}
                     >
-                        <div className="relative w-[90vw] md:w-[70vw] h-[70vh] rounded-3xl overflow-hidden shadow-2xl">
+                        <div className="relative w-[90vw] md:w-[70vw] h-[70vh] rounded-3xl overflow-hidden shadow-2xl bg-white border border-gray-100 hover:scale-[1.02] transition-transform duration-500">
                             <img
                                 src={item.src}
                                 alt={item.title}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                                 <h3 className="text-4xl md:text-6xl text-white font-heading drop-shadow-xl">{item.title}</h3>
                             </div>
                         </div>
