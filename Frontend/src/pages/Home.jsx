@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-[#FFFFF0] min-h-screen overflow-x-hidden">
+    <div className="bg-[#E9E6B2] min-h-screen overflow-x-hidden">
       {/* 1. Circular Reveal Hero */}
       <HeroCircular />
 
