@@ -70,7 +70,7 @@ const PoolZigZag = () => {
     }, { scope: sectionRef });
 
     return (
-        <div ref={sectionRef} className="h-screen w-full bg-[#fcfcf5] overflow-hidden relative flex flex-col justify-center">
+        <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
             <h2 className="absolute top-32 left-8 text-5xl font-heading text-primary z-10">Aquatic Paradise</h2>
 
             <div ref={trackRef} className="flex relative h-[80vh] items-center px-10 md:px-20 min-w-max pt-20">

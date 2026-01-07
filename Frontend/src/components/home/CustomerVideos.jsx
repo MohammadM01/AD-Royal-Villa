@@ -70,7 +70,7 @@ const CustomerVideos = () => {
     const [playingIndex, setPlayingIndex] = useState(null);
 
     return (
-        <div className="py-24 bg-[#f9f9f4]">
+        <div className="py-24 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <h2 className="text-center text-4xl md:text-6xl font-heading text-primary mb-16">Our Happy Customers</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

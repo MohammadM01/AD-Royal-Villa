@@ -92,7 +92,7 @@ const VillaVerticalTour = () => {
 
     return (
         // Wrapper for Pinning
-        <div ref={triggerRef} className="relative h-screen overflow-hidden bg-[#fffcf5]">
+        <div ref={triggerRef} className="relative h-screen overflow-hidden transition-colors duration-300">
 
             {/* Sticky Header */}
             {/* "Villa Tour text top me dikhna chaiye constant" - shifted down to avoid navbar overlap */}

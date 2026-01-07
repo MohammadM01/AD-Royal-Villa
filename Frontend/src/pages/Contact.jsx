@@ -50,7 +50,7 @@ const Contact = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-background text-text pt-24 pb-12 overflow-hidden">
+        <div className="min-h-screen pt-24 pb-12 overflow-hidden transition-colors duration-300">
 
             {/* Header Section */}
             <div ref={headerRef} className="text-center mb-10 px-4">

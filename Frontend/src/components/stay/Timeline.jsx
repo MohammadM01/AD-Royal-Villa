@@ -1,186 +1,287 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
 
 const slides = [
     {
         id: 1,
         title: '4 Luxury Bedrooms',
-        desc: 'Experience unparalleled comfort in our spacious, fully furnished bedrooms. Each room is designed to provide a restful retreat after a day of fun, featuring premium bedding and modern amenities.',
-        features: [
-            'King-size Beds',
-            'Fully Air-Conditioned',
-            'Pool-view Balconies',
-            '32" Smart TVs',
-            'Wardrobes & Storage',
-            'Attached Washrooms',
-        ],
+        desc: 'Indulge in the ultimate comfort with our four spacious, fully air-conditioned bedrooms. Each room features a plush king-size bed wrapped in premium linens to ensure a restful sleep. Large pool-view balconies let you wake up to serene water vistas every morning. Equipped with large 32-inch Smart TVs, wardrobe storage, and modern attached washrooms, our bedrooms provide a private sanctuary within the villa.',
+        features: ['King-size Beds', 'AC', 'Pool-view', 'Smart TVs'],
         image: '/Assets/ameneties/luxury_bedroom_king_tv.jpg',
     },
     {
         id: 2,
-        title: 'Spacious Living Room',
-        desc: 'Relax and unwind in our grand living area, perfect for family gatherings and group activities. Designed with luxury and comfort in mind.',
-        features: [
-            'Plush Seating',
-            'Large Flat-screen TV',
-            'Ambient Lighting',
-            'Open Layout',
-        ],
+        title: 'Private Living Hall',
+        desc: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open-plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 75-inch flat-screen TV and a high-fidelity sound system, it’s the ideal spot for movie nights or lively conversations. The aesthetic lighting and artistic decor create a warm, inviting atmosphere for everyone.',
+        features: ['Plush Seating', '75" TV', 'Sound System', 'Open Layout'],
         image: '/Assets/ameneties/spacious%20living%20room.png',
     },
     {
         id: 3,
         title: 'Exquisite Dining',
-        desc: 'Enjoy your meals in a sophisticated dining setting. Whether it’s a quick breakfast or a grand dinner, our dining area sets the perfect mood.',
-        features: [
-            '8-Seater Dining Table',
-            'Poolside View',
-            'Modern Tableware',
-            'Elegant Decor',
-        ],
+        desc: 'Experience dining like never before in our dedicated dining area. Centered around a contemporary 8-seater table, this space is perfect for enjoying home-cooked meals or lavish spreads. The area overlooks the shimmering pool, adding a touch of tranquility to your breakfast or dinner. With elegant tableware and modern decor, every meal feels like a special occasion.',
+        features: ['8-Seater Table', 'Modern Decor', 'Poolside View'],
         image: '/Assets/ameneties/dinningexp.png',
     },
     {
         id: 4,
         title: 'Poolside Patio',
-        desc: 'Step out onto the patio for a breath of fresh air. It is the ideal spot for your morning coffee or evening cocktails by the pool.',
-        features: [
-            'Outdoor Seating',
-            'Pool Access',
-            'Evening Lighting',
-            'Scenic Views',
-        ],
+        desc: 'Embrace the outdoors on our stunning poolside patio. Whether you are sipping your morning coffee while listening to the birds or enjoying a sunset cocktail, this space offers the perfect blend of relaxation and nature. Comfortable outdoor seating and ambient lighting make it a versatile spot for both sunbathing during the day and stargazing at night.',
+        features: ['Outdoor Seating', 'Scenic Views', 'Evening Vibe'],
         image: '/Assets/ameneties/poolside_patio_dining.jpg',
     },
     {
         id: 5,
         title: 'Comfort & Style',
-        desc: 'Every corner of the villa is crafted to offer a blend of style and homeliness, ensuring you feel right at home while enjoying luxury.',
-        features: [
-            'Cozy Corners',
-            'Artistic Interiors',
-            'Premium Upholstery',
-            'Natural Lighting',
-        ],
+        desc: 'Every corner of the AD Royal Private Villa is thoughtfully crafted to blend modern luxury with homelike comfort. From cozy reading nooks to artistic interior flourishes, we ensure a premium experience. Natural light floods the interiors through large windows, highlighting the high-quality upholstery and curated design elements that define our unique style.',
+        features: ['Cozy Corners', 'Artistic Interiors', 'Natural Light'],
         image: '/Assets/ameneties/comfort_bedroom_interior.jpg',
     },
     {
         id: 6,
         title: 'Evening Ambiance',
-        desc: 'As the sun sets, the villa transforms into a magical space with warm lighting and a serene atmosphere, perfect for making memories.',
-        features: [
-            'Mood Lighting',
-            'Peaceful Surroundings',
-            'Starry Skies',
-            'Night Swimming',
-        ],
+        desc: 'As the sun sets, the villa undergoes a magical transformation. Warm, ambient lighting illuminates the pathways and pool area, creating an enchanting evening atmosphere. It’s the perfect time for a night swim under the stars or a quiet walk through the lush surroundings. The peaceful vibe ensures that your nights are as memorable and rejuvenating as your days.',
+        features: ['Mood Lighting', 'Starry Skies', 'Peaceful'],
         image: '/Assets/ameneties/pool_rooms_evening_glow.jpg',
     },
 ];
 
-const Timeline = () => {
-    const containerRef = useRef(null);
-    const [activeSlide, setActiveSlide] = useState(1);
-    const [progress, setProgress] = useState(0);
+const BackgroundOrbs = () => {
+    return (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            {[...Array(5)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute bg-[#800000]/15 dark:bg-[#C2B280]/10 rounded-full blur-[100px]"
+                    style={{
+                        width: Math.random() * 300 + 100,
+                        height: Math.random() * 300 + 100,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                        x: [0, Math.random() * 50 - 25, 0],
+                        y: [0, Math.random() * 50 - 25, 0],
+                        scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                        duration: Math.random() * 15 + 15,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+            ))}
+        </div>
+    )
+}
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!containerRef.current) return;
+const FloatingBubbles = () => {
+    return (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            {[...Array(15)].map((_, i) => {
+                const size = Math.random() * 20 + 10;
+                return (
+                    <motion.div
+                        key={i}
+                        className="absolute rounded-full border border-[#8B7E66]/20 bg-[#8B7E66]/5 dark:border-[#C2B280]/20 dark:bg-[#C2B280]/5 backdrop-blur-[1px]"
+                        style={{
+                            width: size,
+                            height: size,
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 110}%`,
+                        }}
+                        animate={{
+                            y: [0, -window.innerHeight * 1.2],
+                            x: [0, (Math.random() - 0.5) * 100],
+                            opacity: [0, 0.6, 0]
+                        }}
+                        transition={{
+                            duration: Math.random() * 15 + 10,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: Math.random() * 10
+                        }}
+                    />
+                )
+            })}
+        </div>
+    )
+}
 
-            const { top, height } = containerRef.current.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
 
-            const scrollableDistance = height - viewportHeight;
-            const scrolled = -top;
 
-            let newProgress = scrolled / scrollableDistance;
-            newProgress = Math.max(0, Math.min(1, newProgress));
+const Slide = ({ slide, index, globalProgress }) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
 
-            setProgress(newProgress);
+    // Scale: GENTLE breathe effect (Stronger start/end for visibility)
+    // Enter (0-0.4): 0.85 -> 1 (Expand)
+    // Center (0.4-0.6): 1 (Hold)
+    // Exit (0.6-1.0): 1 -> 0.85 (Shrink)
+    const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.85, 1, 1, 0.85]);
 
-            const currentSlideIndex = Math.floor((scrolled + viewportHeight / 2) / viewportHeight);
-            const safeIndex = Math.max(0, Math.min(slides.length - 1, currentSlideIndex));
-            setActiveSlide(safeIndex + 1);
-        };
+    // Opacity: Fade in/out (Higher start opacity so expansion is visible)
+    const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.4, 1, 1, 0]);
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    // Blur: Only on Exit
+    const blurValue = useTransform(scrollYProgress, [0.9, 1], [0, 8]);
+    const blurFilter = useTransform(blurValue, (v) => v > 0 ? `blur(${v}px)` : "none");
+
+    const yContent = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
     return (
-        <div className="relative bg-background text-[#4A4A4A] dark:bg-neutral-900 dark:text-neutral-200">
+        <section ref={ref} className="min-h-screen w-full flex items-center justify-center py-24 relative snap-center">
+            <div className="container max-w-[95%] md:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32 items-center px-4 relative z-10">
 
-            {/* Sticky Header with Progress Line */}
-            <div className="sticky top-0 z-50 bg-background/90 dark:bg-neutral-900/90 backdrop-blur-sm pt-20 pb-4 px-6 border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto flex flex-col items-center">
-                    <h2 className="text-xl md:text-2xl font-serif text-center mb-4">Stay & Comfort</h2>
-                    {/* Progress Line Container */}
-                    <div className="w-full max-w-sm h-0.5 bg-neutral-300 dark:bg-neutral-700 relative overflow-hidden rounded-full">
-                        <div
-                            className="absolute left-0 top-0 h-full bg-[#8B7E66] dark:bg-[#C2B280] transition-all duration-100 ease-out"
-                            style={{ width: `${(Math.max(0.16, progress) * 100)}%` }}
+                {/* Image Side - Left */}
+                <motion.div
+                    style={{ scale, opacity, y: yContent, filter: blurFilter }}
+                    className="relative w-full flex justify-center md:justify-start"
+                >
+                    <div className="relative p-6">
+                        {/* Removed blur-xl to ensure clarity */}
+                        <div className="absolute inset-0 bg-[#800000]/5 dark:bg-[#C2B280]/5 rounded-[2rem] -z-10 group-hover:bg-[#800000]/10 transition-all duration-700" />
+                        <div className="absolute inset-0 border border-[#800000] dark:border-[#C2B280]/30 rounded-tl-[3rem] rounded-br-[3rem] transform translate-x-3 translate-y-3 z-0" />
+
+                        <div className="relative z-10 h-[50vh] md:h-[65vh] w-full max-w-2xl rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl bg-white dark:bg-neutral-800 border-4 border-white dark:border-neutral-700">
+                            <img
+                                src={slide.image}
+                                alt={slide.title}
+                                className="w-full h-full object-cover transform transition-transform duration-[2000ms] ease-out hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
+                        </div>
+
+                        <div className="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-[#800000] dark:border-[#C2B280] rounded-tl-xl z-20" />
+                        <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-[#800000] dark:border-[#C2B280] rounded-br-xl z-20" />
+                    </div>
+                </motion.div>
+
+                {/* Text Side - Right */}
+                <motion.div
+                    style={{
+                        scale,
+                        opacity,
+                        y: useTransform(yContent, v => -v * 0.5),
+                        filter: "none" // Keep text sharp
+                    }}
+                    className="flex flex-col justify-center space-y-6 pl-4 md:pl-12"
+                >
+                    {/* Progress Line */}
+                    <div className="relative w-full max-w-[120px] h-1 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+                        <motion.div
+                            className="h-full bg-[#8B7E66] dark:bg-[#C2B280]"
+                            style={{ width: useSpring(useTransform(globalProgress, [0, 1], ["0%", "100%"]), { stiffness: 40, damping: 20 }) }}
                         />
                     </div>
-                </div>
+
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2C2C2C] dark:text-[#EAEAEA]">
+                        {slide.title}
+                    </h3>
+                    <p className="text-lg md:text-xl leading-relaxed font-normal text-black dark:text-neutral-300">
+                        {slide.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-3 pt-2">
+                        {slide.features.map((f, i) => (
+                            <span key={i} className="px-5 py-2 border border-[#800000]/40 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-black dark:text-neutral-300 tracking-wide bg-white/40 dark:bg-black/20 backdrop-blur-0">
+                                {f}
+                            </span>
+                        ))}
+                    </div>
+                </motion.div>
+
+            </div>
+        </section>
+    );
+};
+
+const Timeline = () => {
+    const containerRef = useRef(null);
+    const footerSentinelRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
+
+    const activeIndex = useTransform(scrollYProgress, (v) => {
+        const idx = Math.floor(v * slides.length);
+        if (idx < 0) return 1;
+        if (idx >= slides.length) return slides.length;
+        return idx + 1;
+    });
+
+    const springProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+    const lineOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+
+    const [isFooterInView, setIsFooterInView] = useState(false);
+    const isFooterInViewRaw = useInView(footerSentinelRef, { margin: "0px 0px 200px 0px" });
+
+    useEffect(() => {
+        setIsFooterInView(isFooterInViewRaw);
+    }, [isFooterInViewRaw]);
+
+    return (
+        <div className="relative overflow-hidden min-h-screen transition-colors duration-500">
+
+            <BackgroundOrbs />
+            <FloatingBubbles />
+
+            {/* Hero Header Space */}
+            <div className="relative h-[50vh] flex flex-col items-center justify-center overflow-hidden z-20">
+                {/* RESTORED HERO BLUR CIRCLE */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#800000]/20 dark:bg-[#D4AF37]/10 rounded-full blur-[100px]" />
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="relative z-10 text-center px-4"
+                >
+                    <h1 className="text-6xl md:text-8xl font-serif text-[#800000] dark:text-[#D4AF37] mb-6 drop-shadow-lg">
+                        Stay & Comfort
+                    </h1>
+                    <p className="text-xl md:text-2xl font-light text-[#2C2C2C] dark:text-[#F5E6C8] max-w-2xl mx-auto">
+                        Experience the height of luxury living.
+                    </p>
+                </motion.div>
             </div>
 
-            <div ref={containerRef} className="relative">
+            {/* Main Center Line & Box */}
+            <motion.div
+                className="fixed top-0 left-1/2 w-0.5 h-full bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 pointer-events-none"
+                style={{ opacity: isFooterInView ? 0 : lineOpacity }}
+                transition={{ duration: 0.5 }}
+            >
+                <motion.div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-[#F9F4E8] dark:border-black"
+                    style={{
+                        top: useTransform(springProgress, [0, 1], ["20vh", "80vh"]),
+                        zIndex: 60
+                    }}
+                >
+                    <motion.span>{activeIndex}</motion.span>
+                    <span className="text-xs opacity-70 ml-1">/ 6</span>
+                </motion.div>
+            </motion.div>
 
-                {/* Sticky Center Line & Box */}
-                <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-40 flex justify-center items-center">
-                    <div className="relative h-[60vh] w-px bg-neutral-300 dark:bg-neutral-600 mt-20">
-                        <div
-                            className="absolute left-1/2 -translate-x-1/2 bg-[#6D634C] dark:bg-[#C2B280] text-white dark:text-black text-xs font-medium px-3 py-1 rounded-full shadow-lg transition-all duration-100 ease-linear"
-                            style={{ top: `${progress * 100}%` }}
-                        >
-                            {activeSlide}/6
-                        </div>
-                    </div>
-                </div>
-
-                {/* Content Slides */}
+            {/* Slides Container */}
+            <div ref={containerRef} className="relative pb-40 z-10">
                 {slides.map((slide, index) => (
-                    <section
+                    <Slide
                         key={slide.id}
-                        className="h-screen w-full flex items-center justify-center relative px-6 md:px-12 py-20"
-                    >
-                        <div className={`container max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${index % 2 === 0 ? '' : 'md:flex-row-reverse'
-                            }`}>
-                            {/* Image Side */}
-                            <div className={`relative group ${index % 2 !== 0 && 'md:order-2'}`}>
-                                <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[4/3] relative">
-                                    <img
-                                        src={slide.image}
-                                        alt={slide.title}
-                                        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
-                                </div>
-                            </div>
-
-                            {/* Text Side */}
-                            <div className={`space-y-6 ${index % 2 !== 0 && 'md:order-1'}`}>
-                                <div className="w-12 h-1 bg-[#8B7E66] dark:bg-[#C2B280]" />
-                                <h3 className="text-3xl md:text-4xl font-serif text-[#2C2C2C] dark:text-[#EAEAEA]">
-                                    {slide.title}
-                                </h3>
-                                <p className="text-lg leading-relaxed font-light text-neutral-600 dark:text-neutral-400">
-                                    {slide.desc}
-                                </p>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                                    {slide.features.map((feature, i) => (
-                                        <div key={i} className="flex items-center space-x-2 text-sm font-medium text-[#6D634C] dark:text-[#C2B280]">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                        slide={slide}
+                        index={index}
+                        globalProgress={scrollYProgress}
+                    />
                 ))}
             </div>
+
+            <div ref={footerSentinelRef} className="h-px w-full" />
         </div>
     );
 };

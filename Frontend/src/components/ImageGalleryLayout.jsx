@@ -3,7 +3,7 @@ import LiquidRevealImage from './LiquidRevealImage';
 
 const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
     return (
-        <div className="container mx-auto px-4 py-8 md:py-12 bg-background min-h-screen">
+        <div className="container mx-auto px-4 py-8 md:py-12 min-h-screen transition-colors duration-300">
             {/* Header Section */}
             <div className="text-center mb-16 space-y-4 max-w-4xl mx-auto">
                 <h1 className="text-5xl md:text-7xl font-heading text-primary tracking-tight">
@@ -27,14 +27,18 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
          We will treat videos as images for now or I need to update LiquidRevealImage to support video.
          The prompt specifically says "Image reveals...". I'll assume images.
       */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 p-4">
+            {/* Gallery Grid - Collapsing/Overlapping Layout */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 p-4 space-y-4">
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className={`break-inside-avoid mb-8 ${index % 2 === 1 ? 'md:mt-12' : ''}`} // Add offset to every second item for asymmetry
+                        className="break-inside-avoid relative"
                         style={{
-                            // Randomize margin slightly for more organic feel if desired
-                            marginTop: index % 3 === 1 ? '3rem' : '0'
+                            // Create collapsing/overlapping effect
+                            marginTop: index === 0 ? '0' : '-3rem',
+                            // Slight horizontal offset for random look
+                            marginLeft: index % 2 === 0 ? '0' : '1rem',
+                            zIndex: index
                         }}
                     >
                         <LiquidRevealImage
@@ -43,9 +47,7 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
                             title={item.title}
                             description={item.description}
                             index={index}
-                            className="w-full aspect-[4/5] object-cover" // Force aspect ratio or let it be natural? 
-                        // Prompt says "Rounded rectangles". "Aspect ratio" helps uniformity but let's allow natural height if masonry.
-                        // Taking "aspect-[3/4]" or "aspect-[4/3]"
+                            className="w-full object-cover shadow-2xl rounded-2xl"
                         />
                     </div>
                 ))}

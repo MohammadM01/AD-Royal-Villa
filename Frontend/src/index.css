@@ -1,39 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #991B1B;
-    /* Royal Red - "Golden Red" Aesthetic */
+    --color-primary: #800000;
     --color-primary-light: #EF4444;
-    /* Vibrant Red */
     --color-accent: #D4AF37;
-    /* Gold */
     --color-text: #1E293B;
-    /* Dark Slate */
-    --color-background: #E9E6B2;
-    /* Warm Royal Beige */
-    --color-highlight: #F59E0B;
-    /* Amber */
+    --color-background: #F9F4E8;
+    --color-oxford-blue: #002147;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 }
 
 :root {
-    --color-primary: #991B1B;
-    --color-primary-light: #EF4444;
-    --color-accent: #D4AF37;
-    --color-text: #1E293B;
-    --color-background: #E9E6B2;
-    --color-highlight: #F59E0B;
+    /* Light Theme - Golden Beige, Maroon, Oxford Blue */
+    --bg-color: #F9F4E8;
+    --text-color: #002147;
+    /* Oxford Blue for text */
+    --primary-color: #800000;
+    /* Maroon */
+    --accent-color: #002147;
+    /* Oxford Blue */
+    --highlight-color: #D4AF37;
+    /* Gold accent */
+
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 }
 
+/* Dark Theme - Dark & Golden */
+.dark {
+    --bg-color: #0A0A0A;
+    /* Deep Dark */
+    --text-color: #F5E6C8;
+    /* Soft Cream */
+    --primary-color: #D4AF37;
+    /* Gold */
+    --accent-color: #D4AF37;
+    --highlight-color: #800000;
+    /* Maroon accent in dark mode */
+}
+
 body {
     font-family: var(--font-body);
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -43,11 +56,13 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
+    color: var(--primary-color);
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s ease;
 }
 
 ul {

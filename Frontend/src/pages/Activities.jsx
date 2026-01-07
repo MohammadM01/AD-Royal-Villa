@@ -35,7 +35,7 @@ const Activities = () => {
     };
 
     return (
-        <div className="bg-background text-text overflow-x-hidden">
+        <div className="overflow-x-hidden transition-colors duration-300">
 
             {/* --- HERO: Cinematic Video --- */}
             <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-5">
@@ -59,7 +59,7 @@ const Activities = () => {
             </section>
 
             {/* --- SECTION 1: The Grand Pool --- */}
-            <section className="relative py-20 z-4 bg-background">
+            <section className="relative py-20 z-4">
                 <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6 parallax-layer">
                         <span className="inline-block px-3 py-1 border border-primary text-primary text-[10px] uppercase tracking-[0.2em] rounded-full">
@@ -125,7 +125,7 @@ const Activities = () => {
             </section>
 
             {/* --- SECTION 3: Kids Zone --- */}
-            <section className="relative py-20 z-2 bg-background">
+            <section className="relative py-20 z-2">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-accent text-[10px] font-bold tracking-[0.3em] uppercase">For the Little Ones</span>
@@ -152,7 +152,7 @@ const Activities = () => {
             </section>
 
             {/* --- SECTION 4: Leisure & BBQ --- */}
-            <section className="relative py-20 z-1 bg-background">
+            <section className="relative py-20 z-1">
                 <div className="absolute right-0 top-0 h-full w-1/2 bg-[#f8f5e6] hidden lg:block"></div>
                 <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="order-2 lg:order-1 relative">
