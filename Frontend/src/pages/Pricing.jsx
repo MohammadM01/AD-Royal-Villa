@@ -1,282 +1,288 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Check, X } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Check, X, Star, Crown, Utensils, Infinity as InfinityIcon } from 'lucide-react';
+
+// Pricing Data
+const pricingPlans = [
+    {
+        id: 'weekday',
+        title: 'Weekday Escape',
+        price: '₹12,000',
+        period: '/ night',
+        subtitle: 'Monday - Thursday',
+        description: 'A serene retreat for peace and privacy. Perfect for workcations or small family bondings.',
+        features: ['Up to 15 Guests', 'Private Pool Access', 'Garden & Lounge', 'High-Speed WiFi', 'Caretaker On-Call'],
+        realImage: '/Assets/nice_bedroom_interior.jpg', // Fallback or assume availability 
+        // Using distinct real assets found in list or common pool
+        image: '/Assets/outdoor_lounge_canopy.jpg',
+        highlight: false
+    },
+    {
+        id: 'weekend',
+        title: 'Royal Weekend',
+        price: '₹25,000',
+        period: '/ night',
+        subtitle: 'Friday - Sunday',
+        description: 'The ultimate celebration experience. Full villa access, loud music allowed, perfect for parties.',
+        features: ['Up to 15 Guests', 'Full 5BHK Villa', 'Music System Allowed', 'BBQ Setup Available', 'Event Hosting Capable'],
+        image: '/Assets/Activites and pool/pool_villa_exterior_day.jpg', // Real asset
+        highlight: true
+    },
+    {
+        id: 'food',
+        title: 'Gourmet Package',
+        price: '₹800',
+        period: '/ head',
+        subtitle: 'All Meals Included',
+        description: 'Savor authentic home-cooked delicacies prepared fresh by our expert in-house chef.',
+        features: ['Breakfast, Lunch, Dinner', 'Hi-Tea & Snacks', 'Veg & Non-Veg Options', 'Custom Menu Planning', 'Fresh Local Ingredients'],
+        image: '/Assets/Activites and pool/bbq1.jpeg', // Real asset
+        highlight: false
+    }
+];
 
 const Pricing = () => {
-    // Animation variants
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-    };
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
 
-    const staggerContainer = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
-    };
-
-    const cardHover = {
-        hover: { y: -10, transition: { duration: 0.3 } }
-    };
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
     return (
-        <div className="min-h-screen bg-[#FFFFF0] overflow-x-hidden pt-20">
-            {/* 1. Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0">
-                    <img
-                        src="/Assets/generated_pricing/pool_luxury.png"
-                        alt="Royal Villa Pool"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
+        <div ref={containerRef} className="min-h-screen bg-stone-50 font-body overflow-x-hidden selection:bg-accent selection:text-white">
 
-                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto text-white">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-heading mb-6 text-accent"
-                    >
-                        Transparent Luxury
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl font-light tracking-wide text-gray-200"
-                    >
-                        Detailed rates for your exclusive getaway at AD Royal Private Villa.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* 2. Why Choose Us (Comparison) */}
-            <section className="py-24 px-4 container mx-auto">
+            {/* --- HERO SECTION WITH PARALLAX --- */}
+            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
                 <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={staggerContainer}
-                    className="max-w-6xl mx-auto"
+                    style={{ y }}
+                    className="absolute inset-0 z-0"
                 >
-                    <motion.div variants={fadeInUp} className="text-center mb-16">
-                        <span className="text-accent uppercase tracking-widest font-semibold text-sm">The Royal Difference</span>
-                        <h2 className="text-4xl md:text-5xl font-heading text-primary mt-4">Why Choose AD Royal Villa?</h2>
+                    <img
+                        src="/Assets/villa_entrance_facade.jpg"
+                        alt="Royal Villa Facade"
+                        className="w-full h-full object-cover scale-110 brightness-[0.65]"
+                    />
+                    {/* Golden Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/40 to-transparent" />
+                </motion.div>
+
+                <div className="relative z-10 text-center px-4 max-w-5xl mx-auto space-y-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <span className="inline-block py-1 px-4 rounded-full border border-accent/50 text-accent bg-black/30 backdrop-blur-md uppercase text-xs tracking-[0.2em] mb-4">
+                            Exclusive & Transparent
+                        </span>
+                        <h1 className="text-6xl md:text-8xl font-heading text-white leading-tight">
+                            Experience <span className="text-accent italic">Royalty.</span>
+                        </h1>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                        {/* Comparison Table / Cards */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 1 }}
+                        className="text-lg md:text-xl text-stone-300 font-light max-w-2xl mx-auto leading-relaxed"
+                    >
+                        Detailed pricing for your private sanctuary. No hidden costs. Just pure luxury.
+                    </motion.p>
+                </div>
 
-                        {/* Left: Others */}
-                        <motion.div
-                            variants={fadeInUp}
-                            className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 opacity-80 backdrop-blur-sm"
-                        >
-                            <h3 className="text-2xl font-heading text-gray-500 mb-6 border-b pb-4">Standard Resorts</h3>
-                            <ul className="space-y-4 text-gray-600">
-                                <li className="flex items-center gap-3">
-                                    <X className="w-5 h-5 text-red-400" />
-                                    <span>Shared pools with strangers</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <X className="w-5 h-5 text-red-400" />
-                                    <span>Hidden service charges</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <X className="w-5 h-5 text-red-400" />
-                                    <span>Small, cramped hotel rooms</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <X className="w-5 h-5 text-red-400" />
-                                    <span>Strict checkout timings</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <X className="w-5 h-5 text-red-400" />
-                                    <span>Generic buffet food</span>
-                                </li>
-                            </ul>
-                        </motion.div>
-
-                        {/* Right: Us (Highlight) */}
-                        <motion.div
-                            variants={fadeInUp}
-                            className="bg-primary text-white p-10 rounded-2xl shadow-2xl relative overflow-hidden transform md:scale-105 z-10 border-2 border-accent"
-                        >
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <img src="/Assets/villa_entrance_facade.jpg" className="w-64 h-64 object-cover rounded-full" alt="Icon" />
-                            </div>
-
-                            <h3 className="text-3xl font-heading text-accent mb-6 border-b border-accent/30 pb-4">AD Royal Private Villa</h3>
-                            <ul className="space-y-5">
-                                <li className="flex items-center gap-3 text-lg">
-                                    <Check className="w-6 h-6 text-accent" />
-                                    <span>100% Private (Whole Villa to Yourself)</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-lg">
-                                    <Check className="w-6 h-6 text-accent" />
-                                    <span>All-Inclusive Transparent Pricing</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-lg">
-                                    <Check className="w-6 h-6 text-accent" />
-                                    <span>Luxury 5BHK with Private Living Hall</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-lg">
-                                    <Check className="w-6 h-6 text-accent" />
-                                    <span>Flexible Check-in/out (on request)</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-lg">
-                                    <Check className="w-6 h-6 text-accent" />
-                                    <span>Personal Chef & Fresh Home-Cooked Meals</span>
-                                </li>
-                            </ul>
-                        </motion.div>
-                    </div>
+                {/* Scroll Indicator */}
+                <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
+                >
+                    <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-accent to-transparent" />
                 </motion.div>
             </section>
 
-            {/* 3. Pricing Packages */}
-            <section className="py-24 bg-white relative overflow-hidden">
-                {/* Decorative Background Image */}
-                <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-                    <img src="/Assets/generated_pricing/garden_party.png" className="w-full h-full object-cover" alt="Background" />
-                </div>
-
-                <div className="container mx-auto px-4 relative z-10">
+            {/* --- COMPARISON (BENTO GRID STYLE) --- */}
+            <section className="py-32 px-4 bg-stone-50 relative">
+                <div className="container mx-auto max-w-7xl">
                     <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                        variants={fadeInUp}
-                        className="text-center mb-16"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-20 space-y-4"
                     >
-                        <h2 className="text-5xl font-heading text-primary">Exclusive Packages</h2>
-                        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Choose the perfect getaway for your family and friends.</p>
+                        <h2 className="text-4xl md:text-5xl font-heading text-primary">The Royal Difference</h2>
+                        <div className="w-24 h-1 bg-accent mx-auto" />
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
 
-                        {/* Card 1: Weekday */}
+                        {/* 1. The Standard (Negative Space) */}
                         <motion.div
-                            variants={fadeInUp}
-                            whileHover="hover"
-                            className="bg-[#FFFFF0] rounded-xl overflow-hidden shadow-xl flex flex-col group"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                            className="lg:col-span-4 bg-white border border-stone-200 p-10 rounded-3xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-center h-full relative overflow-hidden group"
                         >
-                            <div className="h-64 overflow-hidden relative">
-                                <img
-                                    src="/Assets/generated_pricing/bedroom_luxury.png"
-                                    alt="Luxury Bedroom"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                                    <h3 className="text-2xl font-bold text-white font-heading">Weekday Bliss</h3>
-                                </div>
+                            <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                                <X className="w-48 h-48 text-stone-900" />
                             </div>
-                            <div className="p-8 flex-1 flex flex-col">
-                                <p className="text-sm text-gray-500 uppercase tracking-widest mb-2">Monday - Thursday</p>
-                                <div className="flex items-baseline gap-1 mb-6">
-                                    <span className="text-4xl font-bold text-primary">₹12,000</span>
-                                    <span className="text-gray-500">/ night</span>
-                                </div>
-                                <p className="text-gray-600 mb-6 flex-1">
-                                    Perfect for a quiet family retreat or a remote work escape. Enjoy the full villa with complete privacy.
-                                </p>
-                                <ul className="space-y-2 mb-8 text-sm text-gray-700">
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Up to 15 Guests</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Access to Pool & Garden</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Caretaker Support</li>
-                                </ul>
-                                <button className="w-full py-4 border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors rounded-lg">
-                                    Book Weekday
-                                </button>
-                            </div>
+                            <h3 className="text-2xl font-heading text-stone-400 mb-8 z-10">Ordinary Resorts</h3>
+                            <ul className="space-y-6 z-10">
+                                {['Crowded shared pools', 'Cramped standard rooms', 'Generic buffet food', 'Strict 10 AM Checkout'].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-stone-500 group-hover:text-red-500 transition-colors">
+                                        <X className="w-6 h-6 opacity-60" />
+                                        <span className="font-light text-lg">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
 
-                        {/* Card 2: Weekend (Featured) */}
+                        {/* 2. AD Royal (Positive Highlight) - Bento Large */}
                         <motion.div
-                            variants={fadeInUp}
-                            whileHover="hover"
-                            className="bg-primary rounded-xl overflow-hidden shadow-2xl flex flex-col transform md:-translate-y-4 md:border-4 md:border-accent group"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                            className="lg:col-span-8 bg-primary rounded-3xl p-1 md:p-12 relative overflow-hidden shadow-2xl group text-white"
                         >
-                            <div className="bg-accent text-primary text-center py-2 font-bold text-sm tracking-widest uppercase">
-                                Most Popular
+                            {/* Background Image Enhancement */}
+                            <div className="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
+                                <img src="/Assets/outdoor_lounge_canopy.jpg" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Texture" />
                             </div>
-                            <div className="h-64 overflow-hidden relative">
-                                <img
-                                    src="/Assets/generated_pricing/pool_luxury.png"
-                                    alt="Weekend Pool Party"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex items-end p-6">
-                                    <h3 className="text-2xl font-bold text-accent font-heading">Weekend Royal</h3>
+
+                            <div className="relative z-10 h-full flex flex-col md:flex-row items-center gap-8 p-6 md:p-0">
+                                <div className="flex-1 space-y-8">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 bg-accent rounded-2xl text-primary">
+                                            <Crown size={32} />
+                                        </div>
+                                        <h3 className="text-3xl md:text-4xl font-heading text-white">AD Royal Luxury</h3>
+                                    </div>
+                                    <p className="text-white/80 text-lg leading-relaxed">
+                                        Step into a world where the entire estate is yours. No sharing, no compromises. Just you and your loved ones in 5,000 sq.ft of private luxury.
+                                    </p>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                                        {[
+                                            '100% Private (Whole 5BHK Villa)',
+                                            'Exclusive Pool Access',
+                                            'Personal Chef & Caretaker',
+                                            'Flexible Check-in/out'
+                                        ].map((feature, i) => (
+                                            <div key={i} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+                                                <Check className="w-5 h-5 text-accent" />
+                                                <span className="text-sm font-medium tracking-wide">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="p-8 flex-1 flex flex-col text-white">
-                                <p className="text-sm text-gray-200 uppercase tracking-widest mb-2">Friday - Sunday</p>
-                                <div className="flex items-baseline gap-1 mb-6">
-                                    <span className="text-5xl font-bold text-accent">₹25,000</span>
-                                    <span className="text-gray-200">/ night</span>
+                                <div className="w-full md:w-1/3 hidden md:block">
+                                    {/* Abstract Visual Element */}
+                                    <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-accent to-orange-600 p-1 shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                                        <img src="/Assets/villa_entrance_facade.jpg" className="w-full h-full object-cover rounded-xl" alt="Villa" />
+                                    </div>
                                 </div>
-                                <p className="text-gray-100 mb-6 flex-1">
-                                    The ultimate celebration experience. Ideal for get-togethers, birthdays, and big family reunions.
-                                </p>
-                                <ul className="space-y-2 mb-8 text-sm text-gray-200">
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Up to range of Guests</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Full Villa + Event Space</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Music & Party Setup Allowed</li>
-                                </ul>
-                                <button className="w-full py-4 bg-accent text-primary font-bold hover:bg-white transition-colors rounded-lg shadow-lg">
-                                    Book Weekend
-                                </button>
                             </div>
                         </motion.div>
+                    </div>
+                </div>
+            </section>
 
-                        {/* Card 3: Food & Additional */}
-                        <motion.div
-                            variants={fadeInUp}
-                            whileHover="hover"
-                            className="bg-[#FFFFF0] rounded-xl overflow-hidden shadow-xl flex flex-col group"
-                        >
-                            <div className="h-64 overflow-hidden relative">
-                                <img
-                                    src="/Assets/Activites and pool/bbq1.jpeg"
-                                    alt="BBQ"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                                    <h3 className="text-2xl font-bold text-white font-heading">Culinary Delights</h3>
-                                </div>
-                            </div>
-                            <div className="p-8 flex-1 flex flex-col">
-                                <p className="text-sm text-gray-500 uppercase tracking-widest mb-2">Meal Packages</p>
-                                <div className="flex items-baseline gap-1 mb-6">
-                                    <span className="text-4xl font-bold text-primary">₹800</span>
-                                    <span className="text-gray-500">/ head</span>
-                                </div>
-                                <p className="text-gray-600 mb-6 flex-1">
-                                    Authentic, fresh home-cooked meals prepared by our in-house chef. Veg & Non-Veg options available.
-                                </p>
-                                <ul className="space-y-2 mb-8 text-sm text-gray-700">
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Breakfast, Lunch, Dinner, High tea</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Barbecue Setup (Extra)</li>
-                                    <li className="flex gap-2"><Check className="w-4 h-4 text-accent" /> Custom Menu Planning</li>
-                                </ul>
-                                <button className="w-full py-4 border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors rounded-lg">
-                                    View Menu
-                                </button>
-                            </div>
-                        </motion.div>
+            {/* --- PRICING CARDS --- */}
+            <section className="py-20 pb-40 px-4 bg-stone-900 text-white relative overflow-hidden">
+                {/* Background Glows */}
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[128px]" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[128px]" />
 
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-24"
+                    >
+                        <h2 className="text-5xl md:text-6xl font-heading mb-6">Transparent Rates</h2>
+                        <p className="text-stone-400 text-xl font-light">Choose the package that suits your gathering.</p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        {pricingPlans.map((plan, index) => (
+                            <motion.div
+                                key={plan.id}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.2, duration: 0.6 }}
+                                whileHover={{ y: -15, scale: 1.02 }}
+                                className={`relative group backdrop-blur-xl rounded-[2rem] border overflow-hidden flex flex-col h-full transition-all duration-500
+                                    ${plan.highlight
+                                        ? 'bg-gradient-to-b from-stone-800 to-stone-900 border-accent/50 shadow-2xl shadow-accent/20 z-10 md:scale-110'
+                                        : 'bg-stone-800/50 border-white/10 hover:border-white/20'
+                                    }
+                                `}
+                            >
+                                {plan.highlight && (
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent shadow-[0_0_20px_2px_rgba(212,175,55,0.5)]" />
+                                )}
+
+                                {/* Image Header */}
+                                <div className="h-64 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-stone-900/40 z-10 transition-opacity duration-500 group-hover:opacity-20" />
+                                    <img
+                                        src={plan.image}
+                                        alt={plan.title}
+                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
+                                    />
+                                    <div className="absolute bottom-0 left-0 z-20 p-6 w-full bg-gradient-to-t from-stone-950 to-transparent">
+                                        <h3 className={`text-2xl font-bold font-heading ${plan.highlight ? 'text-accent' : 'text-white'}`}>
+                                            {plan.title}
+                                        </h3>
+                                        <p className="text-stone-300 text-sm uppercase tracking-wider">{plan.subtitle}</p>
+                                    </div>
+                                </div>
+
+                                {/* Body */}
+                                <div className="p-8 flex-1 flex flex-col">
+                                    <div className="mb-8 flex items-baseline">
+                                        <span className="text-4xl md:text-5xl font-bold font-heading tracking-tight text-white">{plan.price}</span>
+                                        <span className="text-stone-500 ml-2 font-medium">{plan.period}</span>
+                                    </div>
+
+                                    <p className="text-stone-400 mb-8 leading-relaxed text-sm h-12">
+                                        {plan.description}
+                                    </p>
+
+                                    <ul className="space-y-4 mb-8 flex-1">
+                                        {plan.features.map((feature, i) => (
+                                            <li key={i} className="flex items-center gap-3 text-stone-300 text-sm">
+                                                <div className={`p-1 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 text-stone-200'}`}>
+                                                    <Check size={12} />
+                                                </div>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <button className={`w-full py-4 rounded-xl font-bold tracking-wide transition-all duration-300 uppercase text-xs
+                                        ${plan.highlight
+                                            ? 'bg-accent text-primary hover:bg-white hover:text-primary shadow-lg shadow-accent/20'
+                                            : 'bg-stone-700 text-white hover:bg-stone-600'
+                                        }
+                                    `}>
+                                        Book This Plan
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
 
-                    {/* Call to Action Note */}
-                    <div className="mt-16 text-center">
-                        <p className="text-gray-500 italic">* Prices may vary during festive seasons and long weekends. Contact us for custom wedding or corporate packages.</p>
+                    <div className="mt-20 text-center border-t border-white/10 pt-10">
+                        <p className="text-stone-500 text-sm max-w-2xl mx-auto">
+                            * We also host Weddings, Corporate Off-sites, and Photo Shoots.
+                            <span className="text-accent cursor-pointer hover:underline ml-1">Contact us for custom packages.</span>
+                        </p>
                     </div>
                 </div>
             </section>
