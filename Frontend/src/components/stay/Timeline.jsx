@@ -220,7 +220,7 @@ const Timeline = () => {
 
                     {/* Main Center Line & Box */}
                     <div
-                        className="absolute left-1/2 top-0 h-full w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 pointer-events-none"
+                        className="absolute left-1/2 top-1/2 h-[90%] w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                     >
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
