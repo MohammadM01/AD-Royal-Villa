@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const villaFeatures = [
     { src: "/Assets/villa_entrance_facade.jpg", title: "The Grand Estate" },
     { src: "/Assets/outdoor_lounge_canopy.jpg", title: "Outdoor Lounge" },
-    { src: "/Assets/nice_bedroom_interior.jpg", title: "Master Suite" },
+    { src: "/Assets/ameneties/luxury_bedroom_king_tv.jpg", title: "Master Suite" },
     { src: "/Assets/Activites and pool/bbq1.jpeg", title: "Dining Area" },
     { src: "/Assets/kids_play_zone_overview.jpg", title: "Gardens" },
 ];

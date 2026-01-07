@@ -52,7 +52,7 @@ const BackgroundOrbs = () => {
             {[...Array(5)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute bg-[#800000]/15 dark:bg-[#C2B280]/10 rounded-full blur-[100px]"
+                    className="absolute bg-primary/15 dark:bg-accent/10 rounded-full blur-[100px]"
                     style={{
                         width: Math.random() * 300 + 100,
                         height: Math.random() * 300 + 100,
@@ -108,76 +108,65 @@ const FloatingBubbles = () => {
     )
 }
 
+const Slide = ({ slide, index, total, scrollYProgress }) => {
+    // Calculate the range where this slide is visible/active
+    // Total range 0..1.
+    // There are 'total' slides. We move through them using a window.
+    // When scroll=0, index=0 is active.
+    // When scroll=1, index=total-1 is active.
 
+    // Each slide 'peak' is at index / (total - 1).
+    const step = 1 / (total - 1);
+    const peak = index * step;
 
-const Slide = ({ slide, index, globalProgress }) => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+    // Define the start and end of the animation influence
+    // Overlap slightly for smoothness
+    const start = Math.max(0, peak - step);
+    const end = Math.min(1, peak + step);
 
-    // Scale: GENTLE breathe effect (Stronger start/end for visibility)
-    // Enter (0-0.4): 0.85 -> 1 (Expand)
-    // Center (0.4-0.6): 1 (Hold)
-    // Exit (0.6-1.0): 1 -> 0.85 (Shrink)
-    const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.85, 1, 1, 0.85]);
+    // Scale: 0.85 -> 1 -> 0.85
+    const scale = useTransform(scrollYProgress, [start, peak, end], [0.85, 1, 0.85]);
 
-    // Opacity: Fade in/out (Higher start opacity so expansion is visible)
-    const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.4, 1, 1, 0]);
+    // Opacity: 0.3 -> 1 -> 0.3
+    const opacity = useTransform(scrollYProgress, [start, peak, end], [0.3, 1, 0.3]);
 
-    // Blur: Only on Exit
-    const blurValue = useTransform(scrollYProgress, [0.9, 1], [0, 8]);
-    const blurFilter = useTransform(blurValue, (v) => v > 0 ? `blur(${v}px)` : "none");
-
-    const yContent = useTransform(scrollYProgress, [0, 1], [50, -50]);
+    // Blur: 5px -> 0px -> 5px (optional, but requested "same effect")
+    const blurVal = useTransform(scrollYProgress, [start, peak, end], [5, 0, 5]);
+    const filter = useTransform(blurVal, v => `blur(${v}px)`);
 
     return (
-        <section ref={ref} className="min-h-screen w-full flex items-center justify-center py-24 relative snap-center">
-            <div className="container max-w-[95%] md:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32 items-center px-4 relative z-10">
-
+        <motion.div
+            className="h-[70vh] w-full flex items-center justify-center p-4 relative shrink-0"
+            style={{
+                scale,
+                opacity,
+                filter,
+                zIndex: 10 // Ensure slides are above background but below timeline markers if needed
+            }}
+        >
+            <div className="container max-w-[95%] md:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-32 items-center px-4 relative z-10">
                 {/* Image Side - Left */}
-                <motion.div
-                    style={{ scale, opacity, y: yContent, filter: blurFilter }}
-                    className="relative w-full flex justify-center md:justify-start"
-                >
-                    <div className="relative p-6">
-                        {/* Removed blur-xl to ensure clarity */}
-                        <div className="absolute inset-0 bg-[#800000]/5 dark:bg-[#C2B280]/5 rounded-[2rem] -z-10 group-hover:bg-[#800000]/10 transition-all duration-700" />
-                        <div className="absolute inset-0 border border-[#800000] dark:border-[#C2B280]/30 rounded-tl-[3rem] rounded-br-[3rem] transform translate-x-3 translate-y-3 z-0" />
+                <div className="relative w-full flex justify-center md:justify-start">
+                    <div className="relative p-6 group">
+                        <div className="absolute inset-0 bg-primary/5 dark:bg-accent/5 rounded-4xl -z-10 group-hover:bg-primary/10 transition-all duration-700" />
+                        <div className="absolute inset-0 border border-primary dark:border-accent/30 rounded-tl-[3rem] rounded-br-[3rem] transform translate-x-3 translate-y-3 z-0" />
 
-                        <div className="relative z-10 h-[50vh] md:h-[65vh] w-full max-w-2xl rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl bg-white dark:bg-neutral-800 border-4 border-white dark:border-neutral-700">
+                        <div className="relative z-10 h-[40vh] md:h-[50vh] w-full max-w-xl rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl bg-white dark:bg-neutral-800 border-4 border-white dark:border-neutral-700">
                             <img
                                 src={slide.image}
                                 alt={slide.title}
-                                className="w-full h-full object-cover transform transition-transform duration-[2000ms] ease-out hover:scale-110"
+                                className="w-full h-full object-cover transform transition-transform duration-2000 ease-out hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 bg-linear-to-tr from-black/10 to-transparent pointer-events-none" />
                         </div>
 
-                        <div className="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-[#800000] dark:border-[#C2B280] rounded-tl-xl z-20" />
-                        <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-[#800000] dark:border-[#C2B280] rounded-br-xl z-20" />
+                        <div className="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary dark:border-accent rounded-tl-xl z-20" />
+                        <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary dark:border-accent rounded-br-xl z-20" />
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Text Side - Right */}
-                <motion.div
-                    style={{
-                        scale,
-                        opacity,
-                        y: useTransform(yContent, v => -v * 0.5),
-                        filter: "none" // Keep text sharp
-                    }}
-                    className="flex flex-col justify-center space-y-6 pl-4 md:pl-12"
-                >
-                    {/* Progress Line */}
-                    <div className="relative w-full max-w-[120px] h-1 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
-                        <motion.div
-                            className="h-full bg-[#8B7E66] dark:bg-[#C2B280]"
-                            style={{ width: useSpring(useTransform(globalProgress, [0, 1], ["0%", "100%"]), { stiffness: 40, damping: 20 }) }}
-                        />
-                    </div>
-
+                <div className="flex flex-col justify-center space-y-6 pl-4 md:pl-12">
                     <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2C2C2C] dark:text-[#EAEAEA]">
                         {slide.title}
                     </h3>
@@ -186,22 +175,19 @@ const Slide = ({ slide, index, globalProgress }) => {
                     </p>
                     <div className="flex flex-wrap gap-3 pt-2">
                         {slide.features.map((f, i) => (
-                            <span key={i} className="px-5 py-2 border border-[#800000]/40 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-black dark:text-neutral-300 tracking-wide bg-white/40 dark:bg-black/20 backdrop-blur-0">
+                            <span key={i} className="px-5 py-2 border border-primary/40 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-black dark:text-neutral-300 tracking-wide bg-white/40 dark:bg-black/20 backdrop-blur-0">
                                 {f}
                             </span>
                         ))}
                     </div>
-                </motion.div>
-
+                </div>
             </div>
-        </section>
+        </motion.div>
     );
 };
 
 const Timeline = () => {
     const containerRef = useRef(null);
-    const footerSentinelRef = useRef(null);
-
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
@@ -216,72 +202,63 @@ const Timeline = () => {
 
     const springProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-    const lineOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
-
-    const [isFooterInView, setIsFooterInView] = useState(false);
-    const isFooterInViewRaw = useInView(footerSentinelRef, { margin: "0px 0px 200px 0px" });
-
-    useEffect(() => {
-        setIsFooterInView(isFooterInViewRaw);
-    }, [isFooterInViewRaw]);
+    // We want to scroll the slides UP as we scroll down.
+    // The sequence is linear movement.
+    const yTransform = useTransform(scrollYProgress, [0, 1], ["0%", `-${(slides.length - 1) * 100}%`]);
 
     return (
-        <div className="relative overflow-hidden min-h-screen transition-colors duration-500">
+        <div ref={containerRef} className="relative min-h-[500vh]"> {/* Tall track for scrolling duration */}
 
             <BackgroundOrbs />
             <FloatingBubbles />
 
-            {/* Hero Header Space */}
-            <div className="relative h-[50vh] flex flex-col items-center justify-center overflow-hidden z-20">
-                {/* RESTORED HERO BLUR CIRCLE */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#800000]/20 dark:bg-[#D4AF37]/10 rounded-full blur-[100px]" />
+            {/* Container for the Sticky Viewport */}
+            <div className="sticky top-[15vh] h-[70vh] w-full flex items-center justify-center px-4">
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="relative z-10 text-center px-4"
-                >
-                    <h1 className="text-6xl md:text-8xl font-serif text-[#800000] dark:text-[#D4AF37] mb-6 drop-shadow-lg">
-                        Stay & Comfort
-                    </h1>
-                    <p className="text-xl md:text-2xl font-light text-[#2C2C2C] dark:text-[#F5E6C8] max-w-2xl mx-auto">
-                        Experience the height of luxury living.
-                    </p>
-                </motion.div>
+                {/* The VISIBLE RECTANGLE */}
+                <div className="relative w-full max-w-[95vw] h-full overflow-hidden rounded-3xl">
+
+                    {/* Main Center Line & Box */}
+                    <div
+                        className="absolute left-1/2 top-0 h-full w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 pointer-events-none"
+                    >
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
+
+                        <motion.div
+                            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary dark:bg-accent text-background dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-background dark:border-black"
+                            style={{
+                                top: useTransform(springProgress, [0, 1], ["0%", "100%"]), // Moves full height of container
+                                zIndex: 60
+                            }}
+                        >
+                            <motion.span>{activeIndex}</motion.span>
+                            <span className="text-xs opacity-70 ml-1">/ 6</span>
+                        </motion.div>
+                    </div>
+
+                    {/* Slides Moving Track */}
+                    <motion.div
+                        className="h-full w-full"
+                        style={{ y: yTransform }}
+                    >
+                        {slides.map((slide, index) => (
+                            <Slide
+                                key={slide.id}
+                                slide={slide}
+                                index={index}
+                                total={slides.length}
+                                scrollYProgress={scrollYProgress}
+                            />
+                        ))}
+                    </motion.div>
+
+                </div>
             </div>
 
-            {/* Main Center Line & Box */}
-            <motion.div
-                className="fixed top-0 left-1/2 w-[2px] h-full bg-black dark:bg-[#D4AF37]/50 z-50 -translate-x-1/2 pointer-events-none"
-                style={{ opacity: isFooterInView ? 0 : lineOpacity }}
-                transition={{ duration: 0.5 }}
-            >
-                <motion.div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#800000] dark:bg-[#D4AF37] text-white dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-white dark:border-black"
-                    style={{
-                        top: useTransform(springProgress, [0, 1], ["20vh", "80vh"]),
-                        zIndex: 60
-                    }}
-                >
-                    <motion.span>{activeIndex}</motion.span>
-                    <span className="text-xs opacity-70 ml-1">/ 6</span>
-                </motion.div>
-            </motion.div>
+            {/* Spacer to show "Next" content after scrolling is done */}
+            <div className="h-[20vh] w-full" />
 
-            {/* Slides Container */}
-            <div ref={containerRef} className="relative pb-40 z-10">
-                {slides.map((slide, index) => (
-                    <Slide
-                        key={slide.id}
-                        slide={slide}
-                        index={index}
-                        globalProgress={scrollYProgress}
-                    />
-                ))}
-            </div>
-
-            <div ref={footerSentinelRef} className="h-px w-full" />
         </div>
     );
 };

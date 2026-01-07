@@ -131,7 +131,7 @@ const PoolZigZag = () => {
             </h2>
 
             {/* Scroll Container with Vertical Lines (Two standing lines) */}
-            <div className="relative w-full max-w-[85vw] mx-auto h-[80vh] flex items-center justify-start perspective-[2000px] border-x-2 border-white/60 overflow-hidden">
+            <div className="relative w-full max-w-[85vw] mx-auto h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
 
                 {/* Track */}
                 <div ref={trackRef} className="flex relative items-center px-10 min-w-max">
