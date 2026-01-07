@@ -47,7 +47,13 @@ const PoolZigZag = () => {
     useGSAP(() => {
         const totalWidth = trackRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
-        const scrollAmount = totalWidth - viewportWidth;
+        // scrollAmount: Distance to move left. 
+        // "Last card ke baad itni space nahi chahiye jab vo middle me aa jaega..."
+        // Reducing the extra push so it stops right when the card is in a good position.
+        // totalWidth - viewportWidth = Last card touches right edge.
+        // We want it roughly centered. Card width is 75vh (~40-50vw). 
+        // So we need to pull it in by ~25vw. Let's use 0.2 * viewportWidth.
+        const scrollAmount = totalWidth - viewportWidth + (viewportWidth * 0.2);
 
         gsap.to(trackRef.current, {
             x: -scrollAmount,
@@ -72,7 +78,7 @@ const PoolZigZag = () => {
                     <div
                         key={index}
                         className="relative group shrink-0 w-[75vh] h-[45vh] transition-all duration-500"
-                        onMouseEnter={() => setExpandedIdx(index)}
+                        onClick={() => setExpandedIdx(index)} // "on click krdo" for big popup
                         style={{
                             zIndex: index % 2 === 0 ? 10 : 5,
                             // Zig-Zag logic preserved
@@ -84,6 +90,16 @@ const PoolZigZag = () => {
                         {/* Image Card */}
                         <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-4 border-white transition-transform hover:scale-105 active:scale-95">
                             <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+
+                            {/* Hover Overlay: Slide up from bottom half way */}
+                            {/* "div niche se uppr aaega half of the card tak aur usme thoda text likha hoga" */}
+                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end p-6">
+                                <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>
+                                <p className="text-white/90 text-sm line-clamp-3">
+                                    {/* Show a preview snippet of the longer text */}
+                                    {item.text.substring(0, 80)}... <span className="text-accent text-xs uppercase font-bold tracking-wider block mt-2">Click to read more</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -91,7 +107,7 @@ const PoolZigZag = () => {
                 <div className="w-[10vw] shrink-0"></div>
             </div>
 
-            {/* Modal Overlay */}
+            {/* Modal Overlay (Click Triggered) */}
             <div
                 className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md transition-opacity duration-500 ${expandedIdx !== null ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setExpandedIdx(null)}
