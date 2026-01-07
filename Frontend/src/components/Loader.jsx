@@ -42,11 +42,29 @@ const Loader = ({ onComplete }) => {
             })
     }, [onComplete])
 
+    // "auto click laga dete hai... possible hai to krdo"
+    // Attempting to simulate a click to unlock audio context (Note: Modern browsers often block this for audio, but worth a try as requested)
+    const paddingRef = useRef(null);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (paddingRef.current) {
+                paddingRef.current.click();
+                // Also try dispatching a real event to body
+                document.body.click();
+            }
+        }, 500); // Small delay to ensure render
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center cursor-pointer" // cursor-pointer to encourage real clicks too
+            onClick={() => { }} // Empty handler to catch bubbles
         >
+            {/* Hidden Trigger for Auto-Click Attempt */}
+            <button ref={paddingRef} className="hidden" aria-hidden="true" />
+
             <div className="flex flex-col items-center">
                 {/* Main Title - Italic/Serif for that Royal Look in Image */}
                 {/* "Text me golden white ka effect do" - Gradient Text */}

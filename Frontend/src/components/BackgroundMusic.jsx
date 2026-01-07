@@ -30,8 +30,12 @@ const BackgroundMusic = () => {
         const audio = audioRef.current;
         if (!audio) return;
 
+        // Force volume to 100%
+        audio.volume = 1.0;
+
         const attemptPlay = async () => {
             try {
+                // Try playing immediately
                 await audio.play();
                 setIsPlaying(true);
             } catch (error) {
@@ -43,22 +47,33 @@ const BackgroundMusic = () => {
         if (isMusicEnabled) {
             attemptPlay();
 
-            // "reload pr off ho rhi hai" -> If enabled but blocked, play on FIRST click
+            // "reload pr off ho rhi hai" -> If enabled but blocked, play on FIRST interaction
             const handleInteraction = () => {
-                if (isMusicEnabled && audio.paused) {
-                    audio.play().catch(e => console.log(e));
-                    setIsPlaying(true);
+                if (isMusicEnabled && (audio.paused || audio.muted)) {
+                    audio.play()
+                        .then(() => setIsPlaying(true))
+                        .catch(e => console.log("Interaction play failed:", e));
                 }
             };
 
-            document.addEventListener('click', handleInteraction);
-            document.addEventListener('scroll', handleInteraction); // Scroll is also interaction
-            document.addEventListener('keydown', handleInteraction);
+            // Listen to every possible interaction event to "unlock" audio context
+            // Use 'true' for capture to catch it before anything else stops propagation
+            window.addEventListener('click', handleInteraction, true);
+            window.addEventListener('scroll', handleInteraction, true); // Result of scrolling
+            window.addEventListener('wheel', handleInteraction, true); // Actual Mouse Wheel (Trusted Gesture)
+            window.addEventListener('keydown', handleInteraction, true);
+            window.addEventListener('touchstart', handleInteraction, true); // Mobile support
+            window.addEventListener('touchmove', handleInteraction, true); // Mobile scrolling
+            window.addEventListener('mousemove', handleInteraction, true);
 
             return () => {
-                document.removeEventListener('click', handleInteraction);
-                document.removeEventListener('scroll', handleInteraction);
-                document.removeEventListener('keydown', handleInteraction);
+                window.removeEventListener('click', handleInteraction, true);
+                window.removeEventListener('scroll', handleInteraction, true);
+                window.removeEventListener('wheel', handleInteraction, true);
+                window.removeEventListener('keydown', handleInteraction, true);
+                window.removeEventListener('touchstart', handleInteraction, true);
+                window.removeEventListener('touchmove', handleInteraction, true);
+                window.removeEventListener('mousemove', handleInteraction, true);
             };
         } else {
             audio.pause();
@@ -83,17 +98,44 @@ const BackgroundMusic = () => {
         };
     }, []);
 
+    // Aggressively try to play periodically if blocked (some browsers unlock after time or minor events)
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isMusicEnabled && audioRef.current && audioRef.current.paused) {
+                audioRef.current.play().catch(e => {
+                    // Suppress console spam for expected blocking
+                });
+                setIsPlaying(false);
+            } else if (isMusicEnabled && audioRef.current && !audioRef.current.paused) {
+                setIsPlaying(true);
+                clearInterval(interval); // Stop showing once successful
+            }
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [isMusicEnabled]);
+
     return (
-        <div className="fixed bottom-6 left-6 z-50">
+        <div className="fixed bottom-6 left-6 z-50 flex items-center gap-4">
             <audio
                 ref={audioRef}
-                src="/New/music/nature-birds-singing.mp3"
+                src="/nature.mp3"
                 loop
+                autoPlay
                 preload="auto"
             />
+            {/* Iframe Workaround */}
+            {isMusicEnabled && (
+                <iframe
+                    src="/nature.mp3"
+                    allow="autoplay"
+                    style={{ display: 'none' }}
+                    id="iframeAudio"
+                ></iframe>
+            )}
+
             <button
                 onClick={togglePlay}
-                className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 cursor-pointer group ${isMusicEnabled ? "bg-primary text-white hover:bg-accent" : "bg-gray-400 text-gray-200"
+                className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 cursor-pointer group relative ${isMusicEnabled ? "bg-primary text-white hover:bg-accent" : "bg-gray-400 text-gray-200"
                     }`}
                 title={isMusicEnabled ? "Mute Background Music" : "Play Background Music"}
             >
@@ -103,11 +145,17 @@ const BackgroundMusic = () => {
                     <FaVolumeMute className="text-lg" />
                 )}
 
-                {/* Visual sound wave effect when playing */}
                 {isMusicEnabled && isPlaying && (
                     <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-20 animate-ping"></span>
                 )}
             </button>
+
+            {/* Helper Text if Autoplay Blocked */}
+            {isMusicEnabled && !isPlaying && (
+                <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-full animate-bounce">
+                    Click anywhere to start music 🎵
+                </div>
+            )}
         </div>
     );
 };
