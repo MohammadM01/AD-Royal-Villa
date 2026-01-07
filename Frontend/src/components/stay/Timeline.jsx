@@ -108,10 +108,10 @@ const Timeline = () => {
     }, []);
 
     return (
-        <div className="relative bg-[#F9F4E8] text-[#4A4A4A] dark:bg-neutral-900 dark:text-neutral-200">
+        <div className="relative bg-background text-[#4A4A4A] dark:bg-neutral-900 dark:text-neutral-200">
 
             {/* Sticky Header with Progress Line */}
-            <div className="sticky top-0 z-50 bg-[#F9F4E8]/90 dark:bg-neutral-900/90 backdrop-blur-sm pt-20 pb-4 px-6 border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+            <div className="sticky top-0 z-50 bg-background/90 dark:bg-neutral-900/90 backdrop-blur-sm pt-20 pb-4 px-6 border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto flex flex-col items-center">
                     <h2 className="text-xl md:text-2xl font-serif text-center mb-4">Stay & Comfort</h2>
                     {/* Progress Line Container */}

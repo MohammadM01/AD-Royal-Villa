@@ -35,13 +35,13 @@ const Activities = () => {
     };
 
     return (
-        <div className="bg-background text-text overflow-x-hidden pt-20"> {/* Added pt-20 for navbar space */}
+        <div className="bg-background text-text overflow-x-hidden">
 
             {/* --- HERO: Cinematic Video --- */}
-            <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden z-5">
+            <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-5">
                 <div className="absolute inset-0 w-full h-full">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover filter brightness-[0.5]">
-                        <source src="/Assets/pool_highlight_4.mp4" type="video/mp4" />
+                        <source src="/Assets/villa_walkthrough_hero.mp4" type="video/mp4" />
                     </video>
                 </div>
                 <div className="relative z-10 text-center px-4">
@@ -152,7 +152,7 @@ const Activities = () => {
             </section>
 
             {/* --- SECTION 4: Leisure & BBQ --- */}
-            <section className="relative py-20 z-1 bg-white">
+            <section className="relative py-20 z-1 bg-background">
                 <div className="absolute right-0 top-0 h-full w-1/2 bg-[#f8f5e6] hidden lg:block"></div>
                 <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="order-2 lg:order-1 relative">
