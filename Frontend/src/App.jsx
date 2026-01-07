@@ -7,6 +7,7 @@ import Stay from './pages/Stay'
 import Amenities from './pages/Amenities'
 import Pricing from './pages/Pricing'
 import Contact from './pages/Contact'
+import Activities from './pages/Activities'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="stay" element={<Stay />} />
+          <Route path="activities" element={<Activities />} />
           <Route path="amenities" element={<Amenities />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="contact" element={<Contact />} />
