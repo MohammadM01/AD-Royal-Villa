@@ -7,6 +7,8 @@ import Loader from './components/Loader'
 import LiquidFilters from './components/LiquidFilters'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import BackgroundMusic from './components/BackgroundMusic'
+
 const Layout = () => {
     const [loading, setLoading] = useState(true)
     const location = useLocation()
@@ -40,6 +42,8 @@ const Layout = () => {
                         </motion.main>
                     </AnimatePresence>
                     <WhatsAppButton />
+                    {/* Background Music Player */}
+                    <BackgroundMusic />
                     <Footer />
                 </div>
             )}
