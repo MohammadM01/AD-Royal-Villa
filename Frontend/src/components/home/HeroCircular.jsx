@@ -47,7 +47,7 @@ const HeroCircular = () => {
     return (
         <div
             ref={wrapperRef}
-            className="relative w-full h-screen overflow-hidden bg-[#f4f1ea] dark:bg-black"
+            className="relative w-full h-screen overflow-hidden bg-[var(--bg-color)] transition-colors duration-300"
         >
             {/* Background Trees - Visible when hero shrinks */}
             <img
