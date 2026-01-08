@@ -52,7 +52,7 @@ const BackgroundOrbs = () => {
             {[...Array(5)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute bg-primary/15 dark:bg-accent/10 rounded-full blur-[100px]"
+                    className="absolute bg-primary/15 dark:bg-accent/10 rounded-full blur-[100px] dark:hidden"
                     style={{
                         width: Math.random() * 300 + 100,
                         height: Math.random() * 300 + 100,

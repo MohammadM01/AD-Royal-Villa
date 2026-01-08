@@ -68,3 +68,25 @@ a {
 ul {
     list-style: none;
 }
+
+/* Custom Utilities */
+.amenities-blur-circle {
+    background-color: #800020;
+    /* Maroon #800020 for Light Mode */
+    mix-blend-mode: multiply;
+}
+
+.dark .amenities-blur-circle {
+    display: none;
+}
+
+/* Forced Royal Text Styling */
+.amenities-royal-text {
+    color: #800000 !important;
+    font-weight: 500;
+}
+
+.dark .amenities-royal-text {
+    color: #9CA3AF !important;
+    /* gray-400 equivalent for dark mode */
+}
