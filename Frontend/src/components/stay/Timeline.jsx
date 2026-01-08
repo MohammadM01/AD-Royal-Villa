@@ -167,15 +167,15 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
 
                 {/* Text Side - Right */}
                 <div className="flex flex-col justify-center space-y-6 pl-4 md:pl-12">
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2C2C2C] dark:text-[#EAEAEA]">
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#800000] dark:text-[#D4AF37]">
                         {slide.title}
                     </h3>
-                    <p className="text-lg md:text-xl leading-relaxed font-normal text-black dark:text-neutral-300">
+                    <p className="text-lg md:text-xl leading-relaxed font-normal text-black dark:text-red-600" style={{ opacity: 1 }}>
                         {slide.desc}
                     </p>
                     <div className="flex flex-wrap gap-3 pt-2">
                         {slide.features.map((f, i) => (
-                            <span key={i} className="px-5 py-2 border border-primary/40 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-black dark:text-neutral-300 tracking-wide bg-white/40 dark:bg-black/20 backdrop-blur-0">
+                            <span key={i} className="px-5 py-2 border border-[#800000]/30 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-[#002147] dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
                                 {f}
                             </span>
                         ))}

@@ -30,12 +30,28 @@ const Navbar = () => {
         { name: 'Pool & Activities', path: '/activities' },
         { name: 'Pricing', path: '/pricing' },
         { name: 'Contact', path: '/contact' },
-    ]
+    ];
+
+    // Dynamic Text Color Helper
+    // Dynamic Text Color Helper
+    const getTextColor = (isActive) => {
+        if (!isScrolled) {
+            // At top (Hero section), always white for visibility over images
+            return isActive
+                ? 'text-[#D4AF37] scale-110 font-bold' // Gold active
+                : 'text-white hover:text-[#D4AF37]'; // White default
+        } else {
+            // Scrolled state
+            return isActive
+                ? 'text-[#800000] dark:text-[#D4AF37] scale-110 font-bold'
+                : 'text-[#002147] dark:text-[#EAEAEA] hover:text-[#800000] dark:hover:text-[#D4AF37]';
+        }
+    };
 
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-[#F9F4E8]/80 dark:bg-black/80 backdrop-blur-md shadow-lg py-2 border-b border-[#800000]/10 dark:border-[#D4AF37]/10'
+                ? 'bg-[#F9F4E8]/90 dark:bg-black/90 backdrop-blur-md shadow-lg py-2 border-b border-[#800000]/10 dark:border-[#D4AF37]/10'
                 : 'bg-transparent py-4'
                 }`}
         >
@@ -46,7 +62,10 @@ const Navbar = () => {
                         <img
                             src="/New/logo/logo.png"
                             alt="AD Royal Villa"
-                            className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                            className={`h-16 w-auto object-contain transition-all duration-300 hover:scale-105 ${!isScrolled || theme === 'dark'
+                                    ? 'brightness-0 invert'
+                                    : ''
+                                }`}
                         />
                     </Link>
 
@@ -56,38 +75,49 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-sm font-medium transition-colors duration-300 relative group font-heading tracking-wider uppercase ${location.pathname === link.path
-                                    ? 'text-[#800000] dark:text-[#D4AF37]'
-                                    : 'text-[#002147] dark:text-[#EAEAEA] hover:text-[#800000] dark:hover:text-[#D4AF37]'
-                                    }`}
+                                className={`text-sm font-medium transition-all duration-300 relative group font-heading tracking-wider uppercase ${getTextColor(location.pathname === link.path)}`}
                             >
                                 {link.name}
-                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#800000] dark:bg-[#D4AF37] transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''
-                                    }`} />
+                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full 
+                                    ${isScrolled ? 'bg-[#800000] dark:bg-[#D4AF37]' : 'bg-white'}
+                                    ${location.pathname === link.path ? 'w-full' : ''}
+                                `} />
                             </Link>
                         ))}
 
                         {/* Theme Toggle Button */}
-                        <ThemeToggle />
+                        <div className={`${!isScrolled ? 'text-white' : 'text-[#002147] dark:text-white'}`}>
+                            <ThemeToggle />
+                        </div>
 
                         <a
                             href="https://wa.me/91XXXXXXXXXX"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em]"
+                            className={`px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em] transform hover:scale-105
+                                ${!isScrolled
+                                    ? 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white hover:text-[#800000]'
+                                    : 'bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black'
+                                }
+                            `}
                         >
                             Book Now
                         </a>
                     </div>
 
-                    {/* Mobile Menu Button - Fixed Z-index to trigger correctly */}
+                    {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center space-x-4 z-50">
-                        <div className="scale-75 origin-right">
+                        <div className={`scale-75 origin-right ${!isScrolled ? 'text-white' : 'text-[#002147] dark:text-white'}`}>
                             <ThemeToggle />
                         </div>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-[#002147] dark:text-[#EAEAEA] hover:text-[#800000] dark:hover:text-[#D4AF37] transition-colors p-2 bg-white/10 backdrop-blur-sm rounded-full"
+                            className={`transition-colors p-2 rounded-full backdrop-blur-sm border
+                                ${!isScrolled
+                                    ? 'text-white bg-white/10 border-white/20 hover:bg-white/20'
+                                    : 'text-[#002147] dark:text-[#EAEAEA] border-transparent hover:text-[#800000] dark:hover:text-[#D4AF37]'
+                                }
+                            `}
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -102,7 +132,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 w-full h-screen bg-[#F9F4E8] dark:bg-[#121212] z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
+                        className="fixed top-0 left-0 w-full h-screen bg-[#F9F4E8]/95 dark:bg-[#121212]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
                     >
                         {navLinks.map((link) => (
                             <Link
