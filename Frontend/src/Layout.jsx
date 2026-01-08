@@ -6,6 +6,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 import LiquidFilters from './components/LiquidFilters'
 import { motion, AnimatePresence } from 'framer-motion'
 import BackgroundMusic from './components/BackgroundMusic'
+import BackgroundLeaves from './components/BackgroundLeaves'
 
 const Layout = () => {
     const location = useLocation()
@@ -20,7 +21,10 @@ const Layout = () => {
             {/* Invisible SVG Filters for Liquid Effects */}
             <LiquidFilters />
 
-            <div className="flex flex-col min-h-screen">
+            {/* Background Floating Leaves */}
+            <BackgroundLeaves />
+
+            <div className="flex flex-col min-h-screen relative z-10">
                 <Navbar />
                 <AnimatePresence mode='wait'>
                     <motion.main
