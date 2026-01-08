@@ -57,7 +57,7 @@ const Navbar = () => {
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
                 ? `${theme === 'dark' ? 'bg-black/90 border-[#D4AF37]/10' : 'bg-white/90 border-[#800000]/10'} backdrop-blur-md shadow-lg py-2 border-b`
-                : 'bg-gradient-to-b from-black/60 to-transparent py-6'
+                : 'bg-gradient-to-b from-black/60 to-transparent py-2'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +67,7 @@ const Navbar = () => {
                         <img
                             src="/New/logo/logo.png"
                             alt="AD Royal Villa"
-                            className={`h-16 w-auto object-contain transition-all duration-300 hover:scale-105 ${!isScrolled || theme === 'dark'
+                            className={`h-10 w-auto object-contain transition-all duration-300 hover:scale-105 ${!isScrolled || theme === 'dark'
                                 ? 'brightness-0 invert'
                                 : 'brightness-0'
                                 }`}
