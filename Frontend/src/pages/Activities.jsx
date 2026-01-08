@@ -189,6 +189,16 @@ const Activities = () => {
                 reverse={false}
             />
 
+            {/* --- 6. Mushroom Fountain (Text Left, Video Right) --- */}
+            <ContentSection
+                subtitle="Playful Splashes"
+                title="Mushroom Fountain"
+                desc="Enjoy the whimsical charm of our Mushroom Water Fountain. A perfect spot for kids to splash around or for a soothing aquatic backdrop to your poolside relaxation."
+                mediaType="video"
+                mediaSrc="/Assets/mushroom water fountain.mp4"
+                reverse={true}
+            />
+
         </div>
     );
 };
