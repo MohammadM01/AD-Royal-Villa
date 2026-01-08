@@ -36,23 +36,28 @@ const Navbar = () => {
     // Dynamic Text Color Helper
     const getTextColor = (isActive) => {
         if (!isScrolled) {
-            // At top (Hero section), always white for visibility over images
+            // Top: Always White (or Gold Active) with Shadow for better contrast on images
+            // using !important to override any global anchor styles
             return isActive
-                ? 'text-[#D4AF37] scale-110 font-bold' // Gold active
-                : 'text-white hover:text-[#D4AF37]'; // White default
-        } else {
-            // Scrolled state
-            return isActive
-                ? 'text-[#800000] dark:text-[#D4AF37] scale-110 font-bold'
-                : 'text-[#002147] dark:text-[#EAEAEA] hover:text-[#800000] dark:hover:text-[#D4AF37]';
+                ? '!text-[#D4AF37] scale-110 font-bold drop-shadow-md'
+                : '!text-white hover:!text-[#D4AF37] drop-shadow-md';
         }
+        // Scrolled: Dark(Navy/Maroon) in Light Mode, White/Gold in Dark Mode
+        if (theme === 'dark') {
+            return isActive
+                ? '!text-[#D4AF37] scale-110 font-bold'
+                : '!text-[#EAEAEA] hover:!text-[#D4AF37]';
+        }
+        return isActive
+            ? '!text-[#800000] scale-110 font-bold'
+            : '!text-[#002147] hover:!text-[#800000]';
     };
 
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-[#F9F4E8]/90 dark:bg-black/90 backdrop-blur-md shadow-lg py-2 border-b border-[#800000]/10 dark:border-[#D4AF37]/10'
-                : 'bg-transparent py-4'
+                ? `${theme === 'dark' ? 'bg-black/90 border-[#D4AF37]/10' : 'bg-white/90 border-[#800000]/10'} backdrop-blur-md shadow-lg py-2 border-b`
+                : 'bg-gradient-to-b from-black/60 to-transparent py-6'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,8 +68,8 @@ const Navbar = () => {
                             src="/New/logo/logo.png"
                             alt="AD Royal Villa"
                             className={`h-16 w-auto object-contain transition-all duration-300 hover:scale-105 ${!isScrolled || theme === 'dark'
-                                    ? 'brightness-0 invert'
-                                    : ''
+                                ? 'brightness-0 invert'
+                                : 'brightness-0'
                                 }`}
                         />
                     </Link>
@@ -79,14 +84,14 @@ const Navbar = () => {
                             >
                                 {link.name}
                                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full 
-                                    ${isScrolled ? 'bg-[#800000] dark:bg-[#D4AF37]' : 'bg-white'}
+                                    ${!isScrolled ? 'bg-white' : (theme === 'dark' ? 'bg-[#D4AF37]' : 'bg-[#800000]')}
                                     ${location.pathname === link.path ? 'w-full' : ''}
                                 `} />
                             </Link>
                         ))}
 
                         {/* Theme Toggle Button */}
-                        <div className={`${!isScrolled ? 'text-white' : 'text-[#002147] dark:text-white'}`}>
+                        <div className={`${!isScrolled ? 'text-white' : (theme === 'dark' ? 'text-white' : 'text-[#002147]')}`}>
                             <ThemeToggle />
                         </div>
 
@@ -96,8 +101,8 @@ const Navbar = () => {
                             rel="noopener noreferrer"
                             className={`px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em] transform hover:scale-105
                                 ${!isScrolled
-                                    ? 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white hover:text-[#800000]'
-                                    : 'bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black'
+                                    ? 'bg-white text-[#002147] hover:bg-[#F9F4E8] shadow-lg'
+                                    : `${theme === 'dark' ? 'bg-[#D4AF37] text-black' : 'bg-[#800000] text-[#F9F4E8]'}`
                                 }
                             `}
                         >
@@ -107,7 +112,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center space-x-4 z-50">
-                        <div className={`scale-75 origin-right ${!isScrolled ? 'text-white' : 'text-[#002147] dark:text-white'}`}>
+                        <div className={`scale-75 origin-right ${!isScrolled ? 'text-white' : (theme === 'dark' ? 'text-white' : 'text-[#002147]')}`}>
                             <ThemeToggle />
                         </div>
                         <button
@@ -115,7 +120,7 @@ const Navbar = () => {
                             className={`transition-colors p-2 rounded-full backdrop-blur-sm border
                                 ${!isScrolled
                                     ? 'text-white bg-white/10 border-white/20 hover:bg-white/20'
-                                    : 'text-[#002147] dark:text-[#EAEAEA] border-transparent hover:text-[#800000] dark:hover:text-[#D4AF37]'
+                                    : `${theme === 'dark' ? 'text-[#EAEAEA] border-transparent hover:text-[#D4AF37]' : 'text-[#002147] border-transparent hover:text-[#800000]'}`
                                 }
                             `}
                         >
@@ -132,16 +137,19 @@ const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 w-full h-screen bg-[#F9F4E8]/95 dark:bg-[#121212]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
+                        className={`fixed top-0 left-0 w-full h-screen backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden
+                            ${theme === 'dark' ? 'bg-[#121212]/95' : 'bg-[#F9F4E8]/95'}
+                        `}
                     >
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`text-xl font-heading font-medium tracking-wider uppercase ${location.pathname === link.path
-                                    ? 'text-[#800000] dark:text-[#D4AF37]'
-                                    : 'text-[#002147] dark:text-[#EAEAEA]'
+                                className={`text-xl font-heading font-medium tracking-wider uppercase 
+                                    ${theme === 'dark'
+                                        ? (location.pathname === link.path ? 'text-[#D4AF37]' : 'text-[#EAEAEA]')
+                                        : (location.pathname === link.path ? 'text-[#800000]' : 'text-[#002147]')
                                     }`}
                             >
                                 {link.name}
@@ -151,7 +159,9 @@ const Navbar = () => {
                             href="https://wa.me/91XXXXXXXXXX"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-[#800000] dark:bg-[#D4AF37] text-[#F9F4E8] dark:text-black px-8 py-3 rounded-full font-medium uppercase tracking-[0.2em]"
+                            className={`px-8 py-3 rounded-full font-medium uppercase tracking-[0.2em]
+                                ${theme === 'dark' ? 'bg-[#D4AF37] text-black' : 'bg-[#800000] text-[#F9F4E8]'}
+                            `}
                         >
                             Book Now
                         </a>
