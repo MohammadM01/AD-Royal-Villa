@@ -43,7 +43,7 @@ const SafeVideo = ({ src, poster, isPlaying, onPlay }) => {
     }, [isPlaying]);
 
     return (
-        <div className="video-card relative w-full aspect-[9/16] md:aspect-video rounded-2xl overflow-hidden shadow-lg bg-black group">
+        <div className="video-card relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black group">
             <video
                 ref={videoRef}
                 src={src}

@@ -137,7 +137,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className={`fixed top-0 left-0 w-full h-screen backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden
+                        className={`fixed top-0 left-0 w-full h-screen backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-6 md:hidden
                             ${theme === 'dark' ? 'bg-[#121212]/95' : 'bg-[#F9F4E8]/95'}
                         `}
                     >
@@ -146,7 +146,7 @@ const Navbar = () => {
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`text-xl font-heading font-medium tracking-wider uppercase 
+                                className={`text-lg font-heading font-medium tracking-wider uppercase 
                                     ${theme === 'dark'
                                         ? (location.pathname === link.path ? 'text-[#D4AF37]' : 'text-[#EAEAEA]')
                                         : (location.pathname === link.path ? 'text-[#800000]' : 'text-[#002147]')
@@ -159,7 +159,7 @@ const Navbar = () => {
                             href="https://wa.me/91XXXXXXXXXX"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`px-8 py-3 rounded-full font-medium uppercase tracking-[0.2em]
+                            className={`px-6 py-2 rounded-full font-medium uppercase tracking-[0.2em] text-sm
                                 ${theme === 'dark' ? 'bg-[#D4AF37] text-black' : 'bg-[#800000] text-[#F9F4E8]'}
                             `}
                         >

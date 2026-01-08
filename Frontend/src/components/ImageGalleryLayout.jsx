@@ -35,12 +35,10 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="break-inside-avoid relative"
+                        className={`break-inside-avoid relative ${index % 2 !== 0 ? 'md:ml-4' : ''}`}
                         style={{
                             // Create collapsing/overlapping effect
                             marginTop: index === 0 ? '0' : '-1.5rem',
-                            // Slight horizontal offset for random look
-                            marginLeft: index % 2 === 0 ? '0' : '1rem',
                             zIndex: index
                         }}
                     >

@@ -99,7 +99,7 @@ const HeroCircular = () => {
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 z-10 pointer-events-none">
-                    <h1 ref={textTitleRef} className="text-5xl md:text-8xl font-heading mb-4 drop-shadow-lg font-light tracking-wide">
+                    <h1 ref={textTitleRef} className="text-4xl md:text-8xl font-heading mb-4 drop-shadow-lg font-light tracking-wide">
                         The Ultimate <br /> <span className="font-normal">Pool Experience</span>
                     </h1>
                     <p className="text-lg md:text-xl font-body font-thin tracking-widest uppercase opacity-90">

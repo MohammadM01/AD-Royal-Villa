@@ -134,24 +134,33 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
     const blurVal = useTransform(scrollYProgress, [start, peak, end], [5, 0, 5]);
     const filter = useTransform(blurVal, v => `blur(${v}px)`);
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <motion.div
             className="h-[70vh] w-full flex items-center justify-center p-4 relative shrink-0"
             style={{
                 scale,
                 opacity,
-                filter,
+                filter: isMobile ? 'none' : filter,
                 zIndex: 10 // Ensure slides are above background but below timeline markers if needed
             }}
         >
-            <div className="container max-w-[95%] md:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-32 items-center px-4 relative z-10">
+            <div className="container max-w-[95%] md:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-32 items-center px-4 relative z-10">
                 {/* Image Side - Left */}
                 <div className="relative w-full flex justify-center md:justify-start">
                     <div className="relative p-6 group">
                         <div className="absolute inset-0 bg-primary/5 dark:bg-accent/5 rounded-4xl -z-10 group-hover:bg-primary/10 transition-all duration-700" />
                         <div className="absolute inset-0 border border-primary dark:border-accent/30 rounded-tl-[3rem] rounded-br-[3rem] transform translate-x-3 translate-y-3 z-0" />
 
-                        <div className="relative z-10 h-[40vh] md:h-[50vh] w-full max-w-xl rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl bg-white dark:bg-neutral-800 border-4 border-white dark:border-neutral-700">
+                        <div className="relative z-10 h-48 md:h-[50vh] w-full max-w-xl rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-2xl bg-white dark:bg-neutral-800 border-4 border-white dark:border-neutral-700">
                             <img
                                 src={slide.image}
                                 alt={slide.title}
@@ -166,16 +175,16 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
                 </div>
 
                 {/* Text Side - Right */}
-                <div className="flex flex-col justify-center space-y-6 pl-4 md:pl-12">
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#800000] dark:text-[#D4AF37]">
+                <div className="flex flex-col justify-center space-y-4 md:space-y-6 pl-0 md:pl-12">
+                    <h3 className="text-2xl md:text-5xl lg:text-6xl font-serif text-[#800000] dark:text-[#D4AF37]">
                         {slide.title}
                     </h3>
-                    <p className="text-lg md:text-xl leading-relaxed font-normal text-black dark:text-red-600" style={{ opacity: 1 }}>
+                    <p className="text-sm md:text-xl leading-relaxed font-normal text-black dark:text-red-600" style={{ opacity: 1 }}>
                         {slide.desc}
                     </p>
-                    <div className="flex flex-wrap gap-3 pt-2">
+                    <div className="flex flex-wrap gap-2 md:gap-3 pt-2">
                         {slide.features.map((f, i) => (
-                            <span key={i} className="px-5 py-2 border border-[#800000]/30 dark:border-[#C2B280]/30 rounded-full text-sm font-medium text-[#002147] dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                            <span key={i} className="px-3 py-1 md:px-5 md:py-2 border border-[#800000]/30 dark:border-[#C2B280]/30 rounded-full text-xs md:text-sm font-medium text-oxford-blue dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
                                 {f}
                             </span>
                         ))}
@@ -220,7 +229,7 @@ const Timeline = () => {
 
                     {/* Main Center Line & Box */}
                     <div
-                        className="absolute left-1/2 top-1/2 h-[90%] w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                        className="hidden md:block absolute left-1/2 top-1/2 h-[90%] w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                     >
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />

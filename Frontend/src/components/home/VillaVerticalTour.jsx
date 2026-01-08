@@ -103,10 +103,10 @@ const VillaVerticalTour = () => {
     return (
         <div ref={triggerRef} className="relative h-screen overflow-hidden transition-colors duration-300">
             {/* Sticky Header */}
-            <div className="absolute top-24 left-0 w-full z-20 flex justify-center pointer-events-none">
+            <div className="absolute top-16 md:top-24 left-0 w-full z-20 flex justify-center pointer-events-none px-4">
                 <h2
                     ref={headerRef}
-                    className="text-5xl font-heading text-primary origin-top"
+                    className="text-4xl md:text-5xl font-heading text-primary origin-top text-center"
                 >
                     Villa Tour
                 </h2>

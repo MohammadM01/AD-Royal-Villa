@@ -22,8 +22,8 @@ const Footer = () => {
     }, { scope: footerRef });
 
     return (
-        <footer ref={footerRef} className="bg-text text-white py-16 relative">
-            <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 ">
+        <footer ref={footerRef} className="bg-text text-white py-10 md:py-16 relative">
+            <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ">
                 {/* Brand Section */}
                 <div className="space-y-6">
                     <h3 className="text-3xl font-heading font-bold" style={{ color: '#D4AF37' }}>AD Royal Private Villa</h3>
