@@ -3,6 +3,21 @@ import { motion } from 'framer-motion'
 import { FaUmbrellaBeach, FaCloudRain, FaSwimmingPool, FaMoon } from 'react-icons/fa'
 
 const PoolShowcase = () => {
+    const popupVariants = {
+        hidden: { scaleX: 0, originX: 0, opacity: 0 },
+        visible: {
+            scaleX: 1,
+            opacity: 1,
+            originX: 0,
+            transition: {
+                type: "spring",
+                stiffness: 150,
+                damping: 15,
+                mass: 1.2
+            }
+        }
+    }
+
     const features = [
         {
             title: "80ft Lap Pool",
@@ -35,7 +50,7 @@ const PoolShowcase = () => {
     ]
 
     return (
-        <section id="pool-showcase" className="py-20 bg-text text-white">
+        <section id="pool-showcase" className="py-20 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-heading font-bold mb-4">
@@ -46,11 +61,11 @@ const PoolShowcase = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-3 gap-4 h-auto md:h-[800px]">
+                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-3 gap-0 md:-space-x-2 h-auto md:h-[800px]">
                     {features.map((item, index) => (
                         <motion.div
                             key={index}
-                            className={`relative group overflow-hidden rounded-2xl ${item.span}`}
+                            className={`relative group overflow-hidden rounded-2xl ${item.span} transition-all duration-300 hover:z-10`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
@@ -61,18 +76,23 @@ const PoolShowcase = () => {
                                 alt={item.title}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <motion.div
+                                className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end"
+                                initial="hidden"
+                                whileHover="visible"
+                                variants={popupVariants}
+                            >
+                                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
                                     <div className="flex items-center gap-2 text-primary mb-2">
                                         <item.icon size={20} />
                                         <span className="uppercase text-xs font-bold tracking-widest">{item.title}</span>
                                     </div>
                                     <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                                    <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                    <p className="text-gray-300 text-sm">
                                         {item.desc}
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
