@@ -12,6 +12,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import { LeafProvider } from './context/LeafContext'
 import Preloader from './components/Preloader'
 import FloatingLeaf from './components/FloatingLeaf'
+import Butterfly from './components/Butterfly'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,13 @@ const App = () => {
     <ThemeProvider>
       <LeafProvider>
         <FloatingLeaf />
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+          <Butterfly id={1} sizeClasses="w-20 h-20" />
+          <Butterfly id={2} sizeClasses="w-12 h-12" />
+          <Butterfly id={3} sizeClasses="w-28 h-28" />
+          <Butterfly id={4} sizeClasses="w-16 h-16" />
+          <Butterfly id={5} sizeClasses="w-24 h-24" />
+        </div>
         {isLoading ? (
           <Preloader onComplete={() => setIsLoading(false)} />
         ) : (
