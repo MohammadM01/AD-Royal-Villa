@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { useLeaf } from '../../context/LeafContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,9 +41,11 @@ const poolImages = [
 ];
 
 const PoolZigZag = () => {
+    const { setTarget } = useLeaf();
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
     const modalRef = useRef(null);
+    const firstImageRef = useRef(null); // Ref for the first image
     const [expandedIdx, setExpandedIdx] = useState(null);
 
     useGSAP(() => {
@@ -65,10 +68,40 @@ const PoolZigZag = () => {
             }
         });
 
+        // Explicit Trigger for First Image (Vertical Scroll Entry)
+        ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: "top center", // When section hits center of viewport
+            end: "bottom bottom",
+            onEnter: () => {
+                if (firstImageRef.current) setTarget(firstImageRef.current, { anchor: 'top-left' });
+            },
+            onEnterBack: () => {
+                // When scrolling back up into this section, target first image again
+                if (firstImageRef.current) setTarget(firstImageRef.current, { anchor: 'top-left' });
+            }
+        });
+
+
+
         // Fold/Unfold Animation
         // Clean previous animations if any (React strict mode safety)
         const poolItems = gsap.utils.toArray('.pool-card-wrapper');
         poolItems.forEach((el, i) => {
+            const img = el.querySelector('img');
+            const isLast = i === poolItems.length - 1;
+
+            // Leaf Target Trigger
+            // Since we want the leaf to "hop" to this image when it becomes active in the horizontal scroll
+            ScrollTrigger.create({
+                trigger: el,
+                containerAnimation: scrollTween, // Link to horizontal scroll
+                start: "left center+=100", // Activate when it approaches center
+                end: "right center-=100",
+                onEnter: () => setTarget(img, { anchor: isLast ? 'bottom-right' : 'top-left' }),
+                onEnterBack: () => setTarget(img, { anchor: isLast ? 'bottom-right' : 'top-left' })
+            });
+
             // Unfold entering from right
             gsap.fromTo(el,
                 {
@@ -149,7 +182,12 @@ const PoolZigZag = () => {
                         >
                             {/* Image Card */}
                             <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-2 border-white/50">
-                                <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+                                <img
+                                    ref={index === 0 ? firstImageRef : null}
+                                    src={item.src}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover"
+                                />
 
                                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end p-6">
                                     <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>

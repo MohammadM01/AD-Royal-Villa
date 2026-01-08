@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { useLeaf } from '../../context/LeafContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,8 +12,11 @@ const heroImages = [
 ];
 
 const HeroCircular = () => {
+    const { setTarget } = useLeaf();
     const wrapperRef = useRef(null);
     const heroRef = useRef(null);
+    // Ref for text target
+    const textTitleRef = useRef(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     // Slideshow Logic
@@ -20,26 +24,47 @@ const HeroCircular = () => {
         const interval = setInterval(() => {
             setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
         }, 3000);
-        return () => clearInterval(interval);
+
+        // Ensure leaf targets text on mount (fallback for ScrollTrigger)
+        const timer = setTimeout(() => {
+            if (textTitleRef.current) setTarget(textTitleRef.current, { anchor: 'center' });
+        }, 500);
+
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timer);
+        };
     }, []);
 
     useGSAP(() => {
         const mm = gsap.matchMedia();
 
+        // Leaf Target Logic - Target specific text on 'T' (Top Left --> Center now)
+        ScrollTrigger.create({
+            trigger: wrapperRef.current,
+            start: "top bottom",
+            end: "bottom center",
+            onEnter: () => setTarget(textTitleRef.current, { anchor: 'center' }),
+            onEnterBack: () => setTarget(textTitleRef.current, { anchor: 'center' })
+        });
+
         mm.add("(min-width: 768px)", () => {
-            // Pin the wrapper and animate the inner hero's clip-path
-            ScrollTrigger.create({
-                trigger: wrapperRef.current,
-                start: "top top",
-                end: "+=100%", // Distance to scroll to complete animation
-                pin: true,
-                scrub: 0,
-                animation: gsap.to(heroRef.current, {
-                    clipPath: "circle(30% at 50% 50%)", // Shrink to circle
-                    ease: "none",
-                    immediateRender: false
-                })
+            // ... existing
+            // Copying existing timeline logic to prevent deletion errors during replacement
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: wrapperRef.current,
+                    start: "top top",
+                    end: "+=100%",
+                    pin: true,
+                    scrub: 0,
+                }
             });
+
+            tl.to(heroRef.current, {
+                clipPath: "circle(30% at 50% 50%)",
+                ease: "none"
+            }, 0);
         });
 
     }, { scope: wrapperRef });
@@ -49,17 +74,7 @@ const HeroCircular = () => {
             ref={wrapperRef}
             className="relative w-full h-screen overflow-hidden bg-[var(--bg-color)] transition-colors duration-300"
         >
-            {/* Background Trees - Visible when hero shrinks */}
-            <img
-                src="/New/svg/tree-left.png"
-                alt="Tree Left"
-                className="absolute left-0 top-0 h-full w-auto object-cover z-0 pointer-events-none"
-            />
-            <img
-                src="/New/svg/tree-right.png"
-                alt="Tree Right"
-                className="absolute right-0 top-0 h-full w-auto object-cover z-0 pointer-events-none"
-            />
+            {/* Background Trees - Removed as per request */}
 
             {/* Inner Hero with Clip Path */}
             <div
@@ -84,7 +99,7 @@ const HeroCircular = () => {
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 z-10 pointer-events-none">
-                    <h1 className="text-5xl md:text-8xl font-heading mb-4 drop-shadow-lg font-light tracking-wide">
+                    <h1 ref={textTitleRef} className="text-5xl md:text-8xl font-heading mb-4 drop-shadow-lg font-light tracking-wide">
                         The Ultimate <br /> <span className="font-normal">Pool Experience</span>
                     </h1>
                     <p className="text-lg md:text-xl font-body font-thin tracking-widest uppercase opacity-90">

@@ -1,4 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { useLeaf } from '../../context/LeafContext';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const videoAssets = [
     { src: "/Assets/homepage1video.mp4", poster: "/Assets/villa_entrance_facade.jpg" },
@@ -37,7 +43,7 @@ const SafeVideo = ({ src, poster, isPlaying, onPlay }) => {
     }, [isPlaying]);
 
     return (
-        <div className="relative w-full aspect-[9/16] md:aspect-video rounded-2xl overflow-hidden shadow-lg bg-black group">
+        <div className="video-card relative w-full aspect-[9/16] md:aspect-video rounded-2xl overflow-hidden shadow-lg bg-black group">
             <video
                 ref={videoRef}
                 src={src}
@@ -65,10 +71,27 @@ const SafeVideo = ({ src, poster, isPlaying, onPlay }) => {
 };
 
 const CustomerVideos = () => {
+    const { setTarget } = useLeaf();
+    const containerRef = useRef(null);
     const [playingIndex, setPlayingIndex] = useState(null);
 
+    useGSAP(() => {
+        const videos = gsap.utils.toArray('.video-card');
+
+        videos.forEach((video, i) => {
+            ScrollTrigger.create({
+                trigger: video,
+                start: "top center+=200",
+                end: "bottom center+=200",
+                onEnter: () => setTarget(video, { anchor: 'top-left' }),
+                onEnterBack: () => setTarget(video, { anchor: 'top-left' })
+            });
+        });
+
+    }, { scope: containerRef });
+
     return (
-        <div className="py-24 transition-colors duration-300">
+        <div ref={containerRef} className="py-24 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <h2 className="text-center text-4xl md:text-6xl font-heading text-primary mb-16">Our Happy Customers</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

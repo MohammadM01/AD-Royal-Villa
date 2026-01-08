@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { FaMapMarkerAlt, FaPhone, FaInstagram, FaFacebook } from 'react-icons/fa'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import { useLeaf } from '../context/LeafContext'
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+    const { setTarget } = useLeaf();
+    const footerRef = useRef(null);
+
+    useGSAP(() => {
+        ScrollTrigger.create({
+            trigger: footerRef.current,
+            start: "top bottom-=100", // When footer peeks in
+            onEnter: () => setTarget(footerRef.current, { anchor: 'top-right' }),
+            onEnterBack: () => setTarget(footerRef.current, { anchor: 'top-right' })
+        });
+    }, { scope: footerRef });
+
     return (
-        <footer className="bg-text text-white py-16">
+        <footer ref={footerRef} className="bg-text text-white py-16 relative">
             <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 ">
                 {/* Brand Section */}
                 <div className="space-y-6">
