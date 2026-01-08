@@ -125,7 +125,7 @@ const PoolZigZag = () => {
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
             <h2 className="absolute top-32 left-8 md:px-12 text-5xl font-heading text-primary z-10 w-full max-w-[90vw]">
                 Aquatic Paradise <span className="text-secondary mx-2">:</span>
-                <span className="text-lg font-body text-gray-600 font-light align-middle ml-2 inline-block max-w-2xl leading-tight">
+                <span className="text-lg font-body text-accent font-light align-middle ml-2 inline-block max-w-2xl leading-tight">
                     Discover a sanctuary of water and light. From infinite horizons to playful splashes, find your perfect liquid escape.
                 </span>
             </h2>
