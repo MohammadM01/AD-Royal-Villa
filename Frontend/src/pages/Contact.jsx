@@ -79,10 +79,10 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="font-heading text-xl text-primary mb-1">Our Location</h3>
-                                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                                <a href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6" target="_blank" rel="noopener noreferrer" className="font-body text-gray-500 text-sm leading-relaxed hover:text-primary transition-colors block">
                                     Near Coral School, Padgha - 421101.<br />
                                     <span className="text-xs text-accent font-bold mt-1 block tracking-wider uppercase">32 Kms from Thane</span>
-                                </p>
+                                </a>
                             </div>
                         </div>
 
@@ -93,7 +93,10 @@ const Contact = () => {
                             <div>
                                 <h3 className="font-heading text-xl text-primary mb-1">Call Us</h3>
                                 <p className="font-body text-gray-500 text-sm">
-                                    +91 98000 98000 <br />
+                                    <a href="https://wa.me/919890205767" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                        +91 9890205767
+                                    </a>
+                                    <br />
                                     <span className="text-xs text-gray-400">Available 24/7</span>
                                 </p>
                             </div>
@@ -133,29 +136,33 @@ const Contact = () => {
 
                             <h3 className="font-heading text-2xl mb-6 relative z-10 text-white">Send a Message</h3>
 
-                            <form className="space-y-4 relative z-10">
+                            <form className="space-y-4 relative z-10" onSubmit={(e) => {
+                                e.preventDefault();
+                                const text = `*New Inquiry from Website*%0A%0A*Name:* ${e.target.name.value}%0A*Email:* ${e.target.email.value}%0A*Mobile:* ${e.target.mobile.value}%0A*Message:* ${e.target.message.value}`;
+                                window.open(`https://wa.me/919890205767?text=${text}`, '_blank');
+                            }}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-1">
                                         <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
-                                        <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
+                                        <input name="name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
                                     </div>
                                     <div className="space-y-1">
                                         <label className="text-xs tracking-widest uppercase text-gray-400">Email</label>
-                                        <input type="email" placeholder="email@example.com" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
+                                        <input name="email" type="email" placeholder="email@example.com" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-1">
                                     <label className="text-xs tracking-widest uppercase text-gray-400">Mobile No</label>
-                                    <input type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
+                                    <input name="mobile" type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label className="text-xs tracking-widest uppercase text-gray-400">Message</label>
-                                    <textarea rows="3" placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600 resize-none"></textarea>
+                                    <textarea name="message" rows="3" placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600 resize-none" required></textarea>
                                 </div>
 
-                                <button className="w-full bg-gradient-to-r from-primary via-primary-light to-primary text-white font-heading font-medium text-base py-3 rounded-lg shadow-md hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-2 uppercase tracking-wide">
+                                <button type="submit" className="w-full bg-gradient-to-r from-primary via-primary-light to-primary text-white font-heading font-medium text-base py-3 rounded-lg shadow-md hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-2 uppercase tracking-wide">
                                     Submit
                                 </button>
                             </form>
@@ -168,7 +175,7 @@ const Contact = () => {
             <div ref={mapRef} className="container mx-auto px-4 mb-8">
                 <div className="w-full h-[350px] rounded-3xl overflow-hidden shadow-lg border-2 border-white">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.5078516086776!2d73.0673473752174!3d19.39055598188151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bd7204fef501%3A0x6b723528828aa39b!2sAD%20Farms%20%26%20Resorts!5e0!3m2!1sen!2sin!4v1709825441315!5m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d235.24038456316205!2d73.18901408163966!3d19.37581310955166!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be79b001952baa9%3A0x418716515562f3fa!2sAD%20Royal%20Private%20Villa!5e0!3m2!1sen!2sin!4v1768051284565!5m2!1sen!2sin"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

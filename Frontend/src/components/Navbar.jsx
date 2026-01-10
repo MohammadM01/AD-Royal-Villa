@@ -90,7 +90,7 @@ const Navbar = () => {
                         </div>
 
                         <a
-                            href="https://wa.me/91XXXXXXXXXX"
+                            href="https://wa.me/919890205767"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em] transform hover:scale-105
@@ -150,7 +150,7 @@ const Navbar = () => {
                             </Link>
                         ))}
                         <a
-                            href="https://wa.me/91XXXXXXXXXX"
+                            href="https://wa.me/919890205767"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`px-6 py-2 rounded-full font-medium uppercase tracking-[0.2em] text-sm

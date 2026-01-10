@@ -45,7 +45,7 @@ const RateCards = () => {
                             </ul>
 
                             <a
-                                href="https://wa.me/91XXXXXXXXXX"
+                                href="https://wa.me/919890205767"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block w-full text-center bg-text text-white py-3 rounded-full font-medium hover:bg-primary transition-colors"

@@ -58,14 +58,16 @@ const Footer = () => {
                     <div className="space-y-4 text-gray-400 font-light">
                         <div className="flex items-start space-x-4">
                             <FaMapMarkerAlt size={24} className="text-primary mt-1 shrink-0" />
-                            <p>
+                            <a href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-left">
                                 Near Coral School, Next to Auto Fleet Petrol Pump,<br />
                                 Padgha – 421101, 32 km from Thane
-                            </p>
+                            </a>
                         </div>
                         <div className="flex items-center space-x-4">
                             <FaPhone size={24} className="text-primary shrink-0" />
-                            <p>+91 XXXXX XXXXX</p>
+                            <a href="https://wa.me/919890205767" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                +91 9890205767
+                            </a>
                         </div>
                     </div>
                 </div>

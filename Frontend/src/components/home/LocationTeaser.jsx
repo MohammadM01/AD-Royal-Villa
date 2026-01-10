@@ -27,7 +27,7 @@ const LocationTeaser = () => {
                             Easily accessible via Khadavli Station.
                         </p>
                         <a
-                            href="https://goo.gl/maps/YOUR_GOOGLE_MAPS_LINK" // TODO: Use real link
+                            href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block bg-white text-text px-8 py-3 rounded-full font-medium hover:bg-primary hover:text-white transition-all duration-300 mt-4 uppercase tracking-wider text-sm"
