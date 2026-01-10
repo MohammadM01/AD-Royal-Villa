@@ -4,6 +4,7 @@ import PoolZigZag from '../components/home/PoolZigZag';
 import VillaVerticalTour from '../components/home/VillaVerticalTour';
 import CustomerVideos from '../components/home/CustomerVideos';
 import AboutUs from '../components/home/AboutUs';
+import AmenitiesShowcase from '../components/home/AmenitiesShowcase';
 
 const Home = () => {
   // Reset scroll on mount
@@ -25,10 +26,15 @@ const Home = () => {
       {/* 3. Vertical Magnify Tour */}
       <VillaVerticalTour />
 
-      {/* 4. Smart Video Grid */}
+      {/* 4. Amenities Showcase */}
+      <AmenitiesShowcase />
+
+      {/* 5. Smart Video Grid */}
       <CustomerVideos />
 
-      {/* 5. Feature/Ending Section */}
+
+
+      {/* 6. Feature/Ending Section */}
       <div className="py-24 bg-[#fada7b] text-[#0077b6] text-center">
         <h2 className="text-4xl font-heading mb-6 !text-[#0077b6]">Ready for your escape?</h2>
         <button className="px-8 py-4 bg-[#0077b6] text-white font-bold rounded-full hover:scale-105 transition-transform">
