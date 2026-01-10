@@ -10,7 +10,7 @@ const videoAssets = [
     { src: "/Assets/homepage1video.mp4", poster: "/Assets/villa_entrance_facade.jpg" },
     { src: "/Assets/homepage2video.mp4", poster: "/Assets/Activites and pool/pool_slides_aerial_view.jpg" },
     { src: "/Assets/homepage3video.mp4", poster: "/Assets/Activites and pool/pool_villa_exterior_day.jpg" },
-    { src: "/Assets/Activites and pool/raindancex.mp4", poster: "/Assets/Activites and pool/raindance_poster_if_any.jpg" } // Keeping existing one
+    { src: "/Assets/pool_highlight_4.mp4", poster: "/Assets/Activites and pool/raindance_poster_if_any.jpg" } // Keeping existing one
 ];
 
 const SafeVideo = ({ src, poster, isPlaying, onPlay }) => {
