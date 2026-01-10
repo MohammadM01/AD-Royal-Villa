@@ -96,7 +96,7 @@ const AmenitiesShowcase = () => {
                     Exclusive Amenities
                 </span>
 
-                <div className="relative h-[300px]">
+                <div className="relative h-[400px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentIndex}
@@ -104,16 +104,16 @@ const AmenitiesShowcase = () => {
                             animate="visible"
                             exit="exit"
                             variants={textVariants}
-                            className="absolute top-0 left-0 w-full"
+                            className="absolute top-0 left-0 w-full flex flex-col items-start justify-center h-full"
                         >
                             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
                                 {amenities[currentIndex].title}
                             </h2>
-                            <div className="w-20 h-1 bg-accent mb-8"></div>
-                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8">
+                            <div className="w-20 h-1 bg-accent mb-6"></div>
+                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8 line-clamp-4">
                                 {amenities[currentIndex].description}
                             </p>
-                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full">
+                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-auto">
                                 <span>✦</span>
                                 <span>{amenities[currentIndex].highlight}</span>
                             </div>
@@ -122,7 +122,8 @@ const AmenitiesShowcase = () => {
                 </div>
 
                 {/* Controls & Actions */}
-                <div className="flex flex-col space-y-8 mt-12 z-30">
+                <div className="flex flex-col space-y-6 mt-4 z-30">
+                    {/* Slider Nav */}
                     <div className="flex items-center space-x-6">
                         <button
                             onClick={prevSlide}
@@ -151,7 +152,8 @@ const AmenitiesShowcase = () => {
                         </button>
                     </div>
 
-                    <div className="flex flex-wrap gap-4">
+                    {/* Action Buttons */}
+                    <div className="flex flex-wrap gap-4 pt-2">
                         <Link
                             to="/activities"
                             className="px-8 py-3 rounded-full bg-accent text-[#0F172A] hover:bg-white hover:text-[#0F172A] font-bold text-xs uppercase tracking-widest transition-all duration-300"

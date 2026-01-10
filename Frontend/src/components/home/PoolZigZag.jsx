@@ -156,12 +156,16 @@ const PoolZigZag = () => {
 
     return (
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
-            <h2 className="relative md:absolute top-0 md:top-32 left-0 md:left-8 px-6 md:px-12 text-4xl md:text-5xl font-heading text-primary z-10 w-full max-w-[90vw] mb-8 md:mb-0 mt-20 md:mt-0">
-                Aquatic Paradise <span className="text-secondary mx-2">:</span>
-                <span className="block md:inline-block text-base md:text-lg font-body text-accent font-light align-middle md:ml-2 max-w-2xl leading-tight mt-2 md:mt-0">
+            {/* Header Section */}
+            <div className="absolute top-0 left-0 w-full pt-20 md:pt-16 pb-12 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
+                <h2 className="text-4xl md:text-6xl font-heading text-primary dark:text-[#EAEAEA] mb-4 drop-shadow-lg">
+                    Aquatic Paradise
+                </h2>
+                <div className="w-24 h-1 bg-accent mb-4 mx-auto rounded-full"></div>
+                <p className="text-base md:text-xl font-body text-[#023e8a] dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     Discover a sanctuary of water and light. From infinite horizons to playful splashes, find your perfect liquid escape.
-                </span>
-            </h2>
+                </p>
+            </div>
 
             {/* Scroll Container with Vertical Lines (Two standing lines) */}
             <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[70vh] md:h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
