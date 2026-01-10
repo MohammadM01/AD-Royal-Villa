@@ -225,7 +225,7 @@ const PoolZigZag = () => {
                         </div>
                         {/* Text Right */}
                         <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 flex flex-col justify-center bg-white text-left relative overflow-y-auto">
-                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl hover:text-red-500">&times;</button>
+                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl hover:text-[#00b4d8]">&times;</button>
                             <h3 className="text-4xl font-heading text-primary mb-6">{poolImages[expandedIdx].title}</h3>
                             <div className="w-16 h-1 bg-accent mb-6"></div>
                             <p className="text-base text-gray-700 font-body leading-relaxed whitespace-pre-wrap">

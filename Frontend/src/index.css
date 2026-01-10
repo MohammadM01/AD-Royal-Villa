@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #800000;
-    --color-primary-light: #EF4444;
-    --color-accent: #D4AF37;
+    --color-primary: #00b4d8;
+    --color-primary-light: #00b4d8;
+    --color-accent: #00b4d8;
     --color-text: #1E293B;
     --color-background: #F9F4E8;
     --color-oxford-blue: #002147;
@@ -16,12 +16,12 @@
     --bg-color: #F9F4E8;
     --text-color: #002147;
     /* Oxford Blue for text */
-    --primary-color: #800000;
-    /* Maroon */
+    --primary-color: #00b4d8;
+    /* Maroon -> Cyan */
     --accent-color: #002147;
-    /* Oxford Blue */
-    --highlight-color: #D4AF37;
-    /* Gold accent */
+    /* Oxford Blue preserved */
+    --highlight-color: #00b4d8;
+    /* Gold accent -> Cyan */
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
@@ -33,11 +33,11 @@
     /* Deep Dark */
     --text-color: #F5E6C8;
     /* Soft Cream */
-    --primary-color: #D4AF37;
-    /* Gold */
-    --accent-color: #D4AF37;
-    --highlight-color: #800000;
-    /* Maroon accent in dark mode */
+    --primary-color: #00b4d8;
+    /* Gold -> Cyan */
+    --accent-color: #00b4d8;
+    --highlight-color: #00b4d8;
+    /* Maroon accent in dark mode -> Cyan */
 }
 
 body {
@@ -71,8 +71,8 @@ ul {
 
 /* Custom Utilities */
 .amenities-blur-circle {
-    background-color: #800020;
-    /* Maroon #800020 for Light Mode */
+    background-color: #00b4d8;
+    /* Cyan for Light Mode */
     mix-blend-mode: multiply;
 }
 
@@ -82,7 +82,7 @@ ul {
 
 /* Forced Royal Text Styling */
 .amenities-royal-text {
-    color: #800000 !important;
+    color: #00b4d8 !important;
     font-weight: 500;
 }
 

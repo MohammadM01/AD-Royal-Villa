@@ -131,7 +131,7 @@ const Pricing = () => {
                             <h3 className="text-2xl font-heading text-stone-400 mb-8 z-10">Ordinary Resorts</h3>
                             <ul className="space-y-6 z-10">
                                 {['Crowded shared pools', 'Cramped standard rooms', 'Generic buffet food', 'Strict 10 AM Checkout'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-4 text-stone-500 group-hover:text-red-500 transition-colors">
+                                    <li key={i} className="flex items-center gap-4 text-stone-500 group-hover:text-[#00b4d8] transition-colors">
                                         <X className="w-6 h-6 opacity-60" />
                                         <span className="font-light text-lg">{item}</span>
                                     </li>
@@ -224,7 +224,7 @@ const Pricing = () => {
                                 `}
                             >
                                 {plan.highlight && (
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent shadow-[0_0_20px_2px_rgba(212,175,55,0.5)]" />
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent shadow-[0_0_20px_2px_rgba(0,180,216,0.5)]" />
                                 )}
 
                                 {/* Image Header */}

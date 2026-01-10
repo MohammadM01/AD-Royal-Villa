@@ -9,7 +9,7 @@ const ImageGalleryLayout = ({ title, subtitle, eyebrow, items = [] }) => {
             <motion.div
                 animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#800000]/20 dark:bg-[#D4AF37]/20 rounded-full blur-[100px] pointer-events-none -z-10 transition-colors duration-500"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00b4d8]/20 dark:bg-[#00b4d8]/20 rounded-full blur-[100px] pointer-events-none -z-10 transition-colors duration-500"
             />
 
             {/* Header Section */}

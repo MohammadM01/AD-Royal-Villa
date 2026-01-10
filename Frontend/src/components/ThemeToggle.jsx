@@ -25,7 +25,7 @@ const ThemeToggle = () => {
                     damping: 30
                 }}
                 style={{
-                    backgroundColor: isDark ? "#EAEAEA" : "#FFD700", // Moon color / Sun color
+                    backgroundColor: isDark ? "#EAEAEA" : "#00b4d8", // Moon color / Sun color -> Cyan
                 }}
             >
                 <AnimatePresence mode='wait'>
@@ -49,7 +49,7 @@ const ThemeToggle = () => {
                             transition={{ duration: 0.3 }}
                             className="absolute"
                         >
-                            <Sun size={18} className="text-orange-700" fill="currentColor" />
+                            <Sun size={18} className="text-white" fill="currentColor" />
                         </motion.div>
                     )}
                 </AnimatePresence>

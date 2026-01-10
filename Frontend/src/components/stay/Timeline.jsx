@@ -83,7 +83,7 @@ const FloatingBubbles = () => {
                 return (
                     <motion.div
                         key={i}
-                        className="absolute rounded-full border border-[#8B7E66]/20 bg-[#8B7E66]/5 dark:border-[#C2B280]/20 dark:bg-[#C2B280]/5 backdrop-blur-[1px]"
+                        className="absolute rounded-full border border-[#8B7E66]/20 bg-[#8B7E66]/5 dark:border-[#00b4d8]/20 dark:bg-[#00b4d8]/5 backdrop-blur-[1px]"
                         style={{
                             width: size,
                             height: size,
@@ -176,15 +176,15 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
 
                 {/* Text Side - Right */}
                 <div className="flex flex-col justify-center space-y-4 md:space-y-6 pl-0 md:pl-12">
-                    <h3 className="text-2xl md:text-5xl lg:text-6xl font-serif text-[#800000] dark:text-[#D4AF37]">
+                    <h3 className="text-2xl md:text-5xl lg:text-6xl font-serif text-[#00b4d8] dark:text-[#00b4d8]">
                         {slide.title}
                     </h3>
-                    <p className="text-sm md:text-xl leading-relaxed font-normal text-black dark:text-red-600" style={{ opacity: 1 }}>
+                    <p className="text-sm md:text-xl leading-relaxed font-normal text-black dark:text-[#00b4d8]" style={{ opacity: 1 }}>
                         {slide.desc}
                     </p>
                     <div className="flex flex-wrap gap-2 md:gap-3 pt-2">
                         {slide.features.map((f, i) => (
-                            <span key={i} className="px-3 py-1 md:px-5 md:py-2 border border-[#800000]/30 dark:border-[#C2B280]/30 rounded-full text-xs md:text-sm font-medium text-oxford-blue dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                            <span key={i} className="px-3 py-1 md:px-5 md:py-2 border border-[#00b4d8]/30 dark:border-[#00b4d8]/30 rounded-full text-xs md:text-sm font-medium text-oxford-blue dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
                                 {f}
                             </span>
                         ))}
@@ -229,10 +229,10 @@ const Timeline = () => {
 
                     {/* Main Center Line & Box */}
                     <div
-                        className="hidden md:block absolute left-1/2 top-1/2 h-[90%] w-0.5 bg-black/40 dark:bg-[#D4AF37]/30 z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                        className="hidden md:block absolute left-1/2 top-1/2 h-[90%] w-0.5 bg-black/40 dark:bg-[#00b4d8]/30 z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                     >
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#D4AF37]" />
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#00b4d8]" />
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-black/60 dark:bg-[#00b4d8]" />
 
                         <motion.div
                             className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary dark:bg-accent text-background dark:text-black text-sm font-bold px-4 py-1.5 rounded-full shadow-2xl whitespace-nowrap border-2 border-background dark:border-black"
