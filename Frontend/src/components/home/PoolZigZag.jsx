@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useLeaf } from '../../context/LeafContext';
+import { useTheme } from '../../context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ const poolImages = [
 ];
 
 const PoolZigZag = () => {
+    const { theme } = useTheme();
     const { setTarget } = useLeaf();
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
@@ -158,11 +160,17 @@ const PoolZigZag = () => {
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
             {/* Header Section */}
             <div className="absolute top-0 left-0 w-full pt-20 md:pt-16 pb-12 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
-                <h2 className="text-4xl md:text-6xl font-heading text-primary dark:text-[#EAEAEA] mb-4 drop-shadow-lg">
+                <h2
+                    className="text-4xl md:text-6xl font-heading mb-4 drop-shadow-lg"
+                    style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
+                >
                     Aquatic Paradise
                 </h2>
                 <div className="w-24 h-1 bg-accent mb-4 mx-auto rounded-full"></div>
-                <p className="text-base md:text-xl font-body text-[#023e8a] dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p
+                    className="text-base md:text-xl font-body max-w-3xl mx-auto leading-relaxed"
+                    style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
+                >
                     Discover a sanctuary of water and light. From infinite horizons to playful splashes, find your perfect liquid escape.
                 </p>
             </div>

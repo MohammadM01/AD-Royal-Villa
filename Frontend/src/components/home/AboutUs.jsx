@@ -2,10 +2,12 @@ import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { useTheme } from '../../context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
+    const { theme } = useTheme();
     const sectionRef = useRef(null);
     const imageRef = useRef(null);
     const contentRef = useRef(null);
@@ -37,28 +39,28 @@ const AboutUs = () => {
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} className="py-24 bg-[#F9F4E8] overflow-hidden">
+        <section ref={sectionRef} className={`py-24 overflow-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-black' : 'bg-[#F9F4E8]'}`}>
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Content Side - Wider column for text */}
                     <div ref={contentRef} className="space-y-8 order-2 md:order-1 md:col-span-7 lg:col-span-8">
                         <div>
-                            <span className="text-primary/80 uppercase tracking-[0.2em] text-sm font-bold mb-2 block">
+                            <span className={`uppercase tracking-[0.2em] text-sm font-bold mb-2 block ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary/80'}`}>
                                 Discover AD Royal
                             </span>
-                            <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-heading text-primary leading-tight whitespace-nowrap">
-                                Where Privacy Meets <span className="italic text-accent">Fun and Luxury</span>
+                            <h2 className={`text-xl md:text-3xl lg:text-4xl xl:text-5xl font-heading leading-tight whitespace-nowrap ${theme === 'dark' ? 'text-white' : 'text-primary'}`}>
+                                Where Privacy Meets <span className={`italic ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-accent'}`}>Fun and Luxury</span>
                             </h2>
                         </div>
 
-                        <div className="text-lg text-gray-700 leading-relaxed space-y-6 font-light">
+                        <div className={`text-lg leading-relaxed space-y-6 font-light ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                             <p>
                                 Welcome to a world crafted for your absolute comfort. AD Royal Private Villa is more than just a getaway; it is a sanctuary designed for those who seek the perfect balance of nature and luxury.
                             </p>
                             <p>
                                 Our exclusive 4BHK fully furnished farmhouse offers a pristine aquatic paradise, lush green landscapes, and modern amenities, ensuring your stay is nothing short of extraordinary. Whether you're splashing in our grand pool or unwinding in our elegantly appointed rooms, privacy is our promise.
                             </p>
-                            <p className="font-medium text-primary">
+                            <p className={`font-medium ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary'}`}>
                                 Experience the warmth of a home with the grandeur of a resort.
                             </p>
                         </div>
