@@ -3,6 +3,7 @@ import HeroCircular from '../components/home/HeroCircular';
 import PoolZigZag from '../components/home/PoolZigZag';
 import VillaVerticalTour from '../components/home/VillaVerticalTour';
 import CustomerVideos from '../components/home/CustomerVideos';
+import AboutUs from '../components/home/AboutUs';
 
 const Home = () => {
   // Reset scroll on mount
@@ -14,6 +15,9 @@ const Home = () => {
     <div className="min-h-screen overflow-x-hidden">
       {/* 1. Circular Reveal Hero */}
       <HeroCircular />
+
+      {/* 1.5 About Us Section */}
+      <AboutUs />
 
       {/* 2. Zig-Zag Pool Section */}
       <PoolZigZag />
