@@ -53,7 +53,7 @@ const VideoPlayer = ({ src }) => {
     );
 };
 
-const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse }) => {
+const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More" }) => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -108,7 +108,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
 
                     <div className="anim-text pt-4">
                         <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-[#00b4d8] dark:text-black font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95">
-                            <span className="relative z-10 group-hover:text-[#00b4d8] dark:group-hover:text-white transition-colors">Explore More</span>
+                            <span className="relative z-10 group-hover:text-[#00b4d8] dark:group-hover:text-white transition-colors">{buttonText}</span>
                             <div className="absolute inset-0 bg-white dark:bg-[#002147] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></div>
                         </button>
                     </div>
@@ -153,6 +153,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/Assets/Activites and pool/bbq1.jpeg', '/Assets/Activites and pool/bbq2.png']}
                 reverse={false}
+                buttonText="Grill & Chill"
             />
 
             {/* --- 2. Tipping Bucket (Text Left, Video Right) --- */}
@@ -163,6 +164,7 @@ const Activities = () => {
                 mediaType="video"
                 mediaSrc="/Assets/Activites and pool/xtipiing water bucket.mp4"
                 reverse={true}
+                buttonText="Feel the Splash"
             />
 
             {/* --- 3. Kids Zone (Slideshow Left, Text Right) --- */}
@@ -173,6 +175,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/Assets/Activites and pool/kids_swings_garden.jpg', '/Assets/Activites and pool/evekidsplay.png']}
                 reverse={false}
+                buttonText="Fun & Frolic"
             />
 
             {/* --- 4. Pool Slides (Text Left, Slideshow Right) --- */}
@@ -183,6 +186,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/Assets/Activites and pool/pool_slides_aerial_view.jpg']}
                 reverse={true}
+                buttonText="Take the Plunge"
             />
 
             {/* --- 5. Rain Dance (Video Left, Text Right) --- */}
@@ -194,6 +198,7 @@ const Activities = () => {
                 mediaType="video"
                 mediaSrc="/Assets/Activites and pool/raindancex.mp4"
                 reverse={false}
+                buttonText="Dance & Drench"
             />
 
             {/* --- 6. Mushroom Fountain (Text Left, Video Right) --- */}
@@ -204,6 +209,7 @@ const Activities = () => {
                 mediaType="video"
                 mediaSrc="/Assets/mushroom water fountain.mp4"
                 reverse={true}
+                buttonText="Magical Mist"
             />
 
             {/* --- 7. Indoor Games (Slideshow Left, Text Right) --- */}
@@ -214,6 +220,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/New/Pool and activities/indoor-games-2.png']}
                 reverse={false}
+                buttonText="Game On"
             />
 
             {/* --- 8. Outdoor Sports (Text Left, Slideshow Right) --- */}
@@ -224,6 +231,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/New/Pool and activities/cricket.jpg']}
                 reverse={true}
+                buttonText="Hit a Six"
             />
 
             {/* --- 9. Pool Games (Slideshow Left, Text Right) --- */}
@@ -234,6 +242,7 @@ const Activities = () => {
                 mediaType="image"
                 mediaSrc={['/New/Pool and activities/ball.png']}
                 reverse={false}
+                buttonText="Make a Splash"
             />
 
         </div>
