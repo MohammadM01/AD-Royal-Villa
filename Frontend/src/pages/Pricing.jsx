@@ -7,9 +7,9 @@ const pricingPlans = [
     {
         id: 'weekday',
         title: 'Weekday Escape',
-        price: '₹12,000',
-        period: '/ night',
-        subtitle: 'Monday - Thursday',
+        price: '₹18,000',
+        period: 'for 1 night (Mon-Fri)',
+        subtitle: 'Weekday Escape',
         description: 'A serene retreat for peace and privacy. Perfect for workcations or small family bondings.',
         features: [
             'Up to 15 Guests',
@@ -45,30 +45,27 @@ const pricingPlans = [
     {
         id: 'weekend',
         title: 'Royal Weekend',
-        price: '₹25,000',
-        period: '/ night',
-        subtitle: 'Friday - Sunday',
+        price: '₹20,000',
+        period: 'for 1 night (Sat-Sun)',
+        subtitle: 'Weekend Celebration',
         description: 'The ultimate celebration experience. Full villa access, loud music allowed, perfect for parties.',
         features: [
             'Up to 15 Guests',
-            'Full 5BHK Villa Access',
+            'Full 4BHK Villa Access',
             'Music System Allowed',
             'BBQ Setup Available',
             'Event Hosting Capable',
             'Large Private Swimming Pool',
-            'Jacuzzi & Kids Pool Area',
             'Projector Setup (On Request)',
             'Premium Sound System Ready',
             'Disco / Party Lights',
             'Live Kitchen Access',
-            'Butler Service Options',
             'Event Decor Permitted',
             'Expansive Lawn Area',
             'Outdoor Gazebo Seating',
             'Bonfire Pit & Setup',
             'Luxury Bedding & Linens',
             'Premium Toiletries Kit',
-            'Welcome Drink on Arrival',
             'Heavy Generator Backup',
             'Dedicated Security Guard',
             'Valet Parking Assistance',
@@ -80,43 +77,7 @@ const pricingPlans = [
         image: '/Assets/Activites and pool/pool_villa_exterior_day.jpg',
         highlight: true
     },
-    {
-        id: 'food',
-        title: 'Gourmet Package',
-        price: '₹800',
-        period: '/ head',
-        subtitle: 'All Meals Included',
-        description: 'Savor authentic home-cooked delicacies prepared fresh by our expert in-house chef.',
-        features: [
-            'Breakfast, Lunch, Dinner',
-            'Hi-Tea & Snacks',
-            'Veg & Non-Veg Options',
-            'Custom Menu Planning',
-            'Fresh Local Ingredients',
-            'Live BBQ Grills & Marination',
-            'Buffet Style Setup',
-            'Jain Food Options Available',
-            'Special Kids Menu',
-            'Evening Popcorn & Fritters',
-            'Midnight Maggi Counters',
-            'Unlimited Mineral Water',
-            'All-Day Tea/Coffee Station',
-            'Dessert Counter',
-            'Fresh Salad Bar',
-            'Seasonal Fruit Platter',
-            'Healthy Breakfast Options',
-            'Local Village Specialties',
-            'Experienced In-House Chef',
-            'Hygienic Preparation Standards',
-            'Table Service Available',
-            'Open-Air Dining Experience',
-            'Poolside Snacks Service',
-            'Special Dietary Requests',
-            'Packed Meals for Travel'
-        ],
-        image: '/Assets/Activites and pool/bbq1.jpeg',
-        highlight: false
-    }
+
 ];
 
 const Pricing = () => {
@@ -244,7 +205,7 @@ const Pricing = () => {
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                                         {[
-                                            '100% Private (Whole 5BHK Villa)',
+                                            '100% Private (Whole 4BHK Villa)',
                                             'Exclusive Pool Access',
                                             'Personal Chef & Caretaker',
                                             'Flexible Check-in/out'
@@ -285,7 +246,7 @@ const Pricing = () => {
                         <p className="text-stone-400 text-xl font-light">Choose the package that suits your gathering.</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-center">
                         {pricingPlans.map((plan, index) => (
                             <motion.div
                                 key={plan.id}
@@ -335,8 +296,8 @@ const Pricing = () => {
                                     <ul className="space-y-4 mb-8 flex-1">
                                         {plan.features.map((feature, i) => (
                                             <li key={i} className="flex items-center gap-3 text-stone-300 text-sm">
-                                                <div className={`p-1 shrink-0 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 text-stone-200'}`}>
-                                                    <Check size={12} />
+                                                <div className={`p-1 shrink-0 rounded-full ${plan.highlight ? 'bg-accent text-white' : 'bg-stone-700 text-stone-200'}`}>
+                                                    <Check size={16} strokeWidth={3} />
                                                 </div>
                                                 {feature}
                                             </li>

@@ -4,7 +4,7 @@ import FullAmenities from '../components/amenities/FullAmenities';
 
 const amenityItems = [
     {
-        src: '/Assets/Activites and pool/pool_villa_exterior_day.jpg',
+        src: '/New/Home/Pool/pool-2.png',
         title: '80ft Lap Pool',
         description: 'Crystal clear waters with rain dance and slides.'
     },

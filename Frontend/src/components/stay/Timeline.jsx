@@ -34,7 +34,7 @@ const slides = [
     {
         id: 5,
         title: 'Comfort & Style',
-        desc: 'Every corner of the AD Royal Private Villa is thoughtfully crafted to blend modern luxury with homelike comfort. From cozy reading nooks to artistic interior flourishes, we ensure a premium experience. Natural light floods the interiors through large windows, highlighting the high-quality upholstery and curated design elements that define our unique style.',
+        desc: 'Every corner of the AD Royal Private Villa is thoughtfully crafted to blend modern luxury with homelike comfort. From cozy reading books to artistic interior flourishes, we ensure a premium experience. Natural light floods the interiors through large windows, highlighting the high-quality upholstery and curated design elements that define our unique style.',
         features: ['Cozy Corners', 'Artistic Interiors', 'Natural Light'],
         image: '/Assets/ameneties/comfort_bedroom_interior.jpg',
     },
