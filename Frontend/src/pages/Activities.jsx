@@ -18,11 +18,11 @@ const ImageSlideshow = ({ images }) => {
     }, [images.length]);
 
     return (
-        <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-[#2A2A2A]">
+        <div className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl border-4 border-white dark:border-[#2A2A2A] group">
             {images.map((src, index) => (
                 <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
                 >
                     <img
                         src={src}
@@ -32,14 +32,14 @@ const ImageSlideshow = ({ images }) => {
                 </div>
             ))}
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
         </div>
     );
 };
 
 const VideoPlayer = ({ src }) => {
     return (
-        <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-[#2A2A2A]">
+        <div className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl border-4 border-white dark:border-[#2A2A2A] group">
             <video
                 autoPlay
                 muted
@@ -59,17 +59,17 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo('.anim-text',
-                { y: 30, opacity: 0 },
+                { y: 50, opacity: 0 },
                 {
-                    y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out",
-                    scrollTrigger: { trigger: sectionRef.current, start: "top 80%" }
+                    y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power4.out",
+                    scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                 }
             );
             gsap.fromTo('.anim-media',
-                { x: reverse ? 50 : -50, opacity: 0 },
+                { x: reverse ? 100 : -100, opacity: 0, scale: 0.95 },
                 {
-                    x: 0, opacity: 1, duration: 1.2, ease: "power3.out",
-                    scrollTrigger: { trigger: sectionRef.current, start: "top 80%" }
+                    x: 0, opacity: 1, scale: 1, duration: 1.2, ease: "power3.out",
+                    scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                 }
             );
         }, sectionRef);
@@ -77,11 +77,11 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
     }, [reverse]);
 
     return (
-        <div ref={sectionRef} className="container mx-auto px-6 py-24 md:py-32">
-            <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
+        <div ref={sectionRef} className="container mx-auto px-6 py-24 md:py-32 border-b border-gray-100 dark:border-gray-800 last:border-0">
+            <div className={`flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
 
                 {/* Media Side (Left or Right) */}
-                <div className="w-full lg:w-1/2 h-[400px] md:h-[500px] anim-media">
+                <div className="w-full lg:w-5/12 h-[350px] md:h-[450px] lg:h-[500px] anim-media">
                     {mediaType === 'video' ? (
                         <VideoPlayer src={mediaSrc} />
                     ) : (
@@ -90,19 +90,26 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
                 </div>
 
                 {/* Text Side */}
-                <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-                    <span className="anim-text inline-block text-[#00b4d8] dark:text-[#00b4d8] text-xs font-bold uppercase tracking-[0.3em] border-b-2 border-[#00b4d8] pb-1">
-                        {subtitle}
-                    </span>
-                    <h2 className="anim-text font-heading text-5xl md:text-6xl text-[#002147] dark:text-[#EAEAEA] leading-tight">
+                <div className="w-full lg:w-6/12 space-y-8 text-center lg:text-left flex flex-col justify-center">
+                    <div className="anim-text">
+                        <span className="inline-block text-[#00b4d8] dark:text-[#00b4d8] text-sm font-bold uppercase tracking-[0.3em] mb-2">
+                            {subtitle}
+                        </span>
+                        <div className="h-0.5 w-12 bg-[#00b4d8] mx-auto lg:mx-0 mt-2"></div>
+                    </div>
+
+                    <h2 className="anim-text font-heading text-5xl md:text-6xl lg:text-7xl text-[#002147] dark:text-[#EAEAEA] leading-none drop-shadow-sm">
                         {title}
                     </h2>
-                    <p className="anim-text font-body text-lg text-[#1a1a1a] dark:text-[#CCCCCC] leading-relaxed max-w-xl mx-auto lg:mx-0">
+
+                    <p className="anim-text font-body text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
                         {desc}
                     </p>
+
                     <div className="anim-text pt-4">
-                        <button className="px-8 py-3 bg-[#002147] text-white dark:bg-[#00b4d8] dark:text-black font-heading uppercase tracking-widest text-xs hover:scale-105 transition-transform duration-300 shadow-lg">
-                            Explore More
+                        <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-[#00b4d8] dark:text-black font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95">
+                            <span className="relative z-10 group-hover:text-[#00b4d8] dark:group-hover:text-white transition-colors">Explore More</span>
+                            <div className="absolute inset-0 bg-white dark:bg-[#002147] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></div>
                         </button>
                     </div>
                 </div>
@@ -197,6 +204,36 @@ const Activities = () => {
                 mediaType="video"
                 mediaSrc="/Assets/mushroom water fountain.mp4"
                 reverse={true}
+            />
+
+            {/* --- 7. Indoor Games (Slideshow Left, Text Right) --- */}
+            <ContentSection
+                subtitle="Fun For Everyone"
+                title="Indoor Games Arena"
+                desc="Step inside our fully equipped game zone. From table tennis to carrom, challenge your friends and family to exciting matches regardless of the weather outside."
+                mediaType="image"
+                mediaSrc={['/New/Pool and activities/indoor-games-2.png']}
+                reverse={false}
+            />
+
+            {/* --- 8. Outdoor Sports (Text Left, Slideshow Right) --- */}
+            <ContentSection
+                subtitle="Outdoor Thrills"
+                title="Cricket & Sports"
+                desc="Embrace the open air with a game of cricket on our spacious grounds. Perfect for team bonding and energetic matches under the sun or stars."
+                mediaType="image"
+                mediaSrc={['/New/Pool and activities/cricket.jpg']}
+                reverse={true}
+            />
+
+            {/* --- 9. Pool Games (Slideshow Left, Text Right) --- */}
+            <ContentSection
+                subtitle="Splash & Play"
+                title="Pool Water Games"
+                desc="Jump in for some high-energy fun! Perfect for families and groups, our pool is spacious enough for a friendly game of catch, water volleyball, or simply tossing a ball around while cooling off."
+                mediaType="image"
+                mediaSrc={['/New/Pool and activities/ball.png']}
+                reverse={false}
             />
 
         </div>
