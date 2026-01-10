@@ -53,7 +53,7 @@ const VideoPlayer = ({ src }) => {
     );
 };
 
-const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More" }) => {
+const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More", gradient }) => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
