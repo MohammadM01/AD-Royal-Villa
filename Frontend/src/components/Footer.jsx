@@ -75,7 +75,7 @@ const Footer = () => {
 
             <div className="border-t border-gray-800 mt-6 pt-4 text-gray-500 text-sm flex flex-row md:flex-row justify-center  items-center gap-4">
                 <p>&copy; {new Date().getFullYear()} AD Farms & Resorts. All rights reserved.</p>
-                <p>Website designed & developed by <b className='text-white'>Datamatex Technologies</b></p>
+                <p>Website designed & developed by <a href="https://datamatex.in/" target="_blank" rel="noopener noreferrer" className='text-white hover:text-primary transition-colors font-bold'>Datamatex Technologies</a></p>
             </div>
         </footer>
     )
