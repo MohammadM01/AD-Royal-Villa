@@ -53,8 +53,11 @@ const VideoPlayer = ({ src }) => {
     );
 };
 
-const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More", gradient }) => {
+const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More", accentText, accentBg }) => {
     const sectionRef = useRef(null);
+    // Defaults
+    const textClass = accentText || 'text-cyan-500';
+    const bgClass = accentBg || 'bg-cyan-500';
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -92,13 +95,13 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                 {/* Text Side */}
                 <div className="w-full lg:w-6/12 space-y-8 text-center lg:text-left flex flex-col justify-center">
                     <div className="anim-text">
-                        <span className="inline-block text-[#00b4d8] dark:text-[#00b4d8] text-sm font-bold uppercase tracking-[0.3em] mb-2">
+                        <span className={`inline-block ${textClass} text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
                             {subtitle}
                         </span>
-                        <div className="h-0.5 w-12 bg-[#00b4d8] mx-auto lg:mx-0 mt-2"></div>
+                        <div className={`h-1 w-12 ${bgClass} mx-auto lg:mx-0 mt-2 rounded-full`}></div>
                     </div>
 
-                    <h2 className={`anim-text font-heading text-5xl md:text-6xl lg:text-7xl bg-linear-to-r ${gradient || 'from-cyan-400 via-blue-500 to-purple-600'} bg-clip-text text-transparent leading-none drop-shadow-sm pb-2`}>
+                    <h2 className={`anim-text font-heading text-5xl md:text-6xl lg:text-7xl ${textClass} leading-none drop-shadow-sm pb-2`}>
                         {title}
                     </h2>
 
@@ -107,9 +110,9 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                     </p>
 
                     <div className="anim-text pt-4">
-                        <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-[#00b4d8] dark:text-black font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95">
-                            <span className="relative z-10 group-hover:text-[#00b4d8] dark:group-hover:text-white transition-colors">{buttonText}</span>
-                            <div className="absolute inset-0 bg-white dark:bg-[#002147] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></div>
+                        <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-white dark:text-[#002147] font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95 rounded-sm">
+                            <span className={`relative z-10 transition-colors group-hover:${textClass} dark:group-hover:${textClass}`}>{buttonText}</span>
+                            <div className={`absolute inset-0 ${bgClass} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                         </button>
                     </div>
                 </div>
@@ -137,7 +140,7 @@ const Activities = () => {
                 </div>
                 <div className="relative z-10 text-center px-4 mix-blend-screen">
                     <h1 className="font-heading text-6xl md:text-8xl text-white mb-4 animate-fade-in-up drop-shadow-2xl">
-                        Royal <span className="text-[#00b4d8] italic font-serif">Activities</span>
+                        Royal <span className="text-amber-400 italic font-serif">Activities</span>
                     </h1>
                     <p className="font-body text-sm md:text-base text-stone-200 tracking-[0.4em] uppercase animate-fade-in-up delay-300">
                         Experience The Extraordinary
@@ -147,7 +150,8 @@ const Activities = () => {
 
             {/* --- 1. BBQ Section (Slideshow Left, Text Right) --- */}
             <ContentSection
-                gradient="from-orange-500 via-red-500 to-yellow-500"
+                accentText="text-orange-500"
+                accentBg="bg-orange-500"
                 subtitle="Gourmet Experience"
                 title="Live BBQ Nights"
                 desc="Indulge in a culinary journey under the stars. Our live BBQ station allows you to grill your favorites while enjoying the cool evening breeze. Perfect for family gatherings and late-night conversations."
@@ -159,7 +163,8 @@ const Activities = () => {
 
             {/* --- 2. Tipping Bucket (Text Left, Video Right) --- */}
             <ContentSection
-                gradient="from-blue-400 via-cyan-500 to-teal-400"
+                accentText="text-cyan-500"
+                accentBg="bg-cyan-500"
                 subtitle="Aquatic Thrills"
                 title="The Tipping Bucket"
                 desc="Feel the anticipation rise as the giant bucket fills up, only to unleash a massive splash of refreshing water. A favorite attraction for both kids and adults seeking a fun way to cool off."
@@ -171,7 +176,8 @@ const Activities = () => {
 
             {/* --- 3. Kids Zone (Slideshow Left, Text Right) --- */}
             <ContentSection
-                gradient="from-green-400 via-lime-500 to-yellow-400"
+                accentText="text-lime-500"
+                accentBg="bg-lime-500"
                 subtitle="Safe & Fun"
                 title="Kids Adventure Park"
                 desc="A dedicated paradise for our younger guests. Featuring safe rubberized flooring, garden swings, and open play areas where imagination runs wild in a secure, lush green environment."
@@ -183,7 +189,8 @@ const Activities = () => {
 
             {/* --- 4. Pool Slides (Text Left, Slideshow Right) --- */}
             <ContentSection
-                gradient="from-indigo-400 via-purple-500 to-pink-500"
+                accentText="text-violet-500"
+                accentBg="bg-violet-500"
                 subtitle="Poolside Fun"
                 title="Twisting Slides"
                 desc="Glide into our crystal-clear waters through our exciting twisting slides. Whether you're racing friends or just enjoying the splash, our pool arena offers endless entertainment."
@@ -194,9 +201,9 @@ const Activities = () => {
             />
 
             {/* --- 5. Rain Dance (Video Left, Text Right) --- */}
-            {/* Note: User asked for Rain Dance "Video Left", putting it last in chain */}
             <ContentSection
-                gradient="from-fuchsia-500 via-pink-500 to-rose-500"
+                accentText="text-pink-500"
+                accentBg="bg-pink-500"
                 subtitle="Feel The Rhythm"
                 title="Rain Dance Arena"
                 desc="Dance your heart out! Combine high-fidelity sound with rhythmically synced mist and water jets. It's the ultimate party experience right within the resort."
@@ -208,7 +215,8 @@ const Activities = () => {
 
             {/* --- 6. Mushroom Fountain (Text Left, Video Right) --- */}
             <ContentSection
-                gradient="from-teal-400 via-emerald-500 to-cyan-500"
+                accentText="text-teal-500"
+                accentBg="bg-teal-500"
                 subtitle="Playful Splashes"
                 title="Mushroom Fountain"
                 desc="Enjoy the whimsical charm of our Mushroom Water Fountain. A perfect spot for kids to splash around or for a soothing aquatic backdrop to your poolside relaxation."
@@ -220,7 +228,8 @@ const Activities = () => {
 
             {/* --- 7. Indoor Games (Slideshow Left, Text Right) --- */}
             <ContentSection
-                gradient="from-amber-400 via-orange-500 to-red-500"
+                accentText="text-amber-500"
+                accentBg="bg-amber-500"
                 subtitle="Fun For Everyone"
                 title="Indoor Games Arena"
                 desc="Step inside our fully equipped game zone. From table tennis to carrom, challenge your friends and family to exciting matches regardless of the weather outside."
@@ -232,7 +241,8 @@ const Activities = () => {
 
             {/* --- 8. Outdoor Sports (Text Left, Slideshow Right) --- */}
             <ContentSection
-                gradient="from-lime-500 via-green-600 to-emerald-700"
+                accentText="text-emerald-600"
+                accentBg="bg-emerald-600"
                 subtitle="Outdoor Thrills"
                 title="Cricket & Sports"
                 desc="Embrace the open air with a game of cricket on our spacious grounds. Perfect for team bonding and energetic matches under the sun or stars."
@@ -244,7 +254,8 @@ const Activities = () => {
 
             {/* --- 9. Pool Games (Slideshow Left, Text Right) --- */}
             <ContentSection
-                gradient="from-sky-400 via-blue-500 to-indigo-600"
+                accentText="text-sky-500"
+                accentBg="bg-sky-500"
                 subtitle="Splash & Play"
                 title="Pool Water Games"
                 desc="Jump in for some high-energy fun! Perfect for families and groups, our pool is spacious enough for a friendly game of catch, water volleyball, or simply tossing a ball around while cooling off."
