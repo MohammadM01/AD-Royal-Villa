@@ -73,7 +73,7 @@ const Contact = () => {
                     {/* LEFT: Contact Info (More Compact) */}
                     <div ref={infoRef} className="lg:w-1/2 space-y-6">
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaMapMarkerAlt />
                             </div>
@@ -86,7 +86,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaPhoneAlt />
                             </div>
@@ -99,7 +99,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-red-50 transition-colors duration-300">
+                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaEnvelope />
                             </div>

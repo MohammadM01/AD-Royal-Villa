@@ -156,22 +156,22 @@ const PoolZigZag = () => {
 
     return (
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
-            <h2 className="absolute top-32 left-8 md:px-12 text-5xl font-heading text-primary z-10 w-full max-w-[90vw]">
+            <h2 className="relative md:absolute top-0 md:top-32 left-0 md:left-8 px-6 md:px-12 text-4xl md:text-5xl font-heading text-primary z-10 w-full max-w-[90vw] mb-8 md:mb-0 mt-20 md:mt-0">
                 Aquatic Paradise <span className="text-secondary mx-2">:</span>
-                <span className="text-lg font-body text-accent font-light align-middle ml-2 inline-block max-w-2xl leading-tight">
+                <span className="block md:inline-block text-base md:text-lg font-body text-accent font-light align-middle md:ml-2 max-w-2xl leading-tight mt-2 md:mt-0">
                     Discover a sanctuary of water and light. From infinite horizons to playful splashes, find your perfect liquid escape.
                 </span>
             </h2>
 
             {/* Scroll Container with Vertical Lines (Two standing lines) */}
-            <div className="relative w-full max-w-[85vw] mx-auto h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
+            <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[70vh] md:h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
 
                 {/* Track */}
-                <div ref={trackRef} className="flex relative items-center px-10 min-w-max">
+                <div ref={trackRef} className="flex relative items-center px-4 md:px-10 min-w-max">
                     {poolImages.map((item, index) => (
                         <div
                             key={index}
-                            className="pool-card-wrapper relative group shrink-0 w-[65vh] h-[45vh] transition-all duration-500 will-change-transform" // Reduced width slightly
+                            className="pool-card-wrapper relative group shrink-0 w-[85vw] md:w-[65vh] h-[50vh] md:h-[45vh] transition-all duration-500 will-change-transform" // Responsive width/height
                             onClick={() => setExpandedIdx(index)}
                             style={{
                                 zIndex: index % 2 === 0 ? 10 : 5,
@@ -225,7 +225,7 @@ const PoolZigZag = () => {
                         </div>
                         {/* Text Right */}
                         <div className="w-full md:w-1/3 h-1/2 md:h-full p-8 md:p-12 flex flex-col justify-center bg-white text-left relative overflow-y-auto">
-                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl hover:text-red-500">&times;</button>
+                            <button onClick={() => setExpandedIdx(null)} className="absolute top-4 right-4 text-3xl hover:text-[#00b4d8]">&times;</button>
                             <h3 className="text-4xl font-heading text-primary mb-6">{poolImages[expandedIdx].title}</h3>
                             <div className="w-16 h-1 bg-accent mb-6"></div>
                             <p className="text-base text-gray-700 font-body leading-relaxed whitespace-pre-wrap">

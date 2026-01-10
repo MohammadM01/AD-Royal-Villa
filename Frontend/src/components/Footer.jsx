@@ -22,11 +22,11 @@ const Footer = () => {
     }, { scope: footerRef });
 
     return (
-        <footer ref={footerRef} className="bg-text text-white py-16 relative">
-            <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 ">
+        <footer ref={footerRef} className="bg-text text-white py-10 md:py-16 relative">
+            <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ">
                 {/* Brand Section */}
                 <div className="space-y-6">
-                    <h3 className="text-3xl font-heading font-bold" style={{ color: '#D4AF37' }}>AD Royal Private Villa</h3>
+                    <h3 className="text-3xl font-heading font-bold" style={{ color: '#00b4d8' }}>AD Royal Private Villa</h3>
                     <p className="text-gray-400 font-light leading-relaxed">
                         Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK farmhouse.
                     </p>
@@ -42,7 +42,7 @@ const Footer = () => {
 
                 {/* Quick Links */}
                 <div className="space-y-6">
-                    <h4 className="text-xl font-heading font-semibold" style={{ color: '#D4AF37' }}>Quick Links</h4>
+                    <h4 className="text-xl font-heading font-semibold" style={{ color: '#00b4d8' }}>Quick Links</h4>
                     <ul className="space-y-4 text-gray-400 font-light">
                         <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                         <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
@@ -54,7 +54,7 @@ const Footer = () => {
 
                 {/* Contact Info */}
                 <div className="space-y-6">
-                    <h4 className="text-xl font-heading font-semibold" style={{ color: '#D4AF37' }}>Contact Us</h4>
+                    <h4 className="text-xl font-heading font-semibold" style={{ color: '#00b4d8' }}>Contact Us</h4>
                     <div className="space-y-4 text-gray-400 font-light">
                         <div className="flex items-start space-x-4">
                             <FaMapMarkerAlt size={24} className="text-primary mt-1 shrink-0" />

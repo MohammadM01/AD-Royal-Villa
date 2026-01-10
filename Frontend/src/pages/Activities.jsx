@@ -91,7 +91,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
 
                 {/* Text Side */}
                 <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-                    <span className="anim-text inline-block text-[#800000] dark:text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] border-b-2 border-[#D4AF37] pb-1">
+                    <span className="anim-text inline-block text-[#00b4d8] dark:text-[#00b4d8] text-xs font-bold uppercase tracking-[0.3em] border-b-2 border-[#00b4d8] pb-1">
                         {subtitle}
                     </span>
                     <h2 className="anim-text font-heading text-5xl md:text-6xl text-[#002147] dark:text-[#EAEAEA] leading-tight">
@@ -101,7 +101,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
                         {desc}
                     </p>
                     <div className="anim-text pt-4">
-                        <button className="px-8 py-3 bg-[#002147] text-white dark:bg-[#D4AF37] dark:text-black font-heading uppercase tracking-widest text-xs hover:scale-105 transition-transform duration-300 shadow-lg">
+                        <button className="px-8 py-3 bg-[#002147] text-white dark:bg-[#00b4d8] dark:text-black font-heading uppercase tracking-widest text-xs hover:scale-105 transition-transform duration-300 shadow-lg">
                             Explore More
                         </button>
                     </div>
@@ -130,7 +130,7 @@ const Activities = () => {
                 </div>
                 <div className="relative z-10 text-center px-4 mix-blend-screen">
                     <h1 className="font-heading text-6xl md:text-8xl text-white mb-4 animate-fade-in-up drop-shadow-2xl">
-                        Royal <span className="text-[#D4AF37] italic font-serif">Activities</span>
+                        Royal <span className="text-[#00b4d8] italic font-serif">Activities</span>
                     </h1>
                     <p className="font-body text-sm md:text-base text-stone-200 tracking-[0.4em] uppercase animate-fade-in-up delay-300">
                         Experience The Extraordinary

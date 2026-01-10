@@ -1,15 +1,25 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import LiquidRevealImage from './LiquidRevealImage';
 
-const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
+const ImageGalleryLayout = ({ title, subtitle, eyebrow, items = [] }) => {
     return (
         <div className="container mx-auto px-4 py-8 md:py-12 min-h-screen transition-colors duration-300 relative">
             {/* Burgundy Blur for Light Theme - Positioning it behind content */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#800000]/20 rounded-full blur-[100px] pointer-events-none -z-10 dark:hidden" />
+            <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00b4d8]/20 dark:bg-[#00b4d8]/20 rounded-full blur-[100px] pointer-events-none -z-10 transition-colors duration-500"
+            />
 
             {/* Header Section */}
             <div className="text-center mb-16 space-y-4 max-w-4xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-heading text-primary tracking-tight">
+                {eyebrow && (
+                    <span className="text-primary dark:text-accent tracking-widest text-sm font-bold uppercase block mb-2">
+                        {eyebrow}
+                    </span>
+                )}
+                <h1 className="text-5xl md:text-7xl font-heading text-primary dark:text-accent tracking-tight">
                     {title}
                 </h1>
                 {subtitle && (
@@ -35,12 +45,10 @@ const ImageGalleryLayout = ({ title, subtitle, items = [] }) => {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="break-inside-avoid relative"
+                        className={`break-inside-avoid relative ${index % 2 !== 0 ? 'md:ml-4' : ''}`}
                         style={{
                             // Create collapsing/overlapping effect
                             marginTop: index === 0 ? '0' : '-1.5rem',
-                            // Slight horizontal offset for random look
-                            marginLeft: index % 2 === 0 ? '0' : '1rem',
                             zIndex: index
                         }}
                     >

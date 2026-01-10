@@ -70,7 +70,7 @@ const Preloader = ({ onComplete }) => {
             <div className="flex flex-col items-center">
                 <h1
                     ref={textRef}
-                    className="font-heading italic text-3xl md:text-6xl mb-4 bg-gradient-to-r from-[#bf953f] via-[#fcf6ba] to-[#bf953f] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-slow text-center px-4"
+                    className="font-heading italic text-3xl md:text-6xl mb-4 bg-gradient-to-r from-[#00b4d8] via-[#a0e2f3] to-[#00b4d8] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-slow text-center px-4"
                 >
                     AD Royal Villa
                 </h1>
@@ -78,20 +78,20 @@ const Preloader = ({ onComplete }) => {
                 {/* Golden Line */}
                 <div
                     ref={lineRef}
-                    className="h-[1px] bg-[#D4AF37] w-48 md:w-96 mb-4"
+                    className="h-[1px] bg-[#00b4d8] w-48 md:w-96 mb-4"
                 ></div>
 
                 {/* Subtext */}
                 <p
                     ref={subTextRef}
-                    className="text-[#D4AF37] text-[10px] md:text-sm font-body uppercase tracking-[0.5em] text-center"
+                    className="text-[#00b4d8] text-[10px] md:text-sm font-body uppercase tracking-[0.5em] text-center"
                 >
                     Experience Luxury
                 </p>
             </div>
 
             {/* Optional Glow */}
-            <div className="absolute inset-0 bg-yellow-500/5 blur-3xl -z-10 rounded-full pointer-events-none" />
+            <div className="absolute inset-0 bg-[#00b4d8]/5 blur-3xl -z-10 rounded-full pointer-events-none" />
         </div>
     );
 };

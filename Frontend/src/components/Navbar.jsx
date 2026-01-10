@@ -39,24 +39,24 @@ const Navbar = () => {
             // Top: Always White (or Gold Active) with Shadow for better contrast on images
             // using !important to override any global anchor styles
             return isActive
-                ? '!text-[#D4AF37] scale-110 font-bold drop-shadow-md'
-                : '!text-white hover:!text-[#D4AF37] drop-shadow-md';
+                ? '!text-[#00b4d8] scale-110 font-bold drop-shadow-md'
+                : '!text-white hover:!text-[#00b4d8] drop-shadow-md';
         }
         // Scrolled: Dark(Navy/Maroon) in Light Mode, White/Gold in Dark Mode
         if (theme === 'dark') {
             return isActive
-                ? '!text-[#D4AF37] scale-110 font-bold'
-                : '!text-[#EAEAEA] hover:!text-[#D4AF37]';
+                ? '!text-[#00b4d8] scale-110 font-bold'
+                : '!text-[#EAEAEA] hover:!text-[#00b4d8]';
         }
         return isActive
-            ? '!text-[#800000] scale-110 font-bold'
-            : '!text-[#002147] hover:!text-[#800000]';
+            ? '!text-[#00b4d8] scale-110 font-bold'
+            : '!text-[#002147] hover:!text-[#00b4d8]';
     };
 
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-                ? `${theme === 'dark' ? 'bg-black/90 border-[#D4AF37]/10' : 'bg-white/90 border-[#800000]/10'} backdrop-blur-md shadow-lg py-2 border-b`
+                ? `${theme === 'dark' ? 'bg-black/90 border-[#00b4d8]/10' : 'bg-white/90 border-[#00b4d8]/10'} backdrop-blur-md shadow-lg py-2 border-b`
                 : 'bg-gradient-to-b from-black/60 to-transparent py-2'
                 }`}
         >
@@ -84,7 +84,7 @@ const Navbar = () => {
                             >
                                 {link.name}
                                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full 
-                                    ${!isScrolled ? 'bg-white' : (theme === 'dark' ? 'bg-[#D4AF37]' : 'bg-[#800000]')}
+                                    ${!isScrolled ? 'bg-white' : (theme === 'dark' ? 'bg-[#00b4d8]' : 'bg-[#00b4d8]')}
                                     ${location.pathname === link.path ? 'w-full' : ''}
                                 `} />
                             </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
                             className={`px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em] transform hover:scale-105
                                 ${!isScrolled
                                     ? 'bg-white text-[#002147] hover:bg-[#F9F4E8] shadow-lg'
-                                    : `${theme === 'dark' ? 'bg-[#D4AF37] text-black' : 'bg-[#800000] text-[#F9F4E8]'}`
+                                    : `${theme === 'dark' ? 'bg-[#00b4d8] text-black' : 'bg-[#00b4d8] text-[#F9F4E8]'}`
                                 }
                             `}
                         >
@@ -120,7 +120,7 @@ const Navbar = () => {
                             className={`transition-colors p-2 rounded-full backdrop-blur-sm border
                                 ${!isScrolled
                                     ? 'text-white bg-white/10 border-white/20 hover:bg-white/20'
-                                    : `${theme === 'dark' ? 'text-[#EAEAEA] border-transparent hover:text-[#D4AF37]' : 'text-[#002147] border-transparent hover:text-[#800000]'}`
+                                    : `${theme === 'dark' ? 'text-[#EAEAEA] border-transparent hover:text-[#00b4d8]' : 'text-[#002147] border-transparent hover:text-[#00b4d8]'}`
                                 }
                             `}
                         >
@@ -137,7 +137,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className={`fixed top-0 left-0 w-full h-screen backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden
+                        className={`fixed top-0 left-0 w-full h-screen backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-6 md:hidden
                             ${theme === 'dark' ? 'bg-[#121212]/95' : 'bg-[#F9F4E8]/95'}
                         `}
                     >
@@ -146,10 +146,10 @@ const Navbar = () => {
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`text-xl font-heading font-medium tracking-wider uppercase 
+                                className={`text-lg font-heading font-medium tracking-wider uppercase 
                                     ${theme === 'dark'
-                                        ? (location.pathname === link.path ? 'text-[#D4AF37]' : 'text-[#EAEAEA]')
-                                        : (location.pathname === link.path ? 'text-[#800000]' : 'text-[#002147]')
+                                        ? (location.pathname === link.path ? 'text-[#00b4d8]' : 'text-[#EAEAEA]')
+                                        : (location.pathname === link.path ? 'text-[#00b4d8]' : 'text-[#002147]')
                                     }`}
                             >
                                 {link.name}
@@ -159,8 +159,8 @@ const Navbar = () => {
                             href="https://wa.me/91XXXXXXXXXX"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`px-8 py-3 rounded-full font-medium uppercase tracking-[0.2em]
-                                ${theme === 'dark' ? 'bg-[#D4AF37] text-black' : 'bg-[#800000] text-[#F9F4E8]'}
+                            className={`px-6 py-2 rounded-full font-medium uppercase tracking-[0.2em] text-sm
+                                ${theme === 'dark' ? 'bg-[#00b4d8] text-black' : 'bg-[#00b4d8] text-[#F9F4E8]'}
                             `}
                         >
                             Book Now
