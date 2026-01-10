@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageGalleryLayout from '../components/ImageGalleryLayout';
+import FullAmenities from '../components/amenities/FullAmenities';
 
 const amenityItems = [
     {
@@ -31,19 +32,24 @@ const amenityItems = [
 
 const Amenities = () => {
     return (
-        <ImageGalleryLayout
-            title="Amenities"
-            subtitle={
-                <span>
-                    <strong className="block text-2xl mb-4 text-primary font-heading">Aquatic Paradise</strong>
-                    Experience the joy of abundance with our world-class facilities.
-                    From the crystal-clear waters of our lap pool to the laughter-filled kids' zone,
-                    every corner is designed for your ultimate relaxation and pleasure.
-                    Immerse yourself in luxury that knows no bounds.
-                </span>
-            }
-            items={amenityItems}
-        />
+        <div className="min-h-screen bg-white dark:bg-[#0F172A] transition-colors duration-300">
+            <ImageGalleryLayout
+                title="Amenities"
+                subtitle={
+                    <span>
+                        <strong className="block text-2xl mb-4 text-primary font-heading">Aquatic Paradise</strong>
+                        Experience the joy of abundance with our world-class facilities.
+                        From the crystal-clear waters of our lap pool to the laughter-filled kids' zone,
+                        every corner is designed for your ultimate relaxation and pleasure.
+                        Immerse yourself in luxury that knows no bounds.
+                    </span>
+                }
+                items={amenityItems}
+            />
+            <div className="relative z-20">
+                <FullAmenities />
+            </div>
+        </div>
     );
 };
 
