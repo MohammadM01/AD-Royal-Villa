@@ -22,11 +22,8 @@ const App = () => {
       <LeafProvider>
         <FloatingLeaf />
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-          <Butterfly id={1} sizeClasses="w-20 h-20" />
-          <Butterfly id={2} sizeClasses="w-12 h-12" />
-          <Butterfly id={3} sizeClasses="w-28 h-28" />
-          <Butterfly id={4} sizeClasses="w-16 h-16" />
-          <Butterfly id={5} sizeClasses="w-24 h-24" />
+          <Butterfly id={1} sizeClasses="w-32 h-32" startFar={false} />
+          <Butterfly id={3} sizeClasses="w-15 h-15" startFar={true} />
         </div>
         {isLoading ? (
           <Preloader onComplete={() => setIsLoading(false)} />

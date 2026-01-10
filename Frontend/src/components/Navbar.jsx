@@ -36,27 +36,21 @@ const Navbar = () => {
     // Dynamic Text Color Helper
     const getTextColor = (isActive) => {
         if (!isScrolled) {
-            // Top: Always White (or Gold Active) with Shadow for better contrast on images
-            // using !important to override any global anchor styles
+            // Top: Always White (or Cyan Active) with Shadow
             return isActive
                 ? '!text-[#00b4d8] scale-110 font-bold drop-shadow-md'
                 : '!text-white hover:!text-[#00b4d8] drop-shadow-md';
         }
-        // Scrolled: Dark(Navy/Maroon) in Light Mode, White/Gold in Dark Mode
-        if (theme === 'dark') {
-            return isActive
-                ? '!text-[#00b4d8] scale-110 font-bold'
-                : '!text-[#EAEAEA] hover:!text-[#00b4d8]';
-        }
+        // Scrolled: Background is now fixed dark (#2B3D5C), so text must be light
         return isActive
             ? '!text-[#00b4d8] scale-110 font-bold'
-            : '!text-[#002147] hover:!text-[#00b4d8]';
+            : '!text-[#EAEAEA] hover:!text-[#00b4d8]';
     };
 
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-                ? `${theme === 'dark' ? 'bg-black/90 border-[#00b4d8]/10' : 'bg-white/90 border-[#00b4d8]/10'} backdrop-blur-md shadow-lg py-2 border-b`
+                ? 'bg-[#2B3D5C]/90 backdrop-blur-md shadow-lg py-2 border-b border-[#00b4d8]/10'
                 : 'bg-gradient-to-b from-black/60 to-transparent py-2'
                 }`}
         >
@@ -91,7 +85,7 @@ const Navbar = () => {
                         ))}
 
                         {/* Theme Toggle Button */}
-                        <div className={`${!isScrolled ? 'text-white' : (theme === 'dark' ? 'text-white' : 'text-[#002147]')}`}>
+                        <div className={`${!isScrolled ? 'text-white' : 'text-white'}`}>
                             <ThemeToggle />
                         </div>
 
@@ -102,7 +96,7 @@ const Navbar = () => {
                             className={`px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all shadow-md hover:shadow-lg uppercase text-[10px] tracking-[0.2em] transform hover:scale-105
                                 ${!isScrolled
                                     ? 'bg-white text-[#002147] hover:bg-[#F9F4E8] shadow-lg'
-                                    : `${theme === 'dark' ? 'bg-[#00b4d8] text-black' : 'bg-[#00b4d8] text-[#F9F4E8]'}`
+                                    : 'bg-[#00b4d8] text-black shadow-lg' // Fixed cyan button with dark text for contrast on dark navbar
                                 }
                             `}
                         >
@@ -112,7 +106,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center space-x-4 z-50">
-                        <div className={`scale-75 origin-right ${!isScrolled ? 'text-white' : (theme === 'dark' ? 'text-white' : 'text-[#002147]')}`}>
+                        <div className={`scale-75 origin-right text-white`}>
                             <ThemeToggle />
                         </div>
                         <button
@@ -120,7 +114,7 @@ const Navbar = () => {
                             className={`transition-colors p-2 rounded-full backdrop-blur-sm border
                                 ${!isScrolled
                                     ? 'text-white bg-white/10 border-white/20 hover:bg-white/20'
-                                    : `${theme === 'dark' ? 'text-[#EAEAEA] border-transparent hover:text-[#00b4d8]' : 'text-[#002147] border-transparent hover:text-[#00b4d8]'}`
+                                    : 'text-[#EAEAEA] border-transparent hover:text-[#00b4d8]'
                                 }
                             `}
                         >

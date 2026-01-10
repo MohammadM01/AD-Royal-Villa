@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16" }) => {
+const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16", startFar = false }) => {
     const containerRef = useRef(null);
     const innerWrapperRef = useRef(null); // Controls wing flapping
 
@@ -18,15 +18,21 @@ const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16" }) => {
         const startX = Math.random() * (window.innerWidth - 100) + 50;
         const startY = Math.random() * (window.innerHeight - 100) + 50;
 
+        // Initial Scale based on depth
+        // Big = 1.0, Small = 0.5 (Far)
+        // If startFar is true, start at 0.5. Else 1.0.
+        // We will animate scale during flight.
+        const initialScale = startFar ? 0.5 : 1.0;
+
         gsap.set(containerRef.current, {
             x: startX,
             y: startY,
-            scale: 0,
+            scale: 0, // Start hidden for appear animation
             rotation: "random(-15, 15)"
         });
 
-        // Appear animation
-        gsap.to(containerRef.current, { scale: 1, duration: 1, ease: "back.out(1.7)" });
+        // Appear animation - animate to initial depth scale
+        gsap.to(containerRef.current, { scale: initialScale, duration: 1, ease: "back.out(1.7)" });
 
         // --- 2. ANIMATION TIMELINES (Initially Paused or Active) ---
 
@@ -102,9 +108,16 @@ const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16" }) => {
             });
 
             // 4. Move
+            // 4. Move & Depth Swap
+            // Determine new scale (Depth Swap)
+            // If current scale is > 0.7 (Close), go Small (Far). Else go Big (Close).
+            const currentScale = gsap.getProperty(containerRef.current, "scale");
+            const targetScale = currentScale > 0.7 ? 0.5 : 1.0; // Swap depth
+
             gsap.to(containerRef.current, {
                 x: nextX,
                 y: nextY,
+                scale: targetScale, // Animate depth during flight
                 duration: flightDuration,
                 ease: "power1.inOut",
                 onComplete: sit

@@ -22,7 +22,7 @@ const Layout = () => {
             <LiquidFilters />
 
             {/* Background Floating Leaves */}
-            <BackgroundLeaves />
+
 
             <div className="flex flex-col min-h-screen relative z-10">
                 <Navbar />
