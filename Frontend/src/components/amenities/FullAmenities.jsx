@@ -6,8 +6,8 @@ const FullAmenities = () => {
         'Luxury 4BHK Villa', '6 Premium Washrooms', '9 Extra Comfort Mattresses', 'Comp. Mineral Water',
         '24/7 Hot & Cold Water', '100% Power Backup', 'Secure Parking (8 Cars)', 'Dedicated Caretaker',
         'Pet Friendly Stays', 'Re-heating Kitchenette', 'Safe Kids Pool (3ft)', 'Deep Adult Pool (5ft)',
-        'Family Mega Slide', 'Adrenaline Single Slide', 'Mushroom Waterfall', '55" Smart TVs',
-        'Grand Living Hall', 'Royal 12-Seater Dining', 'Lush Outdoor Lawns', 'Indoor Games Arena'
+        'Family Mega Slide', 'Adrenaline Single Slide', 'Mushroom Waterfall', '65" Smart TVs',
+        'Grand Living Hall', 'Royal 8-Seater Dining', 'Lush Outdoor Lawns', 'Indoor Games Arena'
     ];
 
     return (
