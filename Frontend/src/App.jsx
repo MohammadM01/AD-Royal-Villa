@@ -12,7 +12,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import { LeafProvider } from './context/LeafContext'
 import Preloader from './components/Preloader'
 import FloatingLeaf from './components/FloatingLeaf'
-import Butterfly from './components/Butterfly'
+import Kingfisher from './components/Kingfisher'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,8 +22,8 @@ const App = () => {
       <LeafProvider>
         <FloatingLeaf />
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-          <Butterfly id={1} sizeClasses="w-32 h-32" startFar={false} />
-          <Butterfly id={3} sizeClasses="w-15 h-15" startFar={true} />
+          <Kingfisher sizeClasses="w-44 h-44" />
+          <Kingfisher sizeClasses="w-28 h-28" />
         </div>
         {isLoading ? (
           <Preloader onComplete={() => setIsLoading(false)} />
