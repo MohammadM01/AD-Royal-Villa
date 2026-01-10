@@ -22,7 +22,7 @@ const Footer = () => {
     }, { scope: footerRef });
 
     return (
-        <footer ref={footerRef} className="bg-[#2B3D5C] text-white py-10 md:py-16 relative">
+        <footer ref={footerRef} className="bg-[#2B3D5C] text-white py-8 md:py-10 relative">
             <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ">
                 {/* Brand Section */}
                 <div className="space-y-6">
@@ -71,8 +71,9 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            <div className="border-t border-gray-800 mt-6 pt-4 text-gray-500 text-sm flex flex-row md:flex-row justify-center  items-center gap-4">
                 <p>&copy; {new Date().getFullYear()} AD Farms & Resorts. All rights reserved.</p>
+                <p>Website designed & developed by <b className='text-white'>Datamatex Technologies</b></p>
             </div>
         </footer>
     )
