@@ -1,5 +1,6 @@
 import React from 'react';
 import Timeline from '../components/stay/Timeline';
+import FullAmenities from '../components/amenities/FullAmenities';
 
 import { motion } from 'framer-motion';
 
@@ -38,6 +39,9 @@ const Stay = () => {
       </div>
 
       <Timeline />
+      <div className="relative z-20">
+        <FullAmenities />
+      </div>
     </div>
   );
 };
