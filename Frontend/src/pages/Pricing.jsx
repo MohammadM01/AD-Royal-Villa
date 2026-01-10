@@ -11,9 +11,34 @@ const pricingPlans = [
         period: '/ night',
         subtitle: 'Monday - Thursday',
         description: 'A serene retreat for peace and privacy. Perfect for workcations or small family bondings.',
-        features: ['Up to 15 Guests', 'Private Pool Access', 'Garden & Lounge', 'High-Speed WiFi', 'Caretaker On-Call'],
-        realImage: '/Assets/nice_bedroom_interior.jpg', // Fallback or assume availability 
-        // Using distinct real assets found in list or common pool
+        features: [
+            'Up to 15 Guests',
+            'Private Pool Access',
+            'Garden & Lounge',
+            'High-Speed WiFi',
+            'Caretaker On-Call',
+            'Fully Air-Conditioned Bedrooms',
+            'Smart TV with OTT',
+            'Fully Equipped Kitchen',
+            'Refrigerator & Microwave',
+            'Water Purifier',
+            '24/7 Hot Water (Geyser)',
+            'Inverter Power Backup',
+            'Indoor Games (Carrom, Cards)',
+            'Outdoor Badminton Set',
+            'Cricket Kit Provided',
+            'Spacious Parking Area',
+            'Pet Friendly (On Request)',
+            'First Aid Kit Available',
+            'Basic Toiletries Provided',
+            'Extra Mattresses Available',
+            'Mountain & Nature View',
+            'Outdoor Seating Area',
+            'Safe & Secure Gated Property',
+            'Self-Check-in Available',
+            'Clean & Sanitized Premises'
+        ],
+        realImage: '/Assets/nice_bedroom_interior.jpg',
         image: '/Assets/outdoor_lounge_canopy.jpg',
         highlight: false
     },
@@ -24,8 +49,35 @@ const pricingPlans = [
         period: '/ night',
         subtitle: 'Friday - Sunday',
         description: 'The ultimate celebration experience. Full villa access, loud music allowed, perfect for parties.',
-        features: ['Up to 15 Guests', 'Full 5BHK Villa', 'Music System Allowed', 'BBQ Setup Available', 'Event Hosting Capable'],
-        image: '/Assets/Activites and pool/pool_villa_exterior_day.jpg', // Real asset
+        features: [
+            'Up to 15 Guests',
+            'Full 5BHK Villa Access',
+            'Music System Allowed',
+            'BBQ Setup Available',
+            'Event Hosting Capable',
+            'Large Private Swimming Pool',
+            'Jacuzzi & Kids Pool Area',
+            'Projector Setup (On Request)',
+            'Premium Sound System Ready',
+            'Disco / Party Lights',
+            'Live Kitchen Access',
+            'Butler Service Options',
+            'Event Decor Permitted',
+            'Expansive Lawn Area',
+            'Outdoor Gazebo Seating',
+            'Bonfire Pit & Setup',
+            'Luxury Bedding & Linens',
+            'Premium Toiletries Kit',
+            'Welcome Drink on Arrival',
+            'Heavy Generator Backup',
+            'Dedicated Security Guard',
+            'Valet Parking Assistance',
+            'Late Checkout (Subject to Avail)',
+            'Exclusive Privacy Guaranteed',
+            'Photo-shoot Friendly Spots',
+            'Interactive Water Fountains'
+        ],
+        image: '/Assets/Activites and pool/pool_villa_exterior_day.jpg',
         highlight: true
     },
     {
@@ -35,8 +87,34 @@ const pricingPlans = [
         period: '/ head',
         subtitle: 'All Meals Included',
         description: 'Savor authentic home-cooked delicacies prepared fresh by our expert in-house chef.',
-        features: ['Breakfast, Lunch, Dinner', 'Hi-Tea & Snacks', 'Veg & Non-Veg Options', 'Custom Menu Planning', 'Fresh Local Ingredients'],
-        image: '/Assets/Activites and pool/bbq1.jpeg', // Real asset
+        features: [
+            'Breakfast, Lunch, Dinner',
+            'Hi-Tea & Snacks',
+            'Veg & Non-Veg Options',
+            'Custom Menu Planning',
+            'Fresh Local Ingredients',
+            'Live BBQ Grills & Marination',
+            'Buffet Style Setup',
+            'Jain Food Options Available',
+            'Special Kids Menu',
+            'Evening Popcorn & Fritters',
+            'Midnight Maggi Counters',
+            'Unlimited Mineral Water',
+            'All-Day Tea/Coffee Station',
+            'Dessert Counter',
+            'Fresh Salad Bar',
+            'Seasonal Fruit Platter',
+            'Healthy Breakfast Options',
+            'Local Village Specialties',
+            'Experienced In-House Chef',
+            'Hygienic Preparation Standards',
+            'Table Service Available',
+            'Open-Air Dining Experience',
+            'Poolside Snacks Service',
+            'Special Dietary Requests',
+            'Packed Meals for Travel'
+        ],
+        image: '/Assets/Activites and pool/bbq1.jpeg',
         highlight: false
     }
 ];
@@ -257,7 +335,7 @@ const Pricing = () => {
                                     <ul className="space-y-4 mb-8 flex-1">
                                         {plan.features.map((feature, i) => (
                                             <li key={i} className="flex items-center gap-3 text-stone-300 text-sm">
-                                                <div className={`p-1 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 text-stone-200'}`}>
+                                                <div className={`p-1 shrink-0 rounded-full ${plan.highlight ? 'bg-accent text-primary' : 'bg-stone-700 text-stone-200'}`}>
                                                     <Check size={12} />
                                                 </div>
                                                 {feature}
@@ -267,7 +345,7 @@ const Pricing = () => {
 
                                     <button className={`w-full py-4 rounded-xl font-bold tracking-wide transition-all duration-300 uppercase text-xs
                                         ${plan.highlight
-                                            ? 'bg-accent text-primary hover:bg-white hover:text-primary shadow-lg shadow-accent/20'
+                                            ? 'bg-accent text-white hover:bg-white hover:text-primary shadow-lg shadow-accent/20'
                                             : 'bg-stone-700 text-white hover:bg-stone-600'
                                         }
                                     `}>
