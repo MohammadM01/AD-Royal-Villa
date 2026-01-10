@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -120,33 +121,50 @@ const AmenitiesShowcase = () => {
                     </AnimatePresence>
                 </div>
 
-                {/* Controls */}
-                <div className="flex items-center space-x-6 mt-12 z-30">
-                    <button
-                        onClick={prevSlide}
-                        className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
-                    >
-                        <ChevronLeft size={24} />
-                    </button>
-                    <div className="flex space-x-2">
-                        {amenities.map((_, idx) => (
-                            <div
-                                key={idx}
-                                onClick={() => {
-                                    setDirection(idx > currentIndex ? 1 : -1);
-                                    setCurrentIndex(idx);
-                                }}
-                                className={`h-1 transition-all duration-500 cursor-pointer ${idx === currentIndex ? 'w-12 bg-accent' : 'w-4 bg-white/20 hover:bg-white/50'
-                                    }`}
-                            />
-                        ))}
+                {/* Controls & Actions */}
+                <div className="flex flex-col space-y-8 mt-12 z-30">
+                    <div className="flex items-center space-x-6">
+                        <button
+                            onClick={prevSlide}
+                            className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
+                        >
+                            <ChevronLeft size={24} />
+                        </button>
+                        <div className="flex space-x-2">
+                            {amenities.map((_, idx) => (
+                                <div
+                                    key={idx}
+                                    onClick={() => {
+                                        setDirection(idx > currentIndex ? 1 : -1);
+                                        setCurrentIndex(idx);
+                                    }}
+                                    className={`h-1 transition-all duration-500 cursor-pointer ${idx === currentIndex ? 'w-12 bg-accent' : 'w-4 bg-white/20 hover:bg-white/50'
+                                        }`}
+                                />
+                            ))}
+                        </div>
+                        <button
+                            onClick={nextSlide}
+                            className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
+                        >
+                            <ChevronRight size={24} />
+                        </button>
                     </div>
-                    <button
-                        onClick={nextSlide}
-                        className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
-                    >
-                        <ChevronRight size={24} />
-                    </button>
+
+                    <div className="flex flex-wrap gap-4">
+                        <Link
+                            to="/activities"
+                            className="px-8 py-3 rounded-full bg-accent text-[#0F172A] hover:bg-white hover:text-[#0F172A] font-bold text-xs uppercase tracking-widest transition-all duration-300"
+                        >
+                            View Pool & Activities
+                        </Link>
+                        <Link
+                            to="/stay"
+                            className="px-8 py-3 rounded-full border border-white/30 text-white hover:bg-white hover:text-[#0F172A] font-bold text-xs uppercase tracking-widest transition-all duration-300"
+                        >
+                            View All Amenities
+                        </Link>
+                    </div>
                 </div>
             </div>
 
