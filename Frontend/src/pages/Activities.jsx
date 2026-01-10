@@ -92,13 +92,13 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                     )}
                 </div>
 
-                {/* Text Side */}
-                <div className="w-full lg:w-6/12 space-y-8 text-center lg:text-left flex flex-col justify-center">
+                {/* Text Side - Left Aligned */}
+                <div className="w-full lg:w-6/12 space-y-8 text-left flex flex-col justify-center items-start">
                     <div className="anim-text">
                         <span className={`inline-block ${textClass} text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
                             {subtitle}
                         </span>
-                        <div className={`h-1 w-12 ${bgClass} mx-auto lg:mx-0 mt-2 rounded-full`}></div>
+                        <div className={`h-1 w-12 ${bgClass} mt-2 rounded-full`}></div>
                     </div>
 
                     <h2
@@ -107,7 +107,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                         {title}
                     </h2>
 
-                    <p className="anim-text font-body text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    <p className="anim-text font-body text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl text-justify hyphens-none">
                         {desc}
                     </p>
 
@@ -165,8 +165,8 @@ const Activities = () => {
 
             {/* --- 2. Tipping Bucket (Text Left, Video Right) --- */}
             <ContentSection
-                accentText="!text-teal-500"
-                accentBg="bg-teal-500"
+                accentText="!text-[#0077b6]"
+                accentBg="bg-[#0077b6]"
                 subtitle="Aquatic Thrills"
                 title="The Tipping Bucket"
                 desc="Feel the anticipation rise as the giant bucket fills up, only to unleash a massive splash of refreshing water. A favorite attraction for both kids and adults seeking a fun way to cool off."
@@ -178,8 +178,8 @@ const Activities = () => {
 
             {/* --- 3. Kids Zone (Slideshow Left, Text Right) --- */}
             <ContentSection
-                accentText="!text-pink-500"
-                accentBg="bg-pink-500"
+                accentText="!text-[#800f2f]"
+                accentBg="bg-[#800f2f]"
                 subtitle="Safe & Fun"
                 title="Kids Adventure Park"
                 desc="A dedicated paradise for our younger guests. Featuring safe rubberized flooring, garden swings, and open play areas where imagination runs wild in a secure, lush green environment."
@@ -204,11 +204,11 @@ const Activities = () => {
 
             {/* --- 5. Rain Dance (Video Left, Text Right) --- */}
             <ContentSection
-                accentText="!text-violet-600"
-                accentBg="bg-violet-600"
+                accentText="!text-[#571089]"
+                accentBg="bg-[#571089]"
                 subtitle="Feel The Rhythm"
                 title="Rain Dance Arena"
-                desc="Dance your heart out! Combine high-fidelity sound with rhythmically synced mist and water jets. It's the ultimate party experience right within the resort."
+                desc="Dance your heart out! Combine high-fidelity sound with rhythmically synced mist and water jets. It's the ultimate party experience right within the villa."
                 mediaType="video"
                 mediaSrc="/Assets/Activites and pool/raindancex.mp4"
                 reverse={false}
@@ -217,8 +217,8 @@ const Activities = () => {
 
             {/* --- 6. Mushroom Fountain (Text Left, Video Right) --- */}
             <ContentSection
-                accentText="!text-emerald-500"
-                accentBg="bg-emerald-500"
+                accentText="!text-[#40916c]"
+                accentBg="bg-[#40916c]"
                 subtitle="Playful Splashes"
                 title="Mushroom Fountain"
                 desc="Enjoy the whimsical charm of our Mushroom Water Fountain. A perfect spot for kids to splash around or for a soothing aquatic backdrop to your poolside relaxation."
@@ -230,8 +230,8 @@ const Activities = () => {
 
             {/* --- 7. Indoor Games (Slideshow Left, Text Right) --- */}
             <ContentSection
-                accentText="!text-indigo-500"
-                accentBg="bg-indigo-500"
+                accentText="!text-[#006d77]"
+                accentBg="bg-[#006d77]"
                 subtitle="Fun For Everyone"
                 title="Indoor Games Arena"
                 desc="Step inside our fully equipped game zone. From table tennis to carrom, challenge your friends and family to exciting matches regardless of the weather outside."
@@ -243,8 +243,8 @@ const Activities = () => {
 
             {/* --- 8. Outdoor Sports (Text Left, Slideshow Right) --- */}
             <ContentSection
-                accentText="!text-rose-600"
-                accentBg="bg-rose-600"
+                accentText="!text-[#720026]"
+                accentBg="bg-[#720026]"
                 subtitle="Outdoor Thrills"
                 title="Cricket & Sports"
                 desc="Embrace the open air with a game of cricket on our spacious grounds. Perfect for team bonding and energetic matches under the sun or stars."
@@ -256,8 +256,8 @@ const Activities = () => {
 
             {/* --- 9. Pool Games (Slideshow Left, Text Right) --- */}
             <ContentSection
-                accentText="!text-sky-500"
-                accentBg="bg-sky-500"
+                accentText="!text-[#6b9080]"
+                accentBg="bg-[#6b9080]"
                 subtitle="Splash & Play"
                 title="Pool Water Games"
                 desc="Jump in for some high-energy fun! Perfect for families and groups, our pool is spacious enough for a friendly game of catch, water volleyball, or simply tossing a ball around while cooling off."

@@ -110,7 +110,7 @@ const AmenitiesShowcase = () => {
                                 {amenities[currentIndex].title}
                             </h2>
                             <div className="w-20 h-1 bg-accent mb-6"></div>
-                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8">
+                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8 text-justify hyphens-none">
                                 {amenities[currentIndex].description}
                             </p>
                             <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-auto">

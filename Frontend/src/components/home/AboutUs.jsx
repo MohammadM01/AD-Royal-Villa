@@ -53,14 +53,23 @@ const AboutUs = () => {
                             </h2>
                         </div>
 
-                        <div className={`text-lg leading-relaxed space-y-6 font-light ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        <div className={`text-lg leading-relaxed space-y-6 font-light text-justify hyphens-none ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                             <p>
-                                Welcome to a world crafted for your absolute comfort. AD Royal Private Villa is more than just a getaway; it is a sanctuary designed for those who seek the perfect balance of nature and luxury.
+                                Welcome to a sanctuary designed for absolute comfort, peace, and freedom. <span className="font-semibold">AD Royal Private Villa</span> is more than a getaway it is a thoughtfully located retreat where luxury, safety, and privacy come together in perfect harmony.
                             </p>
                             <p>
-                                Our exclusive 4BHK fully furnished farmhouse offers a pristine aquatic paradise, lush green landscapes, and modern amenities, ensuring your stay is nothing short of extraordinary. Whether you're splashing in our grand pool or unwinding in our elegantly appointed rooms, privacy is our promise.
+                                Situated in an active, well-monitored zone, the villa benefits from a <span className="italic font-medium">secure and continuously running area</span>, ensuring peace of mind for you and your family. With no surrounding residential crowds, the environment remains calm, controlled, and free from unnecessary disturbances making it ideal for families who value both safety and exclusivity.
                             </p>
-                            <p className={`font-medium ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary'}`}>
+                            <p>
+                                Our <span className="font-semibold">exclusive 4BHK fully furnished farmhouse</span> offers a pristine aquatic escape, lush green surroundings, and modern comforts crafted for a premium stay. With <span className="italic font-medium">no neighboring residences and zero public interference</span>, privacy is truly uninterrupted allowing guests to relax freely and confidently.
+                            </p>
+                            <p>
+                                Whether your family is unwinding in elegantly designed rooms or enjoying joyful moments by the <span className="font-semibold">private swimming pool</span>, the space is entirely yours. Ladies can enjoy the pool experience <span className="italic font-medium">comfortably and without hesitation</span>, knowing the setting is secure, secluded, and thoughtfully planned for complete discretion.
+                            </p>
+                            <p>
+                                Here, luxury feels personal, fun feels effortless, and privacy is never compromised.
+                            </p>
+                            <p className={`font-medium text-xl mt-4 ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary'}`}>
                                 Experience the warmth of a home with the grandeur of a resort.
                             </p>
                         </div>
