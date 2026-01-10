@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
 
 const slides = [
@@ -135,6 +136,7 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
     const filter = useTransform(blurVal, v => `blur(${v}px)`);
 
     const [isMobile, setIsMobile] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -176,10 +178,16 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
 
                 {/* Text Side - Right */}
                 <div className="flex flex-col justify-center space-y-4 md:space-y-6 pl-0 md:pl-12">
-                    <h3 className="text-2xl md:text-5xl lg:text-6xl font-serif text-[#00b4d8] dark:text-[#00b4d8]">
+                    <h3
+                        className="text-2xl md:text-5xl lg:text-6xl font-serif"
+                        style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
+                    >
                         {slide.title}
                     </h3>
-                    <p className="text-sm md:text-xl leading-relaxed font-normal text-black dark:text-[#00b4d8]" style={{ opacity: 1 }}>
+                    <p
+                        className="text-sm md:text-xl leading-relaxed font-normal text-justify hyphens-auto"
+                        style={{ opacity: 1, color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
+                    >
                         {slide.desc}
                     </p>
                     <div className="flex flex-wrap gap-2 md:gap-3 pt-2">

@@ -53,7 +53,7 @@ const VideoPlayer = ({ src }) => {
     );
 };
 
-const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse }) => {
+const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, gradient }) => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -98,7 +98,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse })
                         <div className="h-0.5 w-12 bg-[#00b4d8] mx-auto lg:mx-0 mt-2"></div>
                     </div>
 
-                    <h2 className="anim-text font-heading text-5xl md:text-6xl lg:text-7xl text-[#002147] dark:text-[#EAEAEA] leading-none drop-shadow-sm">
+                    <h2 className={`anim-text font-heading text-5xl md:text-6xl lg:text-7xl bg-linear-to-r ${gradient || 'from-cyan-400 via-blue-500 to-purple-600'} bg-clip-text text-transparent leading-none drop-shadow-sm pb-2`}>
                         {title}
                     </h2>
 
@@ -147,6 +147,7 @@ const Activities = () => {
 
             {/* --- 1. BBQ Section (Slideshow Left, Text Right) --- */}
             <ContentSection
+                gradient="from-orange-500 via-red-500 to-yellow-500"
                 subtitle="Gourmet Experience"
                 title="Live BBQ Nights"
                 desc="Indulge in a culinary journey under the stars. Our live BBQ station allows you to grill your favorites while enjoying the cool evening breeze. Perfect for family gatherings and late-night conversations."
@@ -157,6 +158,7 @@ const Activities = () => {
 
             {/* --- 2. Tipping Bucket (Text Left, Video Right) --- */}
             <ContentSection
+                gradient="from-blue-400 via-cyan-500 to-teal-400"
                 subtitle="Aquatic Thrills"
                 title="The Tipping Bucket"
                 desc="Feel the anticipation rise as the giant bucket fills up, only to unleash a massive splash of refreshing water. A favorite attraction for both kids and adults seeking a fun way to cool off."
@@ -167,6 +169,7 @@ const Activities = () => {
 
             {/* --- 3. Kids Zone (Slideshow Left, Text Right) --- */}
             <ContentSection
+                gradient="from-green-400 via-lime-500 to-yellow-400"
                 subtitle="Safe & Fun"
                 title="Kids Adventure Park"
                 desc="A dedicated paradise for our younger guests. Featuring safe rubberized flooring, garden swings, and open play areas where imagination runs wild in a secure, lush green environment."
@@ -177,6 +180,7 @@ const Activities = () => {
 
             {/* --- 4. Pool Slides (Text Left, Slideshow Right) --- */}
             <ContentSection
+                gradient="from-indigo-400 via-purple-500 to-pink-500"
                 subtitle="Poolside Fun"
                 title="Twisting Slides"
                 desc="Glide into our crystal-clear waters through our exciting twisting slides. Whether you're racing friends or just enjoying the splash, our pool arena offers endless entertainment."
@@ -188,6 +192,7 @@ const Activities = () => {
             {/* --- 5. Rain Dance (Video Left, Text Right) --- */}
             {/* Note: User asked for Rain Dance "Video Left", putting it last in chain */}
             <ContentSection
+                gradient="from-fuchsia-500 via-pink-500 to-rose-500"
                 subtitle="Feel The Rhythm"
                 title="Rain Dance Arena"
                 desc="Dance your heart out! Combine high-fidelity sound with rhythmically synced mist and water jets. It's the ultimate party experience right within the resort."
@@ -198,6 +203,7 @@ const Activities = () => {
 
             {/* --- 6. Mushroom Fountain (Text Left, Video Right) --- */}
             <ContentSection
+                gradient="from-teal-400 via-emerald-500 to-cyan-500"
                 subtitle="Playful Splashes"
                 title="Mushroom Fountain"
                 desc="Enjoy the whimsical charm of our Mushroom Water Fountain. A perfect spot for kids to splash around or for a soothing aquatic backdrop to your poolside relaxation."
@@ -208,6 +214,7 @@ const Activities = () => {
 
             {/* --- 7. Indoor Games (Slideshow Left, Text Right) --- */}
             <ContentSection
+                gradient="from-amber-400 via-orange-500 to-red-500"
                 subtitle="Fun For Everyone"
                 title="Indoor Games Arena"
                 desc="Step inside our fully equipped game zone. From table tennis to carrom, challenge your friends and family to exciting matches regardless of the weather outside."
@@ -218,6 +225,7 @@ const Activities = () => {
 
             {/* --- 8. Outdoor Sports (Text Left, Slideshow Right) --- */}
             <ContentSection
+                gradient="from-lime-500 via-green-600 to-emerald-700"
                 subtitle="Outdoor Thrills"
                 title="Cricket & Sports"
                 desc="Embrace the open air with a game of cricket on our spacious grounds. Perfect for team bonding and energetic matches under the sun or stars."
@@ -228,6 +236,7 @@ const Activities = () => {
 
             {/* --- 9. Pool Games (Slideshow Left, Text Right) --- */}
             <ContentSection
+                gradient="from-sky-400 via-blue-500 to-indigo-600"
                 subtitle="Splash & Play"
                 title="Pool Water Games"
                 desc="Jump in for some high-energy fun! Perfect for families and groups, our pool is spacious enough for a friendly game of catch, water volleyball, or simply tossing a ball around while cooling off."
