@@ -16,28 +16,28 @@ const poolImages = [
     },
     {
         src: "/New/Home/Pool/pool-2.png",
-        title: "Sunset View",
-        text: "There is nothing quite like watching the sun dip below the horizon while submerged in the cool waters of our infinity pool. Positioned perfectly to capture the golden hour, this spot offers panoramic views of the surrounding landscape. As the sky turns into a canvas of oranges, pinks, and purples, you can enjoy a refreshing cocktail from the poolside bar. It is the ideal setting for romantic moments or reflective solitude. Let the beauty of nature wash over you as you witness the day transitioning into a starry night."
+        title: "Fun Meets Comfort",
+        text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."
     },
     {
         src: "/New/Home/Pool/pool-3.png",
-        title: "Kids Zone",
-        text: "Our dedicated Kids Zone is a safe haven for your little ones to splash and play to their hearts' content. Featuring shallow waters, fun water slides, and interactive sprayers, it promises hours of entertainment. Parents can relax nearby with full visibility, knowing their children are in a secure environment. We also organize supervised pool games and activities during the weekends, ensuring that the kids make new friends and unforgettable memories. It is family fun redefined, where safety meets excitement."
+        title: "Pool & Slide Experience",
+        text: "Enjoy a refreshing swim in our beautifully lit pool area, designed for relaxation and light recreation. Featuring smooth water slides, spacious swimming lanes, and a calm evening ambiance, this space offers the perfect balance between fun and comfort. Whether you're cooling off or simply unwinding by the water, the atmosphere remains peaceful and inviting."
     },
     {
         src: "/New/Home/Pool/pool-4.png",
-        title: "Lounge Area",
-        text: "Adjacent to the water is our sophisticated Lounge Area, offering a blend of comfort and style. Sink into our plush daybeds or private cabanas, equipped with soft towels and charging stations for your devices. It is the perfect place to catch up on reading, enjoy a nap, or chat with friends. Waiters are on standby to serve delicious snacks and beverages right to your seat. Whether you are drying off after a swim or just enjoying the poolside ambiance, our lounge area provides the luxury you deserve."
+        title: "Evenings by the Water",
+        text: "As the lights reflect on the water and the surroundings grow quiet, the poolside becomes a place to slow down. Whether you’re stepping out for a swim or simply enjoying the atmosphere, this space offers a sense of calm that stays with you."
     },
     {
         src: "/New/Home/Pool/raindance.png",
-        title: "Rain Dance",
-        text: "Get ready to groove under the open sky with our exhilarating Rain Dance setup. Featuring high-quality sound systems and rhythmic water showers, it brings the party to life. It is a favorite among groups and families looking to add a high-energy twist to their pool day. Dance to the latest beats while the cool water sprays keep you refreshed and energized. Perfect for celebrations or just letting loose, the Rain Dance area guarantees laughter, movement, and a unique aquatic experience."
+        title: "Water Activities",
+        text: "Dive into a refreshing experience with our exciting water activities. From relaxing showers to lively splash zones, every corner is designed to keep you cool and energized. Whether you're dancing under flowing water or enjoying a casual swim, the atmosphere stays fun, refreshing, and full of good vibes."
     },
     {
         src: "/New/Home/Pool/raindance-2.png",
-        title: "Evening Vibes",
-        text: "As night falls, the pool area transforms into a vibrant social hub with our 'Evening Vibes' experience. Ambient lighting, upbeat music, and a lively crowd set the tone for an unforgettable night. The reflective waters enhance the mood, making it a picturesque setting for evening gatherings. Enjoy themed pool parties, barbecue nights, or simply lounging under the stars. It is where luxury meets nightlife, offering a sophisticated yet fun way to end your day at the villa."
+        title: "Refresh Under the Rain",
+        text: "Step into a space where water flows freely and the mood stays light. The Rain Dance area offers a refreshing escape, combining open surroundings, flowing showers, and a lively atmosphere for relaxed fun."
     },
 ];
 

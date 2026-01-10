@@ -8,23 +8,23 @@ const amenities = [
         id: 1,
         type: 'image',
         title: '4 Luxury Bedrooms',
-        description: 'Indulge in the ultimate comfort with our four spacious, fully air-conditioned bedrooms. Each room features a plush king-size bed wrapped in premium linens to ensure a restful sleep. Large pool-view balconies let you wake up to serene water vistas every morning. Equipped with large 32-inch Smart TVs, wardrobe storage, and modern attached washrooms, our bedrooms provide a private sanctuary within the villa.',
+        description: 'Indulge in the ultimate comfort with our four spacious, fully air conditioned bedrooms. Each room features a plush king size bed wrapped in premium linens to ensure a restful sleep. Large pool view balconies let you wake up to serene water vistas every morning. Equipped with large 32 inch Smart TVs, wardrobe storage, and modern attached washrooms, our bedrooms provide a private sanctuary within the villa.',
         src: '/Assets/ameneties/luxury_bedroom_king_tv.jpg',
-        highlight: 'King-size Beds & Pool View'
+        highlight: 'King Size Beds & Pool View'
     },
     {
         id: 2,
         type: 'image',
         title: 'Private Living Hall',
-        description: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open-plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 75-inch flat-screen TV and a high-fidelity sound system, it’s the ideal spot for movie nights or lively conversations.',
+        description: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 75 inch flat screen TV and a high fidelity sound system, it is the ideal spot for movie nights or lively conversations.',
         src: '/Assets/ameneties/spacious living room.png',
-        highlight: '75" TV & Sound System'
+        highlight: '75 inch TV & Sound System'
     },
     {
         id: 3,
         type: 'video',
         title: 'Rain Dance Arena',
-        description: 'Get ready to groove under the open sky with our exhilarating Rain Dance setup. Featuring high-quality sound systems and rhythmic water showers, it brings the party to life. It is the perfect blend of music, dance, and refreshing splashes—a favorite attraction for guests seeking a high-energy aquatic experience.',
+        description: 'Get ready to groove under the open sky with our exhilarating Rain Dance setup. Featuring high quality sound systems and rhythmic water showers, it brings the party to life. It is the perfect blend of music, dance, and refreshing splashes, a favorite attraction for guests seeking a high energy aquatic experience.',
         src: '/Assets/Activites and pool/raindancex.mp4',
         highlight: 'Music & Water Jets'
     },
@@ -110,7 +110,7 @@ const AmenitiesShowcase = () => {
                                 {amenities[currentIndex].title}
                             </h2>
                             <div className="w-20 h-1 bg-accent mb-6"></div>
-                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8 line-clamp-4">
+                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8">
                                 {amenities[currentIndex].description}
                             </p>
                             <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-auto">
