@@ -73,46 +73,46 @@ const Contact = () => {
                     {/* LEFT: Contact Info (More Compact) */}
                     <div ref={infoRef} className="lg:w-1/2 space-y-6">
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
+                        <a href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6" target="_blank" rel="noopener noreferrer" className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300 block">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaMapMarkerAlt />
                             </div>
                             <div>
                                 <h3 className="font-heading text-xl text-primary mb-1">Our Location</h3>
-                                <a href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6" target="_blank" rel="noopener noreferrer" className="font-body text-gray-500 text-sm leading-relaxed hover:text-primary transition-colors block">
+                                <p className="font-body text-gray-500 text-sm leading-relaxed hover:text-primary transition-colors block">
                                     Near Coral School, Padgha - 421101.<br />
                                     <span className="text-xs text-accent font-bold mt-1 block tracking-wider uppercase">32 Kms from Thane</span>
-                                </a>
+                                </p>
                             </div>
-                        </div>
+                        </a>
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
+                        <a href="tel:+919890205767" className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300 block">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaPhoneAlt />
                             </div>
                             <div>
                                 <h3 className="font-heading text-xl text-primary mb-1">Call Us</h3>
                                 <p className="font-body text-gray-500 text-sm">
-                                    <a href="https://wa.me/919890205767" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                    <span className="hover:text-primary transition-colors">
                                         +91 9890205767
-                                    </a>
+                                    </span>
                                     <br />
                                     <span className="text-xs text-gray-400">Available 24/7</span>
                                 </p>
                             </div>
-                        </div>
+                        </a>
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
+                        <a href="mailto:bookings@adroyalvilla.com" className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300 block">
                             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                                 <FaEnvelope />
                             </div>
                             <div>
                                 <h3 className="font-heading text-xl text-primary mb-1">Email Us</h3>
-                                <p className="font-body text-gray-500 text-sm">
+                                <p className="font-body text-gray-500 text-sm hover:text-primary transition-colors">
                                     bookings@adroyalvilla.com
                                 </p>
                             </div>
-                        </div>
+                        </a>
 
                         {/* Social Icons */}
                         <div className="pl-5 pt-2">
