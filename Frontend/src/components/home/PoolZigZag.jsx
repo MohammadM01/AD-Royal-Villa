@@ -252,6 +252,16 @@ const PoolZigZag = () => {
                             <p className="text-base text-gray-700 font-body leading-relaxed whitespace-pre-wrap">
                                 {poolImages[expandedIdx].text}
                             </p>
+                            <div className="mt-8">
+                                <a
+                                    href="https://wa.me/919890205767"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block px-8 py-3 bg-accent text-white font-heading uppercase tracking-widest text-sm rounded-full shadow-lg hover:bg-opacity-90 transition-all hover:scale-105"
+                                >
+                                    Book This Experience
+                                </a>
+                            </div>
                         </div>
                     </div>
                 )}

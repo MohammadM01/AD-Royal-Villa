@@ -117,10 +117,15 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                     </p>
 
                     <div className="anim-text pt-4">
-                        <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-white dark:text-[#002147] font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95 rounded-sm">
+                        <a
+                            href="https://wa.me/919890205767"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block group relative px-8 py-3 bg-[#002147] text-white dark:bg-white dark:text-[#002147] font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95 rounded-sm"
+                        >
                             <span className={`relative z-10 transition-colors group-hover:${textClass} dark:group-hover:${textClass}`}>{buttonText}</span>
                             <div className={`absolute inset-0 ${bgClass} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
