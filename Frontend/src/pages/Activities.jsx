@@ -82,8 +82,8 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
     }, [reverse]);
 
     return (
-        <div ref={sectionRef} className="container mx-auto px-6 py-24 md:py-32 border-b border-gray-100 dark:border-gray-800 last:border-0">
-            <div className={`flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
+        <div ref={sectionRef} className="container mx-auto px-6 py-16 md:py-32 border-b border-gray-100 dark:border-gray-800 last:border-0">
+            <div className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-24 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
 
                 {/* Media Side (Left or Right) */}
                 <div className="w-full lg:w-5/12 h-[350px] md:h-[450px] lg:h-[500px] anim-media">
@@ -95,16 +95,16 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                 </div>
 
                 {/* Text Side - Left Aligned */}
-                <div className="w-full lg:w-6/12 space-y-8 text-left flex flex-col justify-center items-start">
+                <div className="w-full lg:w-6/12 space-y-6 md:space-y-8 text-left flex flex-col justify-center items-start">
                     <div className="anim-text">
-                        <span className={`inline-block ${textClass} text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
+                        <span className={`inline-block ${textClass} text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
                             {subtitle}
                         </span>
                         <div className={`h-1 w-12 ${bgClass} mt-2 rounded-full`}></div>
                     </div>
 
                     <h2
-                        className={`anim-text font-heading text-5xl md:text-6xl lg:text-7xl ${textClass} leading-none drop-shadow-sm pb-2`}
+                        className={`anim-text font-heading text-4xl md:text-6xl lg:text-7xl ${textClass} leading-none drop-shadow-sm pb-2`}
                     >
                         {title}
                     </h2>

@@ -17,7 +17,7 @@ const Stay = () => {
         />
 
         {/* Header Section */}
-        <div className="text-center pt-32 space-y-4 max-w-4xl mx-auto relative z-10">
+        <div className="text-center pt-24 md:pt-32 space-y-4 max-w-4xl mx-auto relative z-10">
           <span className="text-primary dark:text-accent tracking-widest text-sm font-bold uppercase block mb-2">
             AMENITIES
           </span>

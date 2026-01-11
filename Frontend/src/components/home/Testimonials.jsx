@@ -86,7 +86,7 @@ const Testimonials = () => {
                     {testimonials.map((item, index) => (
                         <div key={index} className="testimonial-card relative group">
                             <div className="absolute inset-0 bg-gray-100 dark:bg-[#111] rounded-2xl transform transition-transform duration-300 group-hover:rotate-2 group-hover:scale-[1.02]"></div>
-                            <div className="relative bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden h-full flex flex-col">
+                            <div className="relative bg-white dark:bg-[#1a1a1a] p-6 md:p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden h-full flex flex-col">
                                 {/* Accent Line */}
                                 <div className={`absolute top-0 left-0 w-full h-1 ${item.color}`}></div>
 

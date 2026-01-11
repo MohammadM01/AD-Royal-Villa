@@ -22,17 +22,17 @@ const Footer = () => {
     }, { scope: footerRef });
 
     return (
-        <footer ref={footerRef} className="bg-[#2B3D5C] text-white py-8 md:py-10 relative">
-            <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ">
+        <footer ref={footerRef} className="bg-[#2B3D5C] text-white py-12 md:py-10 relative">
+            <div className="container mx-auto px-6 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center md:text-left">
                 {/* Brand Section */}
                 <div className="space-y-6">
                     <h3 className="text-3xl font-heading font-bold" style={{ color: '#ffffff' }}>AD Royal Private Villa</h3>
                     Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK villa.
-                    <div className="flex space-x-4">
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                    <div className="flex justify-center md:justify-start space-x-4">
+                        <a href="#" className="text-white hover:text-primary transition-colors p-2">
                             <FaInstagram size={24} />
                         </a>
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                        <a href="#" className="text-white hover:text-primary transition-colors p-2">
                             <FaFacebook size={24} />
                         </a>
                     </div>

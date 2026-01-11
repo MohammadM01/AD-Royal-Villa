@@ -230,7 +230,7 @@ const PoolZigZag = () => {
                 {expandedIdx !== null && (
                     <div
                         ref={modalRef}
-                        className="bg-white rounded-3xl w-[80vw] h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
+                        className="bg-white rounded-3xl w-[90vw] md:w-[80vw] h-[80vh] md:h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Image Left */}

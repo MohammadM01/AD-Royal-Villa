@@ -124,14 +124,14 @@ const AmenitiesShowcase = () => {
                 {/* Controls & Actions */}
                 <div className="flex flex-col space-y-6 mt-4 z-30">
                     {/* Slider Nav */}
-                    <div className="flex items-center space-x-6">
+                    <div className="flex items-center space-x-6 md:space-x-8">
                         <button
                             onClick={prevSlide}
-                            className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
+                            className="p-5 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
                         >
-                            <ChevronLeft size={24} />
+                            <ChevronLeft size={28} className="md:w-6 md:h-6" />
                         </button>
-                        <div className="flex space-x-2">
+                        <div className="flex space-x-3">
                             {amenities.map((_, idx) => (
                                 <div
                                     key={idx}
@@ -139,16 +139,16 @@ const AmenitiesShowcase = () => {
                                         setDirection(idx > currentIndex ? 1 : -1);
                                         setCurrentIndex(idx);
                                     }}
-                                    className={`h-1 transition-all duration-500 cursor-pointer ${idx === currentIndex ? 'w-12 bg-accent' : 'w-4 bg-white/20 hover:bg-white/50'
+                                    className={`h-1.5 md:h-1 transition-all duration-500 cursor-pointer rounded-full ${idx === currentIndex ? 'w-12 bg-accent' : 'w-4 bg-white/20 hover:bg-white/50'
                                         }`}
                                 />
                             ))}
                         </div>
                         <button
                             onClick={nextSlide}
-                            className="p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group"
+                            className="p-5 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
                         >
-                            <ChevronRight size={24} />
+                            <ChevronRight size={28} className="md:w-6 md:h-6" />
                         </button>
                     </div>
 
