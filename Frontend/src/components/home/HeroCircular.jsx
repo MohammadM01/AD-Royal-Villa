@@ -6,10 +6,7 @@ import { useLeaf } from '../../context/LeafContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heroImages = [
-    "/New/Home/home-views/front-view.webp",
-    "/New/Home/home-views/side-view.webp"
-];
+
 
 const HeroCircular = () => {
     const { setTarget } = useLeaf();
@@ -21,17 +18,12 @@ const HeroCircular = () => {
 
     // Slideshow Logic
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
-        }, 3000);
-
         // Ensure leaf targets text on mount (fallback for ScrollTrigger)
         const timer = setTimeout(() => {
             if (textTitleRef.current) setTarget(textTitleRef.current, { anchor: 'center' });
         }, 500);
 
         return () => {
-            clearInterval(interval);
             clearTimeout(timer);
         };
     }, []);
@@ -82,25 +74,22 @@ const HeroCircular = () => {
                 className="absolute inset-0 w-full h-full bg-black overflow-hidden z-10"
                 style={{ clipPath: 'circle(100% at 50% 50%)' }}
             >
-                {/* Background Images with Swipe Effect */}
-                {heroImages.map((src, index) => (
-                    <div
-                        key={src}
-                        className="absolute inset-0 transition-opacity duration-300 ease-in-out"
-                        style={{
-                            opacity: index === currentImageIndex ? 1 : 0,
-                            // kept opacity transition logic
-                        }}
-                    >
-                        <img src={src} alt="Hero" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/20" />
-                    </div>
-                ))}
+                {/* Video Background */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out"
+                >
+                    <source src="/New/Home/hero/hero.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6 md:p-4 z-10 pointer-events-none">
                     <h1 ref={textTitleRef} className="text-3xl sm:text-4xl md:text-8xl font-heading mb-6 md:mb-4 drop-shadow-lg font-light tracking-wide leading-tight">
-                        The Ultimate <br /> <span className="font-normal block mt-2 md:mt-0">Pool Experience</span>
+                        The Ultimate <br /> <span className="font-normal block mt-2 md:mt-0">Villa Experience</span>
                     </h1>
                     <p className="text-base sm:text-lg md:text-xl font-body font-thin tracking-[0.2em] md:tracking-widest uppercase opacity-90">
                         Dive into luxury
