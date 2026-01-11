@@ -207,10 +207,10 @@ const PoolZigZag = () => {
                                     className="w-full h-full object-cover"
                                 />
 
-                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col justify-end p-6">
-                                    <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>
-                                    <p className="text-white/90 text-sm italic">
-                                        "{item.punchline}" <span className="text-accent text-xs uppercase font-bold tracking-wider block mt-2 not-italic">Click to read more</span>
+                                <div className="absolute inset-x-0 bottom-0 h-3/4 md:h-2/3 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col justify-end p-5 md:p-6">
+                                    <h3 className="text-2xl md:text-3xl font-heading text-white mb-2">{item.title}</h3>
+                                    <p className="text-white/90 text-sm italic line-clamp-4 md:line-clamp-none leading-relaxed">
+                                        "{item.punchline}" <span className="text-accent text-[10px] md:text-xs uppercase font-bold tracking-wider block mt-2 not-italic">Click to read more</span>
                                     </p>
                                 </div>
                             </div>

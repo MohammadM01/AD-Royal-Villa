@@ -87,7 +87,7 @@ const AmenitiesShowcase = () => {
     };
 
     return (
-        <section className="relative h-[800px] bg-[#0F172A] overflow-hidden flex flex-col md:flex-row text-white">
+        <section className="relative h-auto md:h-[800px] bg-[#0F172A] overflow-hidden flex flex-col md:flex-row text-white">
             {/* Left Content Panel */}
             <div className="w-full md:w-[40%] relative z-20 flex flex-col justify-center px-8 md:px-16 py-12 bg-[#0F172A]">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-accent via-primary to-accent"></div>
@@ -171,7 +171,7 @@ const AmenitiesShowcase = () => {
             </div>
 
             {/* Right Image/Video Panel */}
-            <div className="w-full md:w-[60%] relative h-full overflow-hidden">
+            <div className="w-full md:w-[60%] relative h-[400px] md:h-full overflow-hidden">
                 <AnimatePresence initial={false} custom={direction}>
                     <motion.div
                         key={currentIndex}

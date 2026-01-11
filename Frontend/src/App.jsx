@@ -21,7 +21,7 @@ const App = () => {
     <ThemeProvider>
       <LeafProvider>
         <FloatingLeaf />
-        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
           <Kingfisher sizeClasses="w-44 h-44" />
           <Kingfisher sizeClasses="w-28 h-28" />
         </div>
