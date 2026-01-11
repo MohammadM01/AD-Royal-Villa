@@ -102,17 +102,7 @@ const Contact = () => {
                             </div>
                         </a>
 
-                        <a href="mailto:bookings@adroyalvilla.com" className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300 block">
-                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                                <FaEnvelope />
-                            </div>
-                            <div>
-                                <h3 className="font-heading text-xl text-primary mb-1">Email Us</h3>
-                                <p className="font-body text-gray-500 text-sm hover:text-primary transition-colors">
-                                    bookings@adroyalvilla.com
-                                </p>
-                            </div>
-                        </a>
+
 
                         {/* Social Icons */}
                         <div className="pl-5 pt-2">
