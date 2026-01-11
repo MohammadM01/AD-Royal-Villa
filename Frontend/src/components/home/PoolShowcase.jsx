@@ -36,7 +36,7 @@ const PoolShowcase = () => {
         {
             title: "Rain Dance",
             desc: "Groove to music under the open sky showers.",
-            img: "/Assets/kids_play_zone_overview.jpg", // Using as placeholder/context if specific rain dance element isn't clear, or generic pool shot
+            img: "/Assets/kids_play_zone_overview.webp", // Using as placeholder/context if specific rain dance element isn't clear, or generic pool shot
             icon: FaCloudRain,
             span: "md:col-span-1 md:row-span-1"
         },

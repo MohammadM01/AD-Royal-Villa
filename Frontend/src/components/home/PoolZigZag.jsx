@@ -10,37 +10,37 @@ gsap.registerPlugin(ScrollTrigger);
 // 6 Images with longer descriptions (5-6 lines approx)
 const poolImages = [
     {
-        src: "/New/Home/Pool/pool-1.png",
+        src: "/New/Home/Pool/pool-1.webp",
         title: "Main Pool",
         punchline: "The Heart of Your Vacation",
-        text: "Experience the ultimate relaxation in our crystal clear main pool, designed to be the heart of your vacation. Surrounded by lush greenery and comfortable loungers, it offers the perfect escape from the daily grind. Whether you want to swim laps to start your day or simply float around and soak up the sun, this pool caters to all your needs. The water is temperature controlled, ensuring a pleasant dip regardless of the weather outside. At night, the pool lights up with vibrant colors, creating a magical atmosphere for unmatched evening vibes."
+        text: "Experience ultimate relaxation in our crystal-clear main pool. Surrounded by lush greenery, it offers the perfect escape. Enjoy a temperature-controlled dip day or night, as vibrant lighting creates a magical evening atmosphere."
     },
     {
-        src: "/New/Home/Pool/pool-2.png",
+        src: "/Assets/yyy.png",
         title: "Fun Meets Comfort",
         punchline: "Relaxation for All Ages",
         text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."
     },
     {
-        src: "/New/Home/Pool/pool-3.png",
+        src: "/New/Home/Pool/pool-3.webp",
         title: "Pool & Slide Experience",
         punchline: "Splash, Slide, and Unwind",
         text: "Enjoy a refreshing swim in our beautifully lit pool area, designed for relaxation and light recreation. Featuring smooth water slides, spacious swimming lanes, and a calm evening ambiance, this space offers the perfect balance between fun and comfort. Whether you're cooling off or simply unwinding by the water, the atmosphere remains peaceful and inviting."
     },
     {
-        src: "/New/Home/Pool/pool-4.png",
+        src: "/New/Home/Pool/pool-4.webp",
         title: "Evenings by the Water",
         punchline: "Calmness After Sunset",
         text: "As the lights reflect on the water and the surroundings grow quiet, the poolside becomes a place to slow down. Whether you’re stepping out for a swim or simply enjoying the atmosphere, this space offers a sense of calm that stays with you."
     },
     {
-        src: "/New/Home/Pool/raindance.png",
+        src: "/New/Home/Pool/raindance.webp",
         title: "Water Activities",
         punchline: "Cool and Energized",
         text: "Dive into a refreshing experience with our exciting water activities. From relaxing showers to lively splash zones, every corner is designed to keep you cool and energized. Whether you're dancing under flowing water or enjoying a casual swim, the atmosphere stays fun, refreshing, and full of good vibes."
     },
     {
-        src: "/New/Home/Pool/raindance-2.png",
+        src: "/New/Home/Pool/raindance-2.webp",
         title: "Refresh Under the Rain",
         punchline: "Dance in the Showers",
         text: "Step into a space where water flows freely and the mood stays light. The Rain Dance area offers a refreshing escape, combining open surroundings, flowing showers, and a lively atmosphere for relaxed fun."
@@ -165,7 +165,7 @@ const PoolZigZag = () => {
     return (
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
             {/* Header Section */}
-            <div className="absolute top-0 left-0 w-full pt-20 md:pt-16 pb-12 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
+            <div className="relative w-full pt-20 md:pt-10 pb-4 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
                 <h2
                     className="text-4xl md:text-6xl font-heading mb-4 drop-shadow-lg"
                     style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
@@ -182,7 +182,7 @@ const PoolZigZag = () => {
             </div>
 
             {/* Scroll Container with Vertical Lines (Two standing lines) */}
-            <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[70vh] md:h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
+            <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[60vh] md:h-[70vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
 
                 {/* Track */}
                 <div ref={trackRef} className="flex relative items-center px-4 md:px-10 min-w-max">

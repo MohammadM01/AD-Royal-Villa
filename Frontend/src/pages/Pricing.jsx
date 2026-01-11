@@ -12,7 +12,7 @@ const pricingPlans = [
         subtitle: 'Weekday Escape',
         description: 'A serene retreat for peace and privacy. Perfect for workcations or small family bondings.',
         features: [
-            'Up to 15 Guests',
+            'Up to 20 Guests',
             'Private Pool Access',
             'Garden & Lounge',
             'High-Speed WiFi',
@@ -39,7 +39,7 @@ const pricingPlans = [
             'Clean & Sanitized Premises'
         ],
         realImage: '/Assets/nice_bedroom_interior.jpg',
-        image: '/Assets/outdoor_lounge_canopy.jpg',
+        image: '/Assets/outdoor_lounge_canopy.webp',
         highlight: false
     },
     {
@@ -50,7 +50,7 @@ const pricingPlans = [
         subtitle: 'Weekend Celebration',
         description: 'The ultimate celebration experience. Full villa access, loud music allowed, perfect for parties.',
         features: [
-            'Up to 15 Guests',
+            'Up to 20 Guests',
             'Full 4BHK Villa Access',
             'Music System Allowed',
             'BBQ Setup Available',
@@ -74,7 +74,7 @@ const pricingPlans = [
             'Photo-shoot Friendly Spots',
             'Interactive Water Fountains'
         ],
-        image: '/Assets/Activites and pool/pool_villa_exterior_day.jpg',
+        image: '/Assets/Activites and pool/pool_villa_exterior_day.webp',
         highlight: true
     },
 
@@ -99,7 +99,7 @@ const Pricing = () => {
                     className="absolute inset-0 z-0"
                 >
                     <img
-                        src="/Assets/villa_entrance_facade.jpg"
+                        src="/Assets/villa_entrance_facade.webp"
                         alt="Royal Villa Facade"
                         className="w-full h-full object-cover scale-110 brightness-[0.65]"
                     />
@@ -125,7 +125,7 @@ const Pricing = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 1 }}
-                        className="text-lg md:text-xl text-stone-300 font-light max-w-2xl mx-auto leading-relaxed"
+                        className="text-lg md:text-xl text-stone-300 font-light max-w-4xl mx-auto leading-relaxed"
                     >
                         Detailed pricing for your private sanctuary. No hidden costs. Just pure luxury.
                     </motion.p>
@@ -188,7 +188,7 @@ const Pricing = () => {
                         >
                             {/* Background Image Enhancement */}
                             <div className="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
-                                <img src="/Assets/outdoor_lounge_canopy.jpg" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Texture" />
+                                <img src="/Assets/outdoor_lounge_canopy.webp" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Texture" />
                             </div>
 
                             <div className="relative z-10 h-full flex flex-col md:flex-row items-center gap-8 p-6 md:p-0">
@@ -211,7 +211,7 @@ const Pricing = () => {
                                             'Flexible Check-in/out'
                                         ].map((feature, i) => (
                                             <div key={i} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
-                                                <Check className="w-5 h-5 text-accent" />
+                                                <Check className="w-5 h-5 text-white" />
                                                 <span className="text-sm font-medium tracking-wide">{feature}</span>
                                             </div>
                                         ))}
@@ -220,7 +220,7 @@ const Pricing = () => {
                                 <div className="w-full md:w-1/3 hidden md:block">
                                     {/* Abstract Visual Element */}
                                     <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-accent to-orange-600 p-1 shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="/Assets/villa_entrance_facade.jpg" className="w-full h-full object-cover rounded-xl" alt="Villa" />
+                                        <img src="/Assets/villa_entrance_facade.webp" className="w-full h-full object-cover rounded-xl" alt="Villa" />
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@ const Pricing = () => {
             </section>
 
             {/* --- PRICING CARDS --- */}
-            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-black text-white">
+            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-[#18181b] text-white">
                 {/* Background Glows */}
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[128px]" />
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[128px]" />

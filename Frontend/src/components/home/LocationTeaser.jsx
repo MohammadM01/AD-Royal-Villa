@@ -6,7 +6,7 @@ const LocationTeaser = () => {
         <section className="relative h-[500px] w-full mt-12 bg-gray-900 group overflow-hidden">
             {/* Background Image */}
             <img
-                src="/Assets/villa_entrance_facade.jpg"
+                src="/Assets/villa_entrance_facade.webp"
                 alt="Villa Location"
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
             />

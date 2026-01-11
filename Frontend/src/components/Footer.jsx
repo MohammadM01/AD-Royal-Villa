@@ -27,9 +27,7 @@ const Footer = () => {
                 {/* Brand Section */}
                 <div className="space-y-6">
                     <h3 className="text-3xl font-heading font-bold" style={{ color: '#ffffff' }}>AD Royal Private Villa</h3>
-                    <p className="text-gray-400 font-light leading-relaxed">
-                        Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK farmhouse.
-                    </p>
+                    Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK villa.
                     <div className="flex space-x-4">
                         <a href="#" className="text-white hover:text-primary transition-colors">
                             <FaInstagram size={24} />

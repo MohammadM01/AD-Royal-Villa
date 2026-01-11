@@ -59,7 +59,7 @@ const Navbar = () => {
                     {/* Logo Section */}
                     <Link to="/" className="flex items-center space-x-2 z-50">
                         <img
-                            src="/New/logo/logo.png"
+                            src="/New/logo/logo.webp"
                             alt="AD Royal Villa"
                             className={`h-10 w-auto object-contain transition-all duration-300 hover:scale-105 ${!isScrolled || theme === 'dark'
                                 ? 'brightness-0 invert'

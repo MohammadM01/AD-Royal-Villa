@@ -7,9 +7,9 @@ import { useLeaf } from '../../context/LeafContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const villaFeatures = [
-    { src: "/Assets/villa_entrance_facade.jpg", title: "The Grand Estate" },
-    { src: "/Assets/outdoor_lounge_canopy.jpg", title: "Outdoor Lounge" },
-    { src: "/Assets/kids_play_zone_overview.jpg", title: "Gardens" },
+    { src: "/Assets/villa_entrance_facade.webp", title: "The Grand Estate" },
+    { src: "/Assets/outdoor_lounge_canopy.webp", title: "Outdoor Lounge" },
+    { src: "/Assets/kids_play_zone_overview.webp", title: "Gardens" },
 ];
 
 const VillaVerticalTour = () => {

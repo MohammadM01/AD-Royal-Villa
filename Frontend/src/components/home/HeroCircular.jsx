@@ -7,8 +7,8 @@ import { useLeaf } from '../../context/LeafContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const heroImages = [
-    "/New/Home/home-views/front-view.png",
-    "/New/Home/home-views/side-view.png"
+    "/New/Home/home-views/front-view.webp",
+    "/New/Home/home-views/side-view.webp"
 ];
 
 const HeroCircular = () => {

@@ -54,13 +54,13 @@ const Preloader = ({ onComplete }) => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center overflow-hidden"
+            className="fixed inset-0 z-[9999] bg-[#18181b] flex flex-col items-center justify-center overflow-hidden"
         >
             {/* Logo Section */}
             <div className="mb-6 overflow-hidden">
                 <img
                     ref={logoRef}
-                    src="/New/logo/logo.png"
+                    src="/New/logo/logo.webp"
                     alt="AD Royal Villa"
                     className="w-24 md:w-32 h-auto object-contain brightness-0 invert drop-shadow-2xl"
                 />

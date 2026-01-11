@@ -9,16 +9,16 @@ const amenities = [
         type: 'image',
         title: '4 Luxury Bedrooms',
         description: 'Indulge in the ultimate comfort with our four spacious, fully air conditioned bedrooms. Each room features a plush king size bed wrapped in premium linens to ensure a restful sleep. Large pool view balconies let you wake up to serene water vistas every morning. Equipped with large 32 inch Smart TVs, wardrobe storage, and modern attached washrooms, our bedrooms provide a private sanctuary within the villa.',
-        src: '/Assets/ameneties/luxury_bedroom_king_tv.jpg',
+        src: '/Assets/ameneties/luxury_bedroom_king_tv.webp',
         highlight: 'King Size Beds & Pool View'
     },
     {
         id: 2,
         type: 'image',
         title: 'Private Living Hall',
-        description: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 75 inch flat screen TV and a high fidelity sound system, it is the ideal spot for movie nights or lively conversations.',
-        src: '/Assets/ameneties/spacious living room.png',
-        highlight: '75 inch TV & Sound System'
+        description: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 65 inch flat screen TV and a high fidelity sound system, it is the ideal spot for movie nights or lively conversations.',
+        src: '/Assets/ameneties/spacious living room.webp',
+        highlight: '65 inch TV & Sound System'
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const amenities = [
         type: 'image',
         title: 'Live BBQ Nights',
         description: 'Ignite your senses with our dedicated poolside BBQ station. Indulge in a culinary journey under the stars where you can grill your favorites while enjoying the cool evening breeze. It is the perfect setting for memorable evening gatherings, laughter, and gourmet delights shared with loved ones.',
-        src: '/Assets/Activites and pool/bbq1.jpeg',
+        src: '/Assets/Activites and pool/bbq1.webp',
         highlight: 'Gourmet Grilling under Stars'
     }
 ];
