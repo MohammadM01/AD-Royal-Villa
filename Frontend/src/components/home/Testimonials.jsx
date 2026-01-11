@@ -71,7 +71,7 @@ const Testimonials = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className={`py-24 transition-colors duration-300 relative overflow-hidden ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
+        <section ref={containerRef} className={`py-24 transition-colors duration-300 relative overflow-hidden ${theme === 'dark' ? 'bg-[#18181b]' : 'bg-white'}`}>
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">

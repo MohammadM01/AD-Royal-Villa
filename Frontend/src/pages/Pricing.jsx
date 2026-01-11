@@ -230,7 +230,7 @@ const Pricing = () => {
             </section>
 
             {/* --- PRICING CARDS --- */}
-            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-black text-white">
+            <section className="py-20 pb-40 px-4 relative overflow-hidden transition-colors duration-300 bg-[#18181b] text-white">
                 {/* Background Glows */}
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[128px]" />
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[128px]" />

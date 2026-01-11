@@ -136,7 +136,7 @@ const Activities = () => {
     const { theme } = useTheme();
 
     return (
-        <div className={`overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-black text-[#EAEAEA]' : 'bg-white text-[#1a1a1a]'}`}>
+        <div className={`overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-[#18181b] text-[#EAEAEA]' : 'bg-[#F9F4E8] text-[#1a1a1a]'}`}>
 
             {/* --- HERO --- */}
             <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
