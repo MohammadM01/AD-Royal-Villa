@@ -189,29 +189,32 @@ const PoolZigZag = () => {
                     {poolImages.map((item, index) => (
                         <div
                             key={index}
-                            className="pool-card-wrapper relative group shrink-0 w-[85vw] md:w-[65vh] h-[50vh] md:h-[45vh] transition-all duration-500 will-change-transform" // Responsive width/height
-                            onClick={() => setExpandedIdx(index)}
+                            className={`relative group shrink-0 w-[85vw] md:w-[65vh] h-[50vh] md:h-[45vh] transition-all duration-500 ${index % 2 !== 0 ? 'md:translate-y-[30%]' : ''}`}
                             style={{
                                 zIndex: index % 2 === 0 ? 10 : 5,
-                                transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(30%)', // Reduce zigzag slightly
-                                marginLeft: index === 0 ? 0 : '-5vw', // More overlap
-                                transformStyle: "preserve-3d",
+                                marginLeft: index === 0 ? 0 : '-5vw',
                             }}
                         >
-                            {/* Image Card */}
-                            <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-2 border-white/50">
-                                <img
-                                    ref={index === 0 ? firstImageRef : null}
-                                    src={item.src}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover"
-                                />
+                            <div
+                                className="pool-card-wrapper w-full h-full will-change-transform cursor-pointer"
+                                onClick={() => setExpandedIdx(index)}
+                                style={{ transformStyle: "preserve-3d" }}
+                            >
+                                {/* Image Card */}
+                                <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative border-2 border-white/50">
+                                    <img
+                                        ref={index === 0 ? firstImageRef : null}
+                                        src={item.src}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover"
+                                    />
 
-                                <div className="absolute inset-x-0 bottom-0 h-full md:h-2/3 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end p-5 pb-24 md:p-6 md:pb-6 transition-all duration-300">
-                                    <h3 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight drop-shadow-lg shadow-black">{item.title}</h3>
-                                    <p className="text-white/95 text-xs md:text-sm italic line-clamp-3 md:line-clamp-none leading-relaxed drop-shadow-md">
-                                        "{item.punchline}" <span className="text-accent text-[10px] md:text-xs uppercase font-bold tracking-wider block mt-2 opacity-90 not-italic">Tap to read more</span>
-                                    </p>
+                                    <div className="absolute inset-x-0 bottom-0 h-full md:h-2/3 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end p-5 pb-24 md:p-6 md:pb-6 transition-all duration-300">
+                                        <h3 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight drop-shadow-lg shadow-black">{item.title}</h3>
+                                        <p className="text-white/95 text-xs md:text-sm italic line-clamp-3 md:line-clamp-none leading-relaxed drop-shadow-md">
+                                            "{item.punchline}" <span className="text-accent text-[10px] md:text-xs uppercase font-bold tracking-wider block mt-2 opacity-90 not-italic">Tap to read more</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
