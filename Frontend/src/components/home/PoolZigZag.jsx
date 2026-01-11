@@ -16,7 +16,7 @@ const poolImages = [
         text: "Experience ultimate relaxation in our crystal-clear main pool. Surrounded by lush greenery, it offers the perfect escape. Enjoy a temperature-controlled dip day or night, as vibrant lighting creates a magical evening atmosphere."
     },
     {
-        src: "/Assets/xxx.webp",
+        src: "/Assets/yyy.png",
         title: "Fun Meets Comfort",
         punchline: "Relaxation for All Ages",
         text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."
@@ -165,7 +165,7 @@ const PoolZigZag = () => {
     return (
         <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
             {/* Header Section */}
-            <div className="absolute top-0 left-0 w-full pt-20 md:pt-16 pb-12 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
+            <div className="relative w-full pt-20 md:pt-10 pb-4 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
                 <h2
                     className="text-4xl md:text-6xl font-heading mb-4 drop-shadow-lg"
                     style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
@@ -182,7 +182,7 @@ const PoolZigZag = () => {
             </div>
 
             {/* Scroll Container with Vertical Lines (Two standing lines) */}
-            <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[70vh] md:h-[80vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
+            <div className="relative w-full max-w-[95vw] md:max-w-[85vw] mx-auto h-[60vh] md:h-[70vh] flex items-center justify-start perspective-[2000px] overflow-hidden">
 
                 {/* Track */}
                 <div ref={trackRef} className="flex relative items-center px-4 md:px-10 min-w-max">
