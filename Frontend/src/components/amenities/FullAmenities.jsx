@@ -14,7 +14,7 @@ const FullAmenities = () => {
         <section className="relative z-20 py-20 bg-[#0F172A] border-t border-white/10">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="text-center mb-16">
-                    <span className="text-secondary uppercase tracking-[0.2em] text-sm font-bold mb-3 block">
+                    <span className="text-amber-400 uppercase tracking-[0.2em] text-sm font-bold mb-3 block">
                         Everything You Need For A Perfect Stay
                     </span>
                     <h2 className="text-3xl md:text-5xl font-heading font-bold text-white">

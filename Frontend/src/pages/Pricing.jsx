@@ -283,7 +283,7 @@ const Pricing = () => {
                                 </div>
 
                                 {/* Body */}
-                                <div className="p-8 flex-1 flex flex-col">
+                                <div className="p-6 md:p-8 flex-1 flex flex-col">
                                     <div className="mb-8 flex items-baseline">
                                         <span className="text-4xl md:text-5xl font-bold font-heading tracking-tight text-white">{plan.price}</span>
                                         <span className="text-stone-500 ml-2 font-medium">{plan.period}</span>

@@ -53,7 +53,7 @@ const AboutUs = () => {
                             </h2>
                         </div>
 
-                        <div className={`text-lg leading-relaxed space-y-6 font-light text-justify hyphens-none ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        <div className={`text-lg leading-relaxed space-y-8 md:space-y-6 font-light text-left md:text-justify hyphens-none ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                             <p>
                                 Welcome to a sanctuary designed for absolute comfort, peace, and freedom. <span className="font-semibold">AD Royal Private Villa</span> is more than a getaway it is a thoughtfully located retreat where luxury, safety, and privacy come together in perfect harmony.
                             </p>
@@ -69,7 +69,7 @@ const AboutUs = () => {
                             <p>
                                 Here, luxury feels personal, fun feels effortless, and privacy is never compromised.
                             </p>
-                            <p className={`font-medium text-xl mt-4 ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary'}`}>
+                            <p className={`font-medium text-xl mt-6 md:mt-4 ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary'}`}>
                                 Experience the warmth of a home with the grandeur of a resort.
                             </p>
                         </div>

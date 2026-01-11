@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -138,31 +138,25 @@ const Contact = () => {
 
                             <form className="space-y-4 relative z-10" onSubmit={(e) => {
                                 e.preventDefault();
-                                const text = `*New Inquiry from Website*%0A%0A*Name:* ${e.target.name.value}%0A*Email:* ${e.target.email.value}%0A*Mobile:* ${e.target.mobile.value}%0A*Message:* ${e.target.message.value}`;
+                                const text = `*New Inquiry from Website*%0A%0A*Name:* ${e.target.name.value}%0A*Mobile:* ${e.target.mobile.value}%0A*Message:* ${e.target.message.value}`;
                                 window.open(`https://wa.me/919890205767?text=${text}`, '_blank');
                             }}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div className="space-y-1">
-                                        <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
-                                        <input name="name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <label className="text-xs tracking-widest uppercase text-gray-400">Email</label>
-                                        <input name="email" type="email" placeholder="email@example.com" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
-                                    </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
+                                    <input name="name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label className="text-xs tracking-widest uppercase text-gray-400">Mobile No</label>
-                                    <input name="mobile" type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
+                                    <input name="mobile" type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label className="text-xs tracking-widest uppercase text-gray-400">Message</label>
-                                    <textarea name="message" rows="3" placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600 resize-none" required></textarea>
+                                    <textarea name="message" rows="3" placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600 resize-none" required></textarea>
                                 </div>
 
-                                <button type="submit" className="w-full bg-gradient-to-r from-primary via-primary-light to-primary text-white font-heading font-medium text-base py-3 rounded-lg shadow-md hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-2 uppercase tracking-wide">
+                                <button type="submit" className="w-full bg-gradient-to-r from-primary via-primary-light to-primary text-white font-heading font-medium text-base py-4 md:py-3 rounded-lg shadow-md hover:shadow-accent/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-2 uppercase tracking-wide">
                                     Submit
                                 </button>
                             </form>

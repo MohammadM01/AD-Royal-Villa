@@ -82,8 +82,8 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
     }, [reverse]);
 
     return (
-        <div ref={sectionRef} className="container mx-auto px-6 py-24 md:py-32 border-b border-gray-100 dark:border-gray-800 last:border-0">
-            <div className={`flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
+        <div ref={sectionRef} className="container mx-auto px-6 py-16 md:py-32 border-b border-gray-100 dark:border-gray-800 last:border-0">
+            <div className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-24 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
 
                 {/* Media Side (Left or Right) */}
                 <div className="w-full lg:w-5/12 h-[350px] md:h-[450px] lg:h-[500px] anim-media">
@@ -95,16 +95,16 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                 </div>
 
                 {/* Text Side - Left Aligned */}
-                <div className="w-full lg:w-6/12 space-y-8 text-left flex flex-col justify-center items-start">
+                <div className="w-full lg:w-6/12 space-y-6 md:space-y-8 text-left flex flex-col justify-center items-start">
                     <div className="anim-text">
-                        <span className={`inline-block ${textClass} text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
+                        <span className={`inline-block ${textClass} text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-2`}>
                             {subtitle}
                         </span>
                         <div className={`h-1 w-12 ${bgClass} mt-2 rounded-full`}></div>
                     </div>
 
                     <h2
-                        className={`anim-text font-heading text-5xl md:text-6xl lg:text-7xl ${textClass} leading-none drop-shadow-sm pb-2`}
+                        className={`anim-text font-heading text-4xl md:text-6xl lg:text-7xl ${textClass} leading-none drop-shadow-sm pb-2`}
                     >
                         {title}
                     </h2>
@@ -117,10 +117,14 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                     </p>
 
                     <div className="anim-text pt-4">
-                        <button className="group relative px-8 py-3 bg-[#002147] text-white dark:bg-white dark:text-[#002147] font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95 rounded-sm">
-                            <span className={`relative z-10 transition-colors group-hover:${textClass} dark:group-hover:${textClass}`}>{buttonText}</span>
-                            <div className={`absolute inset-0 ${bgClass} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                        </button>
+                        <a
+                            href="https://wa.me/919890205767"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block px-10 py-4 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white font-heading uppercase tracking-[0.2em] text-xs md:text-sm rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-transparent hover:border-white/20"
+                        >
+                            {buttonText}
+                        </a>
                     </div>
                 </div>
             </div>

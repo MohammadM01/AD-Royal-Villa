@@ -189,29 +189,32 @@ const PoolZigZag = () => {
                     {poolImages.map((item, index) => (
                         <div
                             key={index}
-                            className="pool-card-wrapper relative group shrink-0 w-[85vw] md:w-[65vh] h-[50vh] md:h-[45vh] transition-all duration-500 will-change-transform" // Responsive width/height
-                            onClick={() => setExpandedIdx(index)}
+                            className={`relative group shrink-0 w-[85vw] md:w-[65vh] h-[50vh] md:h-[45vh] transition-all duration-500 ${index % 2 !== 0 ? 'md:translate-y-[30%]' : ''}`}
                             style={{
                                 zIndex: index % 2 === 0 ? 10 : 5,
-                                transform: index % 2 === 0 ? 'translateY(0%)' : 'translateY(30%)', // Reduce zigzag slightly
-                                marginLeft: index === 0 ? 0 : '-5vw', // More overlap
-                                transformStyle: "preserve-3d",
+                                marginLeft: index === 0 ? 0 : '-5vw',
                             }}
                         >
-                            {/* Image Card */}
-                            <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer border-2 border-white/50">
-                                <img
-                                    ref={index === 0 ? firstImageRef : null}
-                                    src={item.src}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover"
-                                />
+                            <div
+                                className="pool-card-wrapper w-full h-full will-change-transform cursor-pointer"
+                                onClick={() => setExpandedIdx(index)}
+                                style={{ transformStyle: "preserve-3d" }}
+                            >
+                                {/* Image Card */}
+                                <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl relative border-2 border-white/50">
+                                    <img
+                                        ref={index === 0 ? firstImageRef : null}
+                                        src={item.src}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover"
+                                    />
 
-                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col justify-end p-6">
-                                    <h3 className="text-3xl font-heading text-white mb-2">{item.title}</h3>
-                                    <p className="text-white/90 text-sm italic">
-                                        "{item.punchline}" <span className="text-accent text-xs uppercase font-bold tracking-wider block mt-2 not-italic">Click to read more</span>
-                                    </p>
+                                    <div className="absolute inset-x-0 bottom-0 h-full md:h-2/3 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col justify-end p-5 pb-24 md:p-6 md:pb-6 transition-all duration-300">
+                                        <h3 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight drop-shadow-lg shadow-black">{item.title}</h3>
+                                        <p className="text-white/95 text-xs md:text-sm italic line-clamp-3 md:line-clamp-none leading-relaxed drop-shadow-md">
+                                            "{item.punchline}" <span className="text-accent text-[10px] md:text-xs uppercase font-bold tracking-wider block mt-2 opacity-90 not-italic">Tap to read more</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +233,7 @@ const PoolZigZag = () => {
                 {expandedIdx !== null && (
                     <div
                         ref={modalRef}
-                        className="bg-white rounded-3xl w-[80vw] h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
+                        className="bg-white rounded-3xl w-[90vw] md:w-[80vw] h-[80vh] md:h-[70vh] shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Image Left */}
@@ -249,6 +252,16 @@ const PoolZigZag = () => {
                             <p className="text-base text-gray-700 font-body leading-relaxed whitespace-pre-wrap">
                                 {poolImages[expandedIdx].text}
                             </p>
+                            <div className="mt-8">
+                                <a
+                                    href="https://wa.me/919890205767"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block px-10 py-4 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white font-heading uppercase tracking-[0.2em] text-sm rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-transparent hover:border-white/20"
+                                >
+                                    Book This Experience
+                                </a>
+                            </div>
                         </div>
                     </div>
                 )}
