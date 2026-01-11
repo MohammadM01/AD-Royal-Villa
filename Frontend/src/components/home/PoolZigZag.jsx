@@ -13,10 +13,10 @@ const poolImages = [
         src: "/New/Home/Pool/pool-1.webp",
         title: "Main Pool",
         punchline: "The Heart of Your Vacation",
-        text: "Experience the ultimate relaxation in our crystal clear main pool, designed to be the heart of your vacation. Surrounded by lush greenery and comfortable loungers, it offers the perfect escape from the daily grind. Whether you want to swim laps to start your day or simply float around and soak up the sun, this pool caters to all your needs. The water is temperature controlled, ensuring a pleasant dip regardless of the weather outside. At night, the pool lights up with vibrant colors, creating a magical atmosphere for unmatched evening vibes."
+        text: "Experience ultimate relaxation in our crystal-clear main pool. Surrounded by lush greenery, it offers the perfect escape. Enjoy a temperature-controlled dip day or night, as vibrant lighting creates a magical evening atmosphere."
     },
     {
-        src: "/New/Home/Pool/pool-2.webp",
+        src: "/Assets/xxx.webp",
         title: "Fun Meets Comfort",
         punchline: "Relaxation for All Ages",
         text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."
