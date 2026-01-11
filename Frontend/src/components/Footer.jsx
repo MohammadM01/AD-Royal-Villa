@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { FaMapMarkerAlt, FaPhone, FaInstagram, FaFacebook } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaPhone, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -29,11 +29,11 @@ const Footer = () => {
                     <h3 className="text-3xl font-heading font-bold" style={{ color: '#ffffff' }}>AD Royal Private Villa</h3>
                     Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK villa.
                     <div className="flex justify-center md:justify-start space-x-4">
-                        <a href="#" className="text-white hover:text-primary transition-colors p-2">
+                        <a href="https://www.instagram.com/ad_farms_and_resort/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors p-2">
                             <FaInstagram size={24} />
                         </a>
-                        <a href="#" className="text-white hover:text-primary transition-colors p-2">
-                            <FaFacebook size={24} />
+                        <a href="https://wa.me/919890205767" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors p-2">
+                            <FaWhatsapp size={24} />
                         </a>
                     </div>
                 </div>

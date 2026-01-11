@@ -257,7 +257,7 @@ const PoolZigZag = () => {
                                     href="https://wa.me/919890205767"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block px-8 py-3 bg-accent text-white font-heading uppercase tracking-widest text-sm rounded-full shadow-lg hover:bg-opacity-90 transition-all hover:scale-105"
+                                    className="inline-block px-10 py-4 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white font-heading uppercase tracking-[0.2em] text-sm rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-transparent hover:border-white/20"
                                 >
                                     Book This Experience
                                 </a>

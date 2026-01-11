@@ -121,10 +121,9 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                             href="https://wa.me/919890205767"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block group relative px-8 py-3 bg-[#002147] text-white dark:bg-white dark:text-[#002147] font-heading uppercase tracking-widest text-xs overflow-hidden shadow-lg transition-all hover:scale-105 active:scale-95 rounded-sm"
+                            className="inline-block px-10 py-4 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white font-heading uppercase tracking-[0.2em] text-xs md:text-sm rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-transparent hover:border-white/20"
                         >
-                            <span className={`relative z-10 transition-colors group-hover:${textClass} dark:group-hover:${textClass}`}>{buttonText}</span>
-                            <div className={`absolute inset-0 ${bgClass} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                            {buttonText}
                         </a>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -102,17 +102,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="group flex items-start gap-5 p-4 rounded-xl hover:bg-primary/5 transition-colors duration-300">
-                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-lg group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                                <FaEnvelope />
-                            </div>
-                            <div>
-                                <h3 className="font-heading text-xl text-primary mb-1">Email Us</h3>
-                                <p className="font-body text-gray-500 text-sm">
-                                    bookings@adroyalvilla.com
-                                </p>
-                            </div>
-                        </div>
+
 
                         {/* Social Icons */}
                         <div className="pl-5 pt-2">
@@ -138,18 +128,12 @@ const Contact = () => {
 
                             <form className="space-y-4 relative z-10" onSubmit={(e) => {
                                 e.preventDefault();
-                                const text = `*New Inquiry from Website*%0A%0A*Name:* ${e.target.name.value}%0A*Email:* ${e.target.email.value}%0A*Mobile:* ${e.target.mobile.value}%0A*Message:* ${e.target.message.value}`;
+                                const text = `*New Inquiry from Website*%0A%0A*Name:* ${e.target.name.value}%0A*Mobile:* ${e.target.mobile.value}%0A*Message:* ${e.target.message.value}`;
                                 window.open(`https://wa.me/919890205767?text=${text}`, '_blank');
                             }}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div className="space-y-1">
-                                        <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
-                                        <input name="name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <label className="text-xs tracking-widest uppercase text-gray-400">Email</label>
-                                        <input name="email" type="email" placeholder="email@example.com" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" />
-                                    </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs tracking-widest uppercase text-gray-400">Name</label>
+                                    <input name="name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-3 md:py-2 text-base md:text-sm focus:outline-none focus:border-accent focus:bg-white/10 transition-all text-white placeholder-gray-600" required />
                                 </div>
 
                                 <div className="space-y-1">
