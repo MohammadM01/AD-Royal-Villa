@@ -4,27 +4,27 @@ import FullAmenities from '../components/amenities/FullAmenities';
 
 const amenityItems = [
     {
-        src: '/New/Home/Pool/pool-2.png',
+        src: '/New/Home/Pool/pool-2.webp',
         title: '80ft Lap Pool',
         description: 'Crystal clear waters with rain dance and slides.'
     },
     {
-        src: '/Assets/kids_play_slide_seesaw.jpg',
+        src: '/Assets/kids_play_slide_seesaw.webp',
         title: 'Kids Play Zone',
         description: 'Safe swings, slides, and merry-go-rounds.'
     },
     {
-        src: '/Assets/Activites and pool/bbq1.jpeg',
+        src: '/Assets/Activites and pool/bbq1.webp',
         title: 'Poolside BBQ',
         description: 'Grill and chill under the open sky.'
     },
     {
-        src: '/Assets/Activites and pool/kids_swings_garden.jpg',
+        src: '/Assets/Activites and pool/kids_swings_garden.webp',
         title: 'Lush Gardens',
         description: 'Perfect for morning yoga or evening strolls.'
     },
     {
-        src: '/Assets/villa_entrance_facade.jpg',
+        src: '/Assets/villa_entrance_facade.webp',
         title: 'Secure Parking',
         description: 'Ample space for all your vehicles.'
     },

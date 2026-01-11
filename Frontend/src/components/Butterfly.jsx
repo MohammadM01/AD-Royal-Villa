@@ -201,7 +201,7 @@ const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16", startFar = false }) => {
                 {/* Left Facing (3.png) */}
                 <img
                     ref={imageLeftRef}
-                    src="/New/svg/butterfly/3.png"
+                    src="/New/svg/butterfly/3.webp"
                     alt="Butterfly Left"
                     className="w-full h-full object-contain drop-shadow-xl absolute top-0 left-0 transition-none"
                     style={{ opacity: 0 }} // Start hidden (or 1 depending on initial)
@@ -210,7 +210,7 @@ const Butterfly = ({ id = 1, sizeClasses = "w-16 h-16", startFar = false }) => {
                 {/* Right Facing (5.png) */}
                 <img
                     ref={imageRightRef}
-                    src="/New/svg/butterfly/5.png"
+                    src="/New/svg/butterfly/5.webp"
                     alt="Butterfly Right"
                     className="w-full h-full object-contain drop-shadow-xl absolute top-0 left-0 transition-none"
                     style={{ opacity: 1 }} // Start visible (Default)

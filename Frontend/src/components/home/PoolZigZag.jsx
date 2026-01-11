@@ -10,37 +10,37 @@ gsap.registerPlugin(ScrollTrigger);
 // 6 Images with longer descriptions (5-6 lines approx)
 const poolImages = [
     {
-        src: "/New/Home/Pool/pool-1.png",
+        src: "/New/Home/Pool/pool-1.webp",
         title: "Main Pool",
         punchline: "The Heart of Your Vacation",
         text: "Experience the ultimate relaxation in our crystal clear main pool, designed to be the heart of your vacation. Surrounded by lush greenery and comfortable loungers, it offers the perfect escape from the daily grind. Whether you want to swim laps to start your day or simply float around and soak up the sun, this pool caters to all your needs. The water is temperature controlled, ensuring a pleasant dip regardless of the weather outside. At night, the pool lights up with vibrant colors, creating a magical atmosphere for unmatched evening vibes."
     },
     {
-        src: "/New/Home/Pool/pool-2.png",
+        src: "/New/Home/Pool/pool-2.webp",
         title: "Fun Meets Comfort",
         punchline: "Relaxation for All Ages",
         text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."
     },
     {
-        src: "/New/Home/Pool/pool-3.png",
+        src: "/New/Home/Pool/pool-3.webp",
         title: "Pool & Slide Experience",
         punchline: "Splash, Slide, and Unwind",
         text: "Enjoy a refreshing swim in our beautifully lit pool area, designed for relaxation and light recreation. Featuring smooth water slides, spacious swimming lanes, and a calm evening ambiance, this space offers the perfect balance between fun and comfort. Whether you're cooling off or simply unwinding by the water, the atmosphere remains peaceful and inviting."
     },
     {
-        src: "/New/Home/Pool/pool-4.png",
+        src: "/New/Home/Pool/pool-4.webp",
         title: "Evenings by the Water",
         punchline: "Calmness After Sunset",
         text: "As the lights reflect on the water and the surroundings grow quiet, the poolside becomes a place to slow down. Whether you’re stepping out for a swim or simply enjoying the atmosphere, this space offers a sense of calm that stays with you."
     },
     {
-        src: "/New/Home/Pool/raindance.png",
+        src: "/New/Home/Pool/raindance.webp",
         title: "Water Activities",
         punchline: "Cool and Energized",
         text: "Dive into a refreshing experience with our exciting water activities. From relaxing showers to lively splash zones, every corner is designed to keep you cool and energized. Whether you're dancing under flowing water or enjoying a casual swim, the atmosphere stays fun, refreshing, and full of good vibes."
     },
     {
-        src: "/New/Home/Pool/raindance-2.png",
+        src: "/New/Home/Pool/raindance-2.webp",
         title: "Refresh Under the Rain",
         punchline: "Dance in the Showers",
         text: "Step into a space where water flows freely and the mood stays light. The Rain Dance area offers a refreshing escape, combining open surroundings, flowing showers, and a lively atmosphere for relaxed fun."

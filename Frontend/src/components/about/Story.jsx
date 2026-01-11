@@ -16,7 +16,7 @@ const Story = () => {
                     >
                         <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                             <img
-                                src="/Assets/villa_entrance_facade.jpg"
+                                src="/Assets/villa_entrance_facade.webp"
                                 alt="Entrance of AD Royal Villa"
                                 className="w-full h-auto object-cover"
                             />

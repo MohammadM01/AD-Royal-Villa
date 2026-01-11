@@ -107,7 +107,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                         {title}
                     </h2>
 
-                    <p className="anim-text font-body text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl text-justify hyphens-none">
+                    <p className="anim-text font-body text-lg text-black dark:text-white leading-relaxed max-w-xl text-justify hyphens-none">
                         {desc}
                     </p>
 
@@ -158,7 +158,7 @@ const Activities = () => {
                 title="Live BBQ Nights"
                 desc="Indulge in a culinary journey under the stars. Our live BBQ station allows you to grill your favorites while enjoying the cool evening breeze. Perfect for family gatherings and late-night conversations."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/bbq1.jpeg', '/Assets/Activites and pool/bbq2.png']}
+                mediaSrc={['/Assets/Activites and pool/bbq1.webp', '/Assets/Activites and pool/bbq2.webp']}
                 reverse={false}
                 buttonText="Grill & Chill"
             />
@@ -184,7 +184,7 @@ const Activities = () => {
                 title="Kids Adventure Park"
                 desc="A dedicated paradise for our younger guests. Featuring safe rubberized flooring, garden swings, and open play areas where imagination runs wild in a secure, lush green environment."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/kids_swings_garden.jpg', '/Assets/Activites and pool/evekidsplay.png']}
+                mediaSrc={['/Assets/Activites and pool/kids_swings_garden.webp', '/Assets/Activites and pool/evekidsplay.webp']}
                 reverse={false}
                 buttonText="Fun & Frolic"
             />
@@ -197,7 +197,7 @@ const Activities = () => {
                 title="Twisting Slides"
                 desc="Glide into our crystal-clear waters through our exciting twisting slides. Whether you're racing friends or just enjoying the splash, our pool arena offers endless entertainment."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/pool_slides_aerial_view.jpg']}
+                mediaSrc={['/Assets/Activites and pool/pool_slides_aerial_view.webp']}
                 reverse={true}
                 buttonText="Take the Plunge"
             />
@@ -236,7 +236,7 @@ const Activities = () => {
                 title="Indoor Games Arena"
                 desc="Step inside our fully equipped game zone. From table tennis to carrom, challenge your friends and family to exciting matches regardless of the weather outside."
                 mediaType="image"
-                mediaSrc={['/New/Pool and activities/indoor-games-2.png']}
+                mediaSrc={['/New/Pool and activities/indoor-games-2.webp']}
                 reverse={false}
                 buttonText="Game On"
             />
@@ -249,7 +249,7 @@ const Activities = () => {
                 title="Cricket & Sports"
                 desc="Embrace the open air with a game of cricket on our spacious grounds. Perfect for team bonding and energetic matches under the sun or stars."
                 mediaType="image"
-                mediaSrc={['/New/Pool and activities/cricket.jpg']}
+                mediaSrc={['/New/Pool and activities/cricket.webp']}
                 reverse={true}
                 buttonText="Hit a Six"
             />
@@ -262,7 +262,7 @@ const Activities = () => {
                 title="Pool Water Games"
                 desc="Jump in for some high-energy fun! Perfect for families and groups, our pool is spacious enough for a friendly game of catch, water volleyball, or simply tossing a ball around while cooling off."
                 mediaType="image"
-                mediaSrc={['/New/Pool and activities/ball.png']}
+                mediaSrc={['/New/Pool and activities/ball.webp']}
                 reverse={false}
                 buttonText="Make a Splash"
             />

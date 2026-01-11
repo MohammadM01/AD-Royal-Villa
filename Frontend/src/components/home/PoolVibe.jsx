@@ -63,7 +63,7 @@ const PoolVibe = () => {
                         <div className="relative">
                             <div className="absolute -inset-4 bg-primary/20 rounded-2xl rotate-3 blur-sm" />
                             <img
-                                src="/Assets/outdoor_lounge_canopy.jpg"
+                                src="/Assets/outdoor_lounge_canopy.webp"
                                 alt="Outdoor Lounge"
                                 className="relative rounded-2xl shadow-2xl border-4 border-white/10 rotate-0 hover:rotate-2 transition-transform duration-500"
                             />

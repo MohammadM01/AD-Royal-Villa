@@ -85,7 +85,7 @@ const AboutUs = () => {
                         <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square group">
                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                             <img
-                                src="/New/Home/home-views/front-view.png"
+                                src="/New/Home/home-views/front-view.webp"
                                 alt="AD Royal Villa Front View"
                                 className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                             />
