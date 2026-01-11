@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '../context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,6 +55,7 @@ const VideoPlayer = ({ src }) => {
 };
 
 const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, buttonText = "Explore More", accentText, accentBg }) => {
+    const { theme } = useTheme();
     const sectionRef = useRef(null);
     // Defaults
     const textClass = accentText || 'text-cyan-500';
@@ -107,7 +109,10 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
                         {title}
                     </h2>
 
-                    <p className="anim-text font-body text-lg text-black dark:text-white leading-relaxed max-w-xl text-justify hyphens-none">
+                    <p
+                        className="anim-text font-body text-lg leading-relaxed max-w-xl text-justify hyphens-none"
+                        style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }}
+                    >
                         {desc}
                     </p>
 
@@ -123,7 +128,7 @@ const ContentSection = ({ title, subtitle, desc, mediaType, mediaSrc, reverse, b
     );
 };
 
-import { useTheme } from '../context/ThemeContext';
+
 
 // --- Main Page Component ---
 
