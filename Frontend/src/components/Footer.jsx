@@ -57,13 +57,13 @@ const Footer = () => {
                         <div className="flex items-start space-x-4">
                             <FaMapMarkerAlt size={24} className="text-primary mt-1 shrink-0" />
                             <a href="https://maps.app.goo.gl/H8ZdTKRGpAki1t3a6" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-left">
-                                Near Coral School, Next to Auto Fleet Petrol Pump,<br />
+                                Near Coral School, Next to Auto Fleet Petrol Pump,
                                 Padgha – 421101, 32 km from Thane
                             </a>
                         </div>
                         <div className="flex items-center space-x-4">
                             <FaPhone size={24} className="text-primary shrink-0" />
-                            <a href="https://wa.me/919890205767" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                            <a href="tel:+919890205767" className="hover:text-primary transition-colors">
                                 +91 9890205767
                             </a>
                         </div>
@@ -73,7 +73,7 @@ const Footer = () => {
 
             <div className="border-t border-gray-800 mt-6 pt-4 text-gray-500 text-sm flex flex-row md:flex-row justify-center  items-center gap-4">
                 <p>&copy; {new Date().getFullYear()} AD Farms & Resorts. All rights reserved.</p>
-                <p>Website designed & developed by <a href="https://datamatex.in/" target="_blank" rel="noopener noreferrer" className='text-white hover:text-primary transition-colors font-bold'>Datamatex Technologies</a></p>
+                <p className='pl-50'>Website designed & developed by <a href="https://datamatex.in/" target="_blank" rel="noopener noreferrer" className='text-white hover:text-primary transition-colors font-bold'><b className="text-white">Datamatex Technologies</b></a></p>
             </div>
         </footer>
     )

@@ -16,7 +16,7 @@ const poolImages = [
         text: "Experience ultimate relaxation in our crystal-clear main pool. Surrounded by lush greenery, it offers the perfect escape. Enjoy a temperature-controlled dip day or night, as vibrant lighting creates a magical evening atmosphere."
     },
     {
-        src: "/Assets/yyy.png",
+        src: "/New/Pool and activities/ball.png",
         title: "Fun Meets Comfort",
         punchline: "Relaxation for All Ages",
         text: "From the playful mushroomfall feature to the spacious pool area, this space is designed for all ages. Safe, clean, and beautifully lit, it’s the ideal spot for families to relax and enjoy together."

@@ -39,9 +39,14 @@ const Home = () => {
       {/* 7. Feature/Ending Section */}
       <div className="py-24 bg-[#fada7b] text-[#0077b6] text-center">
         <h2 className="text-4xl font-heading mb-6 !text-[#0077b6]">Ready for your escape?</h2>
-        <button className="px-8 py-4 bg-[#0077b6] text-white font-bold rounded-full hover:scale-105 transition-transform">
+        <a
+          href="https://wa.me/919890205767"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-8 py-4 bg-[#0077b6] text-white font-bold rounded-full hover:scale-105 transition-transform"
+        >
           Book Now
-        </button>
+        </a>
       </div>
     </div>
   );
