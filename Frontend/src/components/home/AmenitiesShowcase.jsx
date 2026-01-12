@@ -89,14 +89,14 @@ const AmenitiesShowcase = () => {
     return (
         <section className="relative h-auto md:h-[800px] bg-[#0F172A] overflow-hidden flex flex-col md:flex-row text-white">
             {/* Left Content Panel */}
-            <div className="w-full md:w-[40%] relative z-20 flex flex-col justify-center px-8 md:px-16 py-12 bg-[#0F172A]">
+            <div className="w-full md:w-[40%] relative z-20 flex flex-col justify-center px-8 md:px-16 py-6 md:py-12 bg-[#0F172A]">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-accent via-primary to-accent"></div>
 
                 <span className="text-secondary/80 uppercase tracking-[0.2em] text-sm font-bold mb-6">
                     Exclusive Amenities
                 </span>
 
-                <div className="relative h-[400px]">
+                <div className="relative h-[450px] md:h-[400px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentIndex}
@@ -104,16 +104,16 @@ const AmenitiesShowcase = () => {
                             animate="visible"
                             exit="exit"
                             variants={textVariants}
-                            className="absolute top-0 left-0 w-full flex flex-col items-start justify-center h-full"
+                            className="absolute top-0 left-0 w-full flex flex-col items-start justify-start md:justify-center h-full"
                         >
                             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
                                 {amenities[currentIndex].title}
                             </h2>
                             <div className="w-20 h-1 bg-accent mb-6"></div>
-                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-8 text-justify hyphens-none">
+                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-2 text-justify hyphens-none">
                                 {amenities[currentIndex].description}
                             </p>
-                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-auto">
+                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-6">
                                 <span>✦</span>
                                 <span>{amenities[currentIndex].highlight}</span>
                             </div>
