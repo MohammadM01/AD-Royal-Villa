@@ -150,7 +150,7 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
             className="h-[70vh] w-full flex items-center justify-center p-4 relative shrink-0"
             style={{
                 scale,
-                opacity,
+                opacity: isMobile ? 1 : opacity,
                 filter: isMobile ? 'none' : filter,
                 zIndex: 10 // Ensure slides are above background but below timeline markers if needed
             }}
@@ -192,7 +192,7 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
                     </p>
                     <div className="flex flex-wrap gap-2 md:gap-3 pt-2">
                         {slide.features.map((f, i) => (
-                            <span key={i} className="px-3 py-1 md:px-5 md:py-2 border border-[#00b4d8]/30 dark:border-[#00b4d8]/30 rounded-full text-xs md:text-sm font-medium text-oxford-blue dark:text-neutral-300 tracking-wide bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                            <span key={i} className="px-3 py-1 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-medium tracking-wide shadow-md bg-[#023e8a] dark:bg-[#00b4d8] text-white dark:text-[#0F172A]">
                                 {f}
                             </span>
                         ))}
