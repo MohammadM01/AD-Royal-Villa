@@ -19,11 +19,11 @@ const ImageGalleryLayout = ({ title, subtitle, eyebrow, items = [] }) => {
                         {eyebrow}
                     </span>
                 )}
-                <h1 className="text-5xl md:text-7xl font-heading text-primary dark:text-accent tracking-tight">
+                <h1 className="text-3xl md:text-7xl font-heading text-primary dark:text-accent tracking-tight">
                     {title}
                 </h1>
                 {subtitle && (
-                    <div className="text-lg md:text-xl text-black dark:text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+                    <div className="text-base md:text-xl text-black dark:text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
                         {subtitle}
                     </div>
                 )}

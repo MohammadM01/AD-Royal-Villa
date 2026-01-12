@@ -1,99 +1,97 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useLeaf } from '../context/LeafContext';
 
 const FloatingLeaf = () => {
-    const { currentLeafTarget } = useLeaf();
+    const containerRef = useRef(null);
     const leafRef = useRef(null);
-    const leafImageRef = useRef(null);
-
-    // Position state to smooth movement
-    const xSet = useRef(null);
-    const ySet = useRef(null);
 
     useGSAP(() => {
-        // Initial position: Center Top (offscreen)
-        gsap.set(leafRef.current, { x: window.innerWidth / 2, y: -150 });
+        const leaf = leafRef.current;
+        if (!leaf) return;
 
-        // Setup "QuickTo" for high performance tracking
-        // Slower duration for "falling" feel
-        xSet.current = gsap.quickTo(leafRef.current, "x", { duration: 1.5, ease: "power3.out" });
-        ySet.current = gsap.quickTo(leafRef.current, "y", { duration: 1.5, ease: "power3.out" });
+        const animateLeaf = () => {
+            const h = window.innerHeight;
+            const w = window.innerWidth;
 
-        // Continuous Waving (Sleeping Position - 90deg)
-        gsap.to(leafImageRef.current, {
-            rotation: 95,
-            duration: 2.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            startAt: { rotation: 85 }
-        });
-    }, { scope: leafRef });
+            // Reset to top with random X
+            gsap.set(leaf, {
+                x: gsap.utils.random(0, w),
+                y: -100,
+                rotation: gsap.utils.random(0, 360),
+                opacity: 0,
+                scale: gsap.utils.random(0.8, 1.2)
+            });
 
-    // Tracking Logic
-    useEffect(() => {
-        const updatePosition = () => {
-            // Check if currentLeafTarget is an object with element (new structure) or just element (old structure fallback)
-            let targetEl = null;
-            let anchor = 'top-left';
+            // Fade in
+            gsap.to(leaf, { opacity: 1, duration: 1 });
 
-            if (currentLeafTarget) {
-                if (currentLeafTarget.element) {
-                    targetEl = currentLeafTarget.element;
-                    anchor = currentLeafTarget.config?.anchor || 'top-left';
-                } else if (currentLeafTarget.nodeType) {
-                    targetEl = currentLeafTarget;
-                }
-            }
+            // Swallow any previous tweens on the leaf ensuring a fresh start
+            gsap.killTweensOf(leaf);
 
-            if (targetEl && leafRef.current) {
-                const rect = targetEl.getBoundingClientRect();
-
-                let targetX = rect.left;
-                let targetY = rect.top;
-
-                if (anchor === 'bottom-right') {
-                    // Position at bottom right of the target
-                    targetX = rect.right - 40;
-                    targetY = rect.bottom - 40;
-                } else {
-                    // Default Top-Left
-                    targetX = rect.left - 20;
-                    targetY = rect.top - 20;
-                }
-
-                // Apply to GSAP
-                if (xSet.current && ySet.current) {
-                    xSet.current(targetX);
-                    ySet.current(targetY);
-                }
-            }
+            // Re-apply fade in after kill (bad order above? no, killTweensOf kills everything)
+            // Let's structure better.
         };
 
-        // Run on every GSAP tick
-        gsap.ticker.add(updatePosition);
-        return () => gsap.ticker.remove(updatePosition);
-    }, [currentLeafTarget]);
+        const startFall = () => {
+            const h = window.innerHeight;
+            const w = window.innerWidth;
 
-    // Initial visible state
-    useEffect(() => {
-        if (currentLeafTarget) {
-            gsap.to(leafRef.current, { opacity: 1, duration: 0.5 });
-        }
-    }, [currentLeafTarget]);
+            // 1. Reset State
+            gsap.set(leaf, {
+                x: gsap.utils.random(10, w - 50),
+                y: -100,
+                rotation: gsap.utils.random(0, 360),
+                opacity: 0,
+                scale: gsap.utils.random(0.8, 1.2)
+            });
+
+            // 2. Main Fall Tween
+            gsap.to(leaf, {
+                y: h + 100,
+                duration: gsap.utils.random(15, 25), // Slow, relaxing fall
+                ease: "none",
+                onComplete: startFall // Loop
+            });
+
+            // 3. Sway (X-axis)
+            gsap.to(leaf, {
+                x: `+=${gsap.utils.random(-150, 150)}`, // Drift left/right
+                duration: gsap.utils.random(3, 6),
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+
+            // 4. Rotation
+            gsap.to(leaf, {
+                rotation: `+=${gsap.utils.random(180, 540)}`,
+                duration: gsap.utils.random(15, 25), // Match fall duration approx
+                ease: "linear"
+            });
+
+            // 5. Opacity - Fade in then stay
+            gsap.to(leaf, {
+                opacity: 1,
+                duration: 2
+            });
+        };
+
+        startFall();
+
+        return () => {
+            gsap.killTweensOf(leaf);
+        };
+
+    }, { scope: containerRef });
 
     return (
-        <div
-            ref={leafRef}
-            className="fixed top-0 left-0 z-[100] pointer-events-none opacity-0 w-10 h-10 md:w-14 md:h-14"
-        >
+        <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
             <img
-                ref={leafImageRef}
+                ref={leafRef}
                 src="/New/svg/leaf-2.svg"
                 alt="Floating Leaf"
-                className="w-full h-full object-contain drop-shadow-2xl"
+                className="absolute w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-xl"
             />
         </div>
     );

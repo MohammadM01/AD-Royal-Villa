@@ -21,9 +21,9 @@ const App = () => {
     <ThemeProvider>
       <LeafProvider>
         <FloatingLeaf />
-        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden hidden md:block">
-          <Kingfisher sizeClasses="w-44 h-44" />
-          <Kingfisher sizeClasses="w-28 h-28" />
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+          <Kingfisher sizeClasses="w-24 h-24 md:w-44 md:h-44" />
+          <Kingfisher sizeClasses="w-16 h-16 md:w-28 md:h-28" />
         </div>
         {isLoading ? (
           <Preloader onComplete={() => setIsLoading(false)} />

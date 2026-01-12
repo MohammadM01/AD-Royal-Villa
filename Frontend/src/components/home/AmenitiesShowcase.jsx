@@ -106,14 +106,14 @@ const AmenitiesShowcase = () => {
                             variants={textVariants}
                             className="absolute top-0 left-0 w-full flex flex-col items-start justify-start md:justify-center h-full"
                         >
-                            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">
                                 {amenities[currentIndex].title}
                             </h2>
-                            <div className="w-20 h-1 bg-accent mb-6"></div>
-                            <p className="text-gray-300 text-lg leading-relaxed font-light mb-2 text-justify hyphens-none">
+                            <div className="w-20 h-1 bg-accent mb-4"></div>
+                            <p className="text-gray-300 text-base md:text-lg leading-relaxed font-light mb-2 text-justify hyphens-none">
                                 {amenities[currentIndex].description}
                             </p>
-                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-6">
+                            <div className="inline-flex items-center space-x-2 text-accent uppercase tracking-widest text-xs font-bold border border-accent/30 px-4 py-2 rounded-full mt-4">
                                 <span>✦</span>
                                 <span>{amenities[currentIndex].highlight}</span>
                             </div>
@@ -122,14 +122,14 @@ const AmenitiesShowcase = () => {
                 </div>
 
                 {/* Controls & Actions */}
-                <div className="flex flex-col space-y-6 mt-4 z-30">
+                <div className="flex flex-col space-y-6 mt-2 z-30">
                     {/* Slider Nav */}
                     <div className="flex items-center space-x-6 md:space-x-8">
                         <button
                             onClick={prevSlide}
-                            className="p-5 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
+                            className="p-3 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
                         >
-                            <ChevronLeft size={28} className="md:w-6 md:h-6" />
+                            <ChevronLeft size={20} className="md:w-6 md:h-6" />
                         </button>
                         <div className="flex space-x-3">
                             {amenities.map((_, idx) => (
@@ -146,9 +146,9 @@ const AmenitiesShowcase = () => {
                         </div>
                         <button
                             onClick={nextSlide}
-                            className="p-5 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
+                            className="p-3 md:p-4 rounded-full border border-white/20 hover:bg-white hover:text-[#0F172A] transition-all duration-300 group active:scale-95"
                         >
-                            <ChevronRight size={28} className="md:w-6 md:h-6" />
+                            <ChevronRight size={20} className="md:w-6 md:h-6" />
                         </button>
                     </div>
 

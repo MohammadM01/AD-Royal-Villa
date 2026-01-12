@@ -106,7 +106,7 @@ const LiquidRevealImage = ({ src, alt, title, description, className, index = 0 
                         width: '100%'
                     }}
                 >
-                    <h3 className="font-heading text-2xl mb-1 text-white drop-shadow-md whitespace-nowrap">{title}</h3>
+                    <h3 className="font-heading text-lg md:text-2xl mb-1 text-white drop-shadow-md whitespace-nowrap">{title}</h3>
                     {description && (
                         <>
                             <div className="h-px w-12 bg-accent/80 mb-2"></div>
