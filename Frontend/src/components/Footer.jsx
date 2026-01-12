@@ -23,12 +23,12 @@ const Footer = () => {
 
     return (
         <footer ref={footerRef} className="bg-[#2B3D5C] text-white py-12 md:py-10 relative">
-            <div className="container mx-auto px-6 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center md:text-left">
+            <div className="container mx-auto px-6 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-left">
                 {/* Brand Section */}
                 <div className="space-y-6">
                     <h3 className="text-3xl font-heading font-bold" style={{ color: '#ffffff' }}>AD Royal Private Villa</h3>
                     Your exclusive private sanctuary. Experience 100% privacy, luxury, and nature in our fully enclosed 4BHK villa.
-                    <div className="flex justify-center md:justify-start space-x-4">
+                    <div className="flex justify-start space-x-4">
                         <a href="https://www.instagram.com/ad_farms_and_resort/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors p-2">
                             <FaInstagram size={24} />
                         </a>
@@ -71,9 +71,9 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="border-t border-gray-800 mt-6 pt-4 text-gray-500 text-sm flex flex-row md:flex-row justify-center  items-center gap-4">
+            <div className="border-t border-gray-800 mt-6 pt-4 pb-24 md:pb-6 md:px-20 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
                 <p>&copy; {new Date().getFullYear()} AD Farms & Resorts. All rights reserved.</p>
-                <p className='pl-50'>Website designed & developed by <a href="https://datamatex.in/" target="_blank" rel="noopener noreferrer" className='text-white hover:text-primary transition-colors font-bold'><b className="text-white">Datamatex Technologies</b></a></p>
+                <p>Website designed & developed by <a href="https://datamatex.in/" target="_blank" rel="noopener noreferrer" className='text-white hover:text-primary transition-colors font-bold'>Datamatex Technologies</a></p>
             </div>
         </footer>
     )

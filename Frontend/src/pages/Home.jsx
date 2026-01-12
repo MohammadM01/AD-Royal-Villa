@@ -37,13 +37,13 @@ const Home = () => {
       <Testimonials />
 
       {/* 7. Feature/Ending Section */}
-      <div className="py-24 bg-[#fada7b] text-[#0077b6] text-center">
-        <h2 className="text-4xl font-heading mb-6 !text-[#0077b6]">Ready for your escape?</h2>
+      <div className="py-24 bg-primary/5 dark:bg-white/5 text-center transition-colors duration-300">
+        <h2 className="text-4xl font-heading mb-8 text-primary dark:text-white drop-shadow-sm">Ready for your escape?</h2>
         <a
           href="https://wa.me/919890205767"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-8 py-4 bg-[#0077b6] text-white font-bold rounded-full hover:scale-105 transition-transform"
+          className="inline-block px-10 py-4 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] text-white !text-white font-heading uppercase tracking-[0.2em] text-sm rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-transparent hover:border-white/20"
         >
           Book Now
         </a>
