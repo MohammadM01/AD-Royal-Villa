@@ -5,75 +5,72 @@ import { useGSAP } from '@gsap/react';
 const FloatingLeaf = () => {
     const containerRef = useRef(null);
     const leafRef = useRef(null);
+    const lastSideRef = useRef('right'); // Start ensuring first is left
 
     useGSAP(() => {
         const leaf = leafRef.current;
         if (!leaf) return;
 
-        const animateLeaf = () => {
-            const h = window.innerHeight;
-            const w = window.innerWidth;
-
-            // Reset to top with random X
-            gsap.set(leaf, {
-                x: gsap.utils.random(0, w),
-                y: -100,
-                rotation: gsap.utils.random(0, 360),
-                opacity: 0,
-                scale: gsap.utils.random(0.8, 1.2)
-            });
-
-            // Fade in
-            gsap.to(leaf, { opacity: 1, duration: 1 });
-
-            // Swallow any previous tweens on the leaf ensuring a fresh start
-            gsap.killTweensOf(leaf);
-
-            // Re-apply fade in after kill (bad order above? no, killTweensOf kills everything)
-            // Let's structure better.
-        };
-
         const startFall = () => {
             const h = window.innerHeight;
             const w = window.innerWidth;
 
+            // Kill all previous tweens (important because of infinite sway)
+            gsap.killTweensOf(leaf);
+
             // 1. Reset State
+            // Alternate side
+            const side = lastSideRef.current === 'left' ? 'right' : 'left';
+            lastSideRef.current = side;
+
+            // Safe margins to prevent going out of screen
+            // Left: 10px to 20% width
+            // Right: 80% width to Width - 50px (leaf size approx)
+            const margin = 20;
+            const leafWidth = 50; // approx max width
+
+            const startX = side === 'left'
+                ? gsap.utils.random(margin, w * 0.2)
+                : gsap.utils.random(w * 0.8, w - leafWidth - margin);
+
             gsap.set(leaf, {
-                x: gsap.utils.random(10, w - 50),
+                x: startX,
                 y: -100,
                 rotation: gsap.utils.random(0, 360),
+                rotationX: 0, // Ensure flat
+                rotationY: 0, // Ensure flat
                 opacity: 0,
                 scale: gsap.utils.random(0.8, 1.2)
             });
 
             // 2. Main Fall Tween
             gsap.to(leaf, {
-                y: h + 100,
-                duration: gsap.utils.random(15, 25), // Slow, relaxing fall
+                y: h + 150,
+                duration: gsap.utils.random(20, 30), // Slower fall (was 10-15)
                 ease: "none",
-                onComplete: startFall // Loop
+                onComplete: startFall
             });
 
-            // 3. Sway (X-axis)
+            // 3. Sway (X-axis) - Reduced sway to keep in bounds
             gsap.to(leaf, {
-                x: `+=${gsap.utils.random(-150, 150)}`, // Drift left/right
-                duration: gsap.utils.random(3, 6),
+                x: `+=${gsap.utils.random(-30, 30)}`,
+                duration: gsap.utils.random(5, 8), // Slower sway
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut"
             });
 
-            // 4. Rotation
+            // 4. Rotation - Continuous spin (2D only)
             gsap.to(leaf, {
-                rotation: `+=${gsap.utils.random(180, 540)}`,
-                duration: gsap.utils.random(15, 25), // Match fall duration approx
-                ease: "linear"
+                rotation: `+=${gsap.utils.random(180, 360)}`, // Slower rotation
+                duration: gsap.utils.random(20, 30), // Match fall duration
+                ease: "none"
             });
 
             // 5. Opacity - Fade in then stay
             gsap.to(leaf, {
-                opacity: 1,
-                duration: 2
+                opacity: 0.8,
+                duration: 1
             });
         };
 
