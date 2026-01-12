@@ -125,14 +125,15 @@ const Slide = ({ slide, index, total, scrollYProgress }) => {
     const start = Math.max(0, peak - step);
     const end = Math.min(1, peak + step);
 
-    // Scale: 0.85 -> 1 -> 0.85
-    const scale = useTransform(scrollYProgress, [start, peak, end], [0.85, 1, 0.85]);
+    // Scale: 0.85 -> 1 -> 0.85 (but stay 1 if last slide)
+    const isLast = index === total - 1;
+    const scale = useTransform(scrollYProgress, [start, peak, end], [0.85, 1, isLast ? 1 : 0.85]);
 
-    // Opacity: 0.3 -> 1 -> 0.3
-    const opacity = useTransform(scrollYProgress, [start, peak, end], [0.3, 1, 0.3]);
+    // Opacity: 0.3 -> 1 -> 0.3 (but stay 1 if last slide)
+    const opacity = useTransform(scrollYProgress, [start, peak, end], [0.3, 1, isLast ? 1 : 0.3]);
 
-    // Blur: 5px -> 0px -> 5px (optional, but requested "same effect")
-    const blurVal = useTransform(scrollYProgress, [start, peak, end], [5, 0, 5]);
+    // Blur: 5px -> 0px -> 5px (but stay 0 if last slide)
+    const blurVal = useTransform(scrollYProgress, [start, peak, end], [5, 0, isLast ? 0 : 5]);
     const filter = useTransform(blurVal, v => `blur(${v}px)`);
 
     const [isMobile, setIsMobile] = useState(false);
