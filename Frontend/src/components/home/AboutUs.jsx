@@ -39,11 +39,11 @@ const AboutUs = () => {
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} className={`py-24 overflow-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-black' : 'bg-[#F9F4E8]'}`}>
+        <section ref={sectionRef} className={`pt-12 pb-0 md:py-24 overflow-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-black' : 'bg-[#F9F4E8]'}`}>
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Content Side - Wider column for text */}
-                    <div ref={contentRef} className="space-y-8 order-2 md:order-1 md:col-span-7 lg:col-span-8">
+                    <div ref={contentRef} className="space-y-4 md:space-y-8 order-2 md:order-1 md:col-span-7 lg:col-span-8">
                         <div>
                             <span className={`uppercase tracking-[0.2em] text-sm font-bold mb-2 block ${theme === 'dark' ? 'text-[#00b4d8]' : 'text-primary/80'}`}>
                                 Discover AD Royal

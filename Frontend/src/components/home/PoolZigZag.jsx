@@ -163,9 +163,9 @@ const PoolZigZag = () => {
     }, [expandedIdx]);
 
     return (
-        <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-center transition-colors duration-300">
+        <div ref={sectionRef} className="h-screen w-full overflow-hidden relative flex flex-col justify-start md:justify-center transition-colors duration-300">
             {/* Header Section */}
-            <div className="relative w-full pt-20 md:pt-10 pb-4 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
+            <div className="relative w-full pb-4 px-6 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
                 <h2
                     className="text-4xl md:text-6xl font-heading mb-4 drop-shadow-lg"
                     style={{ color: theme === 'dark' ? '#ffffff' : '#023e8a' }}
