@@ -1,0 +1,22 @@
+{
+  "name": "AD Farms & Resorts - Royal Private Villa",
+  "short_name": "AD Farms",
+  "description": "Experience luxury at AD Farms & Resorts Royal Private Villa - Premium accommodations with pool, activities, and world-class amenities",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#47312D",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
