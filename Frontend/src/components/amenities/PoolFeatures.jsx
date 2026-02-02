@@ -25,7 +25,7 @@ const PoolFeatures = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <img src="/Assets/poolside_patio_dining.jpg" alt="Poolside Patio Dining" className="w-full h-auto transform hover:scale-105 transition-transform duration-700" />
+                        <img src="/media/poolside_patio_dining.jpg" alt="Poolside Patio Dining" className="w-full h-auto transform hover:scale-105 transition-transform duration-700" />
                     </motion.div>
 
                     <motion.div

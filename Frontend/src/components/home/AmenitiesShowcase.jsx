@@ -9,7 +9,7 @@ const amenities = [
         type: 'image',
         title: '4 Luxury Bedrooms',
         description: 'Indulge in the ultimate comfort with our four spacious, fully air conditioned bedrooms. Each room features a plush king size bed wrapped in premium linens to ensure a restful sleep. Large pool view balconies let you wake up to serene water vistas every morning. Equipped with large 32 inch Smart TVs, wardrobe storage, and modern attached washrooms, our bedrooms provide a private sanctuary within the villa.',
-        src: '/Assets/ameneties/luxury_bedroom_king_tv.webp',
+        src: '/media/ameneties/luxury_bedroom_king_tv.webp',
         highlight: 'King Size Beds & Pool View'
     },
     {
@@ -17,7 +17,7 @@ const amenities = [
         type: 'image',
         title: 'Private Living Hall',
         description: 'Step into a grand 700 sq.ft. living hall designed for togetherness and entertainment. The open plan layout features expansive seating arrangements, perfect for the whole family to gather. Complete with a massive 65 inch flat screen TV and a high fidelity sound system, it is the ideal spot for movie nights or lively conversations.',
-        src: '/Assets/ameneties/spacious living room.webp',
+        src: '/media/ameneties/spacious living room.webp',
         highlight: '65 inch TV & Sound System'
     },
     {
@@ -25,7 +25,7 @@ const amenities = [
         type: 'video',
         title: 'Rain Dance Arena',
         description: 'Get ready to groove under the open sky with our exhilarating Rain Dance setup. Featuring high quality sound systems and rhythmic water showers, it brings the party to life. It is the perfect blend of music, dance, and refreshing splashes, a favorite attraction for guests seeking a high energy aquatic experience.',
-        src: '/Assets/Activites and pool/raindancex.mp4',
+        src: '/media/Activites and pool/raindancex.mp4',
         highlight: 'Music & Water Jets'
     },
     {
@@ -33,7 +33,7 @@ const amenities = [
         type: 'image',
         title: 'Live BBQ Nights',
         description: 'Ignite your senses with our dedicated poolside BBQ station. Indulge in a culinary journey under the stars where you can grill your favorites while enjoying the cool evening breeze. It is the perfect setting for memorable evening gatherings, laughter, and gourmet delights shared with loved ones.',
-        src: '/Assets/Activites and pool/bbq1.webp',
+        src: '/media/Activites and pool/bbq1.webp',
         highlight: 'Gourmet Grilling under Stars'
     }
 ];

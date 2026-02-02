@@ -7,10 +7,10 @@ import { useLeaf } from '../../context/LeafContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const videoAssets = [
-    { src: "/Assets/homepage3video.mp4", poster: "/Assets/Activites and pool/pool_villa_exterior_day.jpg" },
-    { src: "/Assets/homepage2video.mp4", poster: "/Assets/Activites and pool/pool_slides_aerial_view.jpg" },
-    { src: "/Assets/homepage1video.mp4", poster: "/Assets/villa_entrance_facade.jpg" },
-    { src: "/Assets/pool_highlight_4.mp4", poster: "/New/Home/Pool/pool-1.png" } // Keeping existing one
+    { src: "/media/homepage3video.mp4", poster: "/media/Activites and pool/pool_villa_exterior_day.jpg" },
+    { src: "/media/homepage2video.mp4", poster: "/media/Activites and pool/pool_slides_aerial_view.jpg" },
+    { src: "/media/homepage1video.mp4", poster: "/media/villa_entrance_facade.jpg" },
+    { src: "/media/pool_highlight_4.mp4", poster: "/New/Home/Pool/pool-1.png" } // Keeping existing one
 ];
 
 const SafeVideo = ({ src, poster, isPlaying, onPlay }) => {

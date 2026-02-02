@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 
 const KidsZone = () => {
     const images = [
-        { src: '/Assets/kids_swings_garden.jpg', label: 'Garden Swings' },
-        { src: '/Assets/kids_play_slide_seesaw.webp', label: 'Slides & See-saw' },
-        { src: '/Assets/kids_play_zone_overview.webp', label: 'Play Area' },
+        { src: '/media/kids_swings_garden.jpg', label: 'Garden Swings' },
+        { src: '/media/kids_play_slide_seesaw.webp', label: 'Slides & See-saw' },
+        { src: '/media/kids_play_zone_overview.webp', label: 'Play Area' },
     ]
 
     return (

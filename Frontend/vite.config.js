@@ -4,10 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/", // root domain SEO
+  base: "/",
   build: {
     outDir: "dist",
-    assetsDir: "assets",
+    assetsDir: "assets", // lowercase for Linux compatibility
     sourcemap: false,
   },
 });

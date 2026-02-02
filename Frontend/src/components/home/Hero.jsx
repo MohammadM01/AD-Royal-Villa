@@ -25,9 +25,9 @@ const Hero = () => {
                 loop
                 muted
                 className="absolute inset-0 w-full h-full object-cover opacity-90"
-                poster="/Assets/pool_villa_exterior_day.jpg"
+                poster="/media/pool_villa_exterior_day.jpg"
             >
-                <source src="/Assets/villa_walkthrough_hero.mp4" type="video/mp4" />
+                <source src="/media/villa_walkthrough_hero.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 

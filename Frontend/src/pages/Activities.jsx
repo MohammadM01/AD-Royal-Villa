@@ -146,7 +146,7 @@ const Activities = () => {
             <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 w-full h-full">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover filter brightness-[0.4]">
-                        <source src="/Assets/villa_walkthrough_hero.mp4" type="video/mp4" />
+                        <source src="/media/villa_walkthrough_hero.mp4" type="video/mp4" />
                     </video>
                 </div>
                 <div className="relative z-10 text-center px-4 mix-blend-screen">
@@ -167,7 +167,7 @@ const Activities = () => {
                 title="Live BBQ Nights"
                 desc="Indulge in a culinary journey under the stars. Our live BBQ station allows you to grill your favorites while enjoying the cool evening breeze. Perfect for family gatherings and late-night conversations."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/bbq1.webp', '/Assets/Activites and pool/bbq2.webp']}
+                mediaSrc={['/media/Activites and pool/bbq1.webp', '/media/Activites and pool/bbq2.webp']}
                 reverse={false}
                 buttonText="Grill & Chill"
             />
@@ -180,7 +180,7 @@ const Activities = () => {
                 title="The Tipping Bucket"
                 desc="Feel the anticipation rise as the giant bucket fills up, only to unleash a massive splash of refreshing water. A favorite attraction for both kids and adults seeking a fun way to cool off."
                 mediaType="video"
-                mediaSrc="/Assets/Activites and pool/xtipiing water bucket.mp4"
+                mediaSrc="/media/Activites and pool/xtipiing water bucket.mp4"
                 reverse={true}
                 buttonText="Feel the Splash"
             />
@@ -193,7 +193,7 @@ const Activities = () => {
                 title="Kids Adventure Park"
                 desc="A dedicated paradise for our younger guests. Featuring safe rubberized flooring, garden swings, and open play areas where imagination runs wild in a secure, lush green environment."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/kids_swings_garden.webp', '/Assets/Activites and pool/evekidsplay.webp']}
+                mediaSrc={['/media/Activites and pool/kids_swings_garden.webp', '/media/Activites and pool/evekidsplay.webp']}
                 reverse={false}
                 buttonText="Fun & Frolic"
             />
@@ -206,7 +206,7 @@ const Activities = () => {
                 title="Twisting Slides"
                 desc="Glide into our crystal-clear waters through our exciting twisting slides. Whether you're racing friends or just enjoying the splash, our pool arena offers endless entertainment."
                 mediaType="image"
-                mediaSrc={['/Assets/Activites and pool/pool_slides_aerial_view.webp']}
+                mediaSrc={['/media/Activites and pool/pool_slides_aerial_view.webp']}
                 reverse={true}
                 buttonText="Take the Plunge"
             />
@@ -219,7 +219,7 @@ const Activities = () => {
                 title="Rain Dance Arena"
                 desc="Dance your heart out! Combine high-fidelity sound with rhythmically synced mist and water jets. It's the ultimate party experience right within the villa."
                 mediaType="video"
-                mediaSrc="/Assets/Activites and pool/raindancex.mp4"
+                mediaSrc="/media/Activites and pool/raindancex.mp4"
                 reverse={false}
                 buttonText="Dance & Drench"
             />
@@ -232,7 +232,7 @@ const Activities = () => {
                 title="Mushroom Fountain"
                 desc="Enjoy the whimsical charm of our Mushroom Water Fountain. A perfect spot for kids to splash around or for a soothing aquatic backdrop to your poolside relaxation."
                 mediaType="video"
-                mediaSrc="/Assets/mushroom water fountain.mp4"
+                mediaSrc="/media/mushroom water fountain.mp4"
                 reverse={true}
                 buttonText="Magical Mist"
             />

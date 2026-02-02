@@ -42,9 +42,9 @@ const PoolHero = () => {
                     muted
                     playsInline
                     className="w-full h-full object-cover"
-                    poster="/Assets/pool_villa_exterior_day.jpg"
+                    poster="/media/pool_villa_exterior_day.jpg"
                 >
-                    <source src="/Assets/villa_walkthrough_hero.mp4" type="video/mp4" />
+                    <source src="/media/villa_walkthrough_hero.mp4" type="video/mp4" />
                 </video>
             </div>
 

@@ -52,9 +52,9 @@ const VideoCard = ({ src, label }) => {
 
 const PoolVideoGallery = () => {
     const videos = [
-        { src: "/Assets/pool_highlight_3.mp4", label: "Evening Ambience" },
-        { src: "/Assets/pool_highlight_4.mp4", label: "Poolside Fun" },
-        { src: "/Assets/pool_highlight_2.mp4", label: "Crystal Clear Waters" }
+        { src: "/media/pool_highlight_3.mp4", label: "Evening Ambience" },
+        { src: "/media/pool_highlight_4.mp4", label: "Poolside Fun" },
+        { src: "/media/pool_highlight_2.mp4", label: "Crystal Clear Waters" }
     ]
 
     return (

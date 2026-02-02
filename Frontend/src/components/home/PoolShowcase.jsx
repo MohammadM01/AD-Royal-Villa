@@ -22,28 +22,28 @@ const PoolShowcase = () => {
         {
             title: "80ft Lap Pool",
             desc: "Olympic-length style pool for swimming enthusiasts.",
-            img: "/Assets/pool_villa_exterior_day.jpg",
+            img: "/media/pool_villa_exterior_day.jpg",
             icon: FaSwimmingPool,
             span: "md:col-span-2 md:row-span-2"
         },
         {
             title: "Exciting Slides",
             desc: "Twisting water slides for endless family fun.",
-            img: "/Assets/pool_slides_aerial_view.jpg",
+            img: "/media/pool_slides_aerial_view.jpg",
             icon: FaUmbrellaBeach,
             span: "md:col-span-1 md:row-span-1"
         },
         {
             title: "Rain Dance",
             desc: "Groove to music under the open sky showers.",
-            img: "/Assets/kids_play_zone_overview.webp", // Using as placeholder/context if specific rain dance element isn't clear, or generic pool shot
+            img: "/media/kids_play_zone_overview.webp", // Using as placeholder/context if specific rain dance element isn't clear, or generic pool shot
             icon: FaCloudRain,
             span: "md:col-span-1 md:row-span-1"
         },
         {
             title: "Evening GLow",
             desc: "Magical ambient lighting for night swims.",
-            img: "/Assets/pool_rooms_evening_glow.jpg",
+            img: "/media/pool_rooms_evening_glow.jpg",
             icon: FaMoon,
             span: "md:col-span-2 md:row-span-1"
         }

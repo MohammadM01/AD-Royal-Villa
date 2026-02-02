@@ -9,22 +9,22 @@ const amenityItems = [
         description: 'Crystal clear waters with rain dance and slides.'
     },
     {
-        src: '/Assets/kids_play_slide_seesaw.webp',
+        src: '/media/kids_play_slide_seesaw.webp',
         title: 'Kids Play Zone',
         description: 'Safe swings, slides, and merry-go-rounds.'
     },
     {
-        src: '/Assets/Activites and pool/bbq1.webp',
+        src: '/media/Activites and pool/bbq1.webp',
         title: 'Poolside BBQ',
         description: 'Grill and chill under the open sky.'
     },
     {
-        src: '/Assets/Activites and pool/kids_swings_garden.webp',
+        src: '/media/Activites and pool/kids_swings_garden.webp',
         title: 'Lush Gardens',
         description: 'Perfect for morning yoga or evening strolls.'
     },
     {
-        src: '/Assets/villa_entrance_facade.webp',
+        src: '/media/villa_entrance_facade.webp',
         title: 'Secure Parking',
         description: 'Ample space for all your vehicles.'
     },

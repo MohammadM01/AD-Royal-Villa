@@ -38,8 +38,8 @@ const pricingPlans = [
             'Self-Check-in Available',
             'Clean & Sanitized Premises'
         ],
-        realImage: '/Assets/nice_bedroom_interior.jpg',
-        image: '/Assets/outdoor_lounge_canopy.webp',
+        realImage: '/media/nice_bedroom_interior.jpg',
+        image: '/media/outdoor_lounge_canopy.webp',
         highlight: false
     },
     {
@@ -74,7 +74,7 @@ const pricingPlans = [
             'Photo-shoot Friendly Spots',
             'Interactive Water Fountains'
         ],
-        image: '/Assets/Activites and pool/pool_villa_exterior_day.webp',
+        image: '/media/Activites and pool/pool_villa_exterior_day.webp',
         highlight: true
     },
 
@@ -99,7 +99,7 @@ const Pricing = () => {
                     className="absolute inset-0 z-0"
                 >
                     <img
-                        src="/Assets/villa_entrance_facade.webp"
+                        src="/media/villa_entrance_facade.webp"
                         alt="Royal Villa Facade"
                         className="w-full h-full object-cover scale-110 brightness-[0.65]"
                     />
@@ -188,7 +188,7 @@ const Pricing = () => {
                         >
                             {/* Background Image Enhancement */}
                             <div className="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
-                                <img src="/Assets/outdoor_lounge_canopy.webp" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Texture" />
+                                <img src="/media/outdoor_lounge_canopy.webp" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Texture" />
                             </div>
 
                             <div className="relative z-10 h-full flex flex-col md:flex-row items-center gap-8 p-6 md:p-0">
@@ -220,7 +220,7 @@ const Pricing = () => {
                                 <div className="w-full md:w-1/3 hidden md:block">
                                     {/* Abstract Visual Element */}
                                     <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-accent to-orange-600 p-1 shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="/Assets/villa_entrance_facade.webp" className="w-full h-full object-cover rounded-xl" alt="Villa" />
+                                        <img src="/media/villa_entrance_facade.webp" className="w-full h-full object-cover rounded-xl" alt="Villa" />
                                     </div>
                                 </div>
                             </div>

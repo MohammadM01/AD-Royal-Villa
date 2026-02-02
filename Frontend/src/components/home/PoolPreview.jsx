@@ -17,7 +17,7 @@ const PoolPreview = () => {
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
                             <img
-                                src="/Assets/pool_villa_exterior_day.jpg"
+                                src="/media/pool_villa_exterior_day.jpg"
                                 alt="Luxury Private Pool"
                                 className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
                             />
