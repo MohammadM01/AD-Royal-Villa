@@ -1,0 +1,12 @@
+# robots.txt for adfarmsandresort.com
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update this URL once you generate a sitemap)
+Sitemap: https://adfarmsandresort.com/sitemap.xml
+
+# Disallow crawling of specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
