@@ -134,7 +134,7 @@ const AIChatbot = () => {
               </div>
               <div>
                 <h3 className="text-white font-bold text-sm">
-                  Villa Assistant
+                  Datamatex Assistant
                 </h3>
                 <span className="text-xs text-green-400 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>{" "}
