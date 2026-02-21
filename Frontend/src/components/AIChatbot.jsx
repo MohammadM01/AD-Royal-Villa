@@ -74,13 +74,30 @@ const AIChatbot = () => {
 
       if (results.length > 0) {
         const bestMatch = results[0];
-        // If score is good enough (e.g., < 0.3), return content
-        // If score is mediocre (0.3 - 0.5), maybe suggest the category
-        return `I found this on our ${bestMatch.item.category} page: \n\n"${bestMatch.item.content.substring(0, 150)}..." \n\n[Read more matches here](/${bestMatch.item.id})`;
+
+        // Detect if the matched memory block is in Hindi/Hinglish (basic check)
+        const isHindiMatch = bestMatch.item.content.includes("kya") || bestMatch.item.content.includes("hai") || bestMatch.item.content.includes("aapko");
+
+        const introText = isHindiMatch
+          ? `Mhe ye jankari website pe mili (${bestMatch.item.category}): \n\n`
+          : `I found this on our ${bestMatch.item.category} page: \n\n`;
+
+        const linkText = isHindiMatch
+          ? `[Yaha aur padhe](/${bestMatch.item.id})`
+          : `[Read more matches here](/${bestMatch.item.id})`;
+
+        return `${introText}"${bestMatch.item.content.substring(0, 150)}..." \n\n${linkText}`;
       }
     }
 
-    // 4. Default Fallback
+    // 4. Default Fallback with Language Heuristic
+    const hindiTriggers = ["kya", "hai", "kaise", "kab", "kitna", "kaha", "kisko", "nahi", "ha", "acha", "bhai", "karna", "chahiye", "paisa"];
+    const isLikelyHindi = hindiTriggers.some(trigger => lowerQuery.includes(trigger));
+
+    if (isLikelyHindi) {
+      return "Maaf karna, mujhe theek se samajh nahi aaya. 😅 Aap Price, Location, Pool, ya Booking ke baare mein pooch sakte hain!";
+    }
+
     return "I'm not sure about that. Try asking about Price, Location, Pool, or Contact!";
   };
 
@@ -151,11 +168,10 @@ const AIChatbot = () => {
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${
-                      msg.sender === "user"
+                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${msg.sender === "user"
                         ? "bg-blue-600 text-white rounded-br-none"
                         : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
-                    }`}
+                      }`}
                   >
                     {renderMessage(msg.text)}
                   </div>

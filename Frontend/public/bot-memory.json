@@ -1,56 +1,62 @@
 [
   {
     "id": "activities",
-    "keywords": [
-      "activities",
-      "activities"
-    ],
-    "content": "Royal Activities Experience The Extraordinary",
+    "keywords": ["activities", "rain dance", "tipping bucket", "cricket", "bbq", "games"],
+    "content": "Royal Activities: Live BBQ Nights, The Tipping Bucket (Giant Water Splash), Kids Adventure Park, Twisting Pool Slides, Rain Dance Arena with Music, Mushroom Fountain, Indoor Games (Carrom, TT), and large Outdoor Sports area for Cricket.",
+    "category": "Activities"
+  },
+  {
+    "id": "activities",
+    "keywords": ["kya kya", "khelna", "maza", "khel", "dj", "party"],
+    "content": "Humare paas bhot saari activities hain jisme Tipping Bucket, Rain dance (music ke saath), Pool slides, aur Indoor/Outdoor khel shamil hain. Aap BBQ (barbeque) ka bhi mazza le sakte hain!",
     "category": "Activities"
   },
   {
     "id": "amenities",
-    "keywords": [
-      "amenities",
-      "amenities"
-    ],
-    "content": "Aquatic Paradise Experience the joy of abundance with our world-class facilities. From the crystal-clear waters of our lap pool to the laughter-filled kids' zone, every corner is designed for your ultimate relaxation and pleasure. Immerse yourself in luxury that knows no bounds.",
+    "keywords": ["amenities", "pool", "kitchen", "wifi", "rooms", "beds", "inverter"],
+    "content": "Amenities: Private Pool Access, High-Speed WiFi, Caretaker On-Call, Fully Air-Conditioned Bedrooms, Smart TV with OTT, Fully Equipped Kitchen (Microwave, Refrigerator, Water Purifier), 24/7 Hot Water, Inverter Power Backup, Extra mattresses, and Pet Friendly (On Request).",
     "category": "Amenities"
   },
   {
-    "id": "contact",
-    "keywords": [
-      "contact",
-      "contact"
-    ],
-    "content": "Connect With Us Get In Touch We are here to assist you with your booking. Experience the royal treatment. Our Location Near Coral School, Padgha - 421101. 32 Kms from Thane Call Us +91 9890205767 Available 24/7 Follow Us Send a Message Mobile No Message Submit",
+    "id": "amenities",
+    "keywords": ["suvidha", "facility", "bed", "khana pani", "kya milega"],
+    "content": "Yaha par aapko pura 4BHK villa milega AC ke sath. Sath me Private pool, caretaker, puri equipped kitchen, fridge, microwave, wifi aur tv hoga. Inverter backup bhi available hai.",
+    "category": "Amenities"
+  },
+  {
+    "id": "contact_us",
+    "keywords": ["contact", "phone", "email", "address", "call", "location"],
+    "content": "Our Location: Near Coral School, Padgha - 421101. 32 Kms from Thane. Call Us +91 9890205767. Available 24/7.",
     "category": "Contact"
   },
   {
-    "id": "home",
-    "keywords": [
-      "home",
-      "home"
-    ],
-    "content": "Ready for your escape Book Now",
-    "category": "Home"
+    "id": "contact_us",
+    "keywords": ["kaha hai", "kaise pahuche", "thane", "padgha", "number do"],
+    "content": "Hamara villa Padgha me hai (Coral School ke paas). Thane se 32 kilometer door hai. Aap hume +91 9890205767 par call ya whatsapp kar sakte hain.",
+    "category": "Contact"
   },
   {
     "id": "pricing",
-    "keywords": [
-      "pricing",
-      "pricing"
-    ],
-    "content": "Exclusive & Transparent Experience Royalty. Detailed pricing for your private sanctuary. No hidden costs. Just pure luxury. The Royal Difference Ordinary Resorts AD Royal Luxury Step into a world where the entire estate is yours. No sharing, no compromises. Just you and your loved ones in 5,000 sq.ft of private luxury. Transparent Rates Choose the package that suits your gathering. Book This Plan * We also host Weddings, Corporate Off-sites, and Photo Shoots. Contact us for custom packages.",
+    "keywords": ["pricing", "cost", "rates", "18000", "20000", "weekday", "weekend"],
+    "content": "Pricing: Weekday Escape (Mon-Fri) for ₹18,000 / night for up to 20 Guests. Royal Weekend (Sat-Sun) for ₹20,000 / night for up to 20 Guests. Includes Full 4BHK Villa Access, Private Pool & Lounge, Music System Allowed. No Hidden costs.",
+    "category": "Pricing"
+  },
+  {
+    "id": "pricing",
+    "keywords": ["kiraya", "bhav", "kitna lagega", "20 log", "rate kya"],
+    "content": "Agar aap Somvaar se Shukravaar (Weekday) aate hain to charge ₹18,000 per night hai. Agar Shanivaar - Ravivaar (Weekend) aate hain to ₹20,000 per night hai. Maximum 20 log allow hain isi price mein.",
     "category": "Pricing"
   },
   {
     "id": "stay",
-    "keywords": [
-      "stay",
-      "stay"
-    ],
-    "content": "AMENITIES Stay & Comfort Experience the height of luxury living. Where every moment is crafted for your absolute comfort. Indulge in a retreat that redefines the art of relaxation.",
+    "keywords": ["stay", "living", "experience", "rooms", "guests"],
+    "content": "Experience the height of luxury living. Where every moment is crafted for your absolute comfort. Indulge in a retreat that redefines the art of relaxation with 5,000 sq.ft of private luxury.",
+    "category": "Stay"
+  },
+  {
+    "id": "stay",
+    "keywords": ["sukoon", "rukna", "kaisa hai", "experience"],
+    "content": "Yaha aapko 100% privacy milti hai. 5,000 sq ft ki jagah aapse koi share nahi karega. Aap apne parivar ke sath aaram se relax kar sakte hain.",
     "category": "Stay"
   }
 ]
