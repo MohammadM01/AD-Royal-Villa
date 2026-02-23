@@ -47,22 +47,26 @@ const AIChatbot = () => {
   };
 
   const generateResponse = (query) => {
-    const lowerQuery = query.toLowerCase();
+    // strip punctuation to allow strict bounding (e.g. "kaha h?" -> "kaha h")
+    const lowerQuery = query.toLowerCase().replace(/[^\w\s]/gi, '');
 
-    // 1. Check Synonym Map
-    const normalizedQuery = lowerQuery
-      .split(" ")
-      .map((word) => synonymMap[word] || word)
-      .join(" ");
+    // Helper to guess if query is Hindi/Hinglish
+    const hindiTriggers = ["kya", "hai", "kaise", "kab", "kitna", "kaha", "kisko", "nahi", "ha", "acha", "bhai", "karna", "chahiye", "paisa", "kidhar", "kdr"];
+    const isLikelyHindi = hindiTriggers.some(trigger => lowerQuery.split(' ').includes(trigger));
 
-    // 2. Check Manual Intents (Exact Match)
+    // 1. Check Synonym Map (Removed map replacing logic, just use the cleaned query directly)
+    const normalizedQuery = lowerQuery;
+
+    // 2. Check Manual Intents (Exact Match using word boundaries)
+    // Pad the query and keywords with spaces to mimic word bounds, so "hi" doesn't match "this"
+    const paddedQuery = ` ${normalizedQuery} `;
     const exactMatch = chatData.find((intent) =>
-      intent.keywords.some((k) => normalizedQuery.includes(k)),
+      intent.keywords.some((k) => paddedQuery.includes(` ${k} `)),
     );
 
     if (exactMatch) return exactMatch.content;
 
-    // 3. Fuzzy Search in Bot Memory (Website Content)
+    // 3. Fuzzy Search in Bot Memory (Website Content & PDF Data)
     if (botMemory.length > 0) {
       const fuse = new Fuse(botMemory, {
         keys: ["keywords", "content", "category"],
@@ -73,27 +77,29 @@ const AIChatbot = () => {
       const results = fuse.search(normalizedQuery);
 
       if (results.length > 0) {
-        const bestMatch = results[0];
+        // Try to find a match that aligns with the detected language,
+        // or default to the absolute best match if none perfectly align.
+        let selectedMatch = results[0];
 
-        // Detect if the matched memory block is in Hindi/Hinglish (basic check)
-        const isHindiMatch = bestMatch.item.content.includes("kya") || bestMatch.item.content.includes("hai") || bestMatch.item.content.includes("aapko");
+        // If we strongly suspect Hindi but top match is English (or vice versa), try seeking down the list.
+        const targetLanguage = isLikelyHindi ? "hi" : "en";
+        const languageAlignedMatch = results.find(r => r.item.language === targetLanguage && r.score < 0.5);
+
+        if (languageAlignedMatch) {
+          selectedMatch = languageAlignedMatch;
+        }
+
+        const isHindiMatch = selectedMatch.item.language === "hi" || isLikelyHindi;
 
         const introText = isHindiMatch
-          ? `Mhe ye jankari website pe mili (${bestMatch.item.category}): \n\n`
-          : `I found this on our ${bestMatch.item.category} page: \n\n`;
+          ? `Mhe ye jankari website par mili (${selectedMatch.item.category}): \n\n`
+          : `I found this on our ${selectedMatch.item.category} page: \n\n`;
 
-        const linkText = isHindiMatch
-          ? `[Yaha aur padhe](/${bestMatch.item.id})`
-          : `[Read more matches here](/${bestMatch.item.id})`;
-
-        return `${introText}"${bestMatch.item.content.substring(0, 150)}..." \n\n${linkText}`;
+        return `${introText}"${selectedMatch.item.content}"`;
       }
     }
 
     // 4. Default Fallback with Language Heuristic
-    const hindiTriggers = ["kya", "hai", "kaise", "kab", "kitna", "kaha", "kisko", "nahi", "ha", "acha", "bhai", "karna", "chahiye", "paisa"];
-    const isLikelyHindi = hindiTriggers.some(trigger => lowerQuery.includes(trigger));
-
     if (isLikelyHindi) {
       return "Maaf karna, mujhe theek se samajh nahi aaya. 😅 Aap Price, Location, Pool, ya Booking ke baare mein pooch sakte hain!";
     }
@@ -169,8 +175,8 @@ const AIChatbot = () => {
                 >
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${msg.sender === "user"
-                        ? "bg-blue-600 text-white rounded-br-none"
-                        : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
+                      ? "bg-blue-600 text-white rounded-br-none"
+                      : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
                       }`}
                   >
                     {renderMessage(msg.text)}

@@ -1,62 +1,168 @@
 [
   {
-    "id": "activities",
-    "keywords": ["activities", "rain dance", "tipping bucket", "cricket", "bbq", "games"],
-    "content": "Royal Activities: Live BBQ Nights, The Tipping Bucket (Giant Water Splash), Kids Adventure Park, Twisting Pool Slides, Rain Dance Arena with Music, Mushroom Fountain, Indoor Games (Carrom, TT), and large Outdoor Sports area for Cricket.",
-    "category": "Activities"
+    "id": "activities_en",
+    "keywords": [
+      "activities",
+      "rain dance",
+      "tipping bucket",
+      "cricket",
+      "bbq",
+      "games",
+      "play"
+    ],
+    "content": "Royal Activities: Live BBQ Nights, The Tipping Bucket (Giant Water Splash), Kids Adventure Park, Twisting Pool Slides, Rain Dance Arena with Music, Mushroom Fountain, Indoor Games (Carrom, Cards), and large Outdoor Sports area for Cricket. We also have a Patio Deck to relax.",
+    "category": "Activities",
+    "language": "en"
   },
   {
-    "id": "activities",
-    "keywords": ["kya kya", "khelna", "maza", "khel", "dj", "party"],
-    "content": "Humare paas bhot saari activities hain jisme Tipping Bucket, Rain dance (music ke saath), Pool slides, aur Indoor/Outdoor khel shamil hain. Aap BBQ (barbeque) ka bhi mazza le sakte hain!",
-    "category": "Activities"
+    "id": "activities_hi",
+    "keywords": [
+      "kya kya",
+      "khelna",
+      "maza",
+      "khel",
+      "dj",
+      "party",
+      "barbeque",
+      "dance",
+      "enjoy"
+    ],
+    "content": "Humare paas bhot saari activities hain jisme Tipping Bucket, Rain dance (music ke saath), Pool slides, Mushroom umbrella, aur Indoor/Outdoor khel shamil hain. Aap BBQ (barbeque) ka bhi mazza le sakte hain, aur patio deck par relax kar sakte hain!",
+    "category": "Activities",
+    "language": "hi"
   },
   {
-    "id": "amenities",
-    "keywords": ["amenities", "pool", "kitchen", "wifi", "rooms", "beds", "inverter"],
-    "content": "Amenities: Private Pool Access, High-Speed WiFi, Caretaker On-Call, Fully Air-Conditioned Bedrooms, Smart TV with OTT, Fully Equipped Kitchen (Microwave, Refrigerator, Water Purifier), 24/7 Hot Water, Inverter Power Backup, Extra mattresses, and Pet Friendly (On Request).",
-    "category": "Amenities"
+    "id": "amenities_en",
+    "keywords": [
+      "amenities",
+      "pool",
+      "kitchen",
+      "wifi",
+      "rooms",
+      "beds",
+      "inverter",
+      "tv",
+      "washroom",
+      "mattress"
+    ],
+    "content": "Amenities: Private 80x20 ft Pool with 14ft slides! 4 Fully AC Bedrooms with King Size beds and 32\" Smart TVs. 6 Washrooms (WC + Indian). A large 700 sq.ft living room with a 65\" Smart WiFi TV. Fully Equipped Kitchen, 24/7 Hot Water, Inverter Power Backup, 9 Extra mattresses free of cost! Parking for 6-8 cars.",
+    "category": "Amenities",
+    "language": "en"
   },
   {
-    "id": "amenities",
-    "keywords": ["suvidha", "facility", "bed", "khana pani", "kya milega"],
-    "content": "Yaha par aapko pura 4BHK villa milega AC ke sath. Sath me Private pool, caretaker, puri equipped kitchen, fridge, microwave, wifi aur tv hoga. Inverter backup bhi available hai.",
-    "category": "Amenities"
+    "id": "amenities_hi",
+    "keywords": [
+      "suvidha",
+      "facility",
+      "bed",
+      "khana",
+      "pani",
+      "kya milega",
+      "ac",
+      "tv",
+      "gadda"
+    ],
+    "content": "Yaha par aapko pura 4BHK villa milega AC ke sath. Bhot bada 80x20 ft private pool with slides, 4 king-size bedrooms (32\" tv ke sath), 6 washrooms, puri equipped kitchen. Bada living room 65\" TV ke sath. Inverter backup aur 9 extra gadde (mattresses) free available hain. 6-8 gaadi parking ki jagah hai.",
+    "category": "Amenities",
+    "language": "hi"
   },
   {
-    "id": "contact_us",
-    "keywords": ["contact", "phone", "email", "address", "call", "location"],
-    "content": "Our Location: Near Coral School, Padgha - 421101. 32 Kms from Thane. Call Us +91 9890205767. Available 24/7.",
-    "category": "Contact"
+    "id": "contact_en",
+    "keywords": [
+      "contact",
+      "phone",
+      "email",
+      "address",
+      "call",
+      "location",
+      "station",
+      "train",
+      "nearest"
+    ],
+    "content": "Our Location: Near Coral School, Next to Auto Fleet Petrol Pump, Padgha - 421101. Just 32 Kms from Thane City! Nearest Railway Station is Khadavli (Central Line). Call Us at +91 9890205767. Available 24/7.",
+    "category": "Contact",
+    "language": "en"
   },
   {
-    "id": "contact_us",
-    "keywords": ["kaha hai", "kaise pahuche", "thane", "padgha", "number do"],
-    "content": "Hamara villa Padgha me hai (Coral School ke paas). Thane se 32 kilometer door hai. Aap hume +91 9890205767 par call ya whatsapp kar sakte hain.",
-    "category": "Contact"
+    "id": "contact_hi",
+    "keywords": [
+      "kaha hai",
+      "kaise pahuche",
+      "thane",
+      "padgha",
+      "number do",
+      "station",
+      "train",
+      "rashta"
+    ],
+    "content": "Hamara villa Padgha me hai (Coral School ke paas, Auto Fleet Petrol pump k bagal me). Thane se 32 kilometer door hai. Nearest railway station Khadavli (Central line) hai. Aap hume +91 9890205767 par call ya whatsapp kar sakte hain.",
+    "category": "Contact",
+    "language": "hi"
   },
   {
-    "id": "pricing",
-    "keywords": ["pricing", "cost", "rates", "18000", "20000", "weekday", "weekend"],
-    "content": "Pricing: Weekday Escape (Mon-Fri) for ₹18,000 / night for up to 20 Guests. Royal Weekend (Sat-Sun) for ₹20,000 / night for up to 20 Guests. Includes Full 4BHK Villa Access, Private Pool & Lounge, Music System Allowed. No Hidden costs.",
-    "category": "Pricing"
+    "id": "pricing_en",
+    "keywords": [
+      "pricing",
+      "cost",
+      "rates",
+      "18000",
+      "20000",
+      "weekday",
+      "weekend",
+      "advance",
+      "payment"
+    ],
+    "content": "Pricing: Weekday Escape (Mon-Fri) for ₹18,000 / night for up to 20 Guests. Royal Weekend (Sat-Sun) for ₹20,000 / night for up to 20 Guests. Booking confirmation is given only after a 50% advance payment. The remaining 50% is paid during check-in.",
+    "category": "Pricing",
+    "language": "en"
   },
   {
-    "id": "pricing",
-    "keywords": ["kiraya", "bhav", "kitna lagega", "20 log", "rate kya"],
-    "content": "Agar aap Somvaar se Shukravaar (Weekday) aate hain to charge ₹18,000 per night hai. Agar Shanivaar - Ravivaar (Weekend) aate hain to ₹20,000 per night hai. Maximum 20 log allow hain isi price mein.",
-    "category": "Pricing"
+    "id": "pricing_hi",
+    "keywords": [
+      "kiraya",
+      "bhav",
+      "kitna lagega",
+      "20 log",
+      "rate kya",
+      "paisa",
+      "payment",
+      "advance"
+    ],
+    "content": "Agar aap Somvaar se Shukravaar (Weekday) aate hain to charge ₹18,000 per night hai. Agar Shanivaar - Ravivaar (Weekend) aate hain to ₹20,000 per night hai. Booking confirm karne ke liye 50% advance dena hota hai. Baki 50% check-in ke time par. Maximum 20 log allow hain isi price mein.",
+    "category": "Pricing",
+    "language": "hi"
   },
   {
-    "id": "stay",
-    "keywords": ["stay", "living", "experience", "rooms", "guests"],
-    "content": "Experience the height of luxury living. Where every moment is crafted for your absolute comfort. Indulge in a retreat that redefines the art of relaxation with 5,000 sq.ft of private luxury.",
-    "category": "Stay"
+    "id": "stay_en",
+    "keywords": [
+      "stay",
+      "living",
+      "experience",
+      "rooms",
+      "guests",
+      "check in",
+      "check out",
+      "timing",
+      "pool time"
+    ],
+    "content": "Timings: Check-in Time is 1:00 PM, and Check-out is 11:00 AM. Swimming Pool Time: 01:00 PM to 12:00 AM. Experience the height of luxury living! 5,000 sq.ft of private property for your complete privacy.",
+    "category": "Stay",
+    "language": "en"
   },
   {
-    "id": "stay",
-    "keywords": ["sukoon", "rukna", "kaisa hai", "experience"],
-    "content": "Yaha aapko 100% privacy milti hai. 5,000 sq ft ki jagah aapse koi share nahi karega. Aap apne parivar ke sath aaram se relax kar sakte hain.",
-    "category": "Stay"
+    "id": "stay_hi",
+    "keywords": [
+      "sukoon",
+      "rukna",
+      "kaisa hai",
+      "experience",
+      "timing",
+      "kab aaye",
+      "kitne baje",
+      "pool kab"
+    ],
+    "content": "Timings: Check-in dopehar 1:00 baje hai, aur Check-out agli subah 11:00 baje. Pool subah 1 baje se raat 12 baje tak allowed hota hai. Yaha aapko 100% privacy milti hai, aap apne parivar ke sath aaram se enjoy kar sakte hain.",
+    "category": "Stay",
+    "language": "hi"
   }
 ]

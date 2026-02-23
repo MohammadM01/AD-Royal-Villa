@@ -8,7 +8,7 @@ export const chatData = [
   },
   {
     id: "greet_hi",
-    keywords: ["namaste", "kaise ho", "kaha ho", "hi bot", "hello bot", "kya haal", "kya hhaal", "kaisa hai", "aur batao", "bolo"],
+    keywords: ["namaste", "hi bot", "hello bot", "kya haal", "kaisa hai", "aur batao", "bolo"],
     content: "Namaste! AD Royal Villa mein aapka swagat hai. Main aapki kaise madad kar sakta hoon? 😊",
     category: "General",
   },
@@ -16,13 +16,13 @@ export const chatData = [
   // --- ABOUT OWNER / VILLA ---
   {
     id: "owner_en",
-    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details"],
+    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details", "what is ad villa", "what is ad", "about ad villa"],
     content: "AD Royal Villa is a luxury private estate spread over 5,000 sq.ft, designed for exclusive getaways. It features 4BHK accommodation, a private pool, and outdoor activities.",
     category: "About",
   },
   {
     id: "owner_hi",
-    keywords: ["malik kaun hai", "kiska hai", "owner kaun", "kya hai ye", "villa ke baare me", "details kya hai"],
+    keywords: ["malik kaun hai", "kiska hai", "owner kaun", "kya hai ye", "villa ke baare me", "details kya hai", "kya hai ad villa", "kya h ad villa", "ad villa kya h"],
     content: "AD Royal Villa ek private luxury 4BHK estate hai (5,000 sq.ft). Yaha par aapko private pool, bada lawn, aur bahot saari activities milti hain ek exclusive stay ke liye.",
     category: "About",
   },
@@ -30,27 +30,27 @@ export const chatData = [
   // --- CONTACT / LOCATION ---
   {
     id: "contact_en",
-    keywords: ["contact", "phone", "number", "email", "address", "location", "reach you", "call", "where are you", "how far", "distance", "map"],
-    content: "📍 **Location:** Near Coral School, Padgha - 421101 (32 Kms from Thane).\n📞 **Phone:** +91 98902 05767\n🔗 [Click here to chat on WhatsApp](https://wa.me/919890205767).",
+    keywords: ["contact", "phone", "number", "email", "address", "location", "reach you", "call", "where are you", "where is", "how far", "distance", "map", "station", "railway", "train", "nearest station", "where is ad villa", "where is ad", "ad villa is where"],
+    content: "📍 **Location:** Near Coral School, Next to Auto Fleet Petrol Pump, Padgha - 421101 (32 Kms from Thane).\n🚉 **Nearest Station:** Khadavli (Central Line)\n📞 **Phone:** +91 98902 05767\n🔗 [Click here to chat on WhatsApp](https://wa.me/919890205767).",
     category: "Contact",
   },
   {
     id: "contact_hi",
-    keywords: ["contact number", "phone number", "kaha hai", "kaise aaye", "address kya hai", "location bhejo", "kaha par hai", "thane se kitna dur", "kaha h", "kdr h", "kidhar hai"],
-    content: "📍 **Hamara Pata:** Near Coral School, Padgha - 421101 (Thane se 32 Kms door).\n📞 **Phone:** +91 98902 05767\n🔗 [WhatsApp par baat karne ke liye yaha click kare](https://wa.me/919890205767).",
+    keywords: ["contact number", "phone number", "kaha hai", "kaise aaye", "address kya hai", "location bhejo", "kaha par hai", "kaha pe", "thane se kitna dur", "kaha h", "kaha pe h", "kdr h", "kidhar hai", "station", "sattion", "train", "kaha hai ad villa", "kaha h ad villa", "kidhar h ad villa", "pata", "jagah", "kaha", "kidhar"],
+    content: "📍 **Hamara Pata:** Near Coral School, Next to Auto Fleet Petrol pump, Padgha - 421101 (Thane se 32 Kms door).\n🚉 **Nearest Station:** Khadavli (Central line)\n📞 **Phone:** +91 98902 05767\n🔗 [WhatsApp par baat karne ke liye yaha click kare](https://wa.me/919890205767).",
     category: "Contact",
   },
 
   // --- PRICING ---
   {
     id: "price_en",
-    keywords: ["price", "pricing", "cost", "rate", "charge", "expensive", "cheap", "booking amount", "how much", "tariff", "packages"],
+    keywords: ["price", "pricing", "cost", "rate", "charge", "expensive", "cheap", "booking amount", "how much", "tariff", "packages", "fee"],
     content: "Here are our transparent pricing packages (Up to 20 Guests):\n\n🌅 **Weekday Escape (Mon-Fri)**\n💰 ₹18,000 / night\n\n🎉 **Royal Weekend (Sat-Sun)**\n💰 ₹20,000 / night\n\nIncludes: Full 4BHK access, Private Pool, Kitchen access, and all amenities.\n🔗 [View Pricing Page](/pricing)",
     category: "Pricing",
   },
   {
     id: "price_hi",
-    keywords: ["kitna price", "kya rate", "kitna kharcha", "rent kitna", "paisa kitna", "saturday ka rate", "weekend ka", "weekday ka", "cost kya hai"],
+    keywords: ["kitna price", "kya rate", "kitna kharcha", "rent kitna", "paisa kitna", "saturday ka rate", "weekend ka", "weekday ka", "cost kya hai", "paisa", "bhav", "rent", "kiraya", "kharcha"],
     content: "Hamare transparent packages (Max 20 logs ke liye):\n\n🌅 **Weekday (Somvaar se Shukravaar):** ₹18,000 / night\n🎉 **Weekend (Shanivaar - Ravivaar):** ₹20,000 / night\n\nIsme pura 4BHK villa, private pool, aur kitchen access shamil hai. Koi hidden charges nahi hain!\n🔗 [Pricing details yaha dekhe](/pricing)",
     category: "Pricing",
   },
@@ -78,7 +78,7 @@ export const chatData = [
   },
   {
     id: "amenities_hi",
-    keywords: ["kya kya hai", "suvidha", "facilities kya", "khana milega", "kitchen hai", "khelne ke liye", "wifi hai"],
+    keywords: ["kya kya hai", "suvidha", "facilities kya", "khana milega", "kitchen hai", "khelne ke liye", "wifi hai", "khana", "suvidha"],
     content: "Hamare villa me aapko ye premium best suvidhayein milengi:\n👨‍🍳 Pura Fully Equipped Kitchen aur Caretaker\n📺 Smart TV aur WiFi\n🏏 Bada lawn (Cricket/Badminton ke liye)\n🎲 Indoor Games (Carrom)\n🔋 Power Backup\n🔗 [Saari Amenities yaha dekhe](/amenities)",
     category: "Services",
   },
@@ -106,46 +106,10 @@ export const chatData = [
   },
   {
     id: "activities_hi",
-    keywords: ["kya kare", "party karni hai", "music bajega", "dj allowed", "dj hai", "rain dance hai kya", "bbq milega", "barbeque chahiye", "tipping bucket"],
+    keywords: ["kya kare", "party karni hai", "music bajega", "dj allowed", "dj hai", "rain dance hai kya", "bbq milega", "barbeque chahiye", "tipping bucket", "khel", "mazza"],
     content: "Villa me bhot saari mazedar activities hain! 🎉\n- Live BBQ (Barbeque) ki suvidha\n- Rain Dance Arena (Music ke saath)\n- Pool Slides aur Bada Tipping Bucket\n- Mushroom Fountain\n- Indoor aur Outdoor khelne ki jagah\n🔗 [Hamari Activities page dekhe](/activities)",
     category: "Activities",
   }
 ];
 
-export const synonymMap = {
-  // English Synonyms
-  cost: "price",
-  rate: "price",
-  charge: "price",
-  tariffs: "price",
-  fee: "price",
-  address: "contact",
-  phone: "contact",
-  call: "contact",
-  where: "contact",
-  map: "contact",
-  swimming: "pool",
-  food: "amenities",
-  cook: "amenities",
-  chef: "amenities",
-  kitchen: "amenities",
-  dj: "activities",
-  music: "activities",
-  party: "activities",
-
-  // Hindi / Hinglish Synonyms Mapping to Hindi root words
-  paisa: "price_hi",
-  bhav: "price_hi",
-  rent: "price_hi",
-  kiraya: "price_hi",
-  kharcha: "price_hi",
-  pata: "contact_hi",
-  jagah: "contact_hi",
-  kaha: "contact_hi",
-  kidhar: "contact_hi",
-  location: "contact", // mapped to english keyword root
-  suvidha: "amenities", // maps to amenities_hi root
-  khana: "amenities", // maps to amenities_hi root
-  khel: "activities", // maps to activities_hi root
-  mazza: "activities", // maps to activities_hi root
-};
+export const synonymMap = {}; // Unused now
