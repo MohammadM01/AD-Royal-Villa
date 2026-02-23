@@ -16,13 +16,13 @@ export const chatData = [
   // --- ABOUT OWNER / VILLA ---
   {
     id: "owner_en",
-    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details", "what is ad villa", "what is ad", "about ad villa", "what"],
+    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details", "what is ad villa", "what is ad", "about ad villa", "what", "website about"],
     content: "AD Royal Villa is a luxury private estate spread over 5,000 sq.ft, designed for exclusive getaways. It features 4BHK accommodation, a private pool, and outdoor activities.",
     category: "About",
   },
   {
     id: "owner_hi",
-    keywords: ["malik kaun hai", "kiska hai", "owner kaun", "kya hai ye", "villa ke baare me", "details kya hai", "kya hai ad villa", "kya h ad villa", "ad villa kya h"],
+    keywords: ["malik kaun hai", "kiska hai", "owner kaun", "kya hai ye", "villa ke baare me", "details kya hai", "kya hai ad villa", "kya h ad villa", "ad villa kya h", "kon ho tum", "tum kon ho", "kon ho", "website kya h", "web site kya h", "kya h ye"],
     content: "AD Royal Villa ek private luxury 4BHK estate hai (5,000 sq.ft). Yaha par aapko private pool, bada lawn, aur bahot saari activities milti hain ek exclusive stay ke liye.",
     category: "About",
   },
@@ -58,14 +58,14 @@ export const chatData = [
   // --- BOOKING (How) ---
   {
     id: "booking_en",
-    keywords: ["book", "reservation", "reserve", "how to book", "availability", "available", "how"],
-    content: "To check availability or book your stay, you can click the 'Book Now' button at the top right, or message us directly on WhatsApp.\n🔗 [Chat on WhatsApp](https://wa.me/919890205767)",
+    keywords: ["book", "reservation", "reserve", "how to book", "availability", "available", "how", "discount", "offer"],
+    content: "To check availability, discounts, or book your stay, you can click the 'Book Now' button at the top right, or message us directly on WhatsApp.\n🔗 [Chat on WhatsApp](https://wa.me/919890205767)",
     category: "Booking",
   },
   {
     id: "booking_hi",
-    keywords: ["book karna hai", "booking kaise", "khali hai kya", "available hai", "reservation karna", "chahiye ghoomna"],
-    content: "Booking karne ke liye ya availability check karne ke liye, aap website ke top right me 'Book Now' par click kar sakte hain, ya hume WhatsApp par message pijiye.\n🔗 [WhatsApp kare](https://wa.me/919890205767)",
+    keywords: ["book karna hai", "booking kaise", "khali hai kya", "available hai", "reservation karna", "chahiye ghoomna", "discount", "offer", "kam hoga"],
+    content: "Booking karne ke liye, availability check karne ke liye, ya kisi discount ke baare mein baat karne ke liye aap website ke top right me 'Book Now' par click kar sakte hain, ya hume WhatsApp par message kijiye.\n🔗 [WhatsApp kare](https://wa.me/919890205767)",
     category: "Booking",
   },
 
