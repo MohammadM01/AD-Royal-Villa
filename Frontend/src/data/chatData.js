@@ -2,7 +2,7 @@ export const chatData = [
   // --- GENERAL GREETINGS ---
   {
     id: "greet_en",
-    keywords: ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening", "howdy"],
+    keywords: ["hello ", "hey bot", "greetings", "good morning", "good afternoon", "good evening", "howdy"],
     content: "Hello! Welcome to AD Royal Villa. How can I assist you today? 😊",
     category: "General",
   },

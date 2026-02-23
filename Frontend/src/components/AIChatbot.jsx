@@ -57,11 +57,9 @@ const AIChatbot = () => {
     // 1. Check Synonym Map (Removed map replacing logic, just use the cleaned query directly)
     const normalizedQuery = lowerQuery;
 
-    // 2. Check Manual Intents (Exact Match using word boundaries)
-    // Pad the query and keywords with spaces to mimic word bounds, so "hi" doesn't match "this"
-    const paddedQuery = ` ${normalizedQuery} `;
+    // 2. Check Manual Intents (Exact Match using simple includes again, since we removed the dangerous overlapping synonyms)
     const exactMatch = chatData.find((intent) =>
-      intent.keywords.some((k) => paddedQuery.includes(` ${k} `)),
+      intent.keywords.some((k) => normalizedQuery.includes(k)),
     );
 
     if (exactMatch) return exactMatch.content;
@@ -91,11 +89,7 @@ const AIChatbot = () => {
 
         const isHindiMatch = selectedMatch.item.language === "hi" || isLikelyHindi;
 
-        const introText = isHindiMatch
-          ? `Mhe ye jankari website par mili (${selectedMatch.item.category}): \n\n`
-          : `I found this on our ${selectedMatch.item.category} page: \n\n`;
-
-        return `${introText}"${selectedMatch.item.content}"`;
+        return `${selectedMatch.item.content}`;
       }
     }
 
