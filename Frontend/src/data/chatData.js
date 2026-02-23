@@ -16,7 +16,7 @@ export const chatData = [
   // --- ABOUT OWNER / VILLA ---
   {
     id: "owner_en",
-    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details", "what is ad villa", "what is ad", "about ad villa"],
+    keywords: ["owner", "who owns", "founder", "about us", "who are you", "what is this", "details", "villa details", "what is ad villa", "what is ad", "about ad villa", "what"],
     content: "AD Royal Villa is a luxury private estate spread over 5,000 sq.ft, designed for exclusive getaways. It features 4BHK accommodation, a private pool, and outdoor activities.",
     category: "About",
   },
@@ -30,7 +30,7 @@ export const chatData = [
   // --- CONTACT / LOCATION ---
   {
     id: "contact_en",
-    keywords: ["contact", "phone", "number", "email", "address", "location", "reach you", "call", "where are you", "where is", "how far", "distance", "map", "station", "railway", "train", "nearest station", "where is ad villa", "where is ad", "ad villa is where"],
+    keywords: ["contact", "phone", "number", "email", "address", "location", "reach you", "call", "where are you", "where is", "how far", "distance", "map", "station", "railway", "train", "nearest station", "where is ad villa", "where is ad", "ad villa is where", "where", "kaha"],
     content: "📍 **Location:** Near Coral School, Next to Auto Fleet Petrol Pump, Padgha - 421101 (32 Kms from Thane).\n🚉 **Nearest Station:** Khadavli (Central Line)\n📞 **Phone:** +91 98902 05767\n🔗 [Click here to chat on WhatsApp](https://wa.me/919890205767).",
     category: "Contact",
   },
@@ -41,11 +41,11 @@ export const chatData = [
     category: "Contact",
   },
 
-  // --- PRICING ---
+  // --- PRICING & TIMINGS (When) ---
   {
     id: "price_en",
-    keywords: ["price", "pricing", "cost", "rate", "charge", "expensive", "cheap", "booking amount", "how much", "tariff", "packages", "fee"],
-    content: "Here are our transparent pricing packages (Up to 20 Guests):\n\n🌅 **Weekday Escape (Mon-Fri)**\n💰 ₹18,000 / night\n\n🎉 **Royal Weekend (Sat-Sun)**\n💰 ₹20,000 / night\n\nIncludes: Full 4BHK access, Private Pool, Kitchen access, and all amenities.\n🔗 [View Pricing Page](/pricing)",
+    keywords: ["price", "pricing", "cost", "rate", "charge", "expensive", "cheap", "booking amount", "how much", "tariff", "packages", "fee", "when", "time", "timing", "kab"],
+    content: "🕒 **Timings**: Check-in 1:00 PM | Check-out 11:00 AM\n\nHere are our transparent pricing packages (Up to 20 Guests):\n🌅 **Weekday Escape (Mon-Fri)**\n💰 ₹18,000 / night\n🎉 **Royal Weekend (Sat-Sun)**\n💰 ₹20,000 / night\n\nIncludes: Full 4BHK access, Private Pool, Kitchen access, and all amenities.\n🔗 [View Pricing Page](/pricing)",
     category: "Pricing",
   },
   {
@@ -55,10 +55,10 @@ export const chatData = [
     category: "Pricing",
   },
 
-  // --- BOOKING ---
+  // --- BOOKING (How) ---
   {
     id: "booking_en",
-    keywords: ["book", "reservation", "reserve", "how to book", "availability", "available"],
+    keywords: ["book", "reservation", "reserve", "how to book", "availability", "available", "how"],
     content: "To check availability or book your stay, you can click the 'Book Now' button at the top right, or message us directly on WhatsApp.\n🔗 [Chat on WhatsApp](https://wa.me/919890205767)",
     category: "Booking",
   },
