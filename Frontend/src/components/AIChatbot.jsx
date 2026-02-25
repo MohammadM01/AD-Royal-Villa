@@ -47,58 +47,136 @@ const AIChatbot = () => {
   };
 
   const generateResponse = (query) => {
-    // strip punctuation to allow strict bounding (e.g. "kaha h?" -> "kaha h")
-    const lowerQuery = query.toLowerCase().replace(/[^\w\s]/gi, '');
+    // 1. Clean the query
+    const lowerQuery = query
+      .toLowerCase()
+      .replace(/[^\w\s]/gi, "")
+      .trim();
+
+    if (!lowerQuery)
+      return "I didn't quite catch that. Could you say it again?";
 
     // Helper to guess if query is Hindi/Hinglish
-    const hindiTriggers = ["kya", "hai", "kaise", "kab", "kitna", "kaha", "kisko", "nahi", "ha", "acha", "bhai", "karna", "chahiye", "paisa", "kidhar", "kdr"];
-    const isLikelyHindi = hindiTriggers.some(trigger => lowerQuery.split(' ').includes(trigger));
+    const hindiTriggers = [
+      "kya",
+      "hai",
+      "kaise",
+      "kab",
+      "kitna",
+      "kaha",
+      "kisko",
+      "nahi",
+      "ha",
+      "acha",
+      "bhai",
+      "karna",
+      "chahiye",
+      "paisa",
+      "kidhar",
+      "kdr",
+      "tum",
+      "kon",
+      "mera",
+      "mujhe",
+      "aap",
+    ];
+    const isLikelyHindi = hindiTriggers.some((trigger) =>
+      new RegExp(`\\b${trigger}\\b`, "i").test(lowerQuery),
+    );
 
-    // 1. Check Synonym Map (Removed map replacing logic, just use the cleaned query directly)
-    const normalizedQuery = lowerQuery;
-
-    // 2. Check Manual Intents (Exact Match using simple includes again, since we removed the dangerous overlapping synonyms)
-    const exactMatch = chatData.find((intent) =>
-      intent.keywords.some((k) => normalizedQuery.includes(k)),
+    // 2. Exact Intent Matching using Word Boundaries (Catches explicit phrases inside long sentences like "hello who r u plz")
+    let exactMatch = chatData.find((intent) =>
+      intent.keywords.some((k) =>
+        new RegExp(`\\b${k}\\b`, "i").test(lowerQuery),
+      ),
     );
 
     if (exactMatch) return exactMatch.content;
 
-    // 3. Fuzzy Search in Bot Memory (Website Content & PDF Data)
+    // 3. Fuzzy Search on Conversational Intents (Catches heavy typos like "pric", "locatin", "swimng", "oenr")
+    const fuseChat = new Fuse(chatData, {
+      keys: ["keywords"],
+      threshold: 0.35, // Stricter threshold so "what is this" doesn't match "hi/hello"
+      includeScore: true,
+      ignoreLocation: true,
+    });
+
+    let bestFuzzyChatMatch = null;
+    let bestFuzzyScore = 1;
+
+    // A) Check full query first for overall intent matches
+    const fullQueryResults = fuseChat.search(lowerQuery);
+    if (fullQueryResults.length > 0 && fullQueryResults[0].score < 0.25) {
+      bestFuzzyChatMatch = fullQueryResults[0].item;
+      bestFuzzyScore = fullQueryResults[0].score;
+    } 
+
+    // B) Check word by word for heavy typos buried inside long sentences
+    // Only if we don't already have an excellent full-query match
+    if (bestFuzzyScore > 0.15) {
+      const words = lowerQuery.split(/\s+/);
+      let bestWordScore = 1;
+      let bestWordMatch = null;
+
+      words.forEach((word) => {
+        // Only fuzzy match substantial words (> 3 chars) to avoid false positive matches on tiny words like "is", "the", "a"
+        // Also explicitly block fuzzying common generic words
+        const ignoredWords = ["what", "this", "that", "then", "there", "about", "site"];
+        if (word.length > 3 && !ignoredWords.includes(word)) {
+          const wordResults = fuseChat.search(word);
+          // Score closer to 0 is a better match. We require a firm match (<0.3)
+          if (
+            wordResults.length > 0 &&
+            wordResults[0].score < bestWordScore &&
+            wordResults[0].score < 0.3
+          ) {
+            bestWordScore = wordResults[0].score;
+            bestWordMatch = wordResults[0].item;
+          }
+        }
+      });
+
+      // If the word match was stronger than the full sentence scattered match, use it
+      if (bestWordMatch && bestWordScore < bestFuzzyScore) {
+        bestFuzzyChatMatch = bestWordMatch;
+      }
+    }
+
+    if (bestFuzzyChatMatch) return bestFuzzyChatMatch.content;
+
+    // 4. Fuzzy Search in Website Knowledge Base (botMemory JSON)
     if (botMemory.length > 0) {
       const fuse = new Fuse(botMemory, {
         keys: ["keywords", "content", "category"],
-        threshold: 0.4, // Lower is stricter
+        threshold: 0.4,
         includeScore: true,
       });
 
-      const results = fuse.search(normalizedQuery);
+      const results = fuse.search(lowerQuery);
 
       if (results.length > 0) {
-        // Try to find a match that aligns with the detected language,
-        // or default to the absolute best match if none perfectly align.
         let selectedMatch = results[0];
 
         // If we strongly suspect Hindi but top match is English (or vice versa), try seeking down the list.
         const targetLanguage = isLikelyHindi ? "hi" : "en";
-        const languageAlignedMatch = results.find(r => r.item.language === targetLanguage && r.score < 0.5);
+        const languageAlignedMatch = results.find(
+          (r) => r.item.language === targetLanguage && r.score < 0.4,
+        );
 
         if (languageAlignedMatch) {
           selectedMatch = languageAlignedMatch;
         }
 
-        const isHindiMatch = selectedMatch.item.language === "hi" || isLikelyHindi;
-
         return `${selectedMatch.item.content}`;
       }
     }
 
-    // 4. Default Fallback with Language Heuristic
+    // 5. Default Fallback with Language Heuristic
     if (isLikelyHindi) {
-      return "Maaf karna, mujhe theek se samajh nahi aaya. 😅 Aap Price, Location, Pool, ya Booking ke baare mein pooch sakte hain!";
+      return "Maaf karna, mujhe theek se samajh nahi aaya. 😅 Kya aap Pricing, Location, Pool, ya Booking ke baare mein pooch sakte hain?";
     }
 
-    return "I'm not sure about that. Try asking about Price, Location, Pool, or Contact!";
+    return "I'm not exactly sure what you mean! Try asking about Pricing, Location, Pool, or Contact Info.";
   };
 
   // Helper to render markdown-like links
@@ -151,7 +229,7 @@ const AIChatbot = () => {
               </div>
               <div>
                 <h3 className="text-white font-bold text-sm">
-                  Datamatex Assistant
+                  Datamatex Ai Bot
                 </h3>
                 <span className="text-xs text-green-400 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>{" "}
@@ -168,10 +246,11 @@ const AIChatbot = () => {
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${msg.sender === "user"
-                      ? "bg-blue-600 text-white rounded-br-none"
-                      : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
-                      }`}
+                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${
+                      msg.sender === "user"
+                        ? "bg-blue-600 text-white rounded-br-none"
+                        : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
+                    }`}
                   >
                     {renderMessage(msg.text)}
                   </div>
