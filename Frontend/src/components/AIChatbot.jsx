@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Fuse from "fuse.js";
-import { FaRobot, FaPaperPlane, FaTimes, FaCommentDots } from "react-icons/fa";
+import { FaPaperPlane, FaTimes, FaCommentDots } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { chatData, synonymMap } from "../data/chatData";
 
@@ -109,7 +109,7 @@ const AIChatbot = () => {
     if (fullQueryResults.length > 0 && fullQueryResults[0].score < 0.25) {
       bestFuzzyChatMatch = fullQueryResults[0].item;
       bestFuzzyScore = fullQueryResults[0].score;
-    } 
+    }
 
     // B) Check word by word for heavy typos buried inside long sentences
     // Only if we don't already have an excellent full-query match
@@ -205,11 +205,11 @@ const AIChatbot = () => {
       {/* Floating Action Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-linear-to-r from-cyan-500 to-blue-600 text-white rounded-full shadow-2xl hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 flex items-center justify-center bg-linear-to-r from-cyan-500 to-blue-600 text-white rounded-full shadow-2xl hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        {isOpen ? <FaTimes size={24} /> : <FaRobot size={24} />}
+        {isOpen ? <FaTimes size={28} /> : <img src="/aiboticon.png" alt="Datamatex AI Bot" className="w-[46px] h-[46px] object-contain drop-shadow-lg" />}
       </motion.button>
 
       {/* Chat Window */}
@@ -225,7 +225,7 @@ const AIChatbot = () => {
             {/* Header */}
             <div className="bg-gray-800 p-4 flex items-center gap-3 border-b border-gray-700">
               <div className="bg-cyan-500/20 p-2 rounded-full">
-                <FaRobot className="text-cyan-400" />
+                <img src="/aiboticon.png" alt="AI Bot" className="w-5 h-5 object-contain" />
               </div>
               <div>
                 <h3 className="text-white font-bold text-sm">
@@ -246,11 +246,10 @@ const AIChatbot = () => {
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${
-                      msg.sender === "user"
-                        ? "bg-blue-600 text-white rounded-br-none"
-                        : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
-                    }`}
+                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-md whitespace-pre-wrap ${msg.sender === "user"
+                      ? "bg-blue-600 text-white rounded-br-none"
+                      : "bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700"
+                      }`}
                   >
                     {renderMessage(msg.text)}
                   </div>
