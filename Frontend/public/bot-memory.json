@@ -2,166 +2,90 @@
   {
     "id": "activities_en",
     "keywords": [
-      "activities",
-      "rain dance",
-      "tipping bucket",
-      "cricket",
-      "bbq",
-      "games",
-      "play"
+      "activities", "rain dance", "tipping bucket", "cricket", "bbq", "games", "play", "party", "music", "dance", "entertainment"
     ],
-    "content": "Royal Activities: Live BBQ Nights, The Tipping Bucket (Giant Water Splash), Kids Adventure Park, Twisting Pool Slides, Rain Dance Arena with Music, Mushroom Fountain, Indoor Games (Carrom, Cards), and large Outdoor Sports area for Cricket. We also have a Patio Deck to relax.",
+    "content": "Royal Activities: Live BBQ Nights, The Tipping Bucket (Giant Water Splash), Kids Adventure Park, Twisting Pool Slides, Rain Dance Arena with Music, Mushroom Fountain, Indoor Games (Carrom, Cards), and a large Outdoor Sports area for Cricket/Badminton. We also have a Patio Deck to relax and enjoy the sunset.",
     "category": "Activities",
     "language": "en"
   },
   {
     "id": "activities_hi",
     "keywords": [
-      "kya kya",
-      "khelna",
-      "maza",
-      "khel",
-      "dj",
-      "party",
-      "barbeque",
-      "dance",
-      "enjoy"
+      "kya kya", "khelna", "maza", "khel", "dj", "party", "barbeque", "dance", "enjoy", "timepass", "program", "gaana"
     ],
-    "content": "Humare paas bhot saari activities hain jisme Tipping Bucket, Rain dance (music ke saath), Pool slides, Mushroom umbrella, aur Indoor/Outdoor khel shamil hain. Aap BBQ (barbeque) ka bhi mazza le sakte hain, aur patio deck par relax kar sakte hain!",
+    "content": "Humare paas bahot saari mazedar activities hain jisme bada Tipping Bucket, Rain dance (loud music ke saath), Pool slides, Mushroom umbrella, aur Indoor/Outdoor khel shamil hain. Aap sham ko Live BBQ (barbeque) ka mazza le sakte hain, aur khule aasmaan ke neeche patio deck par relax kar sakte hain!",
     "category": "Activities",
     "language": "hi"
   },
   {
     "id": "amenities_en",
     "keywords": [
-      "amenities",
-      "pool",
-      "kitchen",
-      "wifi",
-      "rooms",
-      "beds",
-      "inverter",
-      "tv",
-      "washroom",
-      "mattress"
+      "amenities", "pool", "kitchen", "wifi", "rooms", "beds", "inverter", "tv", "washroom", "mattress", "parking", "facilities", "services"
     ],
-    "content": "Amenities: Private 80x20 ft Pool with 14ft slides! 4 Fully AC Bedrooms with King Size beds and 32\" Smart TVs. 6 Washrooms (WC + Indian). A large 700 sq.ft living room with a 65\" Smart WiFi TV. Fully Equipped Kitchen, 24/7 Hot Water, Inverter Power Backup, 9 Extra mattresses free of cost! Parking for 6-8 cars.",
+    "content": "Premium Amenities: Private 80x20 ft Pool with 14ft tall twisting slides! 4 Fully AC Bedrooms with King Size beds and 32\" Smart TVs. 6 Washrooms (WC + Indian) with 24/7 Hot Water. A spacious 700 sq.ft living room with a 65\" Smart WiFi TV. Fully Equipped Kitchen with a Caretaker. Inverter Power Backup, 9 Extra mattresses entirely free! Secure tracking and parking for 6-8 cars.",
     "category": "Amenities",
     "language": "en"
   },
   {
     "id": "amenities_hi",
     "keywords": [
-      "suvidha",
-      "facility",
-      "bed",
-      "khana",
-      "pani",
-      "kya milega",
-      "ac",
-      "tv",
-      "gadda"
+      "suvidha", "facility", "bed", "khana", "pani", "kya milega", "ac", "tv", "gadda", "bathroom", "kitchen", "parking", "service"
     ],
-    "content": "Yaha par aapko pura 4BHK villa milega AC ke sath. Bhot bada 80x20 ft private pool with slides, 4 king-size bedrooms (32\" tv ke sath), 6 washrooms, puri equipped kitchen. Bada living room 65\" TV ke sath. Inverter backup aur 9 extra gadde (mattresses) free available hain. 6-8 gaadi parking ki jagah hai.",
+    "content": "Yaha par aapko pura 4BHK villa milega (Fully AC). Bhot bada 80x20 ft private pool (slides ke sath), 4 king-size bedrooms (sabme 32\" tv), 6 washrooms (24/7 garam pani), aur puri equipped kitchen careteaker k sath. Bada living room hall 65\" TV ke sath. Inverter power backup aur 9 extra gadde (mattresses) bilkul free. 6-8 gaadi safe parking ki jagah hai.",
     "category": "Amenities",
     "language": "hi"
   },
   {
     "id": "contact_en",
     "keywords": [
-      "contact",
-      "phone",
-      "email",
-      "address",
-      "call",
-      "location",
-      "station",
-      "train",
-      "nearest"
+      "contact", "phone", "email", "address", "call", "location", "station", "train", "nearest", "whatsapp", "reach"
     ],
-    "content": "Our Location: Near Coral School, Next to Auto Fleet Petrol Pump, Padgha - 421101. Just 32 Kms from Thane City! Nearest Railway Station is Khadavli (Central Line). Call Us at +91 9890205767. Available 24/7.",
+    "content": "Reach us instantly! Our Location: Near Coral School, Next to Auto Fleet Petrol Pump, Padgha - 421101. Just 32 Kms drive from Thane City! Our nearest Railway Station is Khadavli (Central Line). For bookings and inquiries, please Call Us or WhatsApp at +91 9890205767. We are available 24/7.",
     "category": "Contact",
     "language": "en"
   },
   {
     "id": "contact_hi",
     "keywords": [
-      "kaha hai",
-      "kaise pahuche",
-      "thane",
-      "padgha",
-      "number do",
-      "station",
-      "train",
-      "rashta"
+      "kaha hai", "kaise pahuche", "thane", "padgha", "number do", "station", "train", "rashta", "call", "address", "kidhar"
     ],
-    "content": "Hamara villa Padgha me hai (Coral School ke paas, Auto Fleet Petrol pump k bagal me). Thane se 32 kilometer door hai. Nearest railway station Khadavli (Central line) hai. Aap hume +91 9890205767 par call ya whatsapp kar sakte hain.",
+    "content": "Hamara villa Padgha me hai (Coral School ke thik paas, Auto Fleet Petrol pump k bagal me). Thane city se sirf 32 kilometer ki duri par. Sabse nazdik railway station Khadavli (Central line) hai. Aap kisi bhi time hume +91 9890205767 par call ya whatsapp kar sakte hain. Contact check karein!",
     "category": "Contact",
     "language": "hi"
   },
   {
     "id": "pricing_en",
     "keywords": [
-      "pricing",
-      "cost",
-      "rates",
-      "18000",
-      "20000",
-      "weekday",
-      "weekend",
-      "advance",
-      "payment"
+      "pricing", "cost", "rates", "18000", "20000", "weekday", "weekend", "advance", "payment", "charge", "price", "how much"
     ],
-    "content": "Pricing: Weekday Escape (Mon-Fri) for ₹18,000 / night for up to 20 Guests. Royal Weekend (Sat-Sun) for ₹20,000 / night for up to 20 Guests. Booking confirmation is given only after a 50% advance payment. The remaining 50% is paid during check-in.",
+    "content": "Our transparent Pricing: Weekday Escape (Mon-Fri) is ₹18,000 / night for up to 20 Guests. Royal Weekend (Sat-Sun) is ₹20,000 / night for up to 20 Guests. Booking confirmation is strictly provided after a 50% advance payment to secure the dates. The remaining 50% balance is paid during check-in. Pricing depends on your requirements. Please contact us for a custom quote.",
     "category": "Pricing",
     "language": "en"
   },
   {
     "id": "pricing_hi",
     "keywords": [
-      "kiraya",
-      "bhav",
-      "kitna lagega",
-      "20 log",
-      "rate kya",
-      "paisa",
-      "payment",
-      "advance"
+      "kiraya", "bhav", "kitna lagega", "20 log", "rate kya", "paisa", "payment", "advance", "cost", "bill", "kharcha"
     ],
-    "content": "Agar aap Somvaar se Shukravaar (Weekday) aate hain to charge ₹18,000 per night hai. Agar Shanivaar - Ravivaar (Weekend) aate hain to ₹20,000 per night hai. Booking confirm karne ke liye 50% advance dena hota hai. Baki 50% check-in ke time par. Maximum 20 log allow hain isi price mein.",
+    "content": "Hamare rates fixed aur transparent hain: Agar aap Somvaar se Shukravaar (Weekday) aate hain to charge ₹18,000 per night hai. Agar aap Shanivaar aur Ravivaar (Weekend) aate hain to ₹20,000 per night hai. Booking dates confirm karne ke liye 50% advance dena zaruri hota hai. Baki 50% check-in ke time par. Maximum 20 log yaha aaram se ruk sakte hain. Baki details ke liye please humse WhatsApp par baat karein.",
     "category": "Pricing",
     "language": "hi"
   },
   {
     "id": "stay_en",
     "keywords": [
-      "stay",
-      "living",
-      "experience",
-      "rooms",
-      "guests",
-      "check in",
-      "check out",
-      "timing",
-      "pool time"
+      "stay", "living", "experience", "rooms", "guests", "check in", "check out", "timing", "pool time", "schedule"
     ],
-    "content": "Timings: Check-in Time is 1:00 PM, and Check-out is 11:00 AM. Swimming Pool Time: 01:00 PM to 12:00 AM. Experience the height of luxury living! 5,000 sq.ft of private property for your complete privacy.",
+    "content": "Timings & Rules: Check-in Time is promptly at 1:00 PM, and Check-out Time is at 11:00 AM the next day. Swimming Pool Time is accessible from 01:00 PM up until 12:00 AM midnight. Experience the height of luxury living! We provide a 5,000 sq.ft completely private estate ensuring exclusivity and peace for your group.",
     "category": "Stay",
     "language": "en"
   },
   {
     "id": "stay_hi",
     "keywords": [
-      "sukoon",
-      "rukna",
-      "kaisa hai",
-      "experience",
-      "timing",
-      "kab aaye",
-      "kitne baje",
-      "pool kab"
+      "sukoon", "rukna", "kaisa hai", "experience", "timing", "kab aaye", "kitne baje", "pool kab", "time"
     ],
-    "content": "Timings: Check-in dopehar 1:00 baje hai, aur Check-out agli subah 11:00 baje. Pool subah 1 baje se raat 12 baje tak allowed hota hai. Yaha aapko 100% privacy milti hai, aap apne parivar ke sath aaram se enjoy kar sakte hain.",
+    "content": "Timings & Rules: Check-in dopehar theek 1:00 baje shuru hoti hai, aur Check-out agli subah 11:00 baje hoga. Pool ka istemal aap bindaas subah 1 baje se raat ke 12 baje tak kar sakte hain. Yaha aapko 100% privacy milti hai (no overlapping guests), aap apne parivar aur doston ke sath poori exclusive property enjoy kar sakte hain.",
     "category": "Stay",
     "language": "hi"
   }
